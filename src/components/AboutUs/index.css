@@ -1,0 +1,43 @@
+.c-about-section-wrap {
+  background: #21252B;
+  padding: 40px 0 80px;
+  margin-bottom: 40px;
+
+  .about-container {
+    max-width: 1000px;
+    margin: 0 auto;
+
+    .about-title {
+      font-weight: 900;
+      font-size: 48px;
+      text-align: center;
+      text-transform: uppercase;
+      color: #E9E9EA;
+      margin-bottom: 48px;
+    }
+  
+    .about-content {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      align-items: center;
+      justify-content: center;
+    }
+  
+    .about-image-container {
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px #0004;
+      flex: 1 1 320px;
+      overflow: hidden;
+    }
+  
+    .about-image {
+      width: 100%;
+      height: auto;
+    }
+  }
+
+  
+}

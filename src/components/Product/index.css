@@ -1,0 +1,165 @@
+.c-product-section-wrap {
+  padding: 40px 0 80px;
+  .product-container {
+    max-width: 1000px;
+    margin: 0 auto;
+    .product-title {
+      margin-bottom: 40px;
+      text-align: center;
+      .product-title-main {
+        font-family: PingFang SC;
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 48px;
+        letter-spacing: 0px;
+        margin-bottom: 12px;
+      }
+      .product-title-sub {
+        font-family: PingFang SC;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 36px;
+        letter-spacing: 0px;
+      }
+    }
+
+    .product-card {
+      padding: 10px;
+      height: 594px;
+      margin-bottom: 40px;
+      overflow: hidden;
+      box-shadow: 0px 24px 80px 0px #00000029;
+      background: #171717b2;
+      border: 1px solid rgba(95, 95, 95, 0.8);
+      position: relative;
+
+      .product-card-content {
+        padding: 34px;
+        background: linear-gradient(
+          180deg,
+          rgba(27, 26, 27, 0) 0%,
+          rgba(27, 26, 27, 0.9) 46.06%
+        );
+        position: absolute;
+        top: 0;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        &.left {
+          left: 0;
+        }
+        &.right {
+          right: 0;
+        }
+        .product-card-content-inner {
+          width: 100%;
+          text-align: center;
+
+          .product-card-title {
+            font-family: PingFang SC;
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 60px;
+            text-align: center;
+            color: rgba(233, 233, 234, 1);
+            margin-bottom: 16px;
+          }
+          .product-card-description {
+            font-family: PingFang SC;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: rgba(255, 255, 255, 1);
+            margin-bottom: 16px;
+          }
+          .product-card-button {
+            width: 100%;
+            height: 48px;
+            background: #000000;
+            border-radius: 4px;
+            color: #fff;
+          }
+        }
+      }
+
+      .border-top-left::before {
+        content: " ";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 0px;
+        top: 0px;
+        border-color: #d9d9d9;
+        border-style: solid;
+        border-width: 1px 0 0 1px;
+      }
+      .border-top-right::after {
+        content: " ";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        right: 0px;
+        top: 0px;
+        border-color: #d9d9d9;
+        border-style: solid;
+        border-width: 1px 1px 0 0;
+      }
+      .border-bottom-left::before {
+        content: " ";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        left: 0px;
+        bottom: 0px;
+        border-color: #d9d9d9;
+        border-style: solid;
+        border-width: 0 0px 1px 1px;
+      }
+      .border-bottom-right::after {
+        content: " ";
+        position: absolute;
+        width: 12px;
+        height: 12px;
+        right: 0px;
+        bottom: 0px;
+        border-color: #d9d9d9;
+        border-style: solid;
+        border-width: 0 1px 1px 0;
+      }
+      .product-image {
+        object-fit: cover;
+      }
+      .product-content-bg-image {
+        position: absolute;
+        top: 0px;
+        right: 34px;
+      }
+      .product-card-more {
+        width: 200px;
+        height: 48px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-family: Inter;
+        font-weight: 400;
+        font-size: 20px;
+        line-height: 100%;
+        border: 0.69px solid rgba(75, 141, 255, 0.4);
+        box-shadow: 0px 0px 8.33px 0px rgba(75, 141, 255, 0.6) inset;
+        position: relative;
+        margin-top: 16px;
+        .product-card-more-text {
+          font-weight: 400;
+          font-size: 20px;
+          letter-spacing: 0px;
+          color: rgba(233, 233, 234, 1);
+        }
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+        }
+      }
+    }
+  }
+}

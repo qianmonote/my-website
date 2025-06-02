@@ -1,0 +1,35 @@
+.c-navbar-wrap {
+  background: rgba(20, 22, 25, 1);
+  padding: 0 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  .c-navbar-logo {
+    background: url('/images/navbar-logo.png') no-repeat center center;
+    width: 58px;
+    height: 36px;
+  }
+  .desktop-menu {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+  .navbar-menu-item {
+    color: #fff;
+    padding: 12px 24px;
+    cursor: pointer;
+    border-radius: 20px;
+    background: rgba(255, 255, 255, 0.16);
+    font-family: PingFang SC;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+}
