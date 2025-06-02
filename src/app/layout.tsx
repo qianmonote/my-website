@@ -5,6 +5,7 @@ import { ConfigProvider } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import { I18nProvider } from "@/context/I18nContext";
 import themeConfig from "@/config/theme";
+import PageLoadManager from "@/components/PageLoadManager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,15 +32,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <PageLoadManager />
         <I18nProvider>
           <ConfigProvider
-            theme={{
-              components: {
-                Carousel: {
-                  ...themeConfig.Carousel,
-                },
-              },
-            }}
+            theme={themeConfig}
             locale={zhCN}
           >
             {children}

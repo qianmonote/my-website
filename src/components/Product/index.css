@@ -58,8 +58,8 @@
           .product-card-title {
             font-family: PingFang SC;
             font-weight: 600;
-            font-size: 40px;
-            line-height: 60px;
+            font-size: 24px;
+            line-height: 36px;
             text-align: center;
             color: rgba(233, 233, 234, 1);
             margin-bottom: 16px;
@@ -67,8 +67,8 @@
           .product-card-description {
             font-family: PingFang SC;
             font-weight: 400;
-            font-size: 16px;
-            line-height: 24px;
+            font-size: 14px;
+            line-height: 20px;
             color: rgba(255, 255, 255, 1);
             margin-bottom: 16px;
           }

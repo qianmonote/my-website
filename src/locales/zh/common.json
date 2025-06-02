@@ -9,6 +9,12 @@
   "aboutTitle": "ABOUT US",
   "aboutSlogan": "关于我们，不仅仅是充电",
   "aboutDesc": "我们专注于绿色科技、智能充电、AI采摘机器人等创新解决方案，致力于推动农业与新能源的深度融合，打造可持续发展的未来。",
+  "aboutEcoTitle": "三位一体的绿色科技生态",
+  "aboutEcoDesc": "植根马来西亚槟城，ONETOUCH是热带地区碳中和解决方案的领航者。我们以\"技术融合创新\"为核心，整合生物质能转化、智慧储能EV充电、分布式光伏、与智能农业机械四大战略板块，构建\"清洁能源生产-智能充电优化-资源循环再生\"三位一体的绿色科技生态。",
+  "aboutCircularTitle": "绿色循环经济生态",
+  "aboutCircularDesc": "我们以智能化运维体系驱动工业、农业领域低碳转型，年处理百万吨级农林废弃物并产生700+kW·h/吨绿色电力，赋能客户实现能耗、碳排、成本\"三降\"目标，构建人与自然永续共生的绿色循环经济生态。",
+  "aboutInnovationTitle": "持续推动行业标准革新",
+  "aboutInnovationDesc": "公司汇聚了工程师、科研人员及可持续发展倡导者组成的专业团队，通过自动化技术、可再生能源系统集成及生物质废弃物能源化技术，持续推动行业标准革新。业务覆盖马来西亚全境，并拓展至马尔代夫等国际市场，参与多项在建设施项目",
   "productTitle": "产品与服务",
   "product1": "生物质废弃物 \r\n 发电系统",
   "product1Desc": "XXXXXXXXXXXXXXXXXXXXXXXX",
@@ -27,5 +33,7 @@
   "techDirectorDesc": "AI与自动化专家",
   "marketDirectorDesc": "可持续发展推动者",
   "footerInvite": "We sincerely <span style='color:#1677ff'>invite</span> visionaries to join hands, share blue ocean <span style='color:#1677ff'>opportunities</span>, and create a sustainable future together!",
-  "address": "Headquarters Address: 5-530 JALAN PINANG, 10450 GEORGETOWN, PULAU PINANG"
+  "address": "Headquarters Address: 5-530 JALAN PINANG, 10450 GEORGETOWN, PULAU PINANG",
+  "expandText": "更多",
+  "collapseText": "收起"
 } 

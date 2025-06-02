@@ -1,6 +1,18 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* 防止FOUC的基础样式 */
+.ant-select-selector,
+.ant-dropdown-menu,
+.ant-drawer-content,
+.ant-menu {
+  transition: none !important;
+}
+
+/* 页面加载完成后恢复过渡效果 */
+.page-loaded .ant-select-selector,
+.page-loaded .ant-dropdown-menu,
+.page-loaded .ant-drawer-content,
+.page-loaded .ant-menu {
+  transition: all 0.2s ease !important;
+}
 
 body {
   background: #21252B;
