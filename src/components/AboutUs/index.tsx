@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import { Typography, Tooltip } from "antd";
+import { Typography } from "antd";
 import { useI18n } from "@/context/I18nContext";
 import "./index.css";
 
