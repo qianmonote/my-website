@@ -1,0 +1,345 @@
+.aboutPage {
+  background: #0a0a0a;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+.heroSection {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.heroImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.7);
+}
+
+.scrollIndicator {
+  position: absolute;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: bounce 2s infinite;
+}
+
+.arrow {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ffffff;
+  border-top: none;
+  border-right: none;
+  transform: rotate(-45deg);
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  40% {
+    transform: translateX(-50%) translateY(-10px);
+  }
+  60% {
+    transform: translateX(-50%) translateY(-5px);
+  }
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.sectionTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 60px;
+  letter-spacing: 2px;
+  color: #ffffff;
+}
+
+.cooperationSection {
+  padding: 100px 0;
+  background: #1a1a1a;
+}
+
+.milestone {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  gap: 60px;
+}
+
+.milestone:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+.timelineItem {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: 30px;
+}
+
+.year {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  min-width: 120px;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.content {
+  flex: 1;
+}
+
+.content h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.content p {
+  color: #cccccc;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.milestoneImage {
+  flex: 1;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.milestoneImage img {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.milestoneImage:hover img {
+  transform: scale(1.05);
+}
+
+.missionSection {
+  padding: 100px 0;
+  background: #0f0f0f;
+  position: relative;
+}
+
+.missionContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.quote blockquote {
+  font-size: 1.4rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin: 0 0 30px 0;
+  padding: 0;
+  border: none;
+  font-style: normal;
+}
+
+.quote cite {
+  color: #888888;
+  font-size: 1.1rem;
+  font-style: normal;
+}
+
+.highlight {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 600;
+}
+
+.englishMissionSection {
+  padding: 100px 0;
+  background: #1a1a1a;
+}
+
+.missionGrid {
+  display: flex;
+  justify-content: center;
+}
+
+.missionCard {
+  text-align: center;
+  max-width: 600px;
+}
+
+.missionCard h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.missionCard h4 {
+  font-size: 1.3rem;
+  color: #4facfe;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+.pillars {
+  display: flex;
+  justify-content: space-between;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+.pillar {
+  flex: 1;
+  text-align: center;
+  padding: 30px 20px;
+  background: rgba(79, 172, 254, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(79, 172, 254, 0.3);
+}
+
+.pillar h5 {
+  color: #4facfe;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin: 5px 0;
+  letter-spacing: 1px;
+}
+
+.communicationSection {
+  padding: 100px 0;
+  background: #0f0f0f;
+}
+
+.communicationContent {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.communicationContent p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #cccccc;
+}
+
+.joinSection {
+  padding: 100px 0;
+  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
+  text-align: center;
+}
+
+.joinContent p {
+  font-size: 1.5rem;
+  line-height: 1.8;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.joinButton {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: #ffffff;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 1px;
+}
+
+.joinButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .sectionTitle {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+  
+  .milestone {
+    flex-direction: column !important;
+    gap: 30px;
+    margin-bottom: 60px;
+  }
+  
+  .timelineItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .year {
+    writing-mode: horizontal-tb;
+    min-width: auto;
+    padding: 15px 30px;
+  }
+  
+  .pillars {
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .missionCard h3 {
+    font-size: 1.5rem;
+  }
+  
+  .missionCard h4 {
+    font-size: 1.1rem;
+  }
+  
+  .joinContent p {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 15px;
+  }
+  
+  .sectionTitle {
+    font-size: 1.5rem;
+  }
+  
+  .quote blockquote {
+    font-size: 1.1rem;
+  }
+  
+  .content h3 {
+    font-size: 1.2rem;
+  }
+} 

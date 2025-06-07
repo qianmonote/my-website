@@ -1,0 +1,603 @@
+/* 生物质气化发电系统页面样式 */
+.biomass-page {
+  min-height: 100vh;
+  background: #0a0f1a;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.4)
+  ), url('/images/banner.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-overlay {
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.contact-btn {
+  height: 50px;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border: none;
+  box-shadow: 0 4px 15px rgba(22, 119, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
+}
+
+/* Section Common Styles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1677ff, #4096ff);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* 气化原理 Section */
+.gasification-principle {
+  padding: 100px 0;
+  background: #111827;
+}
+
+.principle-intro {
+  font-size: 1.2rem;
+  color: #9ca3af;
+  margin-bottom: 2rem;
+  line-height: 1.8;
+}
+
+.principle-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(22, 119, 255, 0.3);
+}
+
+.step-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.step-icon.green { background: #10b981; }
+.step-icon.orange { background: #f59e0b; }
+.step-icon.purple { background: #8b5cf6; }
+.step-icon.teal { background: #06b6d4; }
+
+.step-content h4 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.step-content p {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 流程图样式 */
+.process-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cloud-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.gas-cloud {
+  width: 200px;
+  height: 120px;
+  position: relative;
+}
+
+.cloud-layer {
+  position: absolute;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af);
+  opacity: 0.8;
+}
+
+.cloud-layer:nth-child(1) {
+  width: 100px;
+  height: 60px;
+  top: 30px;
+  left: 20px;
+}
+
+.cloud-layer:nth-child(2) {
+  width: 120px;
+  height: 80px;
+  top: 15px;
+  left: 40px;
+}
+
+.cloud-layer:nth-child(3) {
+  width: 80px;
+  height: 50px;
+  top: 40px;
+  left: 100px;
+}
+
+.gas-components {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  width: 100%;
+}
+
+.component {
+  background: rgba(59, 130, 246, 0.2);
+  border: 1px solid rgba(59, 130, 246, 0.4);
+  padding: 8px 12px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  text-align: center;
+  color: #60a5fa;
+}
+
+.reactor-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.reactor {
+  width: 80px;
+  height: 100px;
+  background: linear-gradient(180deg, #374151, #1f2937);
+  border: 2px solid #4b5563;
+  border-radius: 8px;
+  position: relative;
+}
+
+.reactor::before {
+  content: '';
+  width: 40px;
+  height: 40px;
+  background: radial-gradient(circle, #fbbf24, #f59e0b);
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: flame 2s ease-in-out infinite alternate;
+}
+
+@keyframes flame {
+  0% { transform: translateX(-50%) scale(1); }
+  100% { transform: translateX(-50%) scale(1.1); }
+}
+
+.arrows {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+}
+
+.arrow.down {
+  border-top: 15px solid #4ade80;
+}
+
+.arrow.up {
+  border-bottom: 15px solid #60a5fa;
+}
+
+.output {
+  text-align: center;
+}
+
+.output-text {
+  color: #60a5fa;
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* 工艺路线 Section */
+.process-timeline {
+  padding: 100px 0;
+  background: #0f172a;
+}
+
+.timeline {
+  overflow-x: auto;
+  padding: 40px 0;
+}
+
+.timeline-path {
+  display: flex;
+  align-items: center;
+  min-width: 1600px;
+  position: relative;
+}
+
+.timeline-path::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 60px;
+  right: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, #1677ff, #4096ff, #06b6d4, #10b981);
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 160px;
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-icon {
+  width: 80px;
+  height: 80px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 3px solid #1677ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 20px rgba(22, 119, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.timeline-icon:hover {
+  transform: scale(1.1);
+  box-shadow: 0 6px 25px rgba(22, 119, 255, 0.4);
+}
+
+.timeline-icon img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+}
+
+/* 为占位符图标添加备用样式 */
+.timeline-icon::before {
+  content: '⚙️';
+  font-size: 24px;
+  display: block;
+}
+
+.timeline-icon img {
+  display: none; /* 隐藏占位符图片 */
+}
+
+.timeline-label {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+
+.timeline-desc {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  line-height: 1.4;
+}
+
+/* 环保优点 Section */
+.environmental-benefits {
+  padding: 100px 0;
+  background: #111827;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(22, 119, 255, 0.3);
+  transform: translateX(8px);
+}
+
+.benefit-number {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.benefit-content h4 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.benefit-content p {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.environmental-images {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.env-image-container {
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s ease;
+  background: linear-gradient(135deg, #10b981, #059669);
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.env-image-container:hover {
+  transform: scale(1.02);
+}
+
+.env-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+/* 为占位符图片添加备用样式 */
+.env-image-container::before {
+  content: '🌿';
+  font-size: 48px;
+  color: white;
+}
+
+.env-image {
+  display: none; /* 隐藏占位符图片 */
+}
+
+/* 产品应用 Section */
+.product-applications {
+  padding: 100px 0;
+  background: #0f172a;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 4rem auto;
+  line-height: 1.8;
+}
+
+.applications-grid {
+  margin-top: 4rem;
+}
+
+.application-card {
+  background: rgba(255, 255, 255, 0.03) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  border-radius: 20px !important;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.application-card:hover {
+  background: rgba(255, 255, 255, 0.05) !important;
+  border-color: rgba(22, 119, 255, 0.3) !important;
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card-image {
+  height: 220px;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.application-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+/* 为产品卡片图片添加备用样式 */
+.card-image::before {
+  content: '⚡';
+  font-size: 48px;
+  color: white;
+}
+
+.card-image img {
+  display: none; /* 隐藏占位符图片 */
+}
+
+.card-content {
+  padding: 24px;
+}
+
+.card-content h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.card-content p {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .timeline-path {
+    min-width: 1200px;
+  }
+  
+  .timeline-item {
+    min-width: 120px;
+  }
+  
+  .timeline-icon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .timeline-icon img {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .benefit-item {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .env-image {
+    height: 160px;
+  }
+  
+  .cloud-container {
+    transform: scale(0.8);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 16px;
+  }
+  
+  .step {
+    flex-direction: column;
+    text-align: center;
+  }
+} 

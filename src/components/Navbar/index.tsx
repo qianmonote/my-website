@@ -13,14 +13,27 @@ const Navbar: React.FC = () => {
 
   // Products and Services 下拉菜单项
   const productsMenuItems = [
-    { label: <a href="#product1">产品服务1</a>, key: "product1" },
-    { label: <a href="#product2">产品服务2</a>, key: "product2" },
+    {
+      label: <a href="/products/biomass-gasification"> 生物质气化发电系统 </a>,
+      key: "product1",
+    },
+    {
+      label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
+      key: "product2",
+    },
     { label: <a href="#product3">产品服务3</a>, key: "product3" },
   ];
 
   const menuItems = [
-    { label: <a href="#product">{t("product")}</a>, key: "product" },
-    { label: <a href="#about">{t("about")}</a>, key: "about" },
+    {
+      label: <a href="/products/biomass-gasification"> 生物质气化发电系统 </a>,
+      key: "product1",
+    },
+    {
+      label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
+      key: "product2",
+    },
+    { label: <a href="/about">{t("about")}</a>, key: "about" },
     { label: <a href="#contact">{t("contact")}</a>, key: "contact" },
   ];
 
@@ -53,7 +66,7 @@ const Navbar: React.FC = () => {
             <MenuOutlined style={{ fontSize: "12px", marginLeft: "12px" }} />
           </div>
         </Dropdown>
-        <a href="#about" className="navbar-menu-item">
+        <a href="/about" className="navbar-menu-item">
           {t("about")}
         </a>
         <a href="#contact">
@@ -87,10 +100,7 @@ const Navbar: React.FC = () => {
           onClose={() => setDrawerOpen(false)}
           open={drawerOpen}
         >
-          <Menu
-            mode="vertical"
-            items={menuItems}
-          />
+          <Menu mode="vertical" items={menuItems} />
           <Select
             value={lang}
             onChange={handleLangChange}

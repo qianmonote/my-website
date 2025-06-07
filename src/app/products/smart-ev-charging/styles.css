@@ -1,0 +1,515 @@
+/* 智慧EV充电生态体系页面样式 */
+.smart-ev-page {
+  min-height: 100vh;
+  background: #0a0f1a;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.hero-section {
+  height: 100vh;
+  background: linear-gradient(
+    rgba(0, 0, 0, 0.6), 
+    rgba(0, 0, 0, 0.4)
+  ), url('/images/solar-house.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.hero-overlay {
+  text-align: center;
+  z-index: 2;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.contact-btn {
+  height: 50px;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border: none;
+  box-shadow: 0 4px 15px rgba(22, 119, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contact-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
+}
+
+/* Section Common Styles */
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #1677ff, #4096ff);
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+.section-subtitle {
+  font-size: 1.2rem;
+  color: #9ca3af;
+  text-align: center;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+/* 三位一体 Section */
+.trinity-section {
+  padding: 100px 0;
+  background: #111827;
+}
+
+.trinity-features {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.feature-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(22, 119, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.feature-icon {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  margin-top: 6px;
+  flex-shrink: 0;
+}
+
+.feature-icon.green { 
+  background: #10b981; 
+  box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+}
+
+.feature-icon.blue { 
+  background: #3b82f6; 
+  box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+}
+
+.feature-icon.purple { 
+  background: #8b5cf6; 
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+}
+
+.feature-content h4 {
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.feature-content p {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 三位一体 3D 立体图 */
+.trinity-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  height: 400px;
+  justify-content: center;
+}
+
+.stacked-layers {
+  position: relative;
+  width: 200px;
+  height: 160px;
+  perspective: 1000px;
+}
+
+.layer {
+  position: absolute;
+  width: 180px;
+  height: 40px;
+  border-radius: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+}
+
+.layer-1 {
+  background: linear-gradient(135deg, #a855f7, #c084fc);
+  bottom: 0;
+  z-index: 3;
+  transform: rotateX(-5deg);
+}
+
+.layer-2 {
+  background: linear-gradient(135deg, #3b82f6, #60a5fa);
+  bottom: 30px;
+  z-index: 2;
+  transform: rotateX(-5deg);
+}
+
+.layer-3 {
+  background: linear-gradient(135deg, #10b981, #34d399);
+  bottom: 60px;
+  z-index: 1;
+  transform: rotateX(-5deg);
+}
+
+.trinity-diagram:hover .layer {
+  transform: rotateX(0deg) rotateY(10deg);
+}
+
+.trinity-diagram:hover .layer-1 {
+  transform: rotateX(0deg) rotateY(10deg) translateZ(20px);
+}
+
+.trinity-diagram:hover .layer-2 {
+  transform: rotateX(0deg) rotateY(10deg) translateZ(10px);
+}
+
+.trinity-diagram:hover .layer-3 {
+  transform: rotateX(0deg) rotateY(10deg) translateZ(0px);
+}
+
+.layer-labels {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+}
+
+.label {
+  font-size: 0.9rem;
+  color: #9ca3af;
+  padding: 4px 12px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* 环保优点 Section */
+.environmental-benefits {
+  padding: 100px 0;
+  background: #0f172a;
+}
+
+.benefits-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.benefit-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(22, 119, 255, 0.3);
+  transform: translateX(10px);
+}
+
+.benefit-number {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #ffffff;
+  flex-shrink: 0;
+}
+
+.benefit-content h4 {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.benefit-content p {
+  color: #9ca3af;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* 环保图片 */
+.environmental-images {
+  position: relative;
+  height: 400px;
+  display: flex;
+  gap: 16px;
+}
+
+.env-image-container {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.env-image-container.main-image {
+  flex: 2;
+}
+
+.env-image-container.side-image {
+  flex: 1;
+  align-self: flex-end;
+  height: 60%;
+}
+
+.env-image-container:hover {
+  transform: scale(1.02);
+}
+
+.env-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.env-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.env-image-container:hover .env-image img {
+  transform: scale(1.1);
+}
+
+.env-image-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(22, 119, 255, 0.1), rgba(64, 150, 255, 0.1));
+  z-index: 1;
+  border-radius: 16px;
+}
+
+/* 生物质能养殖气化发电系统 Section */
+.biomass-system {
+  padding: 100px 0;
+  background: #111827;
+}
+
+.system-description {
+  font-size: 1.1rem;
+  color: #9ca3af;
+  text-align: center;
+  line-height: 1.8;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.systems-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 32px;
+  margin-top: 3rem;
+}
+
+.system-card {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.system-card:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(22, 119, 255, 0.3);
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.system-image {
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  position: relative;
+}
+
+.system-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.system-card:hover .system-image img {
+  transform: scale(1.1);
+}
+
+.system-image::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.2));
+  z-index: 1;
+}
+
+.system-content {
+  padding: 24px;
+}
+
+.system-content h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+  line-height: 1.4;
+}
+
+.system-content p {
+  color: #9ca3af;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .trinity-features,
+  .benefits-list {
+    gap: 16px;
+  }
+
+  .feature-item,
+  .benefit-item {
+    padding: 16px;
+  }
+
+  .trinity-diagram {
+    height: 300px;
+    padding: 20px;
+  }
+
+  .stacked-layers {
+    width: 150px;
+    height: 120px;
+  }
+
+  .layer {
+    width: 140px;
+    height: 30px;
+  }
+
+  .environmental-images {
+    height: 300px;
+    flex-direction: column;
+  }
+
+  .env-image-container.side-image {
+    height: 40%;
+    align-self: stretch;
+  }
+
+  .systems-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-title {
+    font-size: 2rem;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .feature-item,
+  .benefit-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .systems-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .system-content {
+    padding: 20px;
+  }
+} 
