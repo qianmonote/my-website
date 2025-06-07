@@ -1,5 +1,5 @@
 /* 生物质气化发电系统页面样式 */
-.biomass-page {
+.biomassPage {
   min-height: 100vh;
   background: #0a0f1a;
   color: #ffffff;
@@ -12,7 +12,7 @@
 }
 
 /* Hero Section */
-.hero-section {
+.heroSection {
   height: 100vh;
   background: linear-gradient(
     rgba(0, 0, 0, 0.6), 
@@ -27,12 +27,12 @@
   position: relative;
 }
 
-.hero-overlay {
+.heroOverlay {
   text-align: center;
   z-index: 2;
 }
 
-.hero-title {
+.heroTitle {
   font-size: 3.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -41,7 +41,7 @@
   letter-spacing: 2px;
 }
 
-.contact-btn {
+.contactBtn {
   height: 50px;
   padding: 0 32px;
   font-size: 18px;
@@ -52,13 +52,13 @@
   transition: all 0.3s ease;
 }
 
-.contact-btn:hover {
+.contactBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
 }
 
 /* Section Common Styles */
-.section-title {
+.sectionTitle {
   font-size: 2.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -67,7 +67,7 @@
   position: relative;
 }
 
-.section-title::after {
+.sectionTitle::after {
   content: '';
   width: 80px;
   height: 4px;
@@ -80,19 +80,19 @@
 }
 
 /* 气化原理 Section */
-.gasification-principle {
+.gasificationPrinciple {
   padding: 100px 0;
   background: #111827;
 }
 
-.principle-intro {
+.principleIntro {
   font-size: 1.2rem;
   color: #9ca3af;
   margin-bottom: 2rem;
   line-height: 1.8;
 }
 
-.principle-steps {
+.principleSteps {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -114,7 +114,7 @@
   border-color: rgba(22, 119, 255, 0.3);
 }
 
-.step-icon {
+.stepIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -122,26 +122,26 @@
   flex-shrink: 0;
 }
 
-.step-icon.green { background: #10b981; }
-.step-icon.orange { background: #f59e0b; }
-.step-icon.purple { background: #8b5cf6; }
-.step-icon.teal { background: #06b6d4; }
+.stepIcon.green { background: #10b981; }
+.stepIcon.orange { background: #f59e0b; }
+.stepIcon.purple { background: #8b5cf6; }
+.stepIcon.teal { background: #06b6d4; }
 
-.step-content h4 {
+.stepContent h4 {
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.step-content p {
+.stepContent p {
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
 }
 
 /* 流程图样式 */
-.process-diagram {
+.processDiagram {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -152,7 +152,7 @@
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.cloud-container {
+.cloudContainer {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -160,41 +160,41 @@
   gap: 20px;
 }
 
-.gas-cloud {
+.gasCloud {
   width: 200px;
   height: 120px;
   position: relative;
 }
 
-.cloud-layer {
+.cloudLayer {
   position: absolute;
   border-radius: 50px;
   background: linear-gradient(135deg, #3b82f6, #1d4ed8, #1e40af);
   opacity: 0.8;
 }
 
-.cloud-layer:nth-child(1) {
+.cloudLayer:nth-child(1) {
   width: 100px;
   height: 60px;
   top: 30px;
   left: 20px;
 }
 
-.cloud-layer:nth-child(2) {
+.cloudLayer:nth-child(2) {
   width: 120px;
   height: 80px;
   top: 15px;
   left: 40px;
 }
 
-.cloud-layer:nth-child(3) {
+.cloudLayer:nth-child(3) {
   width: 80px;
   height: 50px;
   top: 40px;
   left: 100px;
 }
 
-.gas-components {
+.gasComponents {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 8px;
@@ -211,7 +211,7 @@
   color: #60a5fa;
 }
 
-.reactor-container {
+.reactorContainer {
   position: relative;
   display: flex;
   align-items: center;
@@ -270,14 +270,14 @@
   text-align: center;
 }
 
-.output-text {
+.outputText {
   color: #60a5fa;
   font-weight: 600;
   font-size: 1.1rem;
 }
 
 /* 工艺路线 Section */
-.process-timeline {
+.processTimeline {
   padding: 100px 0;
   background: #0f172a;
 }
@@ -287,14 +287,14 @@
   padding: 40px 0;
 }
 
-.timeline-path {
+.timelinePath {
   display: flex;
   align-items: center;
   min-width: 1600px;
   position: relative;
 }
 
-.timeline-path::before {
+.timelinePath::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -306,7 +306,7 @@
   z-index: 1;
 }
 
-.timeline-item {
+.timelineItem {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -316,7 +316,7 @@
   z-index: 2;
 }
 
-.timeline-icon {
+.timelineIcon {
   width: 80px;
   height: 80px;
   background: rgba(255, 255, 255, 0.05);
@@ -330,12 +330,12 @@
   transition: all 0.3s ease;
 }
 
-.timeline-icon:hover {
+.timelineIcon:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 25px rgba(22, 119, 255, 0.4);
 }
 
-.timeline-icon img {
+.timelineIcon img {
   width: 40px;
   height: 40px;
   object-fit: contain;
@@ -343,42 +343,42 @@
 }
 
 /* 为占位符图标添加备用样式 */
-.timeline-icon::before {
+.timelineIcon::before {
   content: '⚙️';
   font-size: 24px;
   display: block;
 }
 
-.timeline-icon img {
+.timelineIcon img {
   display: none; /* 隐藏占位符图片 */
 }
 
-.timeline-label {
+.timelineLabel {
   font-size: 1.1rem;
   font-weight: 600;
   color: #ffffff;
   margin-bottom: 8px;
 }
 
-.timeline-desc {
+.timelineDesc {
   font-size: 0.9rem;
   color: #9ca3af;
   line-height: 1.4;
 }
 
 /* 环保优点 Section */
-.environmental-benefits {
+.environmentalBenefits {
   padding: 100px 0;
   background: #111827;
 }
 
-.benefits-list {
+.benefitsList {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.benefit-item {
+.benefitItem {
   display: flex;
   align-items: flex-start;
   gap: 20px;
@@ -389,13 +389,13 @@
   transition: all 0.3s ease;
 }
 
-.benefit-item:hover {
+.benefitItem:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(22, 119, 255, 0.3);
   transform: translateX(8px);
 }
 
-.benefit-number {
+.benefitNumber {
   width: 40px;
   height: 40px;
   background: linear-gradient(135deg, #1677ff, #4096ff);
@@ -408,26 +408,26 @@
   flex-shrink: 0;
 }
 
-.benefit-content h4 {
+.benefitContent h4 {
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.benefit-content p {
+.benefitContent p {
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
 }
 
-.environmental-images {
+.environmentalImages {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.env-image-container {
+.envImageContainer {
   border-radius: 16px;
   overflow: hidden;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
@@ -439,11 +439,11 @@
   justify-content: center;
 }
 
-.env-image-container:hover {
+.envImageContainer:hover {
   transform: scale(1.02);
 }
 
-.env-image {
+.envImage {
   width: 100%;
   height: 200px;
   object-fit: cover;
@@ -451,23 +451,23 @@
 }
 
 /* 为占位符图片添加备用样式 */
-.env-image-container::before {
+.envImageContainer::before {
   content: '🌿';
   font-size: 48px;
   color: white;
 }
 
-.env-image {
+.envImage {
   display: none; /* 隐藏占位符图片 */
 }
 
 /* 产品应用 Section */
-.product-applications {
+.productApplications {
   padding: 100px 0;
   background: #0f172a;
 }
 
-.section-subtitle {
+.sectionSubtitle {
   font-size: 1.1rem;
   color: #9ca3af;
   text-align: center;
@@ -476,11 +476,11 @@
   line-height: 1.8;
 }
 
-.applications-grid {
+.applicationsGrid {
   margin-top: 4rem;
 }
 
-.application-card {
+.applicationCard {
   background: rgba(255, 255, 255, 0.03) !important;
   border: 1px solid rgba(255, 255, 255, 0.1) !important;
   border-radius: 20px !important;
@@ -489,14 +489,14 @@
   height: 100%;
 }
 
-.application-card:hover {
+.applicationCard:hover {
   background: rgba(255, 255, 255, 0.05) !important;
   border-color: rgba(22, 119, 255, 0.3) !important;
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.card-image {
+.cardImage {
   height: 220px;
   overflow: hidden;
   background: linear-gradient(135deg, #1677ff, #4096ff);
@@ -505,33 +505,33 @@
   justify-content: center;
 }
 
-.card-image img {
+.cardImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.application-card:hover .card-image img {
+.applicationCard:hover .cardImage img {
   transform: scale(1.05);
 }
 
 /* 为产品卡片图片添加备用样式 */
-.card-image::before {
+.cardImage::before {
   content: '⚡';
   font-size: 48px;
   color: white;
 }
 
-.card-image img {
+.cardImage img {
   display: none; /* 隐藏占位符图片 */
 }
 
-.card-content {
+.cardContent {
   padding: 24px;
 }
 
-.card-content h3 {
+.cardContent h3 {
   color: #ffffff;
   font-size: 1.3rem;
   font-weight: 600;
@@ -539,7 +539,7 @@
   line-height: 1.4;
 }
 
-.card-content p {
+.cardContent p {
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
@@ -547,48 +547,48 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .hero-title {
+  .heroTitle {
     font-size: 2.5rem;
   }
   
-  .section-title {
+  .sectionTitle {
     font-size: 2rem;
   }
   
-  .timeline-path {
+  .timelinePath {
     min-width: 1200px;
   }
   
-  .timeline-item {
+  .timelineItem {
     min-width: 120px;
   }
   
-  .timeline-icon {
+  .timelineIcon {
     width: 60px;
     height: 60px;
   }
   
-  .timeline-icon img {
+  .timelineIcon img {
     width: 30px;
     height: 30px;
   }
   
-  .benefit-item {
+  .benefitItem {
     flex-direction: column;
     text-align: center;
   }
   
-  .env-image {
+  .envImage {
     height: 160px;
   }
   
-  .cloud-container {
+  .cloudContainer {
     transform: scale(0.8);
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .heroTitle {
     font-size: 2rem;
   }
   

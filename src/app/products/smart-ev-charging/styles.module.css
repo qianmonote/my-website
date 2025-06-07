@@ -1,5 +1,5 @@
 /* 智慧EV充电生态体系页面样式 */
-.smart-ev-page {
+.smartEvPage {
   min-height: 100vh;
   background: #0a0f1a;
   color: #ffffff;
@@ -12,7 +12,7 @@
 }
 
 /* Hero Section */
-.hero-section {
+.heroSection {
   height: 100vh;
   background: linear-gradient(
     rgba(0, 0, 0, 0.6), 
@@ -27,12 +27,12 @@
   position: relative;
 }
 
-.hero-overlay {
+.heroOverlay {
   text-align: center;
   z-index: 2;
 }
 
-.hero-title {
+.heroTitle {
   font-size: 3.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -41,7 +41,7 @@
   letter-spacing: 2px;
 }
 
-.contact-btn {
+.contactBtn {
   height: 50px;
   padding: 0 32px;
   font-size: 18px;
@@ -52,13 +52,13 @@
   transition: all 0.3s ease;
 }
 
-.contact-btn:hover {
+.contactBtn:hover {
   transform: translateY(-2px);
   box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
 }
 
 /* Section Common Styles */
-.section-title {
+.sectionTitle {
   font-size: 2.5rem;
   font-weight: 700;
   color: #ffffff;
@@ -67,7 +67,7 @@
   position: relative;
 }
 
-.section-title::after {
+.sectionTitle::after {
   content: '';
   width: 80px;
   height: 4px;
@@ -79,7 +79,7 @@
   border-radius: 2px;
 }
 
-.section-subtitle {
+.sectionSubtitle {
   font-size: 1.2rem;
   color: #9ca3af;
   text-align: center;
@@ -88,18 +88,18 @@
 }
 
 /* 三位一体 Section */
-.trinity-section {
+.trinitySection {
   padding: 100px 0;
   background: #111827;
 }
 
-.trinity-features {
+.trinityFeatures {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.feature-item {
+.featureItem {
   display: flex;
   align-items: flex-start;
   gap: 16px;
@@ -110,13 +110,13 @@
   transition: all 0.3s ease;
 }
 
-.feature-item:hover {
+.featureItem:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(22, 119, 255, 0.3);
   transform: translateY(-2px);
 }
 
-.feature-icon {
+.featureIcon {
   width: 12px;
   height: 12px;
   border-radius: 50%;
@@ -124,36 +124,36 @@
   flex-shrink: 0;
 }
 
-.feature-icon.green { 
+.featureIcon.green { 
   background: #10b981; 
   box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
 }
 
-.feature-icon.blue { 
+.featureIcon.blue { 
   background: #3b82f6; 
   box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
 }
 
-.feature-icon.purple { 
+.featureIcon.purple { 
   background: #8b5cf6; 
   box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
 }
 
-.feature-content h4 {
+.featureContent h4 {
   color: #ffffff;
   font-size: 1.2rem;
   font-weight: 600;
   margin-bottom: 8px;
 }
 
-.feature-content p {
+.featureContent p {
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
 }
 
 /* 三位一体 3D 立体图 */
-.trinity-diagram {
+.trinityDiagram {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -166,7 +166,7 @@
   justify-content: center;
 }
 
-.stacked-layers {
+.stackedLayers {
   position: relative;
   width: 200px;
   height: 160px;
@@ -184,44 +184,44 @@
   transform-style: preserve-3d;
 }
 
-.layer-1 {
+.layer1 {
   background: linear-gradient(135deg, #a855f7, #c084fc);
   bottom: 0;
   z-index: 3;
   transform: rotateX(-5deg);
 }
 
-.layer-2 {
+.layer2 {
   background: linear-gradient(135deg, #3b82f6, #60a5fa);
   bottom: 30px;
   z-index: 2;
   transform: rotateX(-5deg);
 }
 
-.layer-3 {
+.layer3 {
   background: linear-gradient(135deg, #10b981, #34d399);
   bottom: 60px;
   z-index: 1;
   transform: rotateX(-5deg);
 }
 
-.trinity-diagram:hover .layer {
+.trinityDiagram:hover .layer {
   transform: rotateX(0deg) rotateY(10deg);
 }
 
-.trinity-diagram:hover .layer-1 {
+.trinityDiagram:hover .layer1 {
   transform: rotateX(0deg) rotateY(10deg) translateZ(20px);
 }
 
-.trinity-diagram:hover .layer-2 {
+.trinityDiagram:hover .layer2 {
   transform: rotateX(0deg) rotateY(10deg) translateZ(10px);
 }
 
-.trinity-diagram:hover .layer-3 {
+.trinityDiagram:hover .layer3 {
   transform: rotateX(0deg) rotateY(10deg) translateZ(0px);
 }
 
-.layer-labels {
+.layerLabels {
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -237,18 +237,18 @@
 }
 
 /* 环保优点 Section */
-.environmental-benefits {
+.environmentalBenefits {
   padding: 100px 0;
   background: #0f172a;
 }
 
-.benefits-list {
+.benefitsList {
   display: flex;
   flex-direction: column;
   gap: 20px;
 }
 
-.benefit-item {
+.benefitItem {
   display: flex;
   align-items: center;
   gap: 20px;
@@ -259,13 +259,13 @@
   transition: all 0.3s ease;
 }
 
-.benefit-item:hover {
+.benefitItem:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(22, 119, 255, 0.3);
   transform: translateX(10px);
 }
 
-.benefit-number {
+.benefitNumber {
   width: 40px;
   height: 40px;
   background: linear-gradient(135deg, #1677ff, #4096ff);
@@ -279,67 +279,67 @@
   flex-shrink: 0;
 }
 
-.benefit-content h4 {
+.benefitContent h4 {
   color: #ffffff;
   font-size: 1.1rem;
   font-weight: 600;
   margin-bottom: 4px;
 }
 
-.benefit-content p {
+.benefitContent p {
   color: #9ca3af;
   line-height: 1.5;
   margin: 0;
 }
 
 /* 环保图片 */
-.environmental-images {
+.environmentalImages {
   position: relative;
   height: 400px;
   display: flex;
   gap: 16px;
 }
 
-.env-image-container {
+.envImageContainer {
   border-radius: 16px;
   overflow: hidden;
   position: relative;
   transition: all 0.3s ease;
 }
 
-.env-image-container.main-image {
+.envImageContainer.mainImage {
   flex: 2;
 }
 
-.env-image-container.side-image {
+.envImageContainer.sideImage {
   flex: 1;
   align-self: flex-end;
   height: 60%;
 }
 
-.env-image-container:hover {
+.envImageContainer:hover {
   transform: scale(1.02);
 }
 
-.env-image {
+.envImage {
   width: 100%;
   height: 100%;
   position: relative;
   overflow: hidden;
 }
 
-.env-image img {
+.envImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.env-image-container:hover .env-image img {
+.envImageContainer:hover .envImage img {
   transform: scale(1.1);
 }
 
-.env-image-container::before {
+.envImageContainer::before {
   content: '';
   position: absolute;
   top: 0;
@@ -352,12 +352,12 @@
 }
 
 /* 生物质能养殖气化发电系统 Section */
-.biomass-system {
+.biomassSystem {
   padding: 100px 0;
   background: #111827;
 }
 
-.system-description {
+.systemDescription {
   font-size: 1.1rem;
   color: #9ca3af;
   text-align: center;
@@ -368,14 +368,14 @@
   margin-right: auto;
 }
 
-.systems-grid {
+.systemsGrid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
   gap: 32px;
   margin-top: 3rem;
 }
 
-.system-card {
+.systemCard {
   background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -384,32 +384,32 @@
   cursor: pointer;
 }
 
-.system-card:hover {
+.systemCard:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(22, 119, 255, 0.3);
   transform: translateY(-8px);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
 
-.system-image {
+.systemImage {
   width: 100%;
   height: 200px;
   overflow: hidden;
   position: relative;
 }
 
-.system-image img {
+.systemImage img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   transition: transform 0.3s ease;
 }
 
-.system-card:hover .system-image img {
+.systemCard:hover .systemImage img {
   transform: scale(1.1);
 }
 
-.system-image::before {
+.systemImage::before {
   content: '';
   position: absolute;
   top: 0;
@@ -420,11 +420,11 @@
   z-index: 1;
 }
 
-.system-content {
+.systemContent {
   padding: 24px;
 }
 
-.system-content h3 {
+.systemContent h3 {
   color: #ffffff;
   font-size: 1.3rem;
   font-weight: 600;
@@ -432,7 +432,7 @@
   line-height: 1.4;
 }
 
-.system-content p {
+.systemContent p {
   color: #9ca3af;
   line-height: 1.6;
   margin: 0;
@@ -440,30 +440,30 @@
 
 /* 响应式设计 */
 @media (max-width: 768px) {
-  .hero-title {
+  .heroTitle {
     font-size: 2.5rem;
   }
 
-  .section-title {
+  .sectionTitle {
     font-size: 2rem;
   }
 
-  .trinity-features,
-  .benefits-list {
+  .trinityFeatures,
+  .benefitsList {
     gap: 16px;
   }
 
-  .feature-item,
-  .benefit-item {
+  .featureItem,
+  .benefitItem {
     padding: 16px;
   }
 
-  .trinity-diagram {
+  .trinityDiagram {
     height: 300px;
     padding: 20px;
   }
 
-  .stacked-layers {
+  .stackedLayers {
     width: 150px;
     height: 120px;
   }
@@ -473,24 +473,24 @@
     height: 30px;
   }
 
-  .environmental-images {
+  .environmentalImages {
     height: 300px;
     flex-direction: column;
   }
 
-  .env-image-container.side-image {
+  .envImageContainer.sideImage {
     height: 40%;
     align-self: stretch;
   }
 
-  .systems-grid {
+  .systemsGrid {
     grid-template-columns: 1fr;
     gap: 24px;
   }
 }
 
 @media (max-width: 480px) {
-  .hero-title {
+  .heroTitle {
     font-size: 2rem;
   }
 
@@ -498,18 +498,18 @@
     padding: 0 16px;
   }
 
-  .feature-item,
-  .benefit-item {
+  .featureItem,
+  .benefitItem {
     flex-direction: column;
     align-items: flex-start;
     gap: 12px;
   }
 
-  .systems-grid {
+  .systemsGrid {
     grid-template-columns: 1fr;
   }
 
-  .system-content {
+  .systemContent {
     padding: 20px;
   }
 } 

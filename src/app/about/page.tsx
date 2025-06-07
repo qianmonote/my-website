@@ -1,9 +1,10 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import styles from './about.module.css';
+import styles from './style.module.css';
 
 export default function About() {
   return (
@@ -13,7 +14,13 @@ export default function About() {
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroImage}>
-            <img src="/images/solar-house.jpg" alt="Solar House" />
+            <Image 
+              src="/images/solar-house.jpg" 
+              alt="Solar House"
+              width={1200}
+              height={600}
+              style={{ objectFit: 'cover' }}
+            />
           </div>
           <div className={styles.scrollIndicator}>
             <div className={styles.arrow}></div>
@@ -34,7 +41,13 @@ export default function About() {
                 </div>
               </div>
               <div className={styles.milestoneImage}>
-                <img src="/images/team-meeting.jpg" alt="Team Meeting" />
+                <Image 
+                  src="/images/team-meeting.jpg" 
+                  alt="Team Meeting"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
             </div>
 
@@ -42,11 +55,17 @@ export default function About() {
               <div className={styles.timelineItem}>
                 <div className={styles.year}>MARCH 2</div>
                 <div className={styles.content}>
-                  <h3>Signed a "Business Gasification Technology Research Cooperation Agreement" with the University of Malaysia in 2024</h3>
+                  <h3>Signed a &ldquo;Business Gasification Technology Research Cooperation Agreement&rdquo; with the University of Malaysia in 2024</h3>
                 </div>
               </div>
               <div className={styles.milestoneImage}>
-                <img src="/images/cooperation-ceremony.jpg" alt="Cooperation Ceremony" />
+                <Image 
+                  src="/images/cooperation-ceremony.jpg" 
+                  alt="Cooperation Ceremony"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
             </div>
 
@@ -59,7 +78,13 @@ export default function About() {
                 </div>
               </div>
               <div className={styles.milestoneImage}>
-                <img src="/images/maldives-project.jpg" alt="Maldives Project" />
+                <Image 
+                  src="/images/maldives-project.jpg" 
+                  alt="Maldives Project"
+                  width={400}
+                  height={300}
+                  style={{ objectFit: 'cover' }}
+                />
               </div>
             </div>
           </div>
@@ -68,7 +93,7 @@ export default function About() {
         {/* Mission and Vision Section */}
         <section className={styles.missionSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>ONETOUCH "MISSION AND VISION"</h2>
+            <h2 className={styles.sectionTitle}>ONETOUCH &ldquo;MISSION AND VISION&rdquo;</h2>
             
             <div className={styles.missionContent}>
               <div className={styles.quote}>
@@ -86,7 +111,7 @@ export default function About() {
         {/* English Mission Section */}
         <section className={styles.englishMissionSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>ONETOUCH "MISSION AND VISION"</h2>
+            <h2 className={styles.sectionTitle}>ONETOUCH &ldquo;MISSION AND VISION&rdquo;</h2>
             
             <div className={styles.missionGrid}>
               <div className={styles.missionCard}>
