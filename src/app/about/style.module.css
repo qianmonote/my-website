@@ -79,44 +79,6 @@
   margin-bottom: 80px;
 }
 
-/* 自定义时间轴容器样式 */
-.timelineContainer {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.milestone {
-  display: flex;
-  align-items: center;
-  margin-bottom: 80px;
-  gap: 60px;
-}
-
-.milestone:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.timelineItem {
-  flex: 1;
-  display: flex;
-  align-items: flex-start;
-  gap: 30px;
-}
-
-.year {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: #ffffff;
-  padding: 20px;
-  border-radius: 12px;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-align: center;
-  min-width: 120px;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
 .content {
   flex: 1;
 }
@@ -154,15 +116,36 @@
 }
 
 .missionSection {
-  padding: 100px 0;
-  background: #0f0f0f;
   position: relative;
+  margin-bottom: 80px;
 }
 
 .missionContent {
   text-align: center;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+  position: relative;
+}
+.turnLeft,
+.turnRight {
+  width: 64px;
+  height: 64px;
+  position: absolute;
+  cursor: pointer;
+}
+
+.turnLeft {
+  left: -80px;
+  top: 168px;
+  background: url("/about/mission-carousel-left.png");
+  background-size: contain;
+}
+
+.turnRight {
+  right: -80px;
+  top: 168px;
+  background: url("/about/mission-carousel-right.png");
+  background-size: contain;
 }
 
 .quote blockquote {
@@ -190,8 +173,7 @@
 }
 
 .englishMissionSection {
-  padding: 100px 0;
-  background: #1a1a1a;
+  margin-bottom: 80px;
 }
 
 .missionGrid {
@@ -244,8 +226,12 @@
 }
 
 .communicationSection {
-  padding: 100px 0;
-  background: #0f0f0f;
+  margin-bottom: 80px;
+  .sectionTitle {
+    color: rgba(75, 141, 255, 1);
+    line-height: 1.2;
+    margin: 0;
+  }
 }
 
 .communicationContent {
@@ -255,40 +241,10 @@
 }
 
 .communicationContent p {
-  font-size: 1.1rem;
-  line-height: 1.8;
-  color: #cccccc;
-}
+  font-size: 14px;
+  line-height: 150%;
+  color: rgba(129, 128, 130, 1);
 
-.joinSection {
-  padding: 100px 0;
-  background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 100%);
-  text-align: center;
-}
-
-.joinContent p {
-  font-size: 1.5rem;
-  line-height: 1.8;
-  color: #ffffff;
-  margin-bottom: 40px;
-}
-
-.joinButton {
-  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-  color: #ffffff;
-  border: none;
-  padding: 15px 40px;
-  font-size: 1.1rem;
-  font-weight: 600;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  letter-spacing: 1px;
-}
-
-.joinButton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(79, 172, 254, 0.3);
 }
 
 /* Responsive Design */

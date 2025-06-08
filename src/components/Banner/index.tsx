@@ -3,8 +3,8 @@
 import React from "react";
 import { Carousel } from "antd";
 import { useI18n } from "@/context/I18nContext";
-import ContractBtn from "@/components/elements/ContractBtn";
-import './index.css'
+import ContractBtn from "@/components/elements/CustomtBtn";
+import "./index.css";
 
 const Banner: React.FC = () => {
   const { t } = useI18n();
@@ -37,9 +37,13 @@ const Banner: React.FC = () => {
         autoplay
         autoplaySpeed={4000}
         speed={800}
-        dots={bannerSlides.length > 1 ? {
-          className: "custom-dots",
-        } : false}
+        dots={
+          bannerSlides.length > 1
+            ? {
+                className: "custom-dots",
+              }
+            : false
+        }
         effect="fade"
       >
         {bannerSlides.map((slide) => (
@@ -53,13 +57,17 @@ const Banner: React.FC = () => {
               <div className="banner-content-wrapper">
                 <div
                   className="banner-title"
-                  dangerouslySetInnerHTML={{ __html: slide.title?.replace(/\r?\n/g, "<br />") }}
+                  dangerouslySetInnerHTML={{
+                    __html: slide.title?.replace(/\r?\n/g, "<br />"),
+                  }}
                 />
                 <div
                   className="banner-desc"
-                  dangerouslySetInnerHTML={{ __html: slide.desc?.replace(/\n/g, "<br />") }}
+                  dangerouslySetInnerHTML={{
+                    __html: slide.desc?.replace(/\n/g, "<br />"),
+                  }}
                 />
-                <ContractBtn />
+                <ContractBtn type="contract">{t("contact")}</ContractBtn>
               </div>
             </div>
           </div>

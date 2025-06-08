@@ -5,6 +5,7 @@ import { Row, Col } from "antd";
 import Image from "next/image";
 import { useI18n } from "@/context/I18nContext";
 import classnames from "classnames";
+import CustomtBtn from "@/components/elements/CustomtBtn";
 import "./index.css";
 
 const ProductSection: React.FC = () => {
@@ -124,15 +125,9 @@ const ProductSection: React.FC = () => {
                     />
                     <div className="product-card-description">{p.desc}</div>
                     <a className="product-card-more">
-                      <Image
-                        src="/product/btn-more.png"
-                        alt=""
-                        width={200}
-                        height={48}
-                      />
-                      <span className="product-card-more-text">
+                      <CustomtBtn type="learnMore">
                         {t("learnMore")}
-                      </span>
+                      </CustomtBtn>
                     </a>
                   </div>
                 </div>

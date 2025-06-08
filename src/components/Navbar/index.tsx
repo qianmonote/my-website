@@ -4,37 +4,55 @@ import React, { useCallback, useState } from "react";
 import { Drawer, Menu, Select, Dropdown } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useI18n } from "@/context/I18nContext";
-import Image from "next/image";
-import "./index.css";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+import classNames from "classnames";
+import styles from "./style.module.css";
 
 const Navbar: React.FC = () => {
   const { lang, setLang, t } = useI18n();
   const [drawerOpen, setDrawerOpen] = useState(false);
+  const pathname = usePathname();
 
   // Products and Services 下拉菜单项
   const productsMenuItems = [
     {
-      label: <a href="/products/biomass-gasification"> 生物质气化发电系统 </a>,
+      label: (
+        <a href="/products/biomass-gasification">生物质废弃物气化发电系统</a>
+      ),
       key: "product1",
+      className: "activeMenuItem",
     },
     {
-      label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
+      label: <a href="/products/smart-ev-charging">智慧EV充电生态体系</a>,
       key: "product2",
+      className: "activeMenuItem",
     },
-    { label: <a href="#product3">产品服务3</a>, key: "product3" },
+    {
+      label: <a href="/products/distributed-system">分布式光储充一体化系统</a>,
+      key: "product3",
+      className: "activeMenuItem",
+    },
+    {
+      label: <a href="/products/ai-robot">AI保镖专采摘机器人</a>,
+      key: "product4",
+      className: "activeMenuItem",
+    },
   ];
 
   const menuItems = [
     {
       label: <a href="/products/biomass-gasification"> 生物质气化发电系统 </a>,
       key: "product1",
+      className: "activeMenuItem",
     },
     {
       label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
       key: "product2",
+      className: "activeMenuItem",    
     },
-    { label: <a href="/about">{t("about")}</a>, key: "about" },
-    { label: <a href="#contact">{t("contact")}</a>, key: "contact" },
+    { label: <a href="/about">{t("about")}</a>, key: "about", className: "activeMenuItem" },
+    { label: <a href="#contact">{t("contact")}</a>, key: "contact", className: "activeMenuItem" },
   ];
 
   const handleLangChange = useCallback(
@@ -42,41 +60,53 @@ const Navbar: React.FC = () => {
     [setLang]
   );
 
-  return (
-    <nav className="c-navbar-wrap">
-      {/* Logo */}
-      <div className="c-navbar-logo">
-        <Image
-          src="/images/navbar-logo.jpg"
-          alt="LOGO"
-          width={58}
-          height={36}
-        />
-      </div>
+  // 判断菜单项是否激活
+  const isActiveMenuItem = useCallback(
+    (path: string) => {
+      return pathname === path;
+    },
+    [pathname]
+  );
 
+  // 判断产品菜单是否激活
+  const isProductsActive = useCallback(() => {
+    return pathname.startsWith("/products");
+  }, [pathname]);
+
+  return (
+    <nav className={styles.cNavbarWrap}>
+      {/* Logo */}
+      <Link href="/">
+        <div className={styles.cNavbarLogo} />
+      </Link>
       {/* 右侧菜单 */}
-      <div className="desktop-menu">
+      <div className={styles.desktopMenu}>
         <Dropdown
           menu={{ items: productsMenuItems }}
           trigger={["hover"]}
           placement="bottomLeft"
+          overlayClassName={styles.productsDropdown}
         >
-          <div className="navbar-menu-item">
-            {t("product")}
+          <div
+            className={classNames(styles.navbarMenuItem, {
+              [styles.active]: isProductsActive(),
+            })}
+          >
+            Products and Services
             <MenuOutlined style={{ fontSize: "12px", marginLeft: "12px" }} />
           </div>
         </Dropdown>
-        <a href="/about" className="navbar-menu-item">
+        <Link
+          href="/about"
+          className={classNames(styles.navbarMenuItem, {
+            [styles.active]: isActiveMenuItem("/about"),
+          })}
+        >
           {t("about")}
-        </a>
-        <a href="#contact">
-          <Image
-            src="/images/navbar-btn.png"
-            alt="联系我们"
-            width={170}
-            height={40}
-          />
-        </a>
+        </Link>
+        <Link href="/">
+          <div className={styles.navbarMenuItemContact}>{t("contact")}</div>
+        </Link>
         <Select
           value={lang}
           onChange={handleLangChange}
@@ -89,7 +119,7 @@ const Navbar: React.FC = () => {
       </div>
 
       {/* 移动端菜单 */}
-      <div className="mobile-menu" style={{ display: "none" }}>
+      <div className={styles.mobileMenu} style={{ display: "none" }}>
         <MenuOutlined
           style={{ color: "#fff", fontSize: 24 }}
           onClick={() => setDrawerOpen(true)}
@@ -112,24 +142,6 @@ const Navbar: React.FC = () => {
           />
         </Drawer>
       </div>
-      <style jsx>{`
-        @media (max-width: 768px) {
-          .desktop-menu {
-            display: none !important;
-          }
-          .mobile-menu {
-            display: block !important;
-          }
-          .center-menu {
-            display: none !important;
-          }
-        }
-        @media (max-width: 1024px) {
-          .center-menu {
-            display: none !important;
-          }
-        }
-      `}</style>
     </nav>
   );
 };

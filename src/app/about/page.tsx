@@ -1,14 +1,16 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomTimeline from "@/components/elements/CustomTimeline";
 import CustomCard from "@/components/elements/CustomCard";
+import { Carousel, Divider } from "antd";
 import styles from "./style.module.css";
 
 export default function About() {
+  const carouselRef = useRef(null);
   return (
     <>
       <Navbar />
@@ -126,16 +128,22 @@ export default function About() {
             </h2>
 
             <div className={styles.missionContent}>
-              <div className={styles.quote}>
-                <blockquote>
-                  以科技为支撑推动农业发展，打造高效自、高稳定性、
-                  <span className={styles.highlight}>更符合可持续发展</span>
-                  ，满足全社会的需求。
-                  <br />
-                  技术可持续循环发展及优势经营，赋能农业企业共同繁荣。
-                </blockquote>
-                <cite>——全员宣言</cite>
-              </div>
+              <div
+                className={styles.turnLeft}
+                onClick={() => carouselRef?.current?.prev()}
+              />
+              <div
+                className={styles.turnRight}
+                onClick={() => carouselRef?.current?.next()}
+              />
+              <Carousel autoplay ref={carouselRef}>
+                <Image
+                  src="/about/mission-carousel-1.png"
+                  alt=""
+                  width={1000}
+                  height={400}
+                />
+              </Carousel>
             </div>
           </div>
         </section>
@@ -146,35 +154,27 @@ export default function About() {
             <h2 className={styles.sectionTitle}>
               ONETOUCH &ldquo;MISSION AND VISION&rdquo;
             </h2>
-
-            <div className={styles.missionGrid}>
-              <div className={styles.missionCard}>
-                <h3>JOIN HANDS ONETOUCH</h3>
-                <h4>LEADING THE WAY TO A CARBON-NEUTRAL FUTURE</h4>
-
-                <div className={styles.pillars}>
-                  <div className={styles.pillar}>
-                    <h5>SMART FARMING</h5>
-                  </div>
-                  <div className={styles.pillar}>
-                    <h5>RENEWABLE</h5>
-                    <h5>INTEGRATION</h5>
-                  </div>
-                  <div className={styles.pillar}>
-                    <h5>CARBON</h5>
-                    <h5>NEUTRALITY</h5>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
+          <Image
+            src="/about/mission-desc.png"
+            alt=""
+            width={1400}
+            height={513}
+            style={{ width: "100%", height: "auto" }}
+          />
         </section>
 
         {/* D&D Communication Section */}
         <section className={styles.communicationSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>D&D COMMUNICATION</h2>
-
+            <h2 className={styles.sectionTitle}>DAO COMMUNICATION</h2>
+            <Image
+              src="/about/divider.png"
+              alt=""
+              width={1000}
+              height={32}
+              style={{ width: "100%", height: "auto" }}
+            />
             <div className={styles.communicationContent}>
               <p>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
@@ -185,24 +185,6 @@ export default function About() {
                 nulla pariatur. Excepteur sint occaecat cupidatat non proident,
                 sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
-            </div>
-          </div>
-        </section>
-
-        {/* Join Us Section */}
-        <section className={styles.joinSection}>
-          <div className={styles.container}>
-            <div className={styles.joinContent}>
-              <p>
-                We sincerely <span className={styles.highlight}>invite</span>{" "}
-                visionaries to join hands,
-                <br />
-                share blue ocean{" "}
-                <span className={styles.highlight}>opportunities</span>,
-                <br />
-                and create a sustainable future together!
-              </p>
-              <button className={styles.joinButton}>联系我们</button>
             </div>
           </div>
         </section>

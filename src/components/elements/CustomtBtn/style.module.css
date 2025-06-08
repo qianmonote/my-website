@@ -1,0 +1,34 @@
+.cCustomtBtn {
+  display: inline-block;
+  cursor: pointer;
+}
+.contractBtn {
+  width: 240px;
+  height: 73px;
+  margin-top: 40px;
+  background: url("/images/btn-contract.png") no-repeat center center;
+  font-family: PingFang SC;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 100%;
+  letter-spacing: 8px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.learnMoreBtn {
+  width: 200px;
+  height: 48px;
+  background: url("/images/btn-learn-more-df.png") no-repeat center center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  &:hover {
+    background: url("/images/btn-learn-more-at.png") no-repeat center center;
+  }
+  &:active {
+    background: url("/images/btn-learn-more-at.png") no-repeat center center;
+  }
+}

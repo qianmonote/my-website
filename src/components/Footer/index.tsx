@@ -2,18 +2,31 @@
 
 import React from "react";
 import { useI18n } from "@/context/I18nContext";
-import ContractBtn from '@/components/elements/ContractBtn'
-import "./index.css";
+import ContractBtn from "@/components/elements/CustomtBtn";
+import Image from "next/image";
+import styles from "./style.module.css";
 
 const Footer: React.FC = () => {
   const { t } = useI18n();
   return (
-    <footer className="c-footer-section-wrap">
-      <div className="footer-invite">
-        <div dangerouslySetInnerHTML={{ __html: t("footerInvite") }} />
+    <footer className={styles.cFooterSectionWrap}>
+      <Image
+        src="/footer/footer-invite-bg.png"
+        alt="footer-bg"
+        width={1000}
+        height={400}
+        style={{ width: "100%", height: "auto" }}
+        className={styles.footerBg}
+      />
+      <div className={styles.footerInvite}>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: t("footerInvite")?.replace(/\r?\n/g, "<br />"),
+          }}
+        />
       </div>
       <ContractBtn />
-      <div className="footer-address">{t("address")}</div>
+      <div className={styles.footerAddress}>{t("address")}</div>
     </footer>
   );
 };
