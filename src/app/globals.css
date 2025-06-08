@@ -34,3 +34,83 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* 产品下拉菜单样式 */
+.ant-dropdown.products-dropdown .ant-dropdown-menu {
+  background: rgba(55, 60, 70, 1) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(75, 141, 255, 0.2) !important;
+  min-width: 240px !important;
+}
+
+.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin: 4px 0 !important;
+  background: transparent !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-family: PingFang SC !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+  background: rgba(75, 141, 255, 1) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 2px 8px rgba(75, 141, 255, 0.3) !important;
+}
+
+.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover a {
+  color: #fff !important;
+  font-weight: 500 !important;
+}
+
+/* 确保下拉菜单样式优先级最高 */
+.products-dropdown .ant-dropdown-menu {
+  background: rgba(55, 60, 70, 1) !important;
+  border-radius: 12px !important;
+  padding: 12px !important;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4) !important;
+  border: 1px solid rgba(75, 141, 255, 0.2) !important;
+  min-width: 240px !important;
+}
+
+.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  padding: 12px 16px !important;
+  border-radius: 8px !important;
+  margin: 4px 0 !important;
+  background: transparent !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+}
+
+.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+  color: #fff !important;
+  text-decoration: none !important;
+  font-family: PingFang SC !important;
+  font-weight: 400 !important;
+  font-size: 14px !important;
+  line-height: 20px !important;
+  transition: all 0.3s ease !important;
+}
+
+.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+  background: rgba(75, 141, 255, 1) !important;
+  transform: translateX(4px) !important;
+  box-shadow: 0 2px 8px rgba(75, 141, 255, 0.3) !important;
+}
+
+.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover a {
+  color: #fff !important;
+  font-weight: 500 !important;
+}

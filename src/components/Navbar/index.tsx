@@ -85,7 +85,7 @@ const Navbar: React.FC = () => {
           menu={{ items: productsMenuItems }}
           trigger={["hover"]}
           placement="bottomLeft"
-          overlayClassName={styles.productsDropdown}
+          overlayClassName="products-dropdown"
         >
           <div
             className={classNames(styles.navbarMenuItem, {

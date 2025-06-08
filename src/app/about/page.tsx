@@ -6,11 +6,12 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomTimeline from "@/components/elements/CustomTimeline";
 import CustomCard from "@/components/elements/CustomCard";
-import { Carousel, Divider } from "antd";
+import { Carousel } from "antd";
+import type { CarouselRef } from "antd/es/carousel";
 import styles from "./style.module.css";
 
 export default function About() {
-  const carouselRef = useRef(null);
+  const carouselRef = useRef<CarouselRef>(null);
   return (
     <>
       <Navbar />
