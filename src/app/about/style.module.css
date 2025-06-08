@@ -1,7 +1,7 @@
 .aboutPage {
-  background: #0a0a0a;
-  color: #ffffff;
+  color: #fff;
   min-height: 100vh;
+  background: rgba(33, 37, 43, 1);
 }
 
 .heroSection {
@@ -38,16 +38,16 @@
 }
 
 .arrow {
-  width: 24px;
-  height: 24px;
-  border: 2px solid #ffffff;
-  border-top: none;
-  border-right: none;
-  transform: rotate(-45deg);
+  width: 45px;
+  height: 73px;
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateX(-50%) translateY(0);
   }
   40% {
@@ -59,23 +59,31 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
-  padding: 0 20px;
 }
 
 .sectionTitle {
-  font-size: 2.5rem;
-  font-weight: bold;
+  font-family: Inter;
+  font-weight: 900;
+  font-size: 40px;
+  line-height: 120%;
+  letter-spacing: 0px;
   text-align: center;
-  margin-bottom: 60px;
-  letter-spacing: 2px;
-  color: #ffffff;
+  color: rgba(233, 233, 234, 1);
+  margin: 40px 0;
 }
 
 .cooperationSection {
-  padding: 100px 0;
-  background: #1a1a1a;
+  margin-top: 60px;
+  margin-bottom: 80px;
+}
+
+/* 自定义时间轴容器样式 */
+.timelineContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .milestone {
@@ -289,38 +297,38 @@
     font-size: 2rem;
     margin-bottom: 40px;
   }
-  
+
   .milestone {
     flex-direction: column !important;
     gap: 30px;
     margin-bottom: 60px;
   }
-  
+
   .timelineItem {
     flex-direction: column;
     text-align: center;
     gap: 20px;
   }
-  
+
   .year {
     writing-mode: horizontal-tb;
     min-width: auto;
     padding: 15px 30px;
   }
-  
+
   .pillars {
     flex-direction: column;
     gap: 20px;
   }
-  
+
   .missionCard h3 {
     font-size: 1.5rem;
   }
-  
+
   .missionCard h4 {
     font-size: 1.1rem;
   }
-  
+
   .joinContent p {
     font-size: 1.2rem;
   }
@@ -330,16 +338,16 @@
   .container {
     padding: 0 15px;
   }
-  
+
   .sectionTitle {
     font-size: 1.5rem;
   }
-  
+
   .quote blockquote {
     font-size: 1.1rem;
   }
-  
+
   .content h3 {
     font-size: 1.2rem;
   }
-} 
+}

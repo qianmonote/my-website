@@ -1,10 +1,12 @@
-'use client';
+"use client";
 
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import styles from './style.module.css';
+import CustomTimeline from "@/components/elements/CustomTimeline";
+import CustomCard from "@/components/elements/CustomCard";
+import styles from "./style.module.css";
 
 export default function About() {
   return (
@@ -14,91 +16,121 @@ export default function About() {
         {/* Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroImage}>
-            <Image 
-              src="/images/solar-house.jpg" 
-              alt="Solar House"
-              width={1200}
-              height={600}
-              style={{ objectFit: 'cover' }}
+            <Image
+              src="/about/about-banner.png"
+              alt=""
+              width={1280}
+              height={662}
+              style={{ objectFit: "cover" }}
             />
           </div>
           <div className={styles.scrollIndicator}>
-            <div className={styles.arrow}></div>
+            <div className={styles.arrow}>
+              <Image
+                src="/about/arrow-down.png"
+                alt=""
+                width={45}
+                height={73}
+              />
+            </div>
           </div>
         </section>
 
         {/* Strategic Cooperation Section */}
         <section className={styles.cooperationSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>STRATEGIC COOPERATION AND MILESTONES</h2>
-            
-            <div className={styles.milestone}>
-              <div className={styles.timelineItem}>
-                <div className={styles.year}>MARCH 1</div>
-                <div className={styles.content}>
-                  <h3>Company Establishment</h3>
-                  <p>The company Onetouch Agri Robotech Sdn Bhd. located in Melaka, Malaysia</p>
-                </div>
-              </div>
-              <div className={styles.milestoneImage}>
-                <Image 
-                  src="/images/team-meeting.jpg" 
-                  alt="Team Meeting"
-                  width={400}
-                  height={300}
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            </div>
-
-            <div className={styles.milestone}>
-              <div className={styles.timelineItem}>
-                <div className={styles.year}>MARCH 2</div>
-                <div className={styles.content}>
-                  <h3>Signed a &ldquo;Business Gasification Technology Research Cooperation Agreement&rdquo; with the University of Malaysia in 2024</h3>
-                </div>
-              </div>
-              <div className={styles.milestoneImage}>
-                <Image 
-                  src="/images/cooperation-ceremony.jpg" 
-                  alt="Cooperation Ceremony"
-                  width={400}
-                  height={300}
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            </div>
-
-            <div className={styles.milestone}>
-              <div className={styles.timelineItem}>
-                <div className={styles.year}>MARCH 3</div>
-                <div className={styles.content}>
-                  <h3>Promoting solar-powered electric vehicle charging stations in the Maldives</h3>
-                  <p>Creating a comprehensive green energy infrastructure from production to consumption in the Maldives</p>
-                </div>
-              </div>
-              <div className={styles.milestoneImage}>
-                <Image 
-                  src="/images/maldives-project.jpg" 
-                  alt="Maldives Project"
-                  width={400}
-                  height={300}
-                  style={{ objectFit: 'cover' }}
-                />
-              </div>
-            </div>
+            <h2 className={styles.sectionTitle}>
+              STRATEGIC COOPERATION AND MILESTONES
+            </h2>
+            <CustomTimeline
+              items={[
+                {
+                  label: (
+                    <Image
+                      src="/about/part-1.png"
+                      alt="合作历程第一阶段"
+                      width={120}
+                      height={180}
+                    />
+                  ),
+                  children: (
+                    <CustomCard
+                      mode="textOnly"
+                      title="Company Establishment"
+                      description="Founded on August 11, 2021, located in Penang, Malaysia"
+                    />
+                  ),
+                },
+                {
+                  label: (
+                    <Image
+                      src="/about/part-2.png"
+                      alt="合作历程第一阶段"
+                      width={120}
+                      height={180}
+                    />
+                  ),
+                  children: (
+                    <CustomCard
+                      image={{
+                        src: "/about/part-2-cont.png",
+                        alt: "第二阶段详情",
+                        width: 756,
+                        height: 442,
+                      }}
+                      title='Signed a "Biomass Gasification Technology Research Cooperation Agreement" with the University of Raman in 2024'
+                      description="The waste-to-energy system will be deployed in resort areas and urban centers..."
+                      moreButton={{
+                        text: "View>>",
+                        onClick: () => console.log("查看详情"),
+                      }}
+                    />
+                  ),
+                },
+                {
+                  label: (
+                    <Image
+                      src="/about/part-3.png"
+                      alt="合作历程第三阶段"
+                      width={120}
+                      height={180}
+                    />
+                  ),
+                  children: (
+                    <CustomCard
+                      image={{
+                        src: "/about/part-3-cont.png",
+                        alt: "第三阶段详情",
+                        width: 756,
+                        height: 442,
+                      }}
+                      title="Promoting solar-powered electric vehicle charging stations in the Maldives"
+                      description="Deepen the research and development of palm waste energy technology, build..."
+                      moreButton={{
+                        text: "View>>",
+                        onClick: () => console.log("查看详情"),
+                      }}
+                    />
+                  ),
+                },
+              ]}
+            />
           </div>
         </section>
 
         {/* Mission and Vision Section */}
         <section className={styles.missionSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>ONETOUCH &ldquo;MISSION AND VISION&rdquo;</h2>
-            
+            <h2 className={styles.sectionTitle}>
+              ONETOUCH &ldquo;MISSION AND VISION&rdquo;
+            </h2>
+
             <div className={styles.missionContent}>
               <div className={styles.quote}>
                 <blockquote>
-                  以科技为支撑推动农业发展，打造高效自、高稳定性、<span className={styles.highlight}>更符合可持续发展</span>，满足全社会的需求。
+                  以科技为支撑推动农业发展，打造高效自、高稳定性、
+                  <span className={styles.highlight}>更符合可持续发展</span>
+                  ，满足全社会的需求。
                   <br />
                   技术可持续循环发展及优势经营，赋能农业企业共同繁荣。
                 </blockquote>
@@ -111,13 +143,15 @@ export default function About() {
         {/* English Mission Section */}
         <section className={styles.englishMissionSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>ONETOUCH &ldquo;MISSION AND VISION&rdquo;</h2>
-            
+            <h2 className={styles.sectionTitle}>
+              ONETOUCH &ldquo;MISSION AND VISION&rdquo;
+            </h2>
+
             <div className={styles.missionGrid}>
               <div className={styles.missionCard}>
                 <h3>JOIN HANDS ONETOUCH</h3>
                 <h4>LEADING THE WAY TO A CARBON-NEUTRAL FUTURE</h4>
-                
+
                 <div className={styles.pillars}>
                   <div className={styles.pillar}>
                     <h5>SMART FARMING</h5>
@@ -140,13 +174,16 @@ export default function About() {
         <section className={styles.communicationSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>D&D COMMUNICATION</h2>
-            
+
             <div className={styles.communicationContent}>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-                Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-                Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
+                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
+                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
+                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+                sunt in culpa qui officia deserunt mollit anim id est laborum.
               </p>
             </div>
           </div>
@@ -157,9 +194,11 @@ export default function About() {
           <div className={styles.container}>
             <div className={styles.joinContent}>
               <p>
-                We sincerely <span className={styles.highlight}>invite</span> visionaries to join hands,
+                We sincerely <span className={styles.highlight}>invite</span>{" "}
+                visionaries to join hands,
                 <br />
-                share blue ocean <span className={styles.highlight}>opportunities</span>,
+                share blue ocean{" "}
+                <span className={styles.highlight}>opportunities</span>,
                 <br />
                 and create a sustainable future together!
               </p>
@@ -171,4 +210,4 @@ export default function About() {
       <Footer />
     </>
   );
-} 
+}

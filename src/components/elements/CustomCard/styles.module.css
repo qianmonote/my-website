@@ -1,0 +1,289 @@
+/* 卡片容器 */
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 12px;
+  background: #171717b2;
+  border: 1px solid rgba(95, 95, 95, 0.8);
+}
+
+/* 纯文字模式卡片样式 */
+.card.textOnly {
+  width: 820px;
+  min-height: 180px;
+  padding: 0 40px;
+  border-radius: 16px;
+  background: rgba(42, 48, 59, 1);
+}
+
+/* 图片容器 */
+.imageContainer {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* 主图片 */
+.cardImage {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+  border-radius: 16px;
+  margin-bottom: 38px;
+}
+
+.card:hover .cardImage {
+  transform: scale(1.02);
+  border-radius: 16px;
+}
+
+/* 内容区域 */
+.cardContent {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+/* 内容定位 */
+.cardContent.left {
+  justify-content: flex-start;
+  padding-left: 40px;
+}
+
+.cardContent.right {
+  justify-content: flex-end;
+  padding-right: 40px;
+}
+
+.cardContent.center {
+  justify-content: center;
+}
+
+/* 内容背景图片 */
+.cardContentBgImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  opacity: 0.9;
+}
+
+/* 内容内部容器 */
+.cardContentInner {
+  flex: 1;
+}
+
+/* 纯文字模式内容内部容器 */
+.card.textOnly .cardContentInner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+/* 标题样式 */
+.cardTitle {
+  font-family: Oxanium, sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 1.3;
+  color: #fff;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* 副标题样式 */
+.cardSubtitle {
+  font-family: Oxanium, sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #9ca3af;
+  margin-bottom: 10px;
+  text-align: left;
+}
+
+/* 描述样式 */
+.cardDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 4px;
+  text-align: left;
+}
+
+/* 纯文字模式标题样式 */
+.card.textOnly .cardTitle {
+  margin-bottom: 16px;
+  color: rgba(233, 233, 234, 1);
+}
+
+/* 纯文字模式描述样式 */
+.card.textOnly .cardDescription {
+  margin-bottom: 8px;
+  color: rgba(217, 217, 217, 1);
+}
+
+/* 自定义内容 */
+.customContent {
+  margin: 20px 0;
+}
+
+/* 更多按钮容器 */
+.cardMoreContainer {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: auto;
+}
+
+/* 更多按钮 */
+.cardMore {
+  display: inline-flex;
+  align-items: baseline;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #1677ff;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.cardMore:hover {
+  color: #4096ff;
+  transform: translateX(4px);
+}
+
+.cardMoreText {
+  color: inherit;
+}
+
+/* 角标边框 */
+.borderTopLeft,
+.borderTopRight,
+.borderBottomLeft,
+.borderBottomRight {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  z-index: 4;
+}
+
+.borderTopLeft {
+  top: 0;
+  left: 0;
+  border-top: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+}
+
+.borderTopRight {
+  top: 0;
+  right: 0;
+  border-top: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+}
+
+.borderBottomLeft {
+  bottom: 0;
+  left: 0;
+  border-bottom: 1px solid #d9d9d9;
+  border-left: 1px solid #d9d9d9;
+}
+
+.borderBottomRight {
+  bottom: 0;
+  right: 0;
+  border-bottom: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+}
+
+/* 响应式设计 - 平板端 */
+@media (max-width: 768px) {
+  .cardContent {
+    padding: 20px;
+  }
+
+  .cardTitle {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+  .cardSubtitle {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+
+  .cardDescription {
+    font-size: 13px;
+    margin-bottom: 16px;
+  }
+
+  /* 角标尺寸调整 */
+  .borderTopLeft,
+  .borderTopRight,
+  .borderBottomLeft,
+  .borderBottomRight {
+    width: 40px;
+    height: 40px;
+  }
+
+  .borderTopLeft {
+    border-top-width: 2px;
+    border-left-width: 2px;
+  }
+
+  .borderTopRight {
+    border-top-width: 2px;
+    border-right-width: 2px;
+  }
+
+  .borderBottomLeft {
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+  }
+
+  .borderBottomRight {
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+  }
+}
+
+/* 响应式设计 - 移动端 */
+@media (max-width: 480px) {
+  .cardContent {
+    padding: 16px;
+  }
+
+  .cardTitle {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+
+  .cardSubtitle {
+    font-size: 13px;
+    margin-bottom: 10px;
+  }
+
+  .cardDescription {
+    font-size: 12px;
+    margin-bottom: 14px;
+  }
+
+  .cardMore {
+    font-size: 13px;
+  }
+
+  /* 角标尺寸进一步调整 */
+  .borderTopLeft,
+  .borderTopRight,
+  .borderBottomLeft,
+  .borderBottomRight {
+    width: 30px;
+    height: 30px;
+  }
+}
