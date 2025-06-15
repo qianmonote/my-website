@@ -30,10 +30,10 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                 __html: t("footerInvite")?.replace(/\r?\n/g, "<br />"),
               }}
             />
+            <ContractBtn>联系我们</ContractBtn>
           </div>
         </>
       ) : null}
-      <ContractBtn />
       <div className={styles.footerAddress}>{t("address")}</div>
     </footer>
   );

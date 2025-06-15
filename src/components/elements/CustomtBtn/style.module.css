@@ -16,6 +16,15 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  &:hover {
+    background: url("/images/btn-contract-at.png") no-repeat center center;
+    color: #fff;
+  }
+  &:active {
+    background: url("/images/btn-contract-at.png") no-repeat center center;
+    color: #fff;
+  }
 }
 .learnMoreBtn {
   width: 200px;

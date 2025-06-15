@@ -27,9 +27,15 @@ const PowerStorageIntegrationPage = () => {
             <Col xs={24} lg={12} style={{ alignContent: "center" }}>
               <div className={styles.principleContent}>
                 <div className={styles.principleList}>
-                  <div className={styles.principleListLi}>光伏发电：高效利用太阳能，绿色清洁</div>
-                  <div className={styles.principleListLi}>储能系统：削峰填谷，提升用能灵活性</div>
-                  <div className={styles.principleListLi}>智能充电：动态分配，满足多场景需求</div>
+                  <div className={styles.principleListLi}>
+                    光伏发电：高效利用太阳能，绿色清洁
+                  </div>
+                  <div className={styles.principleListLi}>
+                    储能系统：削峰填谷，提升用能灵活性
+                  </div>
+                  <div className={styles.principleListLi}>
+                    智能充电：动态分配，满足多场景需求
+                  </div>
                 </div>
               </div>
             </Col>
@@ -37,7 +43,7 @@ const PowerStorageIntegrationPage = () => {
               <div className={styles.principleImage}>
                 <Image
                   src="/product/p2/intro.jpg"
-                  alt="系统原理示意"
+                  alt=""
                   width={500}
                   height={375}
                   style={{ objectFit: "cover" }}
@@ -47,165 +53,143 @@ const PowerStorageIntegrationPage = () => {
           </Row>
         </div>
       </section>
-      {/* 工艺流程 */}
-      <section className={styles.processSection}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>工艺流程</h2>
-          <div className={styles.timeline}>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineIcon}>
-                <Image
-                  src="/product/p3.png"
-                  alt="光伏发电"
-                  width={32}
-                  height={32}
-                />
-              </div>
-              <div className={styles.timelineLabel}>光伏发电</div>
-            </div>
-            <div className={styles.timelineArrow}>→</div>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineIcon}>
-                <Image
-                  src="/product/p3.png"
-                  alt="储能系统"
-                  width={32}
-                  height={32}
-                />
-              </div>
-              <div className={styles.timelineLabel}>储能系统</div>
-            </div>
-            <div className={styles.timelineArrow}>→</div>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineIcon}>
-                <Image
-                  src="/product/p3.png"
-                  alt="能量管理"
-                  width={32}
-                  height={32}
-                />
-              </div>
-              <div className={styles.timelineLabel}>能量管理</div>
-            </div>
-            <div className={styles.timelineArrow}>→</div>
-            <div className={styles.timelineItem}>
-              <div className={styles.timelineIcon}>
-                <Image
-                  src="/product/p3.png"
-                  alt="智能充电"
-                  width={32}
-                  height={32}
-                />
-              </div>
-              <div className={styles.timelineLabel}>智能充电</div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* 系统优势 */}
-      <section className={styles.advantagesSection}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>系统优势</h2>
-          <Row gutter={[32, 32]}>
-            <Col xs={24} md={8}>
-              <div className={styles.advantageCard}>
-                <h4>绿色环保</h4>
-                <p>清洁能源利用，减少碳排放，助力双碳目标。</p>
-              </div>
-            </Col>
-            <Col xs={24} md={8}>
-              <div className={styles.advantageCard}>
-                <h4>高效智能</h4>
-                <p>智能调度，能量优化分配，提升整体效率。</p>
-              </div>
-            </Col>
-            <Col xs={24} md={8}>
-              <div className={styles.advantageCard}>
-                <h4>安全可靠</h4>
-                <p>多重安全防护，保障系统稳定运行。</p>
-              </div>
-            </Col>
-            <Col xs={24} md={8}>
-              <div className={styles.advantageCard}>
-                <h4>经济节能</h4>
-                <p>削峰填谷，降低用电成本，提升经济效益。</p>
-              </div>
-            </Col>
-            <Col xs={24} md={8}>
-              <div className={styles.advantageCard}>
-                <h4>灵活扩展</h4>
-                <p>模块化设计，适应多种应用场景，灵活部署。</p>
-              </div>
-            </Col>
-          </Row>
-        </div>
-      </section>
-      {/* 典型应用 */}
+      {/* 四大亮点 */}
       <section className={styles.applicationSection}>
         <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>典型应用</h2>
-          <Row gutter={[32, 32]} className={styles.applicationsGrid}>
-            <Col xs={24} md={8}>
-              <Card className={styles.applicationCard} bordered={false}>
-                <div className={styles.cardImage}>
+          <h2 className={styles.sectionTitle}>四大亮点</h2>
+          <Row gutter={[16, 32]}>
+            <Col xs={24} md={10}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
                   <Image
-                    src="/product/p3.png"
-                    alt="园区分布式光储充一体化"
+                    src="/product/p2/ld1.jpg"
+                    alt=""
                     width={400}
-                    height={220}
-                    style={{ objectFit: "cover" }}
+                    height={280}
                   />
                 </div>
-                <div className={styles.cardContent}>
-                  <h3>园区分布式光储充一体化</h3>
-                  <p>
-                    为产业园区、写字楼等场景提供绿色能源与智能充电一体化解决方案。
-                  </p>
+                <div className={styles.applicationContent}>
+                  <h3>
+                    <div className={styles.applicationContentTitle}>
+                      光伏矩阵
+                      <div className={styles.featureTitleUnderline} />
+                    </div>
+                  </h3>
+                  <p>定制化屋顶/地面光伏系统，年均发电效率提升18%</p>
                 </div>
-              </Card>
+              </div>
             </Col>
-            <Col xs={24} md={8}>
-              <Card className={styles.applicationCard}>
-                <div className={styles.cardImage}>
+            <Col xs={24} md={14}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
                   <Image
-                    src="/product/p3.png"
-                    alt="高速服务区光储充一体化"
-                    width={400}
-                    height={220}
-                    style={{ objectFit: "cover" }}
+                    src="/product/p2/ld2.jpg"
+                    alt=""
+                    width={540}
+                    height={280}
                   />
                 </div>
-                <div className={styles.cardContent}>
-                  <h3>高速服务区光储充一体化</h3>
-                  <p>
-                    满足高速公路服务区大功率充电与绿色用能需求，提升运营效率。
-                  </p>
+                <div className={styles.applicationContent}>
+                  <h3>
+                    <div className={styles.applicationContentTitle}>
+                      智慧储能
+                      <div className={styles.featureTitleUnderline} />
+                    </div>
+                  </h3>
+                  <p>梯次电池+智能EMS管理系统，削峰填谷节省30%电费</p>
                 </div>
-              </Card>
+              </div>
             </Col>
-            <Col xs={24} md={8}>
-              <Card className={styles.applicationCard}>
-                <div className={styles.cardImage}>
+            <Col xs={24} md={14}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
                   <Image
-                    src="/product/p3.png"
-                    alt="社区/乡村新能源充电站"
-                    width={400}
-                    height={220}
-                    style={{ objectFit: "cover" }}
+                    src="/product/p2/ld3.jpg"
+                    alt=""
+                    width={540}
+                    height={280}
                   />
                 </div>
-                <div className={styles.cardContent}>
-                  <h3>社区/乡村新能源充电站</h3>
-                  <p>
-                    为社区、乡村等分布式场景提供经济高效的新能源充电基础设施。
-                  </p>
+                <div className={styles.applicationContent}>
+                  <h3>
+                    <div className={styles.applicationContentTitle}>
+                      柴油备用
+                      <div className={styles.featureTitleUnderline} />
+                    </div>
+                  </h3>
+                  <p>无缝切换应急电源，保障关键负载24小时不间断运行</p>
                 </div>
-              </Card>
+              </div>
+            </Col>
+            <Col xs={24} md={10}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
+                  <Image
+                    src="/product/p2/ld4.jpg"
+                    alt=""
+                    width={400}
+                    height={280}
+                  />
+                </div>
+                <div className={styles.applicationContent}>
+                  <h3>
+                    <div className={styles.applicationContentTitle}>
+                      充电生态
+                      <div className={styles.featureTitleUnderline} />
+                    </div>
+                  </h3>
+                  <p>配套智能充电桩，构建清洁能源交通闭环（选配）</p>
+                </div>
+              </div>
             </Col>
           </Row>
         </div>
       </section>
-      <Footer />
+      {/* 应用场景 */}
+      <section className={styles.applicationSection}>
+        <div className={styles.container}>
+          <h2 className={styles.sectionTitle}>应用场景</h2>
+          <Row gutter={16}>
+            <Col xs={24} md={8}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
+                  <Image
+                    src="/product/p2/yy1.jpg"
+                    alt=""
+                    width={319}
+                    height={484}
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col xs={24} md={8}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
+                  <Image
+                    src="/product/p2/yy2.jpg"
+                    alt=""
+                    width={319}
+                    height={484}
+                  />
+                </div>
+              </div>
+            </Col>
+            <Col xs={24} md={8}>
+              <div className={styles.applicationCard}>
+                <div className={styles.applicationImage}>
+                  <Image
+                    src="/product/p2/yy3.jpg"
+                    alt=""
+                    width={319}
+                    height={484}
+                  />
+                </div>
+              </div>
+            </Col>
+          </Row>
+        </div>
+      </section>
+      <Footer inviteShow={false} />
     </div>
   );
 };

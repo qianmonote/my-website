@@ -144,124 +144,75 @@
   justify-content: center;
 }
 
-/* 工艺流程 Section */
-.processSection {
-  padding: 100px 0;
-  background: #181f2a;
-}
-
-.timeline {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.timelineItem {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 12px;
-  padding: 24px 16px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  min-width: 120px;
-  min-height: 120px;
-  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
-}
-
-.timelineIcon {
-  margin-bottom: 12px;
-}
-
-.timelineLabel {
-  color: #ffffff;
-  font-size: 1.1rem;
-  font-weight: 600;
-}
-
-.timelineArrow {
-  font-size: 2rem;
-  color: #4096ff;
-  margin: 0 8px;
-}
-
-/* 系统优势 Section */
-.advantagesSection {
-  padding: 100px 0;
-  background: #111827;
-}
-
-.advantageCard {
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 16px;
-  padding: 32px 24px;
-  text-align: center;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
-  transition: all 0.3s;
-}
-.advantageCard:hover {
-  background: rgba(22, 119, 255, 0.08);
-  border-color: #1677ff;
-  transform: translateY(-4px) scale(1.03);
-}
-.advantageCard h4 {
-  color: #1677ff;
-  font-size: 1.3rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.advantageCard p {
-  color: #9ca3af;
-  font-size: 1rem;
-}
-
-/* 典型应用 Section */
 .applicationSection {
   padding: 100px 0;
-  background: #181f2a;
-}
-
-.applicationsGrid {
-  margin-top: 2rem;
 }
 
 .applicationCard {
-  border-radius: 16px;
-  overflow: hidden;
-  background: rgba(255, 255, 255, 0.03);
-  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  transition: all 0.3s;
+  padding: 8px 0;
+  border-top: 2px solid;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border: 2px solid;
+  border-image-source: linear-gradient(
+    270deg,
+    #292c36 0%,
+    #ffffff 39.9%,
+    #fefdff 59.62%,
+    #292c36 100%
+  );
+  border-image-slice: 1;
+  width: 100%;
 }
 .applicationCard:hover {
   background: rgba(22, 119, 255, 0.08);
   border-color: #1677ff;
   transform: translateY(-4px) scale(1.03);
 }
-.cardImage {
-  width: 100%;
-  height: 220px;
-  overflow: hidden;
+.applicationImage {
+  text-align: center;
+  img {
+    max-width: 100%;
+  }
 }
-.cardImage img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-.cardContent {
-  padding: 24px 16px;
-}
-.cardContent h3 {
-  color: #ffffff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-.cardContent p {
-  color: #9ca3af;
-  font-size: 1rem;
+.applicationContent {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  h3 {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    .applicationContentTitle {
+      display: inline-block;
+    }
+
+    .featureTitleUnderline {
+      display: block;
+      margin: 16px auto 0 auto; /* 横线宽度可根据实际调整 */
+      height: 2px; /* 横线高度可根据实际调整 */
+      border: 0;
+      background: radial-gradient(
+        ellipse at center,
+        #fff 0%,
+        #bfc2c7 40%,
+        #292c36 100%
+      );
+      opacity: 0.7;
+      border-radius: 50%;
+      filter: blur(0.5px);
+    }
+  }
+  p {
+    opacity: 0.4;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    min-height: 74px;
+  }
 }
