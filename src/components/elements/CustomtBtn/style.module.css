@@ -27,6 +27,7 @@
   
   &:hover {
     background: url("/images/btn-learn-more-at.png") no-repeat center center;
+    color: #fff;
   }
   &:active {
     background: url("/images/btn-learn-more-at.png") no-repeat center center;

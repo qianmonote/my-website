@@ -29,12 +29,12 @@ const Navbar: React.FC = () => {
       className: "activeMenuItem",
     },
     {
-      label: <a href="/products/distributed-system">分布式光储充一体化系统</a>,
+      label: <a href="/products/power-storage-integration">分布式光储充一体化系统</a>,
       key: "product3",
       className: "activeMenuItem",
     },
     {
-      label: <a href="/products/ai-robot">AI保镖专采摘机器人</a>,
+      label: <a href="/products/ai-robot">AI棕榈果采摘机器人</a>,
       key: "product4",
       className: "activeMenuItem",
     },

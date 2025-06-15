@@ -15,6 +15,7 @@ const ProductSection: React.FC = () => {
       img: "/product/p1.jpg",
       title: t("product1"),
       desc: t("product1Desc"),
+      link: '/products/biomass-gasification',
       placement: "right",
       imgStyle: {
         width: 980,
@@ -28,6 +29,7 @@ const ProductSection: React.FC = () => {
       img: "/product/p2.jpg",
       title: t("product2"),
       desc: t("product2Desc"),
+      link: '/products/power-storage-integration',
       imgStyle: {
         width: 980,
         height: 574,
@@ -42,6 +44,7 @@ const ProductSection: React.FC = () => {
       contentBgImg: "/product/p3-bg.png",
       title: t("product3"),
       desc: t("product3Desc"),
+      link: '/products/ai-robot',
       placement: "right",
       imgStyle: {
         width: 980,
@@ -62,6 +65,7 @@ const ProductSection: React.FC = () => {
       contentBgImg: "/product/p4-bg.png",
       title: t("product4"),
       desc: t("product4Desc"),
+      link: '/products/smart-ev-charging',
       placement: "left",
       imgStyle: {
         width: 980,
@@ -124,7 +128,7 @@ const ProductSection: React.FC = () => {
                       }}
                     />
                     <div className="product-card-description">{p.desc}</div>
-                    <a className="product-card-more">
+                    <a className="product-card-more" href={p?.link} target="_blank">
                       <CustomtBtn type="learnMore">
                         {t("learnMore")}
                       </CustomtBtn>

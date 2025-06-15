@@ -1,0 +1,188 @@
+/* AI棕榈果采摘机器人页面样式 */
+.aiRobotPage {
+  min-height: 100vh;
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Hero Section */
+.heroSection {
+  height: 100vh;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url("/product/p3/bn.jpg");
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.heroOverlay {
+  text-align: center;
+  z-index: 2;
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  letter-spacing: 2px;
+}
+
+.contactBtn {
+  height: 50px;
+  padding: 0 32px;
+  font-size: 18px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border: none;
+  box-shadow: 0 4px 15px rgba(22, 119, 255, 0.3);
+  transition: all 0.3s ease;
+}
+
+.contactBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(22, 119, 255, 0.4);
+}
+
+/* 产品介绍区 */
+.introSection {
+  padding: 90px 0 120px;
+}
+
+.introTitle {
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 2rem;
+}
+
+.introContainer {
+  background: #292c36;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.introContent {
+  padding: 40px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introList {
+  color: #ffffff;
+  font-size: 1.1rem;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+}
+.introListLi {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 64px;
+  color: rgba(255, 255, 255, 0.64);
+
+  &::before {
+    position: absolute;
+    left: 0;
+    content: " ";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4b8dff;
+  }
+}
+
+.introImage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 三大核心功能区 */
+.featuresSection {
+  padding: 0 0 80px;
+
+}
+
+.featureCard {
+  padding: 8px 20px;
+  margin: 40px 0;
+  border-top: 2px solid;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border: 2px solid;
+  border-image-source: linear-gradient(
+    270deg,
+    #292c36 0%,
+    #ffffff 39.9%,
+    #fefdff 59.62%,
+    #292c36 100%
+  );
+  border-image-slice: 1;
+  width: 100%;
+}
+.featureCard:hover {
+  background: rgba(22, 119, 255, 0.08);
+  border-color: #1677ff;
+  transform: translateY(-4px) scale(1.03);
+}
+.featureImage {
+  margin-bottom: 18px;
+  text-align: center;
+}
+.featureContent {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  h3 {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    .featureContentTitle {
+      display: inline-block;
+    }
+
+    .featureTitleUnderline {
+      display: block;
+      margin: 16px auto 0 auto; /* 横线宽度可根据实际调整 */
+      height: 2px; /* 横线高度可根据实际调整 */
+      border: 0;
+      background: radial-gradient(
+        ellipse at center,
+        #fff 0%,
+        #bfc2c7 40%,
+        #292c36 100%
+      );
+      opacity: 0.7;
+      border-radius: 50%;
+      filter: blur(0.5px);
+    }
+  }
+  p {
+    opacity: 0.4;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    min-height: 110px;
+  }
+}
