@@ -4,11 +4,12 @@
 "use client";
 
 import React from "react";
-import { Button, Row, Col, Card } from "antd";
+import { Button, Row, Col } from "antd";
 import { CustomerServiceOutlined } from "@ant-design/icons";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import HeroSection from '@/components/elements/HeroSection'
 import styles from "./styles.module.css";
 
 const AIRobotPage = () => {
@@ -16,21 +17,10 @@ const AIRobotPage = () => {
     <div className={styles.aiRobotPage}>
       <Navbar />
       {/* 头图区 */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroOverlay}>
-          <div className={styles.container}>
-            <h1 className={styles.heroTitle}>AI棕榈果采摘机器人</h1>
-            <Button
-              type="primary"
-              size="large"
-              icon={<CustomerServiceOutlined />}
-              className={styles.contactBtn}
-            >
-              联系我们
-            </Button>
-          </div>
-        </div>
-      </section>
+      <HeroSection 
+        backgroundImage="/product/p3/bn.jpg"
+        title="AI棕榈果采摘机器人"
+      />
       {/* 产品介绍区 */}
       <section className={styles.introSection}>
         <div className={styles.introContainer}>

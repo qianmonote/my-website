@@ -6,7 +6,7 @@
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1000px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -14,10 +14,8 @@
 /* Hero Section */
 .heroSection {
   height: 100vh;
-  background: linear-gradient(
-    rgba(0, 0, 0, 0.6), 
-    rgba(0, 0, 0, 0.4)
-  ), url('/product/p3-bg.png');
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)),
+    url("/product/p3-bg.png");
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
@@ -25,6 +23,13 @@
   align-items: center;
   justify-content: center;
   position: relative;
+}
+.heroContainer {
+  max-width: 1000px;
+  height: 344px;
+  margin: 0 auto;
+  padding: 0 20px;
+  background: linear-gradient(180deg, rgba(33, 37, 43, 0) 0%, #21252b 100%);
 }
 
 .heroOverlay {
@@ -67,7 +72,7 @@
 }
 
 .sectionTitle::after {
-  content: '';
+  content: "";
   width: 80px;
   height: 4px;
   background: linear-gradient(90deg, #1677ff, #4096ff);
@@ -81,7 +86,12 @@
 /* 系统原理 Section */
 .principleSection {
   padding: 100px 0;
-  background: #111827;
+}
+
+.principleContainer {
+  background-color: #292C36;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .principleIntro {
@@ -91,18 +101,47 @@
   line-height: 1.8;
 }
 
+.principleContent {
+  padding: 40px;
+  max-width: 500px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .principleList {
-  color: #ffffff;
+  color: #fff;
   font-size: 1.1rem;
-  margin-left: 1.5em;
-  margin-bottom: 0;
+  line-height: 2;
+  margin: 0;
+  padding: 0;
+}
+.principleListLi {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
+  font-family: Inter;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 64px;
+  color: rgba(255, 255, 255, 0.64);
+
+  &::before {
+    position: absolute;
+    left: 0;
+    content: " ";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #4b8dff;
+  }
 }
 
 .principleImage {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 24px 0;
 }
 
 /* 工艺流程 Section */
@@ -123,13 +162,13 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 12px;
   padding: 24px 16px;
-  border: 1px solid rgba(255,255,255,0.1);
+  border: 1px solid rgba(255, 255, 255, 0.1);
   min-width: 120px;
   min-height: 120px;
-  box-shadow: 0 2px 8px rgba(22,119,255,0.05);
+  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
 }
 
 .timelineIcon {
@@ -155,17 +194,17 @@
 }
 
 .advantageCard {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255, 255, 255, 0.03);
   border-radius: 16px;
   padding: 32px 24px;
   text-align: center;
-  border: 1px solid rgba(255,255,255,0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(22,119,255,0.05);
+  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
   transition: all 0.3s;
 }
 .advantageCard:hover {
-  background: rgba(22,119,255,0.08);
+  background: rgba(22, 119, 255, 0.08);
   border-color: #1677ff;
   transform: translateY(-4px) scale(1.03);
 }
@@ -193,13 +232,13 @@
 .applicationCard {
   border-radius: 16px;
   overflow: hidden;
-  background: rgba(255,255,255,0.03);
-  box-shadow: 0 2px 8px rgba(22,119,255,0.05);
-  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 2px 8px rgba(22, 119, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all 0.3s;
 }
 .applicationCard:hover {
-  background: rgba(22,119,255,0.08);
+  background: rgba(22, 119, 255, 0.08);
   border-color: #1677ff;
   transform: translateY(-4px) scale(1.03);
 }
@@ -226,37 +265,3 @@
   color: #9ca3af;
   font-size: 1rem;
 }
-
-@media (max-width: 768px) {
-  .heroTitle {
-    font-size: 2.2rem;
-  }
-  .sectionTitle {
-    font-size: 1.5rem;
-  }
-  .timeline {
-    flex-direction: column;
-    gap: 12px;
-  }
-  .timelineArrow {
-    display: none;
-  }
-}
-
-@media (max-width: 480px) {
-  .container {
-    padding: 0 8px;
-  }
-  .heroTitle {
-    font-size: 1.3rem;
-  }
-  .sectionTitle {
-    font-size: 1.1rem;
-  }
-  .advantageCard {
-    padding: 18px 8px;
-  }
-  .cardContent {
-    padding: 12px 6px;
-  }
-} 

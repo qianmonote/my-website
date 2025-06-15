@@ -11,7 +11,7 @@ type TProps = {
 };
 
 const CustomtBtn: React.FC<TProps> = ({
-  type = "default",
+  type = "contract",
   className = "",
   children,
 }) => {
