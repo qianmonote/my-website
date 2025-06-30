@@ -1,0 +1,309 @@
+.container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e6f7ff 100%);
+  padding: 40px 0;
+}
+
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 40px 0;
+}
+
+.title {
+  font-size: 48px;
+  font-weight: 700;
+  color: #1677ff;
+  margin-bottom: 16px;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 4px rgba(22, 119, 255, 0.1);
+}
+
+.subtitle {
+  font-size: 18px;
+  color: #595959;
+  line-height: 1.6;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.formSection {
+  margin-bottom: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.contactInfo {
+  background: white;
+  border-radius: 16px;
+  padding: 48px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(22, 119, 255, 0.1);
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 32px;
+}
+
+.infoCard {
+  text-align: center;
+  padding: 32px 24px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #f9fbff, #f0f9ff);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.infoCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border-radius: 12px;
+  padding: 2px;
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: subtract;
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: source-out;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.infoCard:hover::before {
+  opacity: 1;
+}
+
+.infoCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 32px rgba(22, 119, 255, 0.15);
+}
+
+.infoIcon {
+  font-size: 48px;
+  margin-bottom: 16px;
+  display: block;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.infoCard h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #262626;
+  margin-bottom: 12px;
+}
+
+.infoCard p {
+  color: #595959;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+.infoCard p:last-child {
+  margin-bottom: 0;
+}
+
+/* 响应式设计 */
+@media (max-width: 1024px) {
+  .content {
+    padding: 0 20px;
+  }
+  
+  .contactInfo {
+    padding: 32px;
+  }
+  
+  .infoGrid {
+    gap: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px 0;
+  }
+  
+  .content {
+    padding: 0 16px;
+  }
+  
+  .header {
+    margin-bottom: 40px;
+    padding: 20px 0;
+  }
+  
+  .title {
+    font-size: 36px;
+    margin-bottom: 12px;
+  }
+  
+  .subtitle {
+    font-size: 16px;
+  }
+  
+  .formSection {
+    margin-bottom: 60px;
+  }
+  
+  .contactInfo {
+    padding: 24px;
+    border-radius: 12px;
+  }
+  
+  .infoGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+  
+  .infoCard {
+    padding: 24px 20px;
+  }
+  
+  .infoIcon {
+    font-size: 40px;
+    margin-bottom: 12px;
+  }
+  
+  .infoCard h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .infoCard p {
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 16px 0;
+  }
+  
+  .content {
+    padding: 0 12px;
+  }
+  
+  .title {
+    font-size: 28px;
+  }
+  
+  .subtitle {
+    font-size: 14px;
+  }
+  
+  .contactInfo {
+    padding: 20px;
+  }
+  
+  .infoCard {
+    padding: 20px 16px;
+  }
+  
+  .infoIcon {
+    font-size: 36px;
+  }
+  
+  .infoCard h3 {
+    font-size: 16px;
+  }
+  
+  .infoCard p {
+    font-size: 12px;
+  }
+}
+
+/* 动画效果 */
+.header {
+  animation: fadeInDown 0.8s ease-out;
+}
+
+.formSection {
+  animation: fadeInUp 0.8s ease-out 0.2s both;
+}
+
+.contactInfo {
+  animation: fadeInUp 0.8s ease-out 0.4s both;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 滚动动画 */
+.infoCard {
+  animation: slideInCard 0.6s ease-out;
+  animation-fill-mode: both;
+}
+
+.infoCard:nth-child(1) {
+  animation-delay: 0.6s;
+}
+
+.infoCard:nth-child(2) {
+  animation-delay: 0.8s;
+}
+
+.infoCard:nth-child(3) {
+  animation-delay: 1s;
+}
+
+@keyframes slideInCard {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 背景装饰 */
+.container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: radial-gradient(circle at 20% 80%, rgba(22, 119, 255, 0.1) 0%, transparent 50%),
+                    radial-gradient(circle at 80% 20%, rgba(64, 150, 255, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+} 

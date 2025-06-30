@@ -1,0 +1,211 @@
+.container {
+  padding: 24px;
+  background-color: #f5f5f5;
+  min-height: 100vh;
+}
+
+.card {
+  margin-bottom: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.searchCard {
+  margin-bottom: 16px;
+  border: 1px solid #d9d9d9;
+  border-radius: 6px;
+}
+
+.searchForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.searchRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.searchInput {
+  min-width: 200px;
+  flex: 1;
+}
+
+.statistics {
+  margin-bottom: 16px;
+  padding: 12px 0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.table {
+  background-color: white;
+  border-radius: 8px;
+}
+
+.table :global(.ant-table-thead > tr > th) {
+  background-color: #fafafa;
+  font-weight: 600;
+  color: #262626;
+}
+
+.table :global(.ant-table-tbody > tr:hover > td) {
+  background-color: #f5f5f5;
+}
+
+.table :global(.ant-table-tbody > tr > td) {
+  border-bottom: 1px solid #f0f0f0;
+  padding: 12px 16px;
+}
+
+.table :global(.ant-pagination) {
+  margin-top: 24px;
+  text-align: right;
+}
+
+.detailContent {
+  padding: 16px 0;
+}
+
+.detailItem {
+  display: flex;
+  margin-bottom: 16px;
+  align-items: flex-start;
+}
+
+.detailItem label {
+  min-width: 100px;
+  font-weight: 600;
+  color: #262626;
+  margin-right: 12px;
+}
+
+.detailItem span {
+  flex: 1;
+  color: #595959;
+  word-break: break-all;
+}
+
+.contentTextarea {
+  margin-top: 8px;
+}
+
+.contentTextarea :global(.ant-input) {
+  border: 1px solid #d9d9d9;
+  background-color: #fafafa;
+  resize: none;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 16px;
+  }
+  
+  .searchRow {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .searchInput {
+    min-width: auto;
+  }
+  
+  .table {
+    font-size: 12px;
+  }
+  
+  .detailItem {
+    flex-direction: column;
+    margin-bottom: 12px;
+  }
+  
+  .detailItem label {
+    margin-bottom: 4px;
+    margin-right: 0;
+  }
+}
+
+/* 状态样式 */
+.success {
+  color: #52c41a;
+}
+
+.error {
+  color: #ff4d4f;
+}
+
+.warning {
+  color: #faad14;
+}
+
+/* 加载状态 */
+.loading {
+  text-align: center;
+  padding: 40px 0;
+  color: #999;
+}
+
+/* 空状态 */
+.empty {
+  text-align: center;
+  padding: 60px 0;
+  color: #999;
+}
+
+.empty img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  opacity: 0.3;
+}
+
+/* 按钮样式优化 */
+.searchRow :global(.ant-btn-primary) {
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border: none;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(22, 119, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.searchRow :global(.ant-btn-primary:hover) {
+  background: linear-gradient(135deg, #0958d9, #1677ff);
+  box-shadow: 0 4px 8px rgba(22, 119, 255, 0.3);
+  transform: translateY(-1px);
+}
+
+/* 表格样式优化 */
+.table :global(.ant-table-container) {
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table :global(.ant-table-thead > tr > th:first-child) {
+  border-top-left-radius: 8px;
+}
+
+.table :global(.ant-table-thead > tr > th:last-child) {
+  border-top-right-radius: 8px;
+}
+
+/* 模态框样式 */
+:global(.ant-modal-header) {
+  background: linear-gradient(135deg, #1677ff, #4096ff);
+  border-radius: 8px 8px 0 0;
+}
+
+:global(.ant-modal-title) {
+  color: white;
+  font-weight: 600;
+}
+
+:global(.ant-modal-close) {
+  color: white;
+}
+
+:global(.ant-modal-close:hover) {
+  color: rgba(255, 255, 255, 0.8);
+} 
