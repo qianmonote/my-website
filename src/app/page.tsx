@@ -10,7 +10,7 @@ import Footer from "@/components/Footer";
 export default function Home() {
   return (
     <>
-      <Navbar />
+      <Navbar noShowLangChange={true} />
       <Banner />
       <AboutUs />
       <Product />

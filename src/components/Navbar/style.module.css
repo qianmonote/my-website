@@ -58,15 +58,21 @@
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(75, 141, 255, 0.3);
   color: #fff;
-  .callLink {
-    color: #fff;
-  }
 }
+
 
 .navbarMenuItem.active {
   background: rgba(75, 141, 255, 1);
   color: #fff;
 }
+.navbarMenuItem:hover .callLink {
+  color: #fff;
+}
+
+.navbarMenuItem.active .callLink {
+  color: #fff;
+}
+
 .navbarMenuItemContact {
   display: inline-block;
   width: 170px;

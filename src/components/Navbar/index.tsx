@@ -10,7 +10,39 @@ import Image from "next/image";
 import classNames from "classnames";
 import styles from "./style.module.css";
 
-const Navbar: React.FC = () => {
+type NavbarProps = Partial<{
+  noShowLangChange: boolean;
+}>;
+
+// 中英文菜单项
+const menuItemsLangMap = {
+  product1: {
+    zh: '生物质气化发电系统',
+    en: 'Biomass Gasification Power Generation System'
+  },
+  product2: {
+    zh: '分布式光储充一体化系统',
+    en: 'Distributed PV-Storage-Charging System'
+  },
+  product3: {
+    zh: '智慧EV充电生态体系',
+    en: 'Distributed Solar Photovoltaic Power Systems'
+  },
+  about: {
+    zh: '公司简介',
+    en: 'Company Introduction'
+  },
+  contact: {
+    zh: '联系我们',
+    en: 'Contact Us'
+  },
+  productsAndServices: {
+    zh: '产品与服务',
+    en: 'Products and Services'
+  }
+}
+
+const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
   const { lang, setLang, t } = useI18n();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pathname = usePathname();
@@ -19,39 +51,32 @@ const Navbar: React.FC = () => {
   const productsMenuItems = [
     {
       label: (
-        <a href="/products/biomass-gasification">生物质废弃物气化发电系统</a>
+        <a href="/products/biomass-gasification">{menuItemsLangMap.product1[lang]}</a>
       ),
       key: "product1",
       className: "activeMenuItem",
     },
     {
-      label: <a href="/products/smart-ev-charging">智慧EV充电生态体系</a>,
+      label: (
+        <a href="/products/power-storage-integration">{menuItemsLangMap.product2[lang]}</a>
+      ),
       key: "product2",
       className: "activeMenuItem",
     },
     {
       label: (
-        <a href="/products/power-storage-integration">分布式光储充一体化系统</a>
+        <a href="/products/smart-ev-charging">{menuItemsLangMap.product3[lang]}</a>
       ),
       key: "product3",
       className: "activeMenuItem",
     },
-    {
-      label: <a href="/products/ai-robot">AI棕榈果采摘机器人</a>,
-      key: "product4",
-      className: "activeMenuItem",
-    },
+
   ];
 
   const menuItems = [
     {
-      label: <a href="/products/biomass-gasification"> 生物质气化发电系统 </a>,
+      label: <a href="/products/biomass-gasification"> {menuItemsLangMap.product1[lang]} </a>,
       key: "product1",
-      className: "activeMenuItem",
-    },
-    {
-      label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
-      key: "product2",
       className: "activeMenuItem",
     },
     {
@@ -103,7 +128,7 @@ const Navbar: React.FC = () => {
               [styles.active]: isProductsActive(),
             })}
           >
-            Products and Services
+            {menuItemsLangMap.productsAndServices[lang]}
             <MenuOutlined style={{ fontSize: "12px", marginLeft: "12px" }} />
           </div>
         </Dropdown>
@@ -113,41 +138,39 @@ const Navbar: React.FC = () => {
             [styles.active]: isActiveMenuItem("/about"),
           })}
         >
-          Company introduction
+          {menuItemsLangMap.about[lang]}
         </Link>
         <Link href="/contact">
-          <div className={styles.navbarMenuItemContact}>{t("contact")}</div>
+          <div className={styles.navbarMenuItemContact}>{menuItemsLangMap.contact[lang]}</div>
         </Link>
-        <Link href="">
-          <div
-            className={classNames(styles.navbarMenuItem, {
-              [styles.active]: isProductsActive(),
-            })}
-          >
-            <Image
-              src="/header/call-default.png"
-              alt="call"
-              width={19}
-              height={18}
-              style={{ marginRight: 8 }}
-            />
-            AI Link
-            <div>
-              <a href="tel:+60164802817" className={styles.callLink}>
-                +60164802817
-              </a>
-            </div>
-          </div>
-        </Link>
-        {/* <Select
-          value={lang}
-          onChange={handleLangChange}
-          style={{ width: 100 }}
-          options={[
-            { value: "zh", label: "zh" },
-            { value: "en", label: "en" },
-          ]}
-        /> */}
+        <div
+          className={classNames(styles.navbarMenuItem, {
+            [styles.active]: isProductsActive(),
+          })}
+        >
+          <Image
+            src="/header/call-default.png"
+            alt="call"
+            width={19}
+            height={18}
+            style={{ marginRight: 8 }}
+          />
+          AI Link
+          <a href="tel:+60164802817" className={styles.callLink}>
+            +60164802817
+          </a>
+        </div>
+        {noShowLangChange ? null : (
+          <Select
+            value={lang}
+            onChange={handleLangChange}
+            style={{ width: 100 }}
+            options={[
+              { value: "zh", label: "zh" },
+              { value: "en", label: "en" },
+            ]}
+          />
+        )}
       </div>
 
       {/* 移动端菜单 */}
