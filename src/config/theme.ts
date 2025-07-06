@@ -2,8 +2,6 @@ const theme = {
   token: {
     // 全局 token 配置
     colorPrimary: '#1677ff',
-    colorBgContainer: 'rgba(20, 22, 25, 1)',
-    colorText: '#fff',
     colorBorder: 'rgba(255, 255, 255, 0.16)',
     borderRadius: 20,
   },
@@ -12,7 +10,8 @@ const theme = {
       dotActiveWidth: 8,
       dotWidth: 8,
       dotHeight: 8,
-      dotGap: 16,
+      dotGap: 8,
+      colorText: '#1677ff',
     },
     Select: {
       colorBgContainer: 'rgba(255, 255, 255, 0.16)',

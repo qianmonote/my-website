@@ -12,11 +12,11 @@ const ProductSection: React.FC = () => {
   const { t } = useI18n();
   const products = [
     {
-      img: "/product/p1.jpg",
-      title: t("product1"),
-      desc: t("product1Desc"),
+      img: "/home/ab-pd-p1.png",
+      title: 'Biomass Gasification  <br/>  Power Generation  <br/>  Systems',
+      desc: '生物质气化发电系统',
       link: '/products/biomass-gasification',
-      placement: "right",
+      placement: "left",
       imgStyle: {
         width: 980,
         height: 574,
@@ -26,9 +26,9 @@ const ProductSection: React.FC = () => {
       },
     },
     {
-      img: "/product/p2.jpg",
-      title: t("product2"),
-      desc: t("product2Desc"),
+      img: "/home/ab-pd-p2.png",
+      title: 'Distributed Solar  <br/>  Photovoltaic Power  <br/>  Systems',
+      desc: '分布式光储充一体化系统',
       link: '/products/power-storage-integration',
       imgStyle: {
         width: 980,
@@ -40,59 +40,25 @@ const ProductSection: React.FC = () => {
       },
     },
     {
-      img: "/product/p3.png",
-      contentBgImg: "/product/p3-bg.png",
-      title: t("product3"),
-      desc: t("product3Desc"),
+      img: "/home/ab-pd-p3.png",
+      title: 'Smart EV Charging  <br/>  Ecosystem',
+      desc: '智慧EV充电生态体系',
       link: '/products/ai-robot',
-      placement: "right",
-      imgStyle: {
-        width: 980,
-        height: 574,
-      },
-      contentBgImgStyle: {
-        width: 422,
-        height: 574,
-      },
-      contentStyle: {
-        width: 490,
-        alignItems: "start",
-        paddingTop: 120,
-      },
-    },
-    {
-      img: "/product/p4.png",
-      contentBgImg: "/product/p4-bg.png",
-      title: t("product4"),
-      desc: t("product4Desc"),
-      link: '/products/smart-ev-charging',
       placement: "left",
       imgStyle: {
         width: 980,
         height: 574,
       },
-      contentBgImgStyle: {
-        width: 430,
-        height: 574,
-        left: 10,
-        bottom: 0,
-        top: 10,
-        right: "unset",
-      },
       contentStyle: {
-        width: 430,
-        padding: "0 10px",
-      },
-    },
+        width: 388,
+      }
+    }
   ];
   return (
     <section className="c-product-section-wrap">
       <div className="product-container">
         <div className="product-title">
-          <div className="product-title-main">关于我们，不仅仅是充电</div>
-          <div className="product-title-sub">
-            构建「清洁能源生产-智能充电优化-资源循环再生」三位一体的绿色科技生态
-          </div>
+          <Image src="/home/ab-pd-tit.png" alt="product" width={654} height={96} />
         </div>
         <Row>
           {products.map((p, idx) => (
@@ -105,22 +71,10 @@ const ProductSection: React.FC = () => {
                   {...(p?.imgStyle || {})}
                 />
                 <div
-                  className={classnames("product-card-content", p.placement)}
+                  className={classnames("product-card-content", p.placement ?? 'left')}
                   style={{ ...(p?.contentStyle || {}) }}
                 >
                   <div className="product-card-content-inner">
-                    {p?.contentBgImg ? (
-                      <Image
-                        alt=""
-                        src={p?.contentBgImg}
-                        width={422}
-                        height={574}
-                        className="product-content-bg-image"
-                        style={{
-                          ...(p?.contentBgImgStyle || {}),
-                        }}
-                      />
-                    ) : null}
                     <div
                       className="product-card-title"
                       dangerouslySetInnerHTML={{

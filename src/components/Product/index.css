@@ -37,9 +37,10 @@
         padding: 34px;
         background: linear-gradient(
           180deg,
-          rgba(27, 26, 27, 0) 0%,
-          rgba(27, 26, 27, 0.9) 46.06%
+          rgba(27, 26, 27, 0) 13.87%,
+          rgba(27, 26, 27, 0.45) 53.55%
         );
+
         position: absolute;
         top: 0;
         display: flex;
@@ -56,20 +57,19 @@
           text-align: center;
 
           .product-card-title {
-            font-family: PingFang SC;
             font-weight: 600;
+            font-style: Semi Bold;
             font-size: 24px;
-            line-height: 36px;
+            line-height: 30px;
             text-align: center;
-            color: rgba(233, 233, 234, 1);
             margin-bottom: 16px;
           }
           .product-card-description {
-            font-family: PingFang SC;
             font-weight: 400;
-            font-size: 14px;
-            line-height: 20px;
-            color: rgba(255, 255, 255, 1);
+            font-style: Regular;
+            font-size: 16px;
+            line-height: 24px;
+            opacity: 0.6;
             margin-bottom: 16px;
           }
           .product-card-button {

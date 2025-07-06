@@ -80,7 +80,7 @@ const Team: React.FC = () => {
           <Swiper
             grabCursor={true}
             centeredSlides={true}
-            slidesPerView={3}
+            slidesPerView={7}
             spaceBetween={20}
             loop={true}
             pagination={{
@@ -95,33 +95,6 @@ const Team: React.FC = () => {
             modules={[Pagination, Autoplay]}
             className="team-swiper"
             initialSlide={1}
-            breakpoints={{
-              320: {
-                slidesPerView: 1,
-                spaceBetween: 8,
-                centeredSlides: true,
-              },
-              640: {
-                slidesPerView: 2,
-                spaceBetween: 8,
-                centeredSlides: true,
-              },
-              768: {
-                slidesPerView: 3,
-                spaceBetween: 10,
-                centeredSlides: true,
-              },
-              1024: {
-                slidesPerView: 4,
-                spaceBetween: 10,
-                centeredSlides: true,
-              },
-              1200: {
-                slidesPerView: 3,
-                spaceBetween: 20,
-                centeredSlides: true,
-              },
-            }}
           >
             {team.map((member, idx) => (
               <SwiperSlide key={idx}>

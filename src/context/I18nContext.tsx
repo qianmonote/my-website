@@ -1,8 +1,8 @@
 'use client';
 
 import React, { createContext, useContext, useState, ReactNode } from "react";
-import zh from "../locales/zh/common.json";
-import en from "../locales/en/common.json";
+import zh from "../config/locales/zh/common.json";
+import en from "../config/locales/en/common.json";
 
 type Lang = "zh" | "en";
 type Dict = typeof zh;
@@ -20,7 +20,7 @@ const I18nContext = createContext<{
 });
 
 export const I18nProvider = ({ children }: { children: ReactNode }) => {
-  const [lang, setLang] = useState<Lang>("zh");
+  const [lang, setLang] = useState<Lang>("en");
   const t = (key: keyof Dict) => dictMap[lang][key] || key;
   return (
     <I18nContext.Provider value={{ lang, setLang, t }}>

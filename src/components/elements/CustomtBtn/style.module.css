@@ -5,7 +5,6 @@
 .contractBtn {
   width: 240px;
   height: 73px;
-  margin-top: 40px;
   background: url("/images/btn-contract.png") no-repeat center center;
   font-family: PingFang SC;
   font-weight: 400;
@@ -19,10 +18,12 @@
 
   &:hover {
     background: url("/images/btn-contract-at.png") no-repeat center center;
+    background-size: 240px 73px;
     color: #fff;
   }
   &:active {
     background: url("/images/btn-contract-at.png") no-repeat center center;
+    background-size: 240px 73px;
     color: #fff;
   }
 }
@@ -33,12 +34,25 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  
+
   &:hover {
     background: url("/images/btn-learn-more-at.png") no-repeat center center;
+    background-size: 200px 48px;
     color: #fff;
   }
   &:active {
     background: url("/images/btn-learn-more-at.png") no-repeat center center;
+    background-size: 200px 48px;
+  }
+}
+.contactEnBtn {
+  display: inline-block;
+  width: 240px;
+  height: 72px;
+  background: url("/home/ft-ct-btn.png") no-repeat center center;
+  background-size: 240px 72px;
+  &:hover {
+    background: url("/home/ft-ct-btn-at.png") no-repeat center center;
+    background-size: 240px 72px;
   }
 }

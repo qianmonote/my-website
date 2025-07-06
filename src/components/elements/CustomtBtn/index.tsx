@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from "./style.module.css";
 
 type TProps = {
-  type?: "contract" | "learnMore" | "default";
+  type?: "contract" | "learnMore" | "contactEn";
   size?: "small" | "medium" | "large";
   className?: string;
   children?: React.ReactNode;
@@ -43,6 +43,9 @@ const CustomtBtn: React.FC<TProps> = ({
         {children}
       </div>
     );
+  }
+  if (type === "contactEn") {
+    return <div className={styles.contactEnBtn} />;
   }
   return null;
 };

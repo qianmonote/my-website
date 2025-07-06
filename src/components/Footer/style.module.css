@@ -1,6 +1,5 @@
-.cFooterSectionWrap {  
+.cFooterSectionWrap {
   max-width: 1000px;
-  padding-top: 80px;
   margin: 0 auto;
   text-align: center;
   display: flex;
@@ -10,8 +9,8 @@
   position: relative;
   .footerBg {
     position: absolute;
-    top: -200px;
-    left: 0; 
+    top: -160px;
+    left: 0;
   }
 
   .footerInvite {
@@ -19,9 +18,69 @@
     font-size: 24px;
     line-height: 36px;
     text-align: center;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.03) 0%, rgba(0, 0, 0, 0) 100%);
-    margin-bottom: 280px;
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.03) 0%,
+      rgba(0, 0, 0, 0) 100%
+    );
+    margin-bottom: 100px;
   }
+  /* 邀请 */
+  .footerInviteText {
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 32px;
+    line-height: 50px;
+    text-align: center;
+    color: #e9e9ea;
+  }
+  .footerInviteTextZn {
+    font-family: Inter;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 50px;
+    letter-spacing: 0px;
+    text-align: center;
+  }
+  .spanStrong {
+    color: #1677ff;
+  }
+
+  /* 战略合作伙伴 */
+  .footerPartnerWrap {
+    margin-bottom: 100px;
+  }
+
+  .footerPartnerTitle {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 100%;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.64);
+    margin-bottom: 12px;
+  }
+  .footerPartnerList {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  /* 联系我们 */
+  .footerContactWrap {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    margin-bottom: 100px;
+    padding: 8px 0;
+  }
+  .footerContactList {
+    margin: 8px 0;
+  }
+  /* 地址 */
   .footerAddress {
     font-weight: 400;
     font-size: 14px;
@@ -29,5 +88,6 @@
     text-align: center;
     padding: 24px 0 40px;
     color: rgba(255, 255, 255, 0.4);
+    margin-top: 45px;
   }
 }

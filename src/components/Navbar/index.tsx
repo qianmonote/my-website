@@ -6,6 +6,7 @@ import { MenuOutlined } from "@ant-design/icons";
 import { useI18n } from "@/context/I18nContext";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import classNames from "classnames";
 import styles from "./style.module.css";
 
@@ -29,7 +30,9 @@ const Navbar: React.FC = () => {
       className: "activeMenuItem",
     },
     {
-      label: <a href="/products/power-storage-integration">分布式光储充一体化系统</a>,
+      label: (
+        <a href="/products/power-storage-integration">分布式光储充一体化系统</a>
+      ),
       key: "product3",
       className: "activeMenuItem",
     },
@@ -49,10 +52,18 @@ const Navbar: React.FC = () => {
     {
       label: <a href="/products/smart-ev-charging"> 智慧EV充电生态体系 </a>,
       key: "product2",
-      className: "activeMenuItem",    
+      className: "activeMenuItem",
     },
-    { label: <a href="/about">{t("about")}</a>, key: "about", className: "activeMenuItem" },
-    { label: <a href="#contact">{t("contact")}</a>, key: "contact", className: "activeMenuItem" },
+    {
+      label: <a href="/about">{t("about")}</a>,
+      key: "about",
+      className: "activeMenuItem",
+    },
+    {
+      label: <a href="#contact">{t("contact")}</a>,
+      key: "contact",
+      className: "activeMenuItem",
+    },
   ];
 
   const handleLangChange = useCallback(
@@ -102,12 +113,31 @@ const Navbar: React.FC = () => {
             [styles.active]: isActiveMenuItem("/about"),
           })}
         >
-          {t("about")}
+          Company introduction
         </Link>
         <Link href="/">
           <div className={styles.navbarMenuItemContact}>{t("contact")}</div>
         </Link>
-        <Select
+        <Link href="">
+          <div
+            className={classNames(styles.navbarMenuItem, {
+              [styles.active]: isProductsActive(),
+            })}
+          >
+            <Image
+              src="/header/call-default.png"
+              alt="call"
+              width={19}
+              height={18}
+              style={{ marginRight: 8 }}
+            />
+            AI Link
+            <a href="tel:+60164802817" className={styles.callLink}>
+              +60164802817
+            </a>
+          </div>
+        </Link>
+        {/* <Select
           value={lang}
           onChange={handleLangChange}
           style={{ width: 100 }}
@@ -115,7 +145,7 @@ const Navbar: React.FC = () => {
             { value: "zh", label: "zh" },
             { value: "en", label: "en" },
           ]}
-        />
+        /> */}
       </div>
 
       {/* 移动端菜单 */}
