@@ -3,13 +3,11 @@
 import React from "react";
 import { Row, Col } from "antd";
 import Image from "next/image";
-import { useI18n } from "@/context/I18nContext";
 import classnames from "classnames";
 import CustomtBtn from "@/components/elements/CustomtBtn";
 import "./index.css";
 
 const ProductSection: React.FC = () => {
-  const { t } = useI18n();
   const products = [
     {
       img: "/home/ab-pd-p1.png",

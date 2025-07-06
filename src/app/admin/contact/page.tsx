@@ -218,7 +218,7 @@ export default function ContactAdminPage() {
   // 初始化数据
   useEffect(() => {
     fetchData();
-  }, []);
+  }, [fetchData]);
 
   return (
     <div className={styles.container}>
@@ -304,7 +304,7 @@ export default function ContactAdminPage() {
 
       {/* 详情模态框 */}
       <Modal
-        title="联系详情"
+        title="联系信息详情"
         open={detailModal.visible}
         onCancel={() => setDetailModal({ visible: false, data: null })}
         footer={[
@@ -313,6 +313,7 @@ export default function ContactAdminPage() {
           </Button>
         ]}
         width={600}
+        className={styles.modalWrapper}
       >
         {detailModal.data && (
           <div className={styles.detailContent}>

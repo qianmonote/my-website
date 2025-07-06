@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Carousel } from "antd";
-import { useI18n } from "@/context/I18nContext";
 import Link from "next/link";
 import ContractBtn from "@/components/elements/CustomtBtn";
 import Image from "next/image";
