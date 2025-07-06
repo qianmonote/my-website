@@ -1,318 +1,229 @@
 .c-team-section-wrap {
-  margin-bottom: 100px;
-  .team-section-content {
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 16px;
-    overflow: hidden;
-  }
+  width: 100%;
+  padding: 80px 0;
+  overflow: hidden;
+}
 
+.team-section-content {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.team-section-title {
+  font-size: 48px;
+  font-weight: 600;
+  color: #FFFFFF;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.team-swiper-container {
+  position: relative;
+  padding: 60px 0;
+  margin: 0 auto;
+  max-width: 1000px;
+  overflow: hidden;
+}
+
+.team-swiper {
+  width: 100%;
+  padding: 20px 0 60px;
+  overflow: visible;
+}
+
+.swiper-slide {
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0.3;
+  transform: scale(0.65) translateY(30px);
+}
+
+.swiper-slide-prev,
+.swiper-slide-next {
+  opacity: 0.5;
+  transform: scale(0.75) translateY(20px);
+  z-index: 2;
+}
+
+.swiper-slide-active {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  z-index: 3;
+}
+
+.swiper-slide-prev + .swiper-slide-prev,
+.swiper-slide-next + .swiper-slide-next {
+  opacity: 0.3;
+  transform: scale(0.65) translateY(30px);
+  z-index: 1;
+}
+
+.team-card {
+  width: 200px;
+  margin: 0 auto;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.team-member-card {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+  height: 100%;
+  backdrop-filter: blur(10px);
+}
+
+.swiper-slide-active .team-member-card {
+  box-shadow: 0 8px 30px rgba(22, 119, 255, 0.2) !important;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.member-role {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.view-btn {
+  background: transparent !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  color: #FFFFFF !important;
+  border-radius: 20px !important;
+  padding: 0 10px !important;
+  height: 20px !important;
+  font-size: 10px !important;
+  opacity: 0.8;
+  transition: all 0.3s ease !important;
+}
+
+.view-btn:hover {
+  opacity: 1;
+  border-color: rgba(255, 255, 255, 0.4) !important;
+}
+
+.member-avatar-section {
+  display: flex;
+  justify-content: center;
+  margin: 16px 0;
+}
+
+.member-avatar {
+  width: 80px !important;
+  height: 80px !important;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+}
+
+.swiper-slide-active .member-avatar {
+  width: 100px !important;
+  height: 100px !important;
+  border: 3px solid rgba(255, 255, 255, 0.2);
+}
+
+.member-info {
+  text-align: center;
+}
+
+.member-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  margin: 0 0 4px;
+  transition: all 0.3s ease;
+}
+
+.swiper-slide-active .member-name {
+  font-size: 20px;
+  margin: 0 0 6px;
+}
+
+.member-title {
+  font-size: 12px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+
+.swiper-slide-active .member-title {
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+.member-desc {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.6);
+  line-height: 1.4;
+  transition: all 0.3s ease;
+}
+
+.swiper-slide-active .member-desc {
+  font-size: 12px;
+  line-height: 1.5;
+}
+
+/* Swiper Pagination Styles */
+.team-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+.team-swiper .swiper-pagination-bullet {
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 255, 255, 0.2);
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.team-swiper .swiper-pagination-bullet-active {
+  background: #1677FF;
+  transform: scale(1.2);
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
   .team-section-title {
-    text-align: center;
-    padding: 30px 0;
-    font-family: Inter;
-    font-weight: 900;
-    font-size: 36px;
-    text-align: center;
-    text-transform: uppercase;
+    font-size: 28px;
   }
-
-  .team-swiper-container {
-    padding: 20px 0;
-    position: relative;
-  }
-
+  
   .team-swiper {
-    width: 100%;
-    padding: 10px 0;
-    overflow: visible;
+    padding: 20px 0 40px;
   }
-
-  .team-swiper .swiper-slide {
-    transition: all 0.4s ease;
-    opacity: 0.6;
-    transform: scale(0.85) translateY(30px);
-  }
-
-  .team-swiper .swiper-slide-active {
-    opacity: 1;
-    transform: scale(1) translateY(0);
-    z-index: 10;
-  }
-
-  .team-swiper .swiper-slide-next,
-  .team-swiper .swiper-slide-prev {
-    opacity: 0.8;
-    transform: scale(0.95) translateY(15px);
-    z-index: 5;
-  }
-
+  
   .team-card {
-    width: 220px;
-    height: 300px;
-    will-change: transform;
-    position: relative;
+    width: 180px;
   }
-
-  .team-member-card {
-    height: 100%;
-    border-radius: 16px;
-    border: none;
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-    color: #333;
-    overflow: hidden;
-    transition: all 0.4s ease;
-    position: relative;
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-
-  .team-swiper .swiper-slide-active .team-member-card {
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
-  }
-
-  .team-card-main .team-member-card {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
-    box-shadow: 0 12px 25px rgba(102, 126, 234, 0.25);
-  }
-
-  .team-swiper .swiper-slide-active .team-card-main .team-member-card {
-    box-shadow: 0 25px 50px rgba(102, 126, 234, 0.4);
-    transform: scale(1.05);
-  }
-
-  .card-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 16px;
-  }
-
-  .member-role {
-    font-size: 9px;
-    font-weight: 600;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
-    opacity: 0.8;
-  }
-
-  .view-btn {
-    border-radius: 14px;
-    font-size: 9px;
-    height: 24px;
-    padding: 0 10px;
-    font-weight: 600;
-    border: none;
-    box-shadow: none;
-  }
-
-  .team-card-main .view-btn {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-    backdrop-filter: blur(10px);
-  }
-
-  .team-card-main .view-btn:hover {
-    background: rgba(255, 255, 255, 0.3);
-    color: white;
-  }
-
-  .member-avatar-section {
-    text-align: center;
-    margin: 18px 0;
-  }
-
+  
   .member-avatar {
-    border: 3px solid rgba(255, 255, 255, 0.3);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-    width: 70px !important;
-    height: 70px !important;
+    width: 60px !important;
+    height: 60px !important;
   }
-
-  .team-card-main .member-avatar {
-    border-color: rgba(255, 255, 255, 0.6);
-  }
-
-  .team-swiper .swiper-slide-active .member-avatar {
+  
+  .swiper-slide-active .member-avatar {
     width: 80px !important;
     height: 80px !important;
   }
-
-  .member-info {
-    text-align: center;
-  }
-
+  
   .member-name {
+    font-size: 14px;
+  }
+  
+  .swiper-slide-active .member-name {
     font-size: 16px;
-    font-weight: 700;
-    margin: 10px 0 6px 0;
-    color: inherit;
   }
-
-  .team-swiper .swiper-slide-active .member-name {
-    font-size: 18px;
-  }
-
+  
   .member-title {
     font-size: 10px;
-    font-weight: 600;
-    margin-bottom: 6px;
-    text-transform: uppercase;
-    letter-spacing: 0.3px;
-    opacity: 0.9;
-    line-height: 1.3;
   }
-
-  .team-swiper .swiper-slide-active .member-title {
-    font-size: 11px;
-  }
-
-  .member-company {
-    font-size: 9px;
-    opacity: 0.7;
-    line-height: 1.3;
-  }
-
-  .team-swiper .swiper-slide-active .member-company {
-    font-size: 10px;
-  }
-
-  /* Enhanced Swiper pagination styles */
-  .team-swiper .swiper-pagination {
-    bottom: 15px !important;
-    text-align: center;
-    position: relative;
-    margin-top: 60px;
-  }
-
-  .team-swiper .swiper-pagination-bullet {
-    width: 10px;
-    height: 10px;
-    background: #d1d5db;
-    opacity: 1;
-    margin: 0 5px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-    cursor: pointer;
-  }
-
-  .team-swiper .swiper-pagination-bullet-active {
-    background: #667eea;
-    transform: scale(1.3);
-    box-shadow: 0 2px 8px rgba(102, 126, 234, 0.4);
-  }
-
-  /* Optimized hover effects */
-  .team-card:hover .team-member-card {
-    transform: translateY(-8px) translateZ(0);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
-  }
-
-  .team-card-main:hover .team-member-card {
-    transform: translateY(-8px) translateZ(0);
-    box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
-  }
-
-  .team-swiper .swiper-slide-active .team-card:hover .team-member-card {
-    transform: translateY(-10px) translateZ(0);
-  }
-
-  .team-swiper .swiper-slide-active .team-card-main:hover .team-member-card {
-    transform: translateY(-10px) scale(1.05) translateZ(0);
-  }
-
-  /* Responsive design */
-  @media (max-width: 1199px) {
-    .team-card {
-      width: 200px;
-      height: 280px;
-    }
-  }
-
-  @media (max-width: 1023px) {
-    .team-card {
-      width: 220px;
-      height: 300px;
-    }
-
-    .team-swiper .swiper-slide {
-      transform: scale(0.9) translateY(20px);
-    }
-
-    .team-swiper .swiper-slide-active {
-      transform: scale(1) translateY(0);
-    }
-
-    .team-swiper .swiper-slide-next,
-    .team-swiper .swiper-slide-prev {
-      transform: scale(0.95) translateY(10px);
-    }
-  }
-
-  @media (max-width: 767px) {
-    .team-section-title {
-      font-size: 28px;
-      padding: 20px 0;
-    }
-
-    .team-swiper-container {
-      margin-top: 30px;
-      padding: 15px 0 50px;
-    }
-
-    .team-card {
-      width: 240px;
-      height: 320px;
-    }
-
-    .team-swiper .swiper-slide {
-      transform: scale(0.95) translateY(10px);
-    }
-
-    .team-swiper .swiper-slide-active {
-      transform: scale(1) translateY(0);
-    }
-
-    .team-swiper .swiper-slide-next,
-    .team-swiper .swiper-slide-prev {
-      transform: scale(0.98) translateY(5px);
-    }
-
-    .member-name {
-      font-size: 18px;
-    }
-
-    .member-avatar {
-      width: 80px !important;
-      height: 80px !important;
-    }
-  }
-
-  @media (max-width: 639px) {
-    .team-card {
-      width: 260px;
-      height: 340px;
-    }
-
-    .member-avatar {
-      width: 90px !important;
-      height: 90px !important;
-    }
-
-    .member-name {
-      font-size: 20px;
-    }
-
-    .team-swiper .swiper-slide {
-      opacity: 0.8;
-      transform: scale(0.98);
-    }
-
-    .team-swiper .swiper-slide-active {
-      opacity: 1;
-      transform: scale(1);
-    }
+  
+  .swiper-slide-active .member-title {
+    font-size: 12px;
   }
 }

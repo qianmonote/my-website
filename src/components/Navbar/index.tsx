@@ -115,7 +115,7 @@ const Navbar: React.FC = () => {
         >
           Company introduction
         </Link>
-        <Link href="/">
+        <Link href="/contact">
           <div className={styles.navbarMenuItemContact}>{t("contact")}</div>
         </Link>
         <Link href="">
@@ -132,9 +132,9 @@ const Navbar: React.FC = () => {
               style={{ marginRight: 8 }}
             />
             AI Link
-            <a href="tel:+60164802817" className={styles.callLink}>
+            <Link href="tel:+60164802817" className={styles.callLink}>
               +60164802817
-            </a>
+            </Link>
           </div>
         </Link>
         {/* <Select

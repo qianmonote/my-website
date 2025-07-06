@@ -3,6 +3,7 @@
 import React from "react";
 import ContractBtn from "@/components/elements/CustomtBtn";
 import Image from "next/image";
+import Link from "next/link";
 import styles from "./style.module.css";
 
 type TProps = Partial<{
@@ -95,7 +96,9 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
               </a>
             </div>
             <div className={styles.footerContactInfo}>
-              <ContractBtn type="contactEn">Contact Us</ContractBtn>
+              <Link href="/contact">
+                <ContractBtn type="contactEn">Contact Us</ContractBtn>
+              </Link>
             </div>
           </div>
         </>
