@@ -83,9 +83,7 @@ const ProductSection: React.FC = () => {
                     />
                     <div className="product-card-description">{p.desc}</div>
                     <a className="product-card-more" href={p?.link} target="_blank">
-                      <CustomtBtn type="learnMore">
-                        {t("learnMore")}
-                      </CustomtBtn>
+                      <CustomtBtn type="learnMoreEn" />
                     </a>
                   </div>
                 </div>

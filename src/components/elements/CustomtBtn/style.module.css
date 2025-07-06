@@ -56,3 +56,14 @@
     background-size: 240px 72px;
   }
 }
+.learnMoreEnBtn {
+  display: inline-block;
+  width: 200px;
+  height: 48px;
+  background: url("/home/pt-more-btn.png") no-repeat center center;
+  background-size: 200px 48px;
+  &:hover {
+    background: url("/home/pt-more-btn-at.png") no-repeat center center;
+    background-size: 200px 48px;
+  }
+}

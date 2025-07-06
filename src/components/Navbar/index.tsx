@@ -132,9 +132,11 @@ const Navbar: React.FC = () => {
               style={{ marginRight: 8 }}
             />
             AI Link
-            <Link href="tel:+60164802817" className={styles.callLink}>
-              +60164802817
-            </Link>
+            <div>
+              <a href="tel:+60164802817" className={styles.callLink}>
+                +60164802817
+              </a>
+            </div>
           </div>
         </Link>
         {/* <Select

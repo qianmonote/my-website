@@ -12,28 +12,13 @@
     width: 100%;
     height: 484px;
     background: linear-gradient(180deg, rgba(33, 37, 43, 0) 0%, #21252b 100%);
+    position: absolute;
+    bottom: 0;
   }
-
-  .banner-title {
-    background: linear-gradient(90deg, #0055e9 0%, #4b8dff 100%);
-    background-clip: text;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-family: Oxanium;
-    font-weight: 600;
-    font-size: 48px;
-    line-height: 60px;
-    letter-spacing: 0;
-    text-transform: uppercase;
-    margin-bottom: 16px;
-  }
-
-  .banner-desc {
-    color: #b0b8c1;
-    font-size: 18px;
-    margin-bottom: 16px;
-    line-height: 16px;
-    white-space: pre-wrap;
+  .banner-content-wrapper .banner-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 16px 0 16px;
   }
 
   .custom-dots {
