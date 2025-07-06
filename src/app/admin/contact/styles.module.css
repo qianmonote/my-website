@@ -192,20 +192,24 @@
 }
 
 /* 模态框样式 */
-:global(.ant-modal-header) {
+.modalWrapper {
+  /* 基础样式 */
+}
+
+.modalWrapper :global(.ant-modal-header) {
   background: linear-gradient(135deg, #1677ff, #4096ff);
   border-radius: 8px 8px 0 0;
 }
 
-:global(.ant-modal-title) {
+.modalWrapper :global(.ant-modal-title) {
   color: white;
   font-weight: 600;
 }
 
-:global(.ant-modal-close) {
+.modalWrapper :global(.ant-modal-close) {
   color: white;
 }
 
-:global(.ant-modal-close:hover) {
+.modalWrapper :global(.ant-modal-close:hover) {
   color: rgba(255, 255, 255, 0.8);
 } 
