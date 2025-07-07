@@ -29,7 +29,7 @@
   text-align: center;
   z-index: 2;
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
 }
 
@@ -38,7 +38,7 @@
   height: 24%;
   background: linear-gradient(180deg, rgba(33, 37, 43, 0) 0%, #21252b 100%);
   display: flex;
-  align-items: end;
+  align-items: flex-end;
   justify-content: center;
 }
 

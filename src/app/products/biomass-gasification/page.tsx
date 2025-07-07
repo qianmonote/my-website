@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Row, Col, Card } from "antd";
+import { Row, Col } from "antd";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
@@ -180,7 +180,7 @@ const BiomassGasificationPage = () => {
             应用案例 · ONETOUCH与拉曼大学联合研发
           </h2>
           <div className={styles.partSectionIntroText}>
-            该项目标志着我司在可再生能源领域取得双重突破：技术上完成气化效率与系统稳定发性的行业革新，战略上构建"废弃物-绿电-碳汇"的循环经济范式，深度契合《巴黎协定》全球控温1.5℃目标
+            该项目标志着我司在可再生能源领域取得双重突破：技术上完成气化效率与系统稳定发性的行业革新，战略上构建&ldquo;废弃物-绿电-碳汇&rdquo;的循环经济范式，深度契合《巴黎协定》全球控温1.5℃目标
           </div>
           <Row gutter={16}>
             {applicationCardList.map((item, index) => (
