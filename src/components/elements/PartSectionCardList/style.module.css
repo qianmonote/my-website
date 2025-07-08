@@ -1,0 +1,68 @@
+.commonCard {
+  margin: 40px 0;
+  border-top: 2px solid;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.25);
+  border: 2px solid;
+  border-image-source: linear-gradient(
+    270deg,
+    #292c36 0%,
+    #ffffff 39.9%,
+    #fefdff 59.62%,
+    #292c36 100%
+  );
+  border-image-slice: 1;
+  width: 100%;
+}
+.commonCard:hover {
+  background: rgba(22, 119, 255, 0.08);
+  border-color: #1677ff;
+  transform: translateY(-4px) scale(1.03);
+}
+.commonImage {
+  margin-bottom: 18px;
+  text-align: center;
+}
+.commonContent {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+
+  h3 {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 100%;
+    color: rgba(255, 255, 255, 1);
+    text-align: center;
+    padding: 0 16px;
+    .featureContentTitle {
+      display: inline-block;
+    }
+
+    .commonTitleUnderline {
+      display: block;
+      margin: 16px auto 0 auto; /* 横线宽度可根据实际调整 */
+      height: 2px; /* 横线高度可根据实际调整 */
+      border: 0;
+      background: radial-gradient(
+        ellipse at center,
+        #fff 0%,
+        #bfc2c7 40%,
+        #292c36 100%
+      );
+      opacity: 0.7;
+      border-radius: 50%;
+      filter: blur(0.5px);
+    }
+  }
+  p {
+    opacity: 0.4;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 1);
+    min-height: 80px;
+    padding: 0 16px;
+  }
+}
