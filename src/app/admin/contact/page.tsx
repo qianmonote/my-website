@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { 
   Table, 
   Card, 
@@ -59,7 +59,7 @@ export default function ContactAdminPage() {
   });
 
   // 获取数据
-  const fetchData = async (params?: { current?: number; pageSize?: number }) => {
+  const fetchData = useCallback(async (params?: { current?: number; pageSize?: number }) => {
     setLoading(true);
     try {
       const queryParams = new URLSearchParams({
@@ -87,7 +87,7 @@ export default function ContactAdminPage() {
     } finally {
       setLoading(false);
     }
-  };
+  }, [pagination.current, pagination.pageSize, searchForm]);
 
   // 搜索处理
   const handleSearch = () => {

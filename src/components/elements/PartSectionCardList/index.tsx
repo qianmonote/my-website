@@ -38,17 +38,19 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
   return (
     <PartSection title={title} className={className} style={style}>
       <div className={styles.partSectionIntroText}>{introText}</div>
-      <Row gutter={16}>
+      <Row gutter={gutter}>
         {dataList.map((item, index) => (
           <Col key={index} span={item.colSpan || 8}>
             <div className={styles.commonCard}>
               <div className={styles.commonImage}>
-                <Image
-                  src={item.image}
-                  alt={item.title}
-                  width={item.imageWidth}
-                  height={item.imageHeight}
-                />
+                {item.image && (
+                  <Image
+                    src={item.image}
+                    alt={item.title || ''}
+                    width={item.imageWidth || 0}
+                    height={item.imageHeight || 0}
+                  />
+                )}
               </div>
               <div className={styles.commonContent}>
                 {item.title && (
