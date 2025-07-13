@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { Modal, Form, Input, Button, message } from "antd";
+import { Modal, Form, Input, Button, App } from "antd";
 import styles from "./styles.module.css";
 import ajax from "@/common/axios";
 import {
@@ -23,6 +23,7 @@ const layout = {
 const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const [form] = Form.useForm<ContactFormData>();
   const [loading, setLoading] = useState(false);
+  const { message } = App.useApp();
 
   const handleSubmit = async (values: ContactFormData) => {
     setLoading(true);
@@ -31,7 +32,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       .then((res) => {
         console.log(res, "handleSubmit");
         if (res.flag === 1) {
-          debugger
           message.success("提交成功！");
           form.resetFields();
           onClose();

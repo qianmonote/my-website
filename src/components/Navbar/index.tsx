@@ -9,7 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
 import styles from "./style.module.css";
-import ContactModal from '../elements/ContactModal';
+import ContactModal from "../elements/ContactModal";
 
 type NavbarProps = Partial<{
   noShowLangChange: boolean;
@@ -18,30 +18,30 @@ type NavbarProps = Partial<{
 // 中英文菜单项
 const menuItemsLangMap = {
   product1: {
-    zh: '生物质气化发电系统',
-    en: 'Biomass Gasification Power Generation System'
+    zh: "生物质气化发电系统",
+    en: "Biomass Gasification Power Generation System",
   },
   product2: {
-    zh: '分布式光储充一体化系统',
-    en: 'Distributed PV-Storage-Charging System'
+    zh: "分布式光储充一体化系统",
+    en: "Distributed PV-Storage-Charging System",
   },
   product3: {
-    zh: '智慧EV充电生态体系',
-    en: 'Distributed Solar Photovoltaic Power Systems'
+    zh: "智慧EV充电生态体系",
+    en: "Distributed Solar Photovoltaic Power Systems",
   },
   about: {
-    zh: '公司简介',
-    en: 'Company Introduction'
+    zh: "公司简介",
+    en: "Company Introduction",
   },
   contact: {
-    zh: '联系我们',
-    en: 'Contact Us'
+    zh: "联系我们",
+    en: "Contact Us",
   },
   productsAndServices: {
-    zh: '产品与服务',
-    en: 'Products and Services'
-  }
-}
+    zh: "产品与服务",
+    en: "Products and Services",
+  },
+};
 
 const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
   const { lang, setLang, t } = useI18n();
@@ -61,31 +61,41 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
   const productsMenuItems = [
     {
       label: (
-        <a href="/products/biomass-gasification">{menuItemsLangMap.product1[lang]}</a>
+        <a href="/products/biomass-gasification">
+          {menuItemsLangMap.product1[lang]}
+        </a>
       ),
       key: "product1",
       className: "activeMenuItem",
     },
     {
       label: (
-        <a href="/products/power-storage-integration">{menuItemsLangMap.product2[lang]}</a>
+        <a href="/products/power-storage-integration">
+          {menuItemsLangMap.product2[lang]}
+        </a>
       ),
       key: "product2",
       className: "activeMenuItem",
     },
     {
       label: (
-        <a href="/products/smart-ev-charging">{menuItemsLangMap.product3[lang]}</a>
+        <a href="/products/smart-ev-charging">
+          {menuItemsLangMap.product3[lang]}
+        </a>
       ),
       key: "product3",
       className: "activeMenuItem",
     },
-
   ];
 
   const menuItems = [
     {
-      label: <a href="/products/biomass-gasification"> {menuItemsLangMap.product1[lang]} </a>,
+      label: (
+        <a href="/products/biomass-gasification">
+          {" "}
+          {menuItemsLangMap.product1[lang]}{" "}
+        </a>
+      ),
       key: "product1",
       className: "activeMenuItem",
     },
@@ -150,9 +160,11 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         >
           {menuItemsLangMap.about[lang]}
         </Link>
-        <div onClick={handleOpenContactModal}>
-          <div className={styles.navbarMenuItemContact}>{menuItemsLangMap.contact[lang]}</div>
-        </div>
+        <a onClick={handleOpenContactModal}>
+          <div className={styles.navbarMenuItemContact}>
+            {menuItemsLangMap.contact[lang]}
+          </div>
+        </a>
         <div
           className={classNames(styles.navbarMenuItem, {
             [styles.active]: isProductsActive(),
@@ -207,7 +219,10 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
           />
         </Drawer>
       </div>
-      <ContactModal open={isContactModalOpen} onClose={handleCloseContactModal} />
+      <ContactModal
+        open={isContactModalOpen}
+        onClose={handleCloseContactModal}
+      />
     </nav>
   );
 };

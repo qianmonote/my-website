@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ConfigProvider } from "antd";
+import { AntdRegistry } from "@ant-design/nextjs-registry";
+import { ConfigProvider, App } from "antd";
 import zhCN from "antd/locale/zh_CN";
 import { I18nProvider } from "@/context/I18nContext";
 import themeConfig from "@/config/theme";
@@ -34,12 +35,13 @@ export default function RootLayout({
       >
         <PageLoadManager />
         <I18nProvider>
-          <ConfigProvider
-            theme={themeConfig}
-            locale={zhCN}
-          >
-            {children}
-          </ConfigProvider>
+          <AntdRegistry>
+            <ConfigProvider theme={themeConfig} locale={zhCN}>
+              <App>
+                {children}
+              </App>
+            </ConfigProvider>
+          </AntdRegistry>
         </I18nProvider>
       </body>
     </html>

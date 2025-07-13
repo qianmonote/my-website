@@ -81,6 +81,7 @@
   text-align: center;
   background: url("/header/link-default.png") no-repeat center center;
   transition: all 0.3s ease;
+  color: #fff;
 }
 .navbarMenuItemContact.active {
   background: url("/header/link-active.png") no-repeat center center;
