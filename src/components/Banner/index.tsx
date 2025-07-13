@@ -2,7 +2,6 @@
 
 import React from "react";
 import { Carousel } from "antd";
-import Image from "next/image";
 import "./index.css";
 
 const Banner: React.FC = () => {
@@ -47,11 +46,11 @@ const Banner: React.FC = () => {
                 backgroundSize: "cover",
               }}
             >
-              {slide.content && (
+              {/* {slide?.content && (
                 <div className="banner-content-wrapper">
                   <div className="banner-content">{slide.content}</div>
                 </div>
-              )}
+              )} */}
             </div>
           </div>
         ))}

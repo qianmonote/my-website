@@ -18,7 +18,7 @@ interface ContactFormValues {
 }
 
 const layout = {
-  labelCol: { flex: '100px', textAlign: 'left' },
+  labelCol: { flex: "100px", textAlign: "left" },
   wrapperCol: { span: 18 },
 };
 
@@ -44,8 +44,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       message.success("提交成功！");
       form.resetFields();
       onClose();
-    } catch (err: unknown) {
-      message.error("提交失败，请稍后重试");
     } finally {
       setLoading(false);
     }
