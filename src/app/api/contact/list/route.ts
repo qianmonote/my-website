@@ -102,7 +102,7 @@ export async function GET(request: NextRequest) {
         success: false, 
         message: '服务器错误，请稍后重试' 
       },
-      { status: 500 }
+      { flag: 0, code: 500, message: "服务器错误，请稍后重试" }
     );
   }
 } 

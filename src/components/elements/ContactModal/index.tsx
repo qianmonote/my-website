@@ -3,50 +3,43 @@
 import React, { useState } from "react";
 import { Modal, Form, Input, Button, message } from "antd";
 import styles from "./styles.module.css";
+import ajax from "@/common/axios";
+import {
+  ApiResponse,
+  ContactFormData,
+  ContactFormResponse,
+} from "@/common/types";
 
 interface ContactModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-interface ContactFormValues {
-  companyName: string;
-  contactName: string;
-  phone: string;
-  email: string;
-  service: string;
-}
-
 const layout = {
-  labelCol: { flex: "100px", textAlign: "left" },
+  labelCol: { style: { width: "100px", textAlign: "left" as const } },
   wrapperCol: { span: 18 },
 };
 
 const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
-  const [form] = Form.useForm();
+  const [form] = Form.useForm<ContactFormData>();
   const [loading, setLoading] = useState(false);
 
-  const handleSubmit = async (values: ContactFormValues) => {
-    try {
-      setLoading(true);
-      const response = await fetch("/api/contact/submit", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(values),
+  const handleSubmit = async (values: ContactFormData) => {
+    setLoading(true);
+    ajax
+      .post<ApiResponse<ContactFormResponse>>("/api/contact/submit", values)
+      .then((res) => {
+        console.log(res, "handleSubmit");
+        if (res.flag === 1) {
+          debugger
+          message.success("提交成功！");
+          form.resetFields();
+          onClose();
+        }
+      })
+      .finally(() => {
+        setLoading(false);
       });
-
-      if (!response.ok) {
-        throw new Error("提交失败");
-      }
-
-      message.success("提交成功！");
-      form.resetFields();
-      onClose();
-    } finally {
-      setLoading(false);
-    }
   };
 
   return (
@@ -68,14 +61,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
             {...layout}
           >
             <Form.Item
-              name="companyName"
+              name="company"
               label="公司名称"
               rules={[{ required: true, message: "请输入公司名称" }]}
             >
               <Input placeholder="请输入公司名称" />
             </Form.Item>
             <Form.Item
-              name="contactName"
+              name="name"
               label="联系人姓名"
               rules={[{ required: true, message: "请输入联系人姓名" }]}
             >
@@ -86,7 +79,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
               label="手机号"
               rules={[
                 { required: true, message: "请输入手机号" },
-                { pattern: /^1[3-9]\d{9}$/, message: "请输入正确的手机号" },
+                { pattern: /^[0-9]\d{4,14}$/, message: "请输入正确的手机号" },
               ]}
             >
               <Input placeholder="请输入手机号" />
@@ -102,18 +95,21 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
               <Input placeholder="请输入电子邮件" />
             </Form.Item>
             <Form.Item
-              name="service"
+              name="content"
               label="咨询业务"
               rules={[{ required: true, message: "请输入咨询业务" }]}
             >
-              <Input.TextArea placeholder="请输入咨询业务" rows={4} />
+              <Input.TextArea
+                placeholder="请输入咨询业务"
+                autoSize={{ minRows: 2, maxRows: 3 }}
+              />
             </Form.Item>
             <div className={styles.submitSection}>
               <Button
                 type="primary"
-                htmlType="submit"
                 loading={loading}
                 className={styles.submitButton}
+                onClick={() => form.submit()}
               >
                 提交
               </Button>
