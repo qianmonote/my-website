@@ -2,8 +2,6 @@
 
 import React from "react";
 import { Carousel } from "antd";
-import Link from "next/link";
-import ContractBtn from "@/components/elements/CustomtBtn";
 import Image from "next/image";
 import "./index.css";
 
@@ -13,22 +11,28 @@ const Banner: React.FC = () => {
   const bannerSlides = [
     {
       id: 1,
-      image: "/images/home-bn.png",
-      content: (
-        <>
-          <Image
-            src="/home/bn-one-cont.png"
-            alt="banner"
-            width={627}
-            height={199}
-            style={{ marginBottom: "40px", marginLeft: '-100px' }}
-          />
-          <Link href="/contact" style={{ marginLeft: '-100px' }}>
-            <ContractBtn type="contactEn" />
-          </Link>
-        </>
-      ),
-    }
+      image: "/home/banner/bn-1.jpg",
+    },
+    {
+      id: 2,
+      image: "/home/banner/bn-2.jpg",
+    },
+    {
+      id: 3,
+      image: "/home/banner/bn-3.jpg",
+    },
+    {
+      id: 4,
+      image: "/home/banner/bn-4.jpg",
+    },
+    {
+      id: 5,
+      image: "/home/banner/bn-5.jpg",
+    },
+    {
+      id: 5,
+      image: "/home/banner/bn-6.jpg",
+    },
   ];
 
   return (
@@ -43,9 +47,11 @@ const Banner: React.FC = () => {
                 backgroundSize: "cover",
               }}
             >
-              <div className="banner-content-wrapper">
-                <div className="banner-content">{slide.content}</div>
-              </div>
+              {slide.content && (
+                <div className="banner-content-wrapper">
+                  <div className="banner-content">{slide.content}</div>
+                </div>
+              )}
             </div>
           </div>
         ))}

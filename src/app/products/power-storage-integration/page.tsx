@@ -11,6 +11,8 @@ import Footer from "@/components/Footer";
 
 import styles from "./styles.module.css";
 import HeroSection from "@/components/elements/HeroSection";
+import SolutionCardList from "@/components/elements/SolutionCardList";
+import StepCardList from "@/components/elements/StepCardList";
 
 const PowerStorageIntegrationPage = () => {
   return (
@@ -18,9 +20,18 @@ const PowerStorageIntegrationPage = () => {
       <Navbar />
       {/* 头图区 */}
       <HeroSection
-        title="分布式光储充一体化系统"
+        title="智能储能解决方案"
         backgroundImage="/product/p2/bn.jpg"
       />
+      
+      <section className={styles.processSection}>
+        <h2 className={styles.sectionTitle}>充电流程</h2>
+        <p className={styles.sectionDescription}>
+          简单便捷的充电体验，智能化的服务流程
+        </p>
+        <SolutionCardList />
+      </section>
+      <StepCardList />
       <section className={styles.principleSection}>
         <div className={styles.principleContainer}>
           <Row>
