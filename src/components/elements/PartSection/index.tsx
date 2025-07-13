@@ -7,7 +7,7 @@ import classNames from "classnames";
 import styles from "./style.module.css";
 
 interface PartSectionProps {
-  title?: string;
+  title?: React.ReactNode;
   children?: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;

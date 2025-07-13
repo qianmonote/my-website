@@ -9,7 +9,7 @@ import styles from "./style.module.css";
 
 type PartSectionCardListProps = Partial<{
   /** 标题 */
-  title: string;
+  title: React.ReactNode;
   /** 介绍文本 */
   introText: string;
   className?: string;
@@ -24,7 +24,16 @@ type PartSectionCardListProps = Partial<{
     description: string;
     colSpan: number;
   }>[];
-  gutter?: number;
+  defaultImageSize?: {
+    imageWidth?: number;
+    imageHeight?: number;
+    style?: React.CSSProperties;
+  };
+  defaultColSpan?: number;
+  defaultRowGutter?: number;
+  titleUnderlinePlacement?: "bottom" | "top";
+  descriptionStyle?: React.CSSProperties;
+  contentStyle?: React.CSSProperties;
 }>;
 
 const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
@@ -32,36 +41,53 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
   introText,
   className = "",
   style,
-  gutter = 16,
+  defaultRowGutter = 16,
   dataList = [],
+  defaultColSpan = 8,
+  defaultImageSize = {
+    imageWidth: 0,
+    imageHeight: 0,
+    style: {},
+  },
+  titleUnderlinePlacement = "bottom",
+  descriptionStyle = {},
+  contentStyle = {},
 }) => {
   return (
     <PartSection title={title} className={className} style={style}>
       <div className={styles.partSectionIntroText}>{introText}</div>
-      <Row gutter={gutter}>
+      <Row gutter={defaultRowGutter}>
         {dataList.map((item, index) => (
-          <Col key={index} span={item.colSpan || 8}>
+          <Col key={index} span={item.colSpan || defaultColSpan}>
             <div className={styles.commonCard}>
-              <div className={styles.commonImage}>
+              <div
+                className={styles.commonImage}
+                style={{ ...defaultImageSize.style }}
+              >
                 {item.image && (
                   <Image
                     src={item.image}
-                    alt={item.title || ''}
-                    width={item.imageWidth || 0}
-                    height={item.imageHeight || 0}
+                    alt={item.title || ""}
+                    width={item.imageWidth || defaultImageSize.imageWidth}
+                    height={item.imageHeight || defaultImageSize.imageHeight}
                   />
                 )}
               </div>
-              <div className={styles.commonContent}>
+              <div className={styles.commonContent} style={contentStyle}>
                 {item.title && (
                   <h3>
                     <div className={styles.commonContentTitle}>
+                      {titleUnderlinePlacement === "top" && (
+                        <div className={styles.commonTitleUnderlineTop} />
+                      )}
                       {item.title}
-                      <div className={styles.commonTitleUnderline} />
+                      {titleUnderlinePlacement === "bottom" && (
+                        <div className={styles.commonTitleUnderlineBottom} />
+                      )}
                     </div>
                   </h3>
                 )}
-                {item.description && <p>{item.description}</p>}
+                {item.description && <p style={descriptionStyle}>{item.description}</p>}
               </div>
             </div>
           </Col>

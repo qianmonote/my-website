@@ -9,6 +9,7 @@ import Link from "next/link";
 import Image from "next/image";
 import classNames from "classnames";
 import styles from "./style.module.css";
+import ContactModal from '../elements/ContactModal';
 
 type NavbarProps = Partial<{
   noShowLangChange: boolean;
@@ -46,6 +47,15 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
   const { lang, setLang, t } = useI18n();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pathname = usePathname();
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+
+  const handleOpenContactModal = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false);
+  };
 
   // Products and Services 下拉菜单项
   const productsMenuItems = [
@@ -140,9 +150,9 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         >
           {menuItemsLangMap.about[lang]}
         </Link>
-        <Link href="/contact">
+        <div onClick={handleOpenContactModal}>
           <div className={styles.navbarMenuItemContact}>{menuItemsLangMap.contact[lang]}</div>
-        </Link>
+        </div>
         <div
           className={classNames(styles.navbarMenuItem, {
             [styles.active]: isProductsActive(),
@@ -197,6 +207,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
           />
         </Drawer>
       </div>
+      <ContactModal open={isContactModalOpen} onClose={handleCloseContactModal} />
     </nav>
   );
 };

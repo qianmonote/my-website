@@ -1,0 +1,69 @@
+.contactModal {
+  :global(.ant-modal-content) {
+    padding: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+}
+
+.modalContent {
+  display: flex;
+  height: 537px;
+}
+
+.leftSection {
+  flex: 0 0 311px;
+  background: url("/common/contact-modal-lf-bg.png") no-repeat center center;
+  background-size: 311px 537px;
+}
+
+.rightSection {
+  flex: 1;
+  padding: 35px 75px  0;
+  background: white;
+  overflow-y: auto;
+}
+.title {
+  text-align: center;
+  margin: 20px 0 16px;
+}
+
+.form {
+  max-width: 100%;
+}
+
+.form :global(.ant-form-item) {
+  margin-bottom: 16px;
+}
+
+.submitSection {
+  text-align: center;
+}
+
+.submitButton {
+  width: 200px;
+  height: 46px;
+  font-size: 16px;
+  border-radius: 24px;
+  background: #1677ff;
+  border: none;
+}
+
+.submitButton:hover {
+  background: #4096ff;
+}
+
+.agreement {
+  margin-top: 16px;
+  font-size: 12px;
+  color: #666;
+}
+
+.agreement a {
+  color: #1677ff;
+  text-decoration: none;
+}
+
+.agreement a:hover {
+  text-decoration: underline;
+}

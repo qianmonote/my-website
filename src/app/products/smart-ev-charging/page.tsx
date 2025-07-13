@@ -1,12 +1,14 @@
 "use client";
 
 import React from "react";
+import { Row, Col } from "antd";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/elements/HeroSection";
 import PartSection from "@/components/elements/PartSection";
 import PartSectionCardList from "@/components/elements/PartSectionCardList";
+import StepCardList from "@/components/elements/StepCardList";
 import styles from "./styles.module.css";
 
 const SmartEVChargingPage = () => {
@@ -78,7 +80,7 @@ const SmartEVChargingPage = () => {
         title="智慧EV充电生态体系"
         backgroundImage="/product/p4/bn.png"
       />
-
+      {/* Part1 */}
       <PartSection>
         <Image
           src="/product/p4/part1.png"
@@ -87,6 +89,7 @@ const SmartEVChargingPage = () => {
           height={667}
         />
       </PartSection>
+      {/* Part2 */}
       <PartSection title="移动充电机器人六大黄金场景">
         <Image
           src="/product/p4/part2-des.png"
@@ -95,16 +98,50 @@ const SmartEVChargingPage = () => {
           height={400}
         />
       </PartSection>
+      {/* Part3 */}
+      <PartSection
+        title={
+          <div className={styles.part3SectionTitle}>
+            EV充电专用APP——DC-CAT{" "}
+            <Image
+              src="/product/p4/part3/tit-icon.png"
+              alt=""
+              width={80}
+              height={80}
+              className={styles.part3SectionTitleIcon}
+            />
+            <Image
+              src="/product/p4/part3/tit-bg.png"
+              alt=""
+              width={305}
+              height={305}
+              className={styles.part3SectionTitleBg}
+            />
+          </div>
+        }
+      >
+        <StepCardList />
+      </PartSection>
+      {/* Part4 */}
       <PartSectionCardList
         title="移动充电机器人核心优势"
         dataList={coreAdvantageDataList}
       />
-
-      <PartSectionCardList
-        title="应用案例-拉曼大学3*60KW绿电快充项目"
-        dataList={applicationCaseDataList}
-        gutter={0}
-      />
+      {/* Part5 */}
+      <PartSection title="应用案例-拉曼大学3*60KW绿电快充项目">
+        <Row>
+          {applicationCaseDataList.map((item, index) => (
+            <Col span={item.colSpan} key={index}>
+              <Image
+                src={item.image}
+                alt="移动充电机器人六大黄金场景"
+                width={item.imageWidth}
+                height={item.imageHeight}
+              />
+            </Col>
+          ))}
+        </Row>
+      </PartSection>
 
       <Footer inviteShow={false} />
     </div>

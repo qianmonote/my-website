@@ -1,53 +1,43 @@
-'use client';
+"use client";
 
-import React from 'react';
-import styles from './styles.module.css';
+import React from "react";
+import Image from "next/image";
+import styles from "./styles.module.css";
 
-interface SolutionCardProps {
+type SolutionCardProps = Partial<{
   number: string;
   title: string;
   description: string;
   features: string[];
   image: string;
+  imageActive: string;
   isActive?: boolean;
   onClick?: () => void;
   onMouseEnter?: () => void;
-}
+}>;
 
 const SolutionCard: React.FC<SolutionCardProps> = ({
-  number,
-  title,
-  description,
-  features,
   image,
   isActive = false,
+  imageActive,
   onClick,
-  onMouseEnter
+  onMouseEnter,
 }) => {
+  const imageWidth = isActive ? 595 : 119;
+  const imageHeight = isActive ? 440 : 440;
   return (
-    <div 
-      className={`${styles.card} ${isActive ? styles.active : ''}`}
+    <div
+      className={`${styles.card} ${isActive ? styles.active : ""}`}
       onClick={onClick}
       onMouseEnter={onMouseEnter}
     >
-      <div className={styles.number}>{number}</div>
-      <div className={styles.content}>
-        <h3 className={styles.title}>{title}</h3>
-        <div className={styles.details}>
-          <ul className={styles.features}>
-            {features.map((feature, index) => (
-              <li key={index}>{feature}</li>
-            ))}
-          </ul>
-          <p className={styles.description}>{description}</p>
-        </div>
-      </div>
-      <div 
+      <div
         className={styles.background}
-        style={{ backgroundImage: `url(${image})` }}
-      />
+      >
+        <Image src={isActive ? imageActive : image} width={imageWidth} height={imageHeight} alt="solution"  unoptimized={true}/>
+      </div>
     </div>
   );
 };
 
-export default SolutionCard; 
+export default SolutionCard;

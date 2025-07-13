@@ -31,17 +31,35 @@
     font-family: Inter;
     font-weight: 400;
     font-size: 16px;
-    line-height: 100%;
+    line-height: 24px;
     color: rgba(255, 255, 255, 1);
     text-align: center;
     padding: 0 16px;
-    .featureContentTitle {
+    margin: 0 0 16px;
+    .commonContentTitle {
       display: inline-block;
     }
 
-    .commonTitleUnderline {
+    .commonTitleUnderlineBottom {
       display: block;
       margin: 16px auto 0 auto; /* 横线宽度可根据实际调整 */
+      width: 80px;
+      height: 2px; /* 横线高度可根据实际调整 */
+      border: 0;
+      background: radial-gradient(
+        ellipse at center,
+        #fff 0%,
+        #bfc2c7 40%,
+        #292c36 100%
+      );
+      opacity: 0.7;
+      border-radius: 50%;
+      filter: blur(0.5px);
+    }
+    .commonTitleUnderlineTop {
+      display: block;
+      margin: 0 auto 16px auto; /* 横线宽度可根据实际调整 */
+      width: 80px;
       height: 2px; /* 横线高度可根据实际调整 */
       border: 0;
       background: radial-gradient(

@@ -2,8 +2,8 @@ const theme = {
   token: {
     // 全局 token 配置
     colorPrimary: '#1677ff',
-    colorBorder: 'rgba(255, 255, 255, 0.16)',
-    borderRadius: 20,
+    colorBorder: 'rgba(0, 0, 0, 0.08)',
+    borderRadius: 8,
   },
   components: {
     Carousel: {
@@ -42,6 +42,7 @@ const theme = {
       colorItemText: '#fff',
       colorItemTextHover: '#fff',
       colorItemTextSelected: '#fff',
+      borderRadius: 20,
     },
     Drawer: {
       colorBgElevated: 'rgba(20, 22, 25, 1)',
