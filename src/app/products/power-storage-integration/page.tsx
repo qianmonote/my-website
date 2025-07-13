@@ -103,7 +103,7 @@ const PowerStorageIntegrationPage = () => {
       </PartSection>
 
       {/* Part 2 */}
-      <PartSection title="光、储、柴、充一体化智慧能源解决方案">
+      <PartSection title="">
         <Image
           src="/product/p2/part2/01.png"
           alt="分布式光储充一体化系统"

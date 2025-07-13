@@ -10,10 +10,3 @@
 .card.active {
   flex: 3;
 }
-
-@media (max-width: 768px) {
-  .container {
-    flex-direction: column;
-    height: auto;
-  }
-} 
