@@ -21,6 +21,32 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ONETOUCH AGRI ROBOTECH SDN. BHD.",
   description: "科技让农田更高效",
+  viewport: {
+    width: 'device-width',
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: 'cover',
+  },
+  themeColor: '#1677ff',
+  formatDetection: {
+    telephone: true,
+    date: false,
+    address: false,
+    email: true,
+  },
+  applicationName: "ONETOUCH AGRI ROBOTECH",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'black-translucent',
+    title: "ONETOUCH AGRI ROBOTECH",
+  },
+  other: {
+    'mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-capable': 'yes',
+    'apple-mobile-web-app-status-bar-style': 'black-translucent',
+    'msapplication-TileColor': '#1677ff',
+  },
 };
 
 export default function RootLayout({
