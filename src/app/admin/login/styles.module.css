@@ -1,0 +1,64 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #21252B;
+}
+
+.loginBox {
+  width: 100%;
+  max-width: 400px;
+  padding: 40px;
+  background: #2C313A;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.loginBox h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  color: #ffffff;
+}
+
+.form {
+  width: 100%;
+}
+
+.form :global(.ant-form-item) {
+  margin-bottom: 24px;
+}
+
+.form :global(.ant-form-item-label > label) {
+  color: #ffffff !important;
+}
+
+.form :global(.ant-input),
+.form :global(.ant-input-password) {
+  height: 40px;
+  padding: 8px 12px;
+  font-size: 14px;
+  background: #373B44;
+  border-color: #4B5563;
+  color: #ffffff;
+}
+
+.form :global(.ant-input:hover),
+.form :global(.ant-input-password:hover) {
+  border-color: #1677ff;
+}
+
+.form :global(.ant-input:focus),
+.form :global(.ant-input-password:focus) {
+  border-color: #1677ff;
+  box-shadow: 0 0 0 2px rgba(22, 119, 255, 0.2);
+}
+
+.form :global(.ant-input-password-icon) {
+  color: #9CA3AF;
+}
+
+.form :global(.ant-btn) {
+  height: 40px;
+  font-size: 16px;
+} 

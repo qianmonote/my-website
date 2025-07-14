@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
     const totalPages = Math.ceil(total / params.pageSize!);
     
     return NextResponse.json({
-      success: true,
+      flag: 1,
       data: {
         list: contacts,
         pagination: {
@@ -99,10 +99,10 @@ export async function GET(request: NextRequest) {
     console.error('查询联系表单数据错误:', error);
     return NextResponse.json(
       { 
-        success: false, 
-        message: '服务器错误，请稍后重试' 
+        flag: 0,
+        msg: '服务器错误，请稍后重试'
       },
-      { flag: 0, code: 500, message: "服务器错误，请稍后重试" }
+      { status: 500 }
     );
   }
 } 

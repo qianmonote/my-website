@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useCallback } from 'react';
+import { useRouter } from 'next/navigation';
 import { 
   Table, 
   Card, 
@@ -8,22 +9,33 @@ import {
   Button, 
   Space, 
   DatePicker, 
-  message,
   Tag,
   Tooltip,
-  Modal
+  Modal,
+  App
 } from 'antd';
 import { SearchOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/icons';
 import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
-import { ContactFormData } from '@/lib/database';
+import type { RangePickerProps } from 'antd/es/date-picker';
 import styles from './styles.module.css';
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
 
+interface ContactFormData {
+  id: number;
+  name: string;
+  phone: string;
+  email: string;
+  company?: string;
+  content: string;
+  created_at: string;
+}
+
 interface ContactListResponse {
-  success: boolean;
-  data: {
+  flag: 0 | 1;
+  msg?: string;
+  data?: {
     list: ContactFormData[];
     pagination: {
       current: number;
@@ -34,10 +46,11 @@ interface ContactListResponse {
       hasPrev: boolean;
     };
   };
-  message?: string;
 }
 
-export default function ContactAdminPage() {
+export default function AdminContactPage() {
+  const router = useRouter();
+  const { message: antMessage } = App.useApp();
   const [data, setData] = useState<ContactFormData[]>([]);
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({
@@ -58,6 +71,27 @@ export default function ContactAdminPage() {
     data: null as ContactFormData | null
   });
 
+  // 检查登录状态
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch('/api/auth/check', {
+          method: 'GET',
+          credentials: 'include',
+        });
+
+        if (!response.ok) {
+          router.replace('/admin/login');
+        }
+      } catch (error) {
+        console.error('验证登录状态失败:', error);
+        router.replace('/admin/login');
+      }
+    };
+
+    checkAuth();
+  }, [router]);
+
   // 获取数据
   const fetchData = useCallback(async (params?: { current?: number; pageSize?: number }) => {
     setLoading(true);
@@ -68,10 +102,12 @@ export default function ContactAdminPage() {
         ...searchForm
       });
 
-      const response = await fetch(`/api/contact/list?${queryParams}`);
+      const response = await fetch(`/api/contact/list?${queryParams}`, {
+        credentials: 'include',
+      });
       const result: ContactListResponse = await response.json();
 
-      if (result.success) {
+      if (result.flag === 1 && result.data) {
         setData(result.data.list);
         setPagination({
           current: result.data.pagination.current,
@@ -79,15 +115,15 @@ export default function ContactAdminPage() {
           total: result.data.pagination.total,
         });
       } else {
-        message.error(result.message || '获取数据失败');
+        antMessage.error(result.msg || '获取数据失败');
       }
     } catch (error) {
       console.error('获取数据错误:', error);
-      message.error('网络错误，请稍后重试');
+      antMessage.error('网络错误，请稍后重试');
     } finally {
       setLoading(false);
     }
-  }, [pagination.current, pagination.pageSize, searchForm]);
+  }, [searchForm, antMessage]);
 
   // 搜索处理
   const handleSearch = () => {
@@ -106,13 +142,11 @@ export default function ContactAdminPage() {
       endDate: ''
     });
     setPagination({ ...pagination, current: 1 });
-    setTimeout(() => {
-      fetchData({ current: 1 });
-    }, 100);
+    fetchData({ current: 1 });
   };
 
   // 日期选择处理
-  const handleDateRangeChange = (dates: [unknown, unknown] | null, dateStrings: string[]) => {
+  const handleDateRangeChange = (_: RangePickerProps['value'], dateStrings: [string, string]) => {
     setSearchForm({
       ...searchForm,
       startDate: dateStrings[0],
@@ -182,7 +216,6 @@ export default function ContactAdminPage() {
       dataIndex: 'created_at',
       key: 'created_at',
       width: 180,
-      sorter: true,
       render: (text) => {
         const date = new Date(text);
         return date.toLocaleString('zh-CN');
@@ -335,7 +368,7 @@ export default function ContactAdminPage() {
             </div>
             <div className={styles.detailItem}>
               <label>提交时间：</label>
-              <span>{new Date(detailModal.data.created_at || '').toLocaleString('zh-CN')}</span>
+              <span>{new Date(detailModal.data.created_at).toLocaleString('zh-CN')}</span>
             </div>
             <div className={styles.detailItem}>
               <label>咨询内容：</label>

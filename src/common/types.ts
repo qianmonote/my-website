@@ -1,9 +1,12 @@
 // API响应类型
 export interface ApiResponse<T = unknown> {
   flag: 0 | 1;
-  msg?: string;
   data?: T;
-  [key: string]: any; // 支持其他错误信息
+  error?: {
+    message?: string;
+    code?: number;
+    details?: unknown;
+  };
 }
 
 // 联系表单数据类型

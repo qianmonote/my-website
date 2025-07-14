@@ -1,8 +1,8 @@
 import axios from 'axios';
+import type { AxiosRequestConfig } from 'axios';
 import qs from 'qs';
-import { ApiResponse } from '../types';
 
-// 创建axios实例
+// 创建axios实例并覆盖默认的响应类型
 const ajax = axios.create({
   withCredentials: true,
   headers: { 
@@ -34,8 +34,10 @@ ajax.interceptors.request.use(
   function (error) {
     return Promise.reject({
       flag: 0,
-      msg: '请求配置错误',
-      error
+      error: {
+        message: '请求配置错误',
+        details: error
+      }
     });
   }
 );
@@ -59,15 +61,42 @@ ajax.interceptors.response.use(
     if (error.response) {
       return Promise.reject({
         flag: 0,
-        msg: error.response.data?.msg || '请求失败，请重试',
-        error: error.response.data
+        error: {
+          message: error.response.data?.msg || '请求失败，请重试',
+          details: error.response.data
+        }
       });
     }
     return Promise.reject({
       flag: 0,
-      msg: '网络错误，请检查网络连接'
+      error: {
+        message: '网络错误，请检查网络连接'
+      }
     });
   }
 );
 
-export default ajax;
+// 定义基础响应类型
+interface BaseResponse {
+  flag: 0 | 1;
+  error?: {
+    message?: string;
+    details?: unknown;
+  };
+  data?: unknown;
+}
+
+// 重写 axios 实例的类型
+type CustomInstance = {
+  <T extends BaseResponse>(config: AxiosRequestConfig): Promise<T>;
+  get: <T extends BaseResponse>(url: string, config?: AxiosRequestConfig) => Promise<T>;
+  delete: <T extends BaseResponse>(url: string, config?: AxiosRequestConfig) => Promise<T>;
+  head: <T extends BaseResponse>(url: string, config?: AxiosRequestConfig) => Promise<T>;
+  options: <T extends BaseResponse>(url: string, config?: AxiosRequestConfig) => Promise<T>;
+  post: <T extends BaseResponse>(url: string, data?: unknown, config?: AxiosRequestConfig) => Promise<T>;
+  put: <T extends BaseResponse>(url: string, data?: unknown, config?: AxiosRequestConfig) => Promise<T>;
+  patch: <T extends BaseResponse>(url: string, data?: unknown, config?: AxiosRequestConfig) => Promise<T>;
+};
+
+// 导出带有自定义类型的实例
+export default ajax as CustomInstance;

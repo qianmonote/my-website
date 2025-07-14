@@ -1,16 +1,45 @@
-import React, { useState, useEffect, useReducer, Reducer } from 'react'
+import React, { useState, useEffect, useReducer } from 'react'
 import { message } from 'antd'
+import axios from '../common/axios'
 
-type AjaxTablePagination = Partial<{
-  total: number
-  realPageSize: number
-  pageSize: number
-  current: number
-  showQuickJumper: boolean
-  showSizeChanger: boolean
-  pageSizeOptions: number[]
-  showTotal: (total, range) => React.ReactNode
-}>
+interface TableResponse<T> {
+  list: T[]
+  totalCount: number
+}
+
+interface ApiResponse<T> {
+  flag: 0 | 1;
+  data?: T;
+  error?: {
+    message?: string;
+    details?: unknown;
+  };
+}
+
+type AjaxTablePagination = {
+  total?: number
+  realPageSize?: number
+  pageSize?: number
+  current?: number
+  showQuickJumper?: boolean
+  showSizeChanger?: boolean
+  pageSizeOptions?: number[]
+  showTotal?: (total: number, range: [number, number]) => React.ReactNode
+}
+
+interface TableColumn {
+  title?: string
+}
+
+interface SortField {
+  field: string
+  order: 'ascend' | 'descend'
+  filedKey: string
+  filedName?: string
+  column?: TableColumn
+}
+
+type SearchData = Record<string, string | number | boolean | null>
 
 const DEFAULT_STATE = {
   searchData: {},
@@ -20,123 +49,79 @@ const DEFAULT_STATE = {
     showQuickJumper: false,
     showSizeChanger: false,
     pageSizeOptions: [50, 100, 200]
-    // showTotal: (total, range) => {
-    //   return `共 ${total} 条数据，当前显示 ${range[0]} - ${range[1]} 条`
-    // }
   }
 }
 
+type ActionType = 'submit' | 'changePage' | 'changSearchData'
 
-function reducer<T>(state: AjaxTableState<T>, action: AjaxTableAction): AjaxTableState<T> {
+interface AjaxTableAction<T extends SearchData> {
+  type: ActionType
+  data?: Partial<T> | AjaxTablePagination
+}
+
+interface AjaxTableState<P extends SearchData> {
+  lazyLock: boolean
+  pagination: AjaxTablePagination
+  searchData: P
+}
+
+function reducer<T extends SearchData>(state: AjaxTableState<T>, action: AjaxTableAction<T>): AjaxTableState<T> {
   switch (action.type) {
     case 'submit':
       return {
         lazyLock: false,
         pagination: { ...state.pagination, current: 1 },
-        searchData: { ...state.searchData, ...action.data }
+        searchData: { ...state.searchData, ...(action.data as Partial<T>) }
       }
     case 'changePage':
       return {
         ...state,
         lazyLock: false,
-        pagination: { ...state.pagination, ...action.data }
+        pagination: { ...state.pagination, ...(action.data as AjaxTablePagination) }
       }
     case 'changSearchData':
       return {
         ...state,
         lazyLock: false,
-        searchData: { ...state.searchData, ...action.data }
+        searchData: { ...state.searchData, ...(action.data as Partial<T>) }
       }
+    default:
+      return state
   }
 }
 
-type AjaxTableAction = Partial<{
-  type: string
-  data: Record<string, any>
-}>
+interface AjaxTableProps {
+  lazyLoad?: boolean
+  defaultPageSize?: number
+  defaultSearchData?: SearchData
+  requestType?: 'json'
+  ajaxType?: 'get' | 'post'
+  showSizeChanger?: boolean
+  pageSizeOptions?: number[]
+  sortMultiple?: boolean
+}
 
-type AjaxTableState<P extends AjaxTableSearchData> = Partial<{
-  /**
-   * 是否处于lazyLoad锁定中
-   */
-  lazyLock: boolean
-  pagination: AjaxTablePagination
-  searchData: P
-}>
-
-type AjaxTableProps = Partial<{
-  /**
-   * 初始化时是否请求数据
-   * 默认：false ; 初始化时请求, 触发 useEffect 即执行请求。
-   * true: 初始化时不请求，触发 submit 才加载。
-   */
-  lazyLoad: boolean
-  /**
-   * 默认每页数据量:15
-   */
-  defaultPageSize: number
-  /**
-   * 初始化时的搜索数据, 仅首次请求会放入。
-   * 后续被清空后，无法找回
-   */
-  defaultSearchData: Record<string, any>
-  /**
-   * 发送 {data:{...searchData}} 结构
-   */
-  requestType: 'json'
-  /**
-   * ajax 调用类型
-   */
-  ajaxType: string
-  /**
-   * 显示切换pageSize: 默认 false，不显示
-   *
-   */
-  showSizeChanger: boolean
-  /**
-   * pageSize可选项:默认 [50, 100, 200]
-   */
-  pageSizeOptions: number[]
-
-  /**
-   * 多排模式:默认false，单排， true 多排。
-   * 需要 antd 4.24.6。 4.18.9 不支持多排。
-   * columns 需要同时设置  sorter: { multiple: number } 开启多排
-   */
-  sortMultiple: boolean
-}>
-
-export interface AjaxTableCallBack<T, P extends Record<any, any>> {
+export interface AjaxTableCallBack<T, P extends SearchData> {
   dataList: T[]
   setDataList: (list: T[]) => void
-  /**
-   * 排序信息, 多排时，才有值。
-   */
-  sortFields: { field: string; order: string }[]
+  sortFields: SortField[]
   pagination: AjaxTablePagination
   loading: boolean
   setLoading: (data: boolean) => void
   setPagination: (data: AjaxTablePagination) => void
   searchData: P
-  setSearchData: (data: P) => void
-  submit: (data) => void
+  setSearchData: (data: Partial<P>) => void
+  submit: (data: Partial<P>) => void
   tableProps: {
     dataSource: T[]
     loading: boolean
     pagination: AjaxTablePagination
-    onChange: (pagination, filters, sorter) => void
+    onChange: (pagination: AjaxTablePagination, filters: Record<string, (string | number)[] | null>, sorter: SortField | SortField[]) => void
   }
   reload: (autoJump: boolean) => void
 }
 
-export type AjaxTableSearchData = Partial<{
-  [key: string]: any
-}>
-
-function useAjaxTable<T, P extends AjaxTableSearchData>(
-  /**
-   * 请求的URL
-   */
+function useAjaxTable<T, P extends SearchData>(
   url: string,
   {
     pageSizeOptions = DEFAULT_STATE.pagination.pageSizeOptions,
@@ -149,11 +134,7 @@ function useAjaxTable<T, P extends AjaxTableSearchData>(
     sortMultiple = false
   }: AjaxTableProps = {}
 ): AjaxTableCallBack<T, P> {
-  const [search, dispatch] = useReducer<Reducer<AjaxTableState<P>, any>>(reducer, {
-    /**
-     * 触发过dispatch 后，lazyLock 永远为 false
-     * 仅当 lazyLoad 为true 时，且未触发触发过dispatch 时  lazyLock为true
-     */
+  const [state, dispatch] = useReducer(reducer<P>, {
     lazyLock: lazyLoad,
     pagination: {
       ...DEFAULT_STATE.pagination,
@@ -161,158 +142,109 @@ function useAjaxTable<T, P extends AjaxTableSearchData>(
       showSizeChanger,
       pageSizeOptions
     },
-    // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
     searchData: { ...DEFAULT_STATE.searchData, ...defaultSearchData } as P
-  })
+  });
 
-  const [dataList, setDataList] = useState<T[]>([])
-  const [loading, setLoading] = useState(false)
-  const [sortFields, setSortFields] = useState([])
+  const [dataList, setDataList] = useState<T[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [sortFields, setSortFields] = useState<SortField[]>([]);
 
-  const submit = (data = {}) => {
+  const submit = (data: Partial<P> = {}) => {
     dispatch({
       type: 'submit',
       data
-    })
-  }
-  const pagination = search.pagination
-  const searchData = search.searchData
-  // const { current, pageSize } = pagination;
-  const setSearchData = (data = {}) => {
+    });
+  };
+
+  const { pagination, searchData } = state;
+
+  const setSearchData = (data: Partial<P> = {}) => {
     dispatch({
       type: 'changSearchData',
       data
-    })
-  }
+    });
+  };
 
-  const setPagination = (data = {}) => {
+  const setPagination = (data: Partial<AjaxTablePagination> = {}) => {
     dispatch({
       type: 'changePage',
       data
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    // 还在 lazyLock 锁定中。
-    if (search.lazyLock) {
-      return
+    if (state.lazyLock) {
+      return;
     }
 
-    setLoading(true)
-    let data: any = {
+    setLoading(true);
+    let data: Record<string, unknown> = {
       pageSize: pagination.pageSize,
-      curPage: pagination.current - 1,
+      curPage: pagination.current ? pagination.current - 1 : 0,
       ...searchData
+    };
+
+    let config = {};
+    if (ajaxType === 'post' && requestType === 'json') {
+      data = { data };
+      config = { requestType };
     }
 
-    let config = {}
-    if (ajaxType === 'post' && requestType === 'json') {
-      data = { data: data }
-      config = { requestType }
-    }
-    axios[ajaxType](url, data, config)
-      .then(({ flag, data, msg }) => {
-        if (flag === 1) {
-          setDataList(data?.list || [])
+    axios[ajaxType]<ApiResponse<TableResponse<T>>>(url, data, config)
+      .then((response) => {
+        if (response.flag === 1 && response.data) {
+          setDataList(response.data.list || []);
           setPagination({
             realPageSize: pagination.pageSize,
-            total: data.totalCount,
-            curPage: pagination.current - 1
-          })
+            total: response.data.totalCount,
+            current: pagination.current
+          });
+        } else {
+          message.error(response.error?.message || '获取数据失败');
         }
       })
       .catch((error) => {
-        message.error(error?.message || error?.msg)
-        asyncThrowError(error)
+        message.error(error?.message || '请求失败');
+        console.error(error);
       })
       .finally(() => {
-        setLoading(false)
-      })
-  }, [pagination.current, pagination.pageSize, searchData, url, search.lazyLock])
+        setLoading(false);
+      });
+  }, [state.lazyLock, pagination.current, pagination.pageSize, searchData, url, ajaxType, requestType]);
 
   const tableProps = {
     dataSource: dataList,
     loading,
     pagination,
-    onChange: (pagination, filters, sorter) => {
-      setPagination(pagination)
+    onChange: (pagination: AjaxTablePagination, filters: Record<string, (string | number)[] | null>, sorter: SortField | SortField[]) => {
+      setPagination(pagination);
       if (sortMultiple) {
-        let newSorts = Array.isArray(sorter) ? sorter : [sorter]
-        newSorts = newSorts
-          ?.filter((el) => el.field)
-          ?.filter((el) => el.order)
-          ?.map((el) => {
-            return {
-              ...el,
-              filedKey: el.field,
-              filedName: el?.column?.title,
-              order: el.order === 'ascend' ? 'asc' : 'desc'
-            }
-          })
-
-        setSortFields(newSorts)
-        setSearchData({
-          fields: [],
-          sortFields: newSorts?.map((el) => {
-            return {
-              field: el.field,
-              order: el.order
-            }
-          })
-        })
-      } else {
-        setSearchData({
-          fields: [],
-          otherInfo_sortColumn: sorter.field,
-          otherInfo_sortType: sorter.order ? (sorter.order === 'ascend' ? 'asc' : 'desc') : ''
-        })
+        const newSorts = Array.isArray(sorter) ? sorter : [sorter];
+        const validSorts = newSorts
+          .filter((el) => el.field && el.order)
+          .map((el) => ({
+            ...el,
+            filedKey: el.field,
+            filedName: el.column?.title,
+            order: el.order
+          } as SortField));
+        setSortFields(validSorts);
       }
     }
-  }
-
-  /**
-   * 标识是否需要检查页码
-   */
-  const [checkCurrent, setCheckCurrent] = useState(false)
+  };
 
   const reload = (autoJump = false) => {
-    setCheckCurrent(autoJump)
-    setSearchData({})
-  }
-
-  useEffect(() => {
-    // 是否执行过刷新
-    if (!checkCurrent) return
-    if (dataList?.length > 0) {
-      // 当前页有内容
-      setCheckCurrent(false)
-      return
+    if (autoJump) {
+      setPagination({ current: 1 });
     } else {
-      // 无内容,只执行一次
-      setCheckCurrent(false)
-      if (pagination.current > 1) {
-        setPagination({
-          current: pagination.current - 1
-        })
-      }
+      submit();
     }
-  }, [dataList])
-
-  useEffect(() => {
-    fix_scroll()
-  }, [tableProps.dataSource])
-
-  useEffect(() => {
-    // 解决antd table sticky 横向滚动条 不动态变化的问题
-    window.addEventListener('wheel', fix_scroll)
-    return () => {
-      window.removeEventListener('wheel', fix_scroll)
-    }
-  }, [])
+  };
 
   return {
     dataList,
     setDataList,
+    sortFields,
     pagination,
     loading,
     setLoading,
@@ -320,10 +252,9 @@ function useAjaxTable<T, P extends AjaxTableSearchData>(
     searchData,
     setSearchData,
     submit,
-    sortFields,
     tableProps,
     reload
-  }
+  };
 }
 
-export default useAjaxTable
+export default useAjaxTable;

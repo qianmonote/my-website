@@ -30,11 +30,12 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
     ajax
       .post<ApiResponse<ContactFormResponse>>("/api/contact/submit", values)
       .then((res) => {
-        console.log(res, "handleSubmit");
         if (res.flag === 1) {
           message.success("提交成功！");
           form.resetFields();
           onClose();
+        } else {
+          message.error(res.error?.message || "提交失败，请重试");
         }
       })
       .finally(() => {

@@ -55,6 +55,26 @@ async function initializeTables() {
         updated_at DATETIME DEFAULT CURRENT_TIMESTAMP
       )
     `);
+
+    // 创建用户表
+    await db.exec(`
+      CREATE TABLE IF NOT EXISTS users (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        username VARCHAR(50) NOT NULL UNIQUE,
+        password VARCHAR(100) NOT NULL,
+        created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+      )
+    `);
+
+    // 检查是否需要初始化管理员账号
+    const adminUser = await db.get('SELECT * FROM users WHERE username = ?', ['admin']);
+    if (!adminUser) {
+      // 初始化默认管理员账号 (用户名: admin, 密码: admin123)
+      await db.run(
+        'INSERT INTO users (username, password) VALUES (?, ?)',
+        ['admin', 'admin123']
+      );
+    }
   } catch (error) {
     console.error('初始化数据表错误:', error);
     throw new Error('初始化数据表失败');
