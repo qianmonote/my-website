@@ -14,6 +14,10 @@
       text-transform: uppercase;
       color: #e9e9ea;
       margin-bottom: 48px;
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     .about-content {
