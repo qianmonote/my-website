@@ -11,8 +11,10 @@ import HeroSection from "@/components/elements/HeroSection";
 import SolutionCardList from "@/components/elements/SolutionCardList";
 import PartSection from "@/components/elements/PartSection";
 import PartSectionCardList from "@/components/elements/PartSectionCardList";
+import { useI18n } from "@/context/I18nContext";
 
 const PowerStorageIntegrationPage = () => {
+  const { lang } = useI18n();
   const applicationList = [
     {
       image: "/product/p2/part3/01.jpg",
@@ -88,35 +90,69 @@ const PowerStorageIntegrationPage = () => {
     },
   ];
 
+  const solutionsList = [
+    {
+      id: "1",
+      imageZh: "/product/p2/part1/01.png",
+      imageEn: "/product/p2/part1/01-en.png",
+      imageActiveZh: "/product/p2/part1/01-active.png",
+      imageActiveEn: "/product/p2/part1/01-active-en.png",
+    },
+    {
+      id: "2",
+      imageZh: "/product/p2/part1/02.png",
+      imageEn: "/product/p2/part1/02-en.png",
+      imageActiveZh: "/product/p2/part1/02-active.png",
+      imageActiveEn: "/product/p2/part1/02-active-en.png",
+    },
+    {
+      id: "3",
+      imageZh: "/product/p2/part1/03.png",
+      imageEn: "/product/p2/part1/03-en.png",
+      imageActiveZh: "/product/p2/part1/03-active.png",
+      imageActiveEn: "/product/p2/part1/03-active-en.png",
+    },
+    {
+      id: "4",
+      imageZh: "/product/p2/part1/04.png",
+      imageEn: "/product/p2/part1/04-en.png",
+      imageActiveZh: "/product/p2/part1/04-active.png",
+      imageActiveEn: "/product/p2/part1/04-active-en.png",
+    },
+  ];
+
   return (
     <div className={styles.powerStoragePage}>
       <Navbar />
       {/* 头图区 */}
       <HeroSection
         title="分布式光储充一体化系统"
-        backgroundImage="/product/p2/bn.jpg"
+        backgroundImage="/product/p2/bn/01.jpg"
       />
 
       {/* Part 1 */}
       <PartSection title="光、储、柴、充一体化智慧能源解决方案">
-        <SolutionCardList />
+        <SolutionCardList solutions={solutionsList} />
       </PartSection>
 
       {/* Part 2 */}
       <PartSection title="">
-        <Image
-          src="/product/p2/part2/01.png"
-          alt="分布式光储充一体化系统"
-          width={500}
-          height={640}
-          style={{ marginLeft: -24, marginRight: 24 }}
-        />
-        <Image
-          src="/product/p2/part2/02.png"
-          alt="分布式光储充一体化系统"
-          width={500}
-          height={640}
-        />
+        {lang === "zh" ? (
+          <Image
+            src="/product/p2/part2/01-zh.png"
+            alt=""
+            width={1000}
+            height={640}
+            style={{ marginLeft: -24, marginRight: 24 }}
+          />
+        ) : (
+          <Image
+            src="/product/p2/part2/01-en.png"
+            alt=""
+            width={1000}
+            height={640}
+          />
+        )}
       </PartSection>
 
       {/* Part 3 */}

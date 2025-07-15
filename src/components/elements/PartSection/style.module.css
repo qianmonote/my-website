@@ -1,11 +1,11 @@
 .partSection {
   margin: 80px 0;
-  padding: 0 30px;
 }
 
 .container {
   max-width: 1000px;
   margin: 0 auto;
+  padding: 0 30px;
 }
 
 .partSectionIntroText {
@@ -32,7 +32,7 @@
   margin-bottom: 3rem;
   position: relative;
 }
-.partSection img {
+.partSectionImage {
   width: 100%;
   height: auto;
 }

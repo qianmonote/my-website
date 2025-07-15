@@ -1,35 +1,24 @@
-'use client';
+"use client";
 
-import React, { useState } from 'react';
-import SolutionCard from '../SolutionCard';
-import styles from './styles.module.css';
+import React, { useState } from "react";
+import SolutionCard from "../SolutionCard";
+import { useI18n } from "@/context/I18nContext";
+import styles from "./styles.module.css";
 
-const solutions = [
-  {
-    id: '1',
-    image: '/product/p2/part1/01.png',
-    imageActive: '/product/p2/part1/01-active.png'
-  },
-  {
-    id: '2',
-    image: '/product/p2/part1/02.png',
-    imageActive: '/product/p2/part1/02-active.png'
-  },
-  {
-    id: '3',
-    image: '/product/p2/part1/03.png',
-    imageActive: '/product/p2/part1/03-active.png'
-  },
-  {
-    id: '4',
-    image: '/product/p2/part1/04.png',
-    imageActive: '/product/p2/part1/04-active.png'
-  }
-];
+type Solution = Partial<{
+  id: string;
+  imageZh: string;
+  imageEn: string;
+  imageActiveZh: string;
+  imageActiveEn: string;
+}>;
 
-const SolutionCardList: React.FC = () => {
+const SolutionCardList: React.FC<{ solutions: Solution[] }> = ({
+  solutions = [],
+}) => {
+  const { lang } = useI18n();
   // 设置初始状态为第一个卡片的 id
-  const [activeId, setActiveId] = useState<string>(solutions[0].id);
+  const [activeId, setActiveId] = useState<string>(solutions[0]?.id || "");
 
   const handleMouseEnter = (id: string) => {
     setActiveId(id);
@@ -37,7 +26,7 @@ const SolutionCardList: React.FC = () => {
 
   const handleMouseLeave = () => {
     // 鼠标移开时恢复到第一个卡片
-    setActiveId(solutions[0].id);
+    setActiveId(solutions[0]?.id || "");
   };
 
   const handleClick = (id: string) => {
@@ -45,22 +34,25 @@ const SolutionCardList: React.FC = () => {
   };
 
   return (
-    <div 
-      className={styles.container}
-      onMouseLeave={handleMouseLeave}
-    >
+    <div className={styles.container} onMouseLeave={handleMouseLeave}>
       {solutions.map((solution) => (
         <SolutionCard
           key={solution.id}
-          image={solution.image}
-          imageActive={solution.imageActive}
+          image={
+            lang === "zh" ? solution.imageZh || "" : solution.imageEn || ""
+          }
+          imageActive={
+            lang === "zh"
+              ? solution.imageActiveZh || ""
+              : solution.imageActiveEn || ""
+          }
           isActive={activeId === solution.id}
-          onMouseEnter={() => handleMouseEnter(solution.id)}
-          onClick={() => handleClick(solution.id)}
+          onMouseEnter={() => handleMouseEnter(solution.id || "")}
+          onClick={() => handleClick(solution.id || "")}
         />
       ))}
     </div>
   );
 };
 
-export default SolutionCardList; 
+export default SolutionCardList;
