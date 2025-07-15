@@ -5,6 +5,7 @@ import React from "react";
 import { Row, Col } from "antd";
 import Image from "next/image";
 import PartSection from "@/components/elements/PartSection";
+import { useI18n } from "@/context/I18nContext";
 import styles from "./style.module.css";
 
 type PartSectionCardListProps = Partial<{
@@ -20,8 +21,10 @@ type PartSectionCardListProps = Partial<{
     image: string;
     imageWidth: number;
     imageHeight: number;
-    title: string;
-    description: string;
+    titleZh: string;
+    titleEn: string;
+    descriptionZh: string;
+    descriptionEn: string;
     colSpan: number;
   }>[];
   defaultImageSize?: {
@@ -53,45 +56,51 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
   descriptionStyle = {},
   contentStyle = {},
 }) => {
+  const { lang } = useI18n();
   return (
     <PartSection title={title} className={className} style={style}>
       <div className={styles.partSectionIntroText}>{introText}</div>
       <Row gutter={defaultRowGutter}>
-        {dataList.map((item, index) => (
-          <Col key={index} span={item.colSpan || defaultColSpan}>
-            <div className={styles.commonCard}>
-              <div
-                className={styles.commonImage}
-                style={{ ...defaultImageSize.style }}
-              >
-                {item.image && (
-                  <Image
-                    src={item.image}
-                    alt={item.title || ""}
-                    width={item.imageWidth || defaultImageSize.imageWidth}
-                    height={item.imageHeight || defaultImageSize.imageHeight}
-                  />
-                )}
+        {dataList.map((item, index) => {
+          const title = lang === "zh" ? item.titleZh : item.titleEn;
+          const description =
+            lang === "zh" ? item.descriptionZh : item.descriptionEn;
+          return (
+            <Col key={index} span={item.colSpan || defaultColSpan}>
+              <div className={styles.commonCard}>
+                <div
+                  className={styles.commonImage}
+                  style={{ ...defaultImageSize.style }}
+                >
+                  {item.image && (
+                    <Image
+                      src={item.image}
+                      alt={title || ""}
+                      width={item.imageWidth || defaultImageSize.imageWidth}
+                      height={item.imageHeight || defaultImageSize.imageHeight}
+                    />
+                  )}
+                </div>
+                <div className={styles.commonContent} style={contentStyle}>
+                  {title && (
+                    <h3>
+                      <div className={styles.commonContentTitle}>
+                        {titleUnderlinePlacement === "top" && (
+                          <div className={styles.commonTitleUnderlineTop} />
+                        )}
+                        <div dangerouslySetInnerHTML={{ __html: title }} />
+                        {titleUnderlinePlacement === "bottom" && (
+                          <div className={styles.commonTitleUnderlineBottom} />
+                        )}
+                      </div>
+                    </h3>
+                  )}
+                  {description && <p style={descriptionStyle}>{description}</p>}
+                </div>
               </div>
-              <div className={styles.commonContent} style={contentStyle}>
-                {item.title && (
-                  <h3>
-                    <div className={styles.commonContentTitle}>
-                      {titleUnderlinePlacement === "top" && (
-                        <div className={styles.commonTitleUnderlineTop} />
-                      )}
-                      {item.title}
-                      {titleUnderlinePlacement === "bottom" && (
-                        <div className={styles.commonTitleUnderlineBottom} />
-                      )}
-                    </div>
-                  </h3>
-                )}
-                {item.description && <p style={descriptionStyle}>{item.description}</p>}
-              </div>
-            </div>
-          </Col>
-        ))}
+            </Col>
+          );
+        })}
       </Row>
     </PartSection>
   );
