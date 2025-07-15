@@ -49,7 +49,6 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                 alt="hz-lm"
                 width={202}
                 height={100}
-                style={{ marginRight: "200px" }}
               />
               <Image
                 src="/home/hz-lj.png"

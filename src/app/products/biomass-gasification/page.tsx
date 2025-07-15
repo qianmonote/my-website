@@ -5,9 +5,13 @@ import { Row, Col } from "antd";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { useI18n } from "@/context/I18nContext";
+import HeroSection from "@/components/elements/HeroSection";
+import PartSection from "@/components/elements/PartSection";
 import styles from "./styles.module.css";
 
 const BiomassGasificationPage = () => {
+  const { lang } = useI18n();
   const commonCardList = [
     {
       image: "/product/p1/pt-part3-1.png",
@@ -96,82 +100,88 @@ const BiomassGasificationPage = () => {
   return (
     <div className={styles.biomassPage}>
       <Navbar />
-      {/* Hero Section */}
-      <section className={styles.heroSection}>
-        <div className={styles.heroOverlay}>
-          <div className={styles.heroOverlayContainer}>
-            <h1 className={styles.heroTitle}>· 生物质气化发电系统 ·</h1>
-          </div>
-        </div>
-      </section>
+
+      <HeroSection
+        title="· 生物质气化发电系统 ·"
+        backgroundImage="/product/p1/bn/01.png"
+      />
 
       {/* 气化原理 Section */}
-      <section className={styles.partSection}>
-        <div className={styles.container}>
+      <PartSection>
+        {lang === "zh" ? (
           <Image
-            src="/product/p1/pt-part1-des.png"
+            src="/product/p1/part1/01-zh.png"
             alt="气化原理"
             width={1000}
             height={807}
           />
-        </div>
-      </section>
+        ) : (
+          <Image
+            src="/product/p1/part1/01-en.png"
+            alt="气化原理"
+            width={1000}
+            height={807}
+          />
+        )}
+      </PartSection>
 
       {/* 工艺路线 Section */}
-      <section className={styles.partSection}>
-        <div className={styles.container}>
+      <PartSection>
+        {lang === "zh" ? (
           <Image
-            src="/product/p1/pt-part2-des.png"
+            src="/product/p1/part2/01-zh.png"
+            alt="气化原理"
+            width={1000}
+            height={628}
+          />
+        ) : (
+          <Image
+            src="/product/p1/part2/01-en.png"
             alt="工艺路线"
             width={1000}
             height={628}
           />
-        </div>
-      </section>
+        )}
+      </PartSection>
 
       {/* 生物质热解气化炉主要使用场景 Section */}
-      <section className={styles.partSection}>
-        <div className={styles.container}>
-          <h2 className={styles.sectionTitle}>生物质热解气化炉主要使用场景</h2>
-          <Row gutter={16}>
-            {commonCardList.map((item, index) => (
-              <Col xs={24} md={8} key={index}>
-                <div className={styles.commonCard}>
-                  <div className={styles.commonImage}>
-                    <Image
-                      src={item.image}
-                      alt={item.title}
-                      width={318}
-                      height={280}
-                    />
-                  </div>
-                  <div className={styles.commonContent}>
-                    <h3>
-                      <div className={styles.commonContentTitle}>
-                        {item.title}
-                        <div className={styles.commonTitleUnderline} />
-                      </div>
-                    </h3>
-                    <p>{item.description}</p>
-                  </div>
+      <PartSection title="生物质热解气化炉主要使用场景">
+        <Row gutter={16}>
+          {commonCardList.map((item, index) => (
+            <Col xs={24} md={8} key={index}>
+              <div className={styles.commonCard}>
+                <div className={styles.commonImage}>
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={318}
+                    height={280}
+                  />
                 </div>
-              </Col>
-            ))}
-          </Row>
-        </div>
-      </section>
+                <div className={styles.commonContent}>
+                  <h3>
+                    <div className={styles.commonContentTitle}>
+                      {item.title}
+                      <div className={styles.commonTitleUnderline} />
+                    </div>
+                  </h3>
+                  <p>{item.description}</p>
+                </div>
+              </div>
+            </Col>
+          ))}
+        </Row>
+      </PartSection>
 
       {/* 环保优点 Section */}
-      <section className={styles.partSection}>
-        <div className={styles.container}>
-          <Image
-            src="/product/p1/pt-part4-des.png"
-            alt="生物质燃气环保优点"
-            width={1000}
-            height={750}
-          />
-        </div>
-      </section>
+      <PartSection>
+        <Image
+          src="/product/p1/pt-part4-des.png"
+          alt="生物质燃气环保优点"
+          width={1000}
+          height={750}
+        />
+      </PartSection>
 
       {/* 应用案例 · ONETOUCH与拉曼大学联合研发 Section */}
       <section className={styles.partSection}>

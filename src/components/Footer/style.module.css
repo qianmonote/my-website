@@ -79,6 +79,8 @@
   }
   .footerContactList {
     margin: 8px 0;
+    display: inline-flex;
+    flex-wrap: wrap;
   }
   /* 地址 */
   .footerAddress {
