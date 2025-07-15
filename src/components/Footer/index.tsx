@@ -93,11 +93,11 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   height={107}
                 />
               </a>
-            </div>
-            <div className={styles.footerContactInfo}>
-              <Link href="/contact">
-                <ContractBtn type="contactEn">Contact Us</ContractBtn>
-              </Link>
+              <div className={styles.footerContactInfo}>
+                <Link href="/contact">
+                  <ContractBtn type="contactEn">Contact Us</ContractBtn>
+                </Link>
+              </div>
             </div>
           </div>
         </>

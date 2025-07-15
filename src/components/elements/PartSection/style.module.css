@@ -1,5 +1,6 @@
 .partSection {
   margin: 80px 0;
+  padding: 0 30px;
 }
 
 .container {
@@ -26,8 +27,12 @@
 .sectionTitle {
   font-size: 2.5rem;
   font-weight: 700;
-  color: #ffffff;
+  color: #fff;
   text-align: center;
   margin-bottom: 3rem;
   position: relative;
+}
+.partSection img {
+  width: 100%;
+  height: auto;
 }

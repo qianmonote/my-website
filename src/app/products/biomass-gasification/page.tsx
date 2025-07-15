@@ -14,7 +14,7 @@ const BiomassGasificationPage = () => {
   const { lang } = useI18n();
   const commonCardList = [
     {
-      image: "/product/p1/pt-part3-1.png",
+      image: "/product/p1/part3/01.png",
       title: "偏远地区/离网能源供应",
       description: (
         <>
@@ -24,7 +24,7 @@ const BiomassGasificationPage = () => {
       ),
     },
     {
-      image: "/product/p1/pt-part3-2.png",
+      image: "/product/p1/part3/02.png",
       title: "农业废弃物资源化",
       description: (
         <>
@@ -34,7 +34,7 @@ const BiomassGasificationPage = () => {
       ),
     },
     {
-      image: "/product/p1/pt-part3-3.png",
+      image: "/product/p1/part3/03.png",
       title: "工业热能与动力供应",
       description: (
         <>
@@ -44,7 +44,7 @@ const BiomassGasificationPage = () => {
       ),
     },
     {
-      image: "/product/p1/pt-part3-4.png",
+      image: "/product/p1/part3/04.png",
       title: "商业综合体与旅游景区能源",
       description: (
         <>
@@ -55,7 +55,7 @@ const BiomassGasificationPage = () => {
       ),
     },
     {
-      image: "/product/p1/pt-part3-5.png",
+      image: "/product/p1/part3/05.png",
       title: "碳资产与碳信用交易",
       description: (
         <>
@@ -65,7 +65,7 @@ const BiomassGasificationPage = () => {
       ),
     },
     {
-      image: "/product/p1/pt-part3-6.png",
+      image: "/product/p1/part3/06.png",
       title: "新能源车辆与移动能源",
       description: (
         <>
@@ -77,19 +77,19 @@ const BiomassGasificationPage = () => {
   ];
   const applicationCardList = [
     {
-      image: "/product/p1/pt-part5-1.png",
+      image: "/product/p1/part5/01.png",
       title: "油棕废弃物气化发电集成系统",
       description: <>（气化效率75%，单次连续发电运行 达500小时）</>,
     },
     {
-      image: "/product/p1/pt-part5-2.png",
+      image: "/product/p1/part5/02.png",
       title: "首个商业化生物质综合解决方案",
       description: (
         <>(纯干法燃气净化工艺确保气体洁净且无二次污染废水产生，发电稳定）</>
       ),
     },
     {
-      image: "/product/p1/pt-part5-3.png",
+      image: "/product/p1/part5/03.png",
       title: "联合研发二代低焦油气化系统",
       description: (
         <>（单炉30~60吨/日，气化率提升至80%，尾部余热烘干原料，降低30%能耗）</>
@@ -120,7 +120,7 @@ const BiomassGasificationPage = () => {
             src="/product/p1/part1/01-en.png"
             alt="气化原理"
             width={1000}
-            height={807}
+            height={901}
           />
         )}
       </PartSection>
@@ -175,12 +175,21 @@ const BiomassGasificationPage = () => {
 
       {/* 环保优点 Section */}
       <PartSection>
-        <Image
-          src="/product/p1/pt-part4-des.png"
-          alt="生物质燃气环保优点"
-          width={1000}
-          height={750}
-        />
+        {lang === "zh" ? (
+          <Image
+            src="/product/p1/part4/01-zh.png"
+            alt="生物质燃气环保优点"
+            width={1000}
+            height={750}
+          />
+        ) : (
+          <Image
+            src="/product/p1/part4/01-en.png"
+            alt="生物质燃气环保优点"
+            width={1000}
+            height={750}
+          />
+        )}
       </PartSection>
 
       {/* 应用案例 · ONETOUCH与拉曼大学联合研发 Section */}

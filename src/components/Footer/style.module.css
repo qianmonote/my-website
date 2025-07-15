@@ -81,6 +81,10 @@
     margin: 8px 0;
     display: inline-flex;
     flex-wrap: wrap;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   /* 地址 */
   .footerAddress {
