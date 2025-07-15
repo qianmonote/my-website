@@ -21,6 +21,10 @@
         line-height: 36px;
         letter-spacing: 0px;
       }
+      img {
+        width: 100%;
+        height: auto;
+      }
     }
 
     .product-card {
