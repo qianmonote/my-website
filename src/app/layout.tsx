@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
@@ -21,14 +21,6 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "ONETOUCH AGRI ROBOTECH SDN. BHD.",
   description: "科技让农田更高效",
-  viewport: {
-    width: 'device-width',
-    initialScale: 1,
-    maximumScale: 1,
-    userScalable: false,
-    viewportFit: 'cover',
-  },
-  themeColor: '#1677ff',
   formatDetection: {
     telephone: true,
     date: false,
@@ -47,6 +39,15 @@ export const metadata: Metadata = {
     'apple-mobile-web-app-status-bar-style': 'black-translucent',
     'msapplication-TileColor': '#1677ff',
   },
+};
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 1,
+  userScalable: false,
+  viewportFit: 'cover',
+  themeColor: '#1677ff',
 };
 
 export default function RootLayout({
