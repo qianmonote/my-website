@@ -6,7 +6,9 @@ import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/elements/HeroSection";
-import PartSection from "@/components/elements/PartSection";
+import PartSection, {
+  PartSectionImageBox,
+} from "@/components/elements/PartSection";
 import PartSectionCardList from "@/components/elements/PartSectionCardList";
 import StepCardList from "@/components/elements/StepCardList";
 import styles from "./styles.module.css";
@@ -30,8 +32,9 @@ const SmartEVChargingPage = () => {
       image: "/product/p4/part4/02.png",
       imageWidth: 280,
       imageHeight: 280,
-      title: "智能调度，降本增效",
-      titleEn: "Intelligent scheduling, cost reduction <br/> and efficiency improvement",
+      titleZh: "智能调度，降本增效",
+      titleEn:
+        "Intelligent scheduling, cost reduction <br/> and efficiency improvement",
       descriptionZh:
         "桩找车”模式减少30%用户等待时间，单台机器人替代4-5个固定桩，空间利用率提升50%。手机APP一键召唤，充电桩直达车位",
       descriptionEn:
@@ -41,7 +44,7 @@ const SmartEVChargingPage = () => {
       image: "/product/p4/part4/03.png",
       imageWidth: 280,
       imageHeight: 280,
-      title: "峰谷套利，能源增值",
+      titleZh: "峰谷套利，能源增值",
       titleEn: "Peak-valley arbitrage, <br/> energy value-added",
       descriptionZh:
         "利用电价差实现储能系统经济循环，单次充放电收益达0.3元/kWh（中国江苏案例），降低电网负荷的同时创造额外收益",
@@ -52,7 +55,6 @@ const SmartEVChargingPage = () => {
       image: "/product/p4/part4/04.png",
       imageWidth: 280,
       imageHeight: 280,
-      title: "应急护航，全域覆盖",
       colSpan: 12,
       titleZh: "应急护航，全域覆盖",
       titleEn: "Emergency escort, full coverage",
@@ -66,7 +68,7 @@ const SmartEVChargingPage = () => {
       imageWidth: 280,
       imageHeight: 280,
       colSpan: 12,
-      title: "全链无人化，体验升级",
+      titleZh: "全链无人化，体验升级",
       titleEn: "Unmanned whole chain, upgraded experience",
       descriptionZh:
         "自动导航、插枪、结算全流程无人化，适配高速、商场、老旧社区、服务区等高频场景，充电完成即自动返航，用户行程零干扰",
@@ -165,28 +167,30 @@ const SmartEVChargingPage = () => {
         title={
           lang === "zh"
             ? "智慧EV充电生态体系"
-            : "Distributed Solar Photovoltaic Power Systems"
+            : "Distributed Solar Photovoltaic Power Systems".toLocaleUpperCase()
         }
         backgroundImage="/product/p4/bn/01.png"
       />
       {/* Part1 */}
       <PartSection>
         {lang === "zh" ? (
-          <Image
-            src="/product/p4/part1/01-zh.png"
-            alt=""
-            width={1000}
-            height={667}
-            className={styles.partSectionImage}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p4/part1/01-zh.png"
+              alt=""
+              width={1000}
+              height={667}
+            />
+          </PartSectionImageBox>
         ) : (
-          <Image
-            src="/product/p4/part1/01-en.png"
-            alt=""
-            width={1000}
-            height={779}
-            className={styles.partSectionImage}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p4/part1/01-en.png"
+              alt=""
+              width={1000}
+              height={779}
+            />
+          </PartSectionImageBox>
         )}
       </PartSection>
       {/* Part2 移动充电机器人六大黄金场景*/}
@@ -194,25 +198,27 @@ const SmartEVChargingPage = () => {
         title={
           lang === "zh"
             ? "移动充电机器人六大黄金场景"
-            : "Six golden scenarios for mobile charging robots"
+            : "Six golden scenarios for mobile charging robots".toLocaleUpperCase()
         }
       >
         {lang === "zh" ? (
-          <Image
-            src="/product/p4/part2/01-zh.png"
-            alt=""
-            width={1000}
-            height={400}
-            className={styles.partSectionImage}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p4/part2/01-zh.png"
+              alt=""
+              width={1000}
+              height={400}
+            />
+          </PartSectionImageBox>
         ) : (
-          <Image
-            src="/product/p4/part2/01-en.png"
-            alt=""
-            width={1000}
-            height={400}
-            className={styles.partSectionImage}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p4/part2/01-en.png"
+              alt=""
+              width={1000}
+              height={400}
+            />
+          </PartSectionImageBox>
         )}
       </PartSection>
       {/* Part3 */}
@@ -221,7 +227,7 @@ const SmartEVChargingPage = () => {
           <div className={styles.part3SectionTitle}>
             {lang === "zh"
               ? "EV充电专用APP——DC-CAT"
-              : "EV Charging Special APP——DC-CAT"}
+              : "EV Charging Special APP——DC-CAT".toLocaleUpperCase()}
             <Image
               src="/product/p4/part3/tit-icon.png"
               alt=""
@@ -246,12 +252,28 @@ const SmartEVChargingPage = () => {
         title={
           lang === "zh"
             ? "移动充电机器人核心优势"
-            : "Core advantages of mobile charging robots"
+            : "Core advantages of mobile charging robots".toLocaleUpperCase()
         }
         dataList={coreAdvantageDataList}
+        contentStyle={{
+          minHeight: lang === "zh" ? 140 : 180,
+        }}
       />
       {/* Part5 */}
-      <PartSection title="应用案例-拉曼大学3*60KW绿电快充项目">
+      <PartSection
+        title={
+          lang === "zh" ? (
+            "应用案例-拉曼大学3*60KW绿电快充项目"
+          ) : (
+            <div className={styles.part5SectionTitle}>
+              {"Application Case-Laman University".toLocaleUpperCase()} <br />
+              <div className={styles.part5SectionSubTitle}>
+                3*60KW Green Power Fast Charging Project
+              </div>
+            </div>
+          )
+        }
+      >
         <Row>
           {applicationCaseDataList.map((item, index) => (
             <Col span={item.colSpan} key={index}>
@@ -260,7 +282,6 @@ const SmartEVChargingPage = () => {
                 alt="移动充电机器人六大黄金场景"
                 width={item.imageWidth}
                 height={item.imageHeight}
-                className={styles.partSectionImage}
               />
             </Col>
           ))}

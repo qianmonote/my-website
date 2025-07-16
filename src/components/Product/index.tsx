@@ -41,7 +41,7 @@ const ProductSection: React.FC = () => {
       img: "/home/ab-pd-p3.png",
       title: 'Smart EV Charging  <br/>  Ecosystem',
       desc: '智慧EV充电生态体系',
-      link: '/products/ai-robot',
+      link: '/products/smart-ev-charging',
       placement: "left",
       imgStyle: {
         width: 980,

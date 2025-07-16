@@ -21,6 +21,13 @@
 .commonImage {
   margin-bottom: 18px;
   text-align: center;
+  width: 100%;
+  height: 100%;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 }
 .commonContent {
   display: flex;
@@ -30,8 +37,8 @@
   h3 {
     font-family: Inter;
     font-weight: 400;
-    font-size: 16px;
-    line-height: 24px;
+    font-size: 14px;
+    line-height: 18px;
     color: rgba(255, 255, 255, 1);
     text-align: center;
     padding: 0 16px;
@@ -77,10 +84,25 @@
     opacity: 0.4;
     font-weight: 400;
     font-size: 12px;
-    line-height: 24px;
+    line-height: 16px;
     text-align: center;
     color: rgba(255, 255, 255, 1);
-    min-height: 80px;
-    padding: 0 16px;
+    /* min-height: 80px; */
+    padding: 0 16px 10px;
+    margin: 0;
   }
+}
+.partSectionIntroText {
+  font-family: PingFang SC;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  line-height: 32px;
+  letter-spacing: 0px;
+  color: rgba(255, 255, 255, 0.64);
+  background: rgba(41, 44, 54, 1);
+  border: 1px solid rgba(54, 62, 77, 1);
+  padding: 16px;
+  margin: 48px 0;
+  border-radius: 16px;
 }

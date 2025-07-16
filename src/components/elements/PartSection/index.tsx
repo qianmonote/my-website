@@ -20,15 +20,29 @@ const PartSection: React.FC<PartSectionProps> = ({
   style,
 }) => {
   return (
-    <section className={classNames(styles.partSection, className)} style={style}>
-      {
-        title && <h2 className={styles.sectionTitle}>{title}</h2>
-      }
-      <div className={styles.container}>
-        {children}
-      </div>
+    <section
+      className={classNames(styles.partSection, className)}
+      style={style}
+    >
+      {title && typeof title === "string" ? (
+        <h2
+          className={styles.sectionTitle}
+          dangerouslySetInnerHTML={{ __html: title }}
+        />
+      ) : (
+        <h2 className={styles.sectionTitle}>{title}</h2>
+      )}
+      <div className={styles.container}>{children}</div>
     </section>
   );
+};
+
+export const PartSectionImageBox = ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
+  return <div className={styles.partSectionImage}>{children}</div>;
 };
 
 export default PartSection;

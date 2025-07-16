@@ -51,6 +51,7 @@
   display: flex;
   align-items: center;
   transition: all 0.3s ease;
+  min-width: 224px;
 }
 
 .navbarMenuItem:hover {

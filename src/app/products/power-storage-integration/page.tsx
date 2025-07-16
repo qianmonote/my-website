@@ -18,75 +18,98 @@ const PowerStorageIntegrationPage = () => {
   const applicationList = [
     {
       image: "/product/p2/part3/01.jpg",
-      title: "居民小区/社区",
+      titleZh: "居民小区/社区",
+      titleEn: "Residential area/community",
       description: "",
     },
     {
       image: "/product/p2/part3/02.jpg",
-      title: "商业综合体（商场、超市、写字楼）",
+      titleZh: "商业综合体（商场、超市、写字楼）",
+      titleEn:
+        "Commercial complex (shopping mall, supermarket, office building)",
       description: "",
     },
     {
       image: "/product/p2/part3/03.jpg",
-      title: "工业园区/企业园区",
+      titleZh: "工业园区/企业园区",
+      titleEn: "Industrial park/enterprise park",
       description: "",
     },
     {
       image: "/product/p2/part3/04.jpg",
-      title: "公共停车场/交通枢纽（机场、火车站、长途汽车站）",
+      titleZh: "公共停车场/交通枢纽（机场、火车站、长途汽车站）",
+      titleEn:
+        "Public parking lots/transportation hubs (airports, train stations, long-distance bus stations)",
       description: "",
     },
     {
       image: "/product/p2/part3/05.jpg",
-      title: "公交场站/物流转运中心",
+      titleZh: "公交场站/物流转运中心",
+      titleEn: "Bus station/logistics transfer center",
       description: "",
     },
     {
       image: "/product/p2/part3/06.jpg",
-      title: "高速公路服务区",
+      titleZh: "高速公路服务区",
+      titleEn: "highway service area",
       description: "",
     },
     {
       image: "/product/p2/part3/07.jpg",
-      title: "独立/离网型充电站（海岛、偏远地区）",
+      titleZh: "独立/离网型充电站（海岛、偏远地区）",
+      titleEn: "Independent/off-grid charging stations (islands, remote areas)",
       description: "",
     },
     {
       image: "/product/p2/part3/08.jpg",
-      title: "光储充职能微网/虚拟电厂节点",
+      titleZh: "光储充职能微网/虚拟电厂节点",
+      titleEn:
+        "Photovoltaic storage and charging function microgrid/virtual power plant node",
       description: "",
     },
   ];
   const caseList = [
     {
       image: "/product/p2/part4/01.jpg",
-      title: "浙江峰仔食品有限公司",
-      description: "彩锅瓦结构电站",
+      titleZh: "浙江峰仔食品有限公司",
+      titleEn: "Zhejiang Fengzi Food Co., Ltd.",
+      descriptionZh: "彩锅瓦结构电站",
+      descriptionEn: "Colored pot tile structure power station",
     },
     {
       image: "/product/p2/part4/02.jpg",
-      title: "农杭州富通通讯技术股份有限公司",
-      description: "水泥墩支架结构电站",
+      titleZh: "农杭州富通通讯技术股份有限公司",
+      titleEn: "Hangzhou Futong Communication Technology Co., Ltd.",
+      descriptionZh: "水泥墩支架结构电站",
+      descriptionEn: "Cement pier support structure power station",
     },
     {
       image: "/product/p2/part4/03.jpg",
-      title: "衡州城东污水厂",
-      description: "钢架结构电站",
+      titleZh: "衡州城东污水厂",
+      titleEn: "Hengzhou Chengdong Wastewater Treatment Plant",
+      descriptionZh: "钢架结构电站",
+      descriptionEn: "Steel frame power station",
     },
     {
       image: "/product/p2/part4/04.jpg",
-      title: "浙江阮二小食品有限公司",
-      description: "双T板屋面结构电站",
+      titleZh: "浙江阮二小食品有限公司",
+      titleEn: "Zhejiang Ruan'er Small Food Co., Ltd.",
+      descriptionZh: "双T板屋面结构电站",
+      descriptionEn: "Double T-plate roof structure power station",
     },
     {
       image: "/product/p2/part4/05.jpg",
-      title: "浙江仙鹤纸业",
-      description: "大雁板屋面结构电站",
+      titleZh: "浙江仙鹤纸业",
+      titleEn: "Zhejiang Xianhe Paper",
+      descriptionZh: "大雁板屋面结构电站",
+      descriptionEn: "Dayan board roof structure power station",
     },
     {
       image: "/product/p2/part4/06.jpg",
-      title: "柯城区口腔医院",
-      description: "琉璃瓦屋面结构电站",
+      titleZh: "柯城区口腔医院",
+      titleEn: "Kecheng District Stomatological Hospital",
+      descriptionZh: "琉璃瓦屋面结构电站",
+      descriptionEn: "Glazed tile roof structure power station",
     },
   ];
 
@@ -126,12 +149,22 @@ const PowerStorageIntegrationPage = () => {
       <Navbar />
       {/* 头图区 */}
       <HeroSection
-        title="分布式光储充一体化系统"
+        title={
+          lang === "zh"
+            ? "分布式光储充一体化系统"
+            : "Distributed Solar Photovoltaic Power Systems".toLocaleUpperCase()
+        }
         backgroundImage="/product/p2/bn/01.jpg"
       />
 
       {/* Part 1 */}
-      <PartSection title="光、储、柴、充一体化智慧能源解决方案">
+      <PartSection
+        title={
+          lang === "zh"
+            ? "光、储、柴、充一体化智慧能源解决方案"
+            : "Integrated Smart Energy Solution for Photovoltaic, <br /> Storage, Charging, and Charging"
+        }
+      >
         <SolutionCardList solutions={solutionsList} />
       </PartSection>
 
@@ -157,7 +190,11 @@ const PowerStorageIntegrationPage = () => {
 
       {/* Part 3 */}
       <PartSectionCardList
-        title="应用场景"
+        title={
+          lang === "zh"
+            ? "应用场景"
+            : "Application Scenarios".toLocaleUpperCase()
+        }
         dataList={applicationList}
         defaultColSpan={6}
         defaultRowGutter={4}
@@ -170,13 +207,17 @@ const PowerStorageIntegrationPage = () => {
         }}
         titleUnderlinePlacement="top"
         contentStyle={{
-          minHeight: 90,
+          minHeight: lang === "zh" ? 80 : 100,
         }}
       />
 
       {/* Part 4 */}
       <PartSectionCardList
-        title="光伏电站案例"
+        title={
+          lang === "zh"
+            ? "光伏电站案例"
+            : "Photovoltaic power station case".toLocaleUpperCase()
+        }
         dataList={caseList}
         defaultColSpan={8}
         defaultRowGutter={4}
@@ -186,6 +227,9 @@ const PowerStorageIntegrationPage = () => {
           style: {
             marginTop: 16,
           },
+        }}
+        contentStyle={{
+          minHeight: lang === "zh" ? 100 : 120,
         }}
       />
       <Footer inviteShow={false} />

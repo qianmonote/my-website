@@ -59,10 +59,12 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
   const { lang } = useI18n();
   return (
     <PartSection title={title} className={className} style={style}>
-      <div className={styles.partSectionIntroText}>{introText}</div>
+      {introText && (
+        <div className={styles.partSectionIntroText}>{introText}</div>
+      )}
       <Row gutter={defaultRowGutter}>
         {dataList.map((item, index) => {
-          const title = lang === "zh" ? item.titleZh : item.titleEn;
+          const itemTitle = lang === "zh" ? item.titleZh : item.titleEn;
           const description =
             lang === "zh" ? item.descriptionZh : item.descriptionEn;
           return (
@@ -75,20 +77,20 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
                   {item.image && (
                     <Image
                       src={item.image}
-                      alt={title || ""}
+                      alt={itemTitle || ""}
                       width={item.imageWidth || defaultImageSize.imageWidth}
                       height={item.imageHeight || defaultImageSize.imageHeight}
                     />
                   )}
                 </div>
                 <div className={styles.commonContent} style={contentStyle}>
-                  {title && (
+                  {itemTitle && (
                     <h3>
                       <div className={styles.commonContentTitle}>
                         {titleUnderlinePlacement === "top" && (
                           <div className={styles.commonTitleUnderlineTop} />
                         )}
-                        <div dangerouslySetInnerHTML={{ __html: title }} />
+                        <div dangerouslySetInnerHTML={{ __html: itemTitle }} />
                         {titleUnderlinePlacement === "bottom" && (
                           <div className={styles.commonTitleUnderlineBottom} />
                         )}
