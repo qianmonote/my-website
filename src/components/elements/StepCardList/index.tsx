@@ -30,10 +30,13 @@ const StepCardList: React.FC<StepCardListProps> = ({
         {steps.map((step) => (
           <StepCard
             key={step.step}
-            {...step}
+            step={step.step || 0}
+            title={step.title || ""}
+            description={step.description}
             defaultImage={
               lang === "zh" ? step.defaultImageZh || "" : step.defaultImageEn || ""
             }
+            imageActive={step.imageActive || ""}
           />
         ))}
       </div>

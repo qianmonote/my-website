@@ -1,23 +1,23 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect, useCallback } from 'react';
-import { useRouter } from 'next/navigation';
-import { 
-  Table, 
-  Card, 
-  Input, 
-  Button, 
-  Space, 
-  DatePicker, 
+import React, { useState, useEffect, useCallback } from "react";
+import { useRouter } from "next/navigation";
+import {
+  Table,
+  Card,
+  Input,
+  Button,
+  Space,
+  DatePicker,
   Tag,
   Tooltip,
   Modal,
-  App
-} from 'antd';
-import { SearchOutlined, EyeOutlined, ReloadOutlined } from '@ant-design/icons';
-import type { ColumnsType, TablePaginationConfig } from 'antd/es/table';
-import type { RangePickerProps } from 'antd/es/date-picker';
-import styles from './styles.module.css';
+  App,
+} from "antd";
+import { SearchOutlined, EyeOutlined, ReloadOutlined } from "@ant-design/icons";
+import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
+import type { RangePickerProps } from "antd/es/date-picker";
+import styles from "./styles.module.css";
 
 const { RangePicker } = DatePicker;
 const { TextArea } = Input;
@@ -59,33 +59,33 @@ export default function AdminContactPage() {
     total: 0,
   });
   const [searchForm, setSearchForm] = useState({
-    name: '',
-    phone: '',
-    email: '',
-    company: '',
-    startDate: '',
-    endDate: ''
+    name: "",
+    phone: "",
+    email: "",
+    company: "",
+    startDate: "",
+    endDate: "",
   });
   const [detailModal, setDetailModal] = useState({
     visible: false,
-    data: null as ContactFormData | null
+    data: null as ContactFormData | null,
   });
 
   // 检查登录状态
   useEffect(() => {
     const checkAuth = async () => {
       try {
-        const response = await fetch('/api/auth/check', {
-          method: 'GET',
-          credentials: 'include',
+        const response = await fetch("/api/auth/check", {
+          method: "GET",
+          credentials: "include",
         });
 
         if (!response.ok) {
-          router.replace('/admin/login');
+          router.replace("/admin/login");
         }
       } catch (error) {
-        console.error('验证登录状态失败:', error);
-        router.replace('/admin/login');
+        console.error("验证登录状态失败:", error);
+        router.replace("/admin/login");
       }
     };
 
@@ -93,37 +93,41 @@ export default function AdminContactPage() {
   }, [router]);
 
   // 获取数据
-  const fetchData = useCallback(async (params?: { current?: number; pageSize?: number }) => {
-    setLoading(true);
-    try {
-      const queryParams = new URLSearchParams({
-        page: (params?.current || pagination.current).toString(),
-        pageSize: (params?.pageSize || pagination.pageSize).toString(),
-        ...searchForm
-      });
-
-      const response = await fetch(`/api/contact/list?${queryParams}`, {
-        credentials: 'include',
-      });
-      const result: ContactListResponse = await response.json();
-
-      if (result.flag === 1 && result.data) {
-        setData(result.data.list);
-        setPagination({
-          current: result.data.pagination.current,
-          pageSize: result.data.pagination.pageSize,
-          total: result.data.pagination.total,
+  const fetchData = useCallback(
+    async (params?: { current?: number; pageSize?: number }) => {
+      setLoading(true);
+      try {
+        const queryParams = new URLSearchParams({
+          page: (params?.current || pagination.current).toString(),
+          pageSize: (params?.pageSize || pagination.pageSize).toString(),
+          ...searchForm,
         });
-      } else {
-        antMessage.error(result.msg || '获取数据失败');
+
+        const response = await fetch(`/api/contact/list?${queryParams}`, {
+          credentials: "include",
+        });
+        const result: ContactListResponse = await response.json();
+
+        if (result.flag === 1 && result.data) {
+          setData(result.data.list);
+          setPagination({
+            current: result.data.pagination.current,
+            pageSize: result.data.pagination.pageSize,
+            total: result.data.pagination.total,
+          });
+        } else {
+          antMessage.error(result.msg || "获取数据失败");
+        }
+        setLoading(false);
+      } catch (error) {
+        console.error("获取数据错误:", error);
+        antMessage.error("网络错误，请稍后重试");
+        setLoading(false);
       }
-    } catch (error) {
-      console.error('获取数据错误:', error);
-      antMessage.error('网络错误，请稍后重试');
-    } finally {
-      setLoading(false);
-    }
-  }, [searchForm, antMessage]);
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [searchForm, antMessage, pagination.current]
+  );
 
   // 搜索处理
   const handleSearch = () => {
@@ -134,23 +138,26 @@ export default function AdminContactPage() {
   // 重置搜索
   const handleReset = () => {
     setSearchForm({
-      name: '',
-      phone: '',
-      email: '',
-      company: '',
-      startDate: '',
-      endDate: ''
+      name: "",
+      phone: "",
+      email: "",
+      company: "",
+      startDate: "",
+      endDate: "",
     });
     setPagination({ ...pagination, current: 1 });
     fetchData({ current: 1 });
   };
 
   // 日期选择处理
-  const handleDateRangeChange = (_: RangePickerProps['value'], dateStrings: [string, string]) => {
+  const handleDateRangeChange = (
+    _: RangePickerProps["value"],
+    dateStrings: [string, string]
+  ) => {
     setSearchForm({
       ...searchForm,
       startDate: dateStrings[0],
-      endDate: dateStrings[1]
+      endDate: dateStrings[1],
     });
   };
 
@@ -158,51 +165,51 @@ export default function AdminContactPage() {
   const handleViewDetail = (record: ContactFormData) => {
     setDetailModal({
       visible: true,
-      data: record
+      data: record,
     });
   };
 
   // 表格列定义
   const columns: ColumnsType<ContactFormData> = [
     {
-      title: 'ID',
-      dataIndex: 'id',
-      key: 'id',
+      title: "ID",
+      dataIndex: "id",
+      key: "id",
       width: 80,
-      fixed: 'left',
+      fixed: "left",
     },
     {
-      title: '姓名',
-      dataIndex: 'name',
-      key: 'name',
+      title: "姓名",
+      dataIndex: "name",
+      key: "name",
       width: 120,
       ellipsis: true,
     },
     {
-      title: '手机号',
-      dataIndex: 'phone',
-      key: 'phone',
+      title: "手机号",
+      dataIndex: "phone",
+      key: "phone",
       width: 140,
     },
     {
-      title: '邮箱',
-      dataIndex: 'email',
-      key: 'email',
+      title: "邮箱",
+      dataIndex: "email",
+      key: "email",
       width: 200,
       ellipsis: true,
     },
     {
-      title: '公司名称',
-      dataIndex: 'company',
-      key: 'company',
+      title: "公司名称",
+      dataIndex: "company",
+      key: "company",
       width: 180,
       ellipsis: true,
-      render: (text) => text || '-',
+      render: (text) => text || "-",
     },
     {
-      title: '咨询内容',
-      dataIndex: 'content',
-      key: 'content',
+      title: "咨询内容",
+      dataIndex: "content",
+      key: "content",
       width: 250,
       ellipsis: true,
       render: (text) => (
@@ -212,24 +219,24 @@ export default function AdminContactPage() {
       ),
     },
     {
-      title: '提交时间',
-      dataIndex: 'created_at',
-      key: 'created_at',
+      title: "提交时间",
+      dataIndex: "created_at",
+      key: "created_at",
       width: 180,
       render: (text) => {
         const date = new Date(text);
-        return date.toLocaleString('zh-CN');
+        return date.toLocaleString("zh-CN");
       },
     },
     {
-      title: '操作',
-      key: 'action',
+      title: "操作",
+      key: "action",
       width: 120,
-      fixed: 'right',
+      fixed: "right",
       render: (_, record) => (
         <Space>
-          <Button 
-            type="link" 
+          <Button
+            type="link"
             icon={<EyeOutlined />}
             onClick={() => handleViewDetail(record)}
           >
@@ -263,19 +270,25 @@ export default function AdminContactPage() {
               <Input
                 placeholder="姓名"
                 value={searchForm.name}
-                onChange={(e) => setSearchForm({ ...searchForm, name: e.target.value })}
+                onChange={(e) =>
+                  setSearchForm({ ...searchForm, name: e.target.value })
+                }
                 className={styles.searchInput}
               />
               <Input
                 placeholder="手机号"
                 value={searchForm.phone}
-                onChange={(e) => setSearchForm({ ...searchForm, phone: e.target.value })}
+                onChange={(e) =>
+                  setSearchForm({ ...searchForm, phone: e.target.value })
+                }
                 className={styles.searchInput}
               />
               <Input
                 placeholder="邮箱"
                 value={searchForm.email}
-                onChange={(e) => setSearchForm({ ...searchForm, email: e.target.value })}
+                onChange={(e) =>
+                  setSearchForm({ ...searchForm, email: e.target.value })
+                }
                 className={styles.searchInput}
               />
             </div>
@@ -283,27 +296,26 @@ export default function AdminContactPage() {
               <Input
                 placeholder="公司名称"
                 value={searchForm.company}
-                onChange={(e) => setSearchForm({ ...searchForm, company: e.target.value })}
+                onChange={(e) =>
+                  setSearchForm({ ...searchForm, company: e.target.value })
+                }
                 className={styles.searchInput}
               />
               <RangePicker
                 onChange={handleDateRangeChange}
-                placeholder={['开始日期', '结束日期']}
+                placeholder={["开始日期", "结束日期"]}
                 className={styles.searchInput}
               />
               <Space>
-                <Button 
-                  type="primary" 
-                  icon={<SearchOutlined />} 
+                <Button
+                  type="primary"
+                  icon={<SearchOutlined />}
                   onClick={handleSearch}
                 >
                   搜索
                 </Button>
                 <Button onClick={handleReset}>重置</Button>
-                <Button 
-                  icon={<ReloadOutlined />} 
-                  onClick={() => fetchData()}
-                >
+                <Button icon={<ReloadOutlined />} onClick={() => fetchData()}>
                   刷新
                 </Button>
               </Space>
@@ -326,7 +338,7 @@ export default function AdminContactPage() {
             ...pagination,
             showSizeChanger: true,
             showQuickJumper: true,
-            showTotal: (total, range) => 
+            showTotal: (total, range) =>
               `显示 ${range[0]}-${range[1]} 条，共 ${total} 条数据`,
           }}
           onChange={handleTableChange}
@@ -341,9 +353,12 @@ export default function AdminContactPage() {
         open={detailModal.visible}
         onCancel={() => setDetailModal({ visible: false, data: null })}
         footer={[
-          <Button key="close" onClick={() => setDetailModal({ visible: false, data: null })}>
+          <Button
+            key="close"
+            onClick={() => setDetailModal({ visible: false, data: null })}
+          >
             关闭
-          </Button>
+          </Button>,
         ]}
         width={600}
         className={styles.modalWrapper}
@@ -364,11 +379,13 @@ export default function AdminContactPage() {
             </div>
             <div className={styles.detailItem}>
               <label>公司名称：</label>
-              <span>{detailModal.data.company || '-'}</span>
+              <span>{detailModal.data.company || "-"}</span>
             </div>
             <div className={styles.detailItem}>
               <label>提交时间：</label>
-              <span>{new Date(detailModal.data.created_at).toLocaleString('zh-CN')}</span>
+              <span>
+                {new Date(detailModal.data.created_at).toLocaleString("zh-CN")}
+              </span>
             </div>
             <div className={styles.detailItem}>
               <label>咨询内容：</label>
@@ -384,4 +401,4 @@ export default function AdminContactPage() {
       </Modal>
     </div>
   );
-} 
+}

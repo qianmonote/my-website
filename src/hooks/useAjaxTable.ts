@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useReducer } from 'react'
 import { message } from 'antd'
 import axios from '../common/axios'
