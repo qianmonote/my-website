@@ -44,7 +44,7 @@ const menuItemsLangMap = {
 };
 
 const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
-  const { lang, setLang, t } = useI18n();
+  const { lang, setLang } = useI18n();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pathname = usePathname();
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -66,7 +66,6 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         </a>
       ),
       key: "product1",
-      className: "activeMenuItem",
     },
     {
       label: (
@@ -75,7 +74,6 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         </a>
       ),
       key: "product2",
-      className: "activeMenuItem",
     },
     {
       label: (
@@ -84,20 +82,19 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         </a>
       ),
       key: "product3",
-      className: "activeMenuItem",
     },
   ];
 
   const menuItems = [
     ...productsMenuItems,
     {
-      label: <a href="/about">{t("about")}</a>,
-      key: "about",
+      label: <a href="/about">{menuItemsLangMap.about[lang]}</a>,
+      key: "Company Introduction",
       className: "activeMenuItem",
     },
     {
-      label: <a href="#contact">{t("contact")}</a>,
-      key: "contact",
+      label: <a href="#contact">{menuItemsLangMap.contact[lang]}</a>,
+      key: "Contact Us",
       className: "activeMenuItem",
     },
   ];
@@ -151,11 +148,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
             {menuItemsLangMap.contact[lang]}
           </div>
         </a>
-        <div
-          className={classNames(styles.navbarMenuItem, {
-            [styles.active]: isProductsActive(),
-          })}
-        >
+        <div className={styles.navbarMenuItem}>
           <Image
             src="/header/call-default.png"
             alt="call"
@@ -208,6 +201,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
                 setLang("zh");
               }
             }}
+            style={{ marginLeft: 20 }}
           />
         </Drawer>
       </div>

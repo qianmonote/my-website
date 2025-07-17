@@ -62,6 +62,15 @@
   margin: 0 auto;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
+  cursor: pointer;
+}
+
+.team-card:hover {
+  transform: translateY(-5px);
+}
+
+.team-card:active {
+  transform: translateY(-2px);
 }
 
 .team-member-card {
@@ -224,5 +233,14 @@
   
   .swiper-slide-active .member-title {
     font-size: 12px;
+  }
+  
+  /* 移动端触摸反馈 */
+  .team-card:hover {
+    transform: none;
+  }
+  
+  .team-card:active {
+    transform: scale(0.95);
   }
 }

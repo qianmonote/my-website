@@ -113,8 +113,6 @@ a {
   input[type="submit"] {
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
-    min-height: 44px;
-    min-width: 44px;
   }
   
   /* 防止双击缩放 */
