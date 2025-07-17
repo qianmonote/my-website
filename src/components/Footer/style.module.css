@@ -172,36 +172,31 @@
   .footerContactWrap {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
-    gap: 24px;
     margin-bottom: 100px;
     padding: 8px 0;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
-      flex-direction: column;
-      gap: 20px;
       margin-bottom: 60px;
     }
     
     @media (max-width: 480px) {
-      gap: 16px;
       margin-bottom: 40px;
     }
   }
   
   .footerContactList {
-    margin: 8px 0;
-    display: inline-flex;
+    display: flex;
     flex-wrap: wrap;
     gap: 16px;
     justify-content: center;
+    align-items: center;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
       gap: 12px;
-      align-items: center;
     }
     
     @media (max-width: 480px) {
@@ -243,9 +238,28 @@
   }
   
   .footerContactInfo {
-    /* 移动端适配 */
-    @media (max-width: 768px) {
+    /* 默认情况下与社交媒体按钮在同一行 */
+    flex-shrink: 0;
+    
+    /* 当容器宽度不够时，Contact Us按钮会独占一行 */
+    @media (max-width: 1024px) {
+      /* 在中等屏幕下，当社交媒体按钮折行时，Contact Us按钮独占一行 */
+      width: 100%;
+      display: flex;
+      justify-content: center;
       margin-top: 16px;
+    }
+    
+    @media (max-width: 768px) {
+      /* 在移动端，当社交媒体按钮折行时，Contact Us按钮独占一行 */
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      margin-top: 16px;
+    }
+    
+    @media (max-width: 480px) {
+      margin-top: 12px;
     }
   }
   

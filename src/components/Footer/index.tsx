@@ -238,7 +238,18 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   touchFeedbackScale={0.95}
                   touchFeedbackDuration={200}
                 >
-                  <a onClick={handleOpenContactModal}>
+                  <a 
+                    onClick={handleOpenContactModal}
+                    onTouchStart={() => handleTouchStart('contact')}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered('contact')}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === 'contact' ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease',
+                      cursor: 'pointer'
+                    }}
+                  >
                     <ContractBtn type="contactEn">Contact Us</ContractBtn>
                   </a>
                 </MobileOptimizedWrapper>

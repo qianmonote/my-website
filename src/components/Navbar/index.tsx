@@ -210,7 +210,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
                 setLang("zh");
               }
             }}
-            style={{ marginLeft: 20 }}
+            style={{ marginLeft: 20, marginTop: 20 }}
           />
         </Drawer>
       </div>
