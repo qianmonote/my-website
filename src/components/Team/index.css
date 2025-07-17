@@ -190,7 +190,7 @@
 /* Responsive Styles */
 @media (max-width: 768px) {
   .team-section-title {
-    font-size: 28px;
+    font-size: 20px;
   }
   
   .team-swiper {

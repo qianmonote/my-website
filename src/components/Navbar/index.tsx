@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import { Drawer, Menu, Select, Dropdown } from "antd";
+import { Drawer, Menu, Select, Dropdown, Switch } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useI18n } from "@/context/I18nContext";
 import { usePathname } from "next/navigation";
@@ -183,14 +183,17 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
           </a>
         </div>
         {noShowLangChange ? null : (
-          <Select
-            value={lang}
-            onChange={handleLangChange}
-            style={{ width: 100 }}
-            options={[
-              { value: "zh", label: "zh" },
-              { value: "en", label: "en" },
-            ]}
+          <Switch
+            checkedChildren="英文"
+            unCheckedChildren="中文"
+            defaultChecked={lang === "en"}
+            onChange={(checked) => {
+              if (checked) {
+                setLang("en");
+              } else {
+                setLang("zh");
+              }
+            }}
           />
         )}
       </div>
@@ -208,14 +211,17 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
           open={drawerOpen}
         >
           <Menu mode="vertical" items={menuItems} />
-          <Select
-            value={lang}
-            onChange={handleLangChange}
-            style={{ width: 100 }}
-            options={[
-              { value: "zh", label: "zh" },
-              { value: "en", label: "en" },
-            ]}
+          <Switch
+            checkedChildren="英文"
+            unCheckedChildren="中文"
+            defaultChecked={lang === "en"}
+            onChange={(checked) => {
+              if (checked) {
+                setLang("en");
+              } else {
+                setLang("zh");
+              }
+            }}
           />
         </Drawer>
       </div>

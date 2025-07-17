@@ -49,9 +49,11 @@
   text-align: center;
   text-decoration: none;
   display: flex;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   align-items: center;
   transition: all 0.3s ease;
-  min-width: 224px;
 }
 
 .navbarMenuItem:hover {
@@ -60,7 +62,6 @@
   box-shadow: 0 4px 12px rgba(75, 141, 255, 0.3);
   color: #fff;
 }
-
 
 .navbarMenuItem.active {
   background: rgba(75, 141, 255, 1);
