@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { Modal, Drawer, Avatar, Button, Divider } from "antd";
+import { Modal, Drawer, Avatar, Divider } from "antd";
 import { CloseOutlined, LinkedinOutlined, MailOutlined } from "@ant-design/icons";
 import { useMobileOptimization } from "@/hooks/useMobileOptimization";
 import "./TeamDetailModal.module.css";
@@ -147,18 +147,6 @@ const TeamDetailModal: React.FC<TeamDetailModalProps> = ({
           </div>
         </div>
       )}
-
-      {/* 关闭按钮 */}
-      <div className="detail-close-btn">
-        <Button
-          type="primary"
-          icon={<CloseOutlined />}
-          onClick={onClose}
-          className="close-button"
-        >
-          关闭
-        </Button>
-      </div>
     </div>
   );
 

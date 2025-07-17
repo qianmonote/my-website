@@ -11,7 +11,7 @@
 
 /* 纯文字模式卡片样式 */
 .card.textOnly {
-  width: 820px;
+  width: auto;
   min-height: 180px;
   padding: 0 40px;
   border-radius: 16px;
