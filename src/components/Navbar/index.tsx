@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useCallback, useState } from "react";
-import { Drawer, Menu, Select, Dropdown, Switch } from "antd";
+import { Drawer, Menu, Dropdown, Switch } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 import { useI18n } from "@/context/I18nContext";
 import { usePathname } from "next/navigation";
@@ -89,16 +89,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
   ];
 
   const menuItems = [
-    {
-      label: (
-        <a href="/products/biomass-gasification">
-          {" "}
-          {menuItemsLangMap.product1[lang]}{" "}
-        </a>
-      ),
-      key: "product1",
-      className: "activeMenuItem",
-    },
+    ...productsMenuItems,
     {
       label: <a href="/about">{t("about")}</a>,
       key: "about",
@@ -110,11 +101,6 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
       className: "activeMenuItem",
     },
   ];
-
-  const handleLangChange = useCallback(
-    (value: "zh" | "en") => setLang(value),
-    [setLang]
-  );
 
   // 判断菜单项是否激活
   const isActiveMenuItem = useCallback(

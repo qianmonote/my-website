@@ -7,10 +7,13 @@
   align-items: center;
   justify-content: center;
   position: relative;
+  
   .footerBg {
     position: absolute;
     top: -160px;
     left: 0;
+    width: 100%;
+    height: auto;
   }
 
   .footerInvite {
@@ -24,7 +27,24 @@
       rgba(0, 0, 0, 0) 100%
     );
     margin-bottom: 100px;
+    padding: 0 20px;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 18px;
+      line-height: 28px;
+      margin-bottom: 60px;
+      padding: 0 16px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 16px;
+      line-height: 24px;
+      margin-bottom: 40px;
+      padding: 0 12px;
+    }
   }
+  
   /* 邀请 */
   .footerInviteText {
     font-weight: 400;
@@ -33,7 +53,19 @@
     line-height: 50px;
     text-align: center;
     color: #e9e9ea;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 24px;
+      line-height: 36px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 20px;
+      line-height: 30px;
+    }
   }
+  
   .footerInviteTextZn {
     font-family: Inter;
     font-weight: 400;
@@ -42,14 +74,36 @@
     line-height: 50px;
     letter-spacing: 0px;
     text-align: center;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 14px;
+      line-height: 40px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 12px;
+      line-height: 32px;
+    }
   }
+  
   .spanStrong {
     color: #1677ff;
+    font-weight: 600;
   }
 
   /* 战略合作伙伴 */
   .footerPartnerWrap {
     margin-bottom: 100px;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      margin-bottom: 60px;
+    }
+    
+    @media (max-width: 480px) {
+      margin-bottom: 40px;
+    }
   }
 
   .footerPartnerTitle {
@@ -59,12 +113,59 @@
     text-align: center;
     color: rgba(255, 255, 255, 0.64);
     margin-bottom: 12px;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 16px;
+      margin-bottom: 16px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 14px;
+      margin-bottom: 12px;
+    }
   }
+  
   .footerPartnerList {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 24px;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      gap: 16px;
+      flex-direction: column;
+    }
+    
+    @media (max-width: 480px) {
+      gap: 12px;
+    }
+    
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 202px;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+      
+      /* 移动端触摸优化 */
+      @media (max-width: 768px) {
+        max-width: 160px;
+        cursor: pointer;
+        
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+      
+      @media (max-width: 480px) {
+        max-width: 120px;
+      }
+    }
   }
 
   /* 联系我们 */
@@ -76,16 +177,78 @@
     gap: 24px;
     margin-bottom: 100px;
     padding: 8px 0;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 20px;
+      margin-bottom: 60px;
+    }
+    
+    @media (max-width: 480px) {
+      gap: 16px;
+      margin-bottom: 40px;
+    }
   }
+  
   .footerContactList {
     margin: 8px 0;
     display: inline-flex;
     flex-wrap: wrap;
+    gap: 16px;
+    justify-content: center;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      gap: 12px;
+      align-items: center;
+    }
+    
+    @media (max-width: 480px) {
+      gap: 8px;
+    }
+    
+    a {
+      display: block;
+      transition: transform 0.3s ease;
+      
+      &:hover {
+        transform: scale(1.05);
+      }
+      
+      /* 移动端触摸优化 */
+      @media (max-width: 768px) {
+        cursor: pointer;
+        
+        &:active {
+          transform: scale(0.95);
+        }
+      }
+    }
+    
     img {
       width: 100%;
       height: auto;
+      max-width: 150px;
+      
+      /* 移动端适配 */
+      @media (max-width: 768px) {
+        max-width: 120px;
+      }
+      
+      @media (max-width: 480px) {
+        max-width: 100px;
+      }
     }
   }
+  
+  .footerContactInfo {
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      margin-top: 16px;
+    }
+  }
+  
   /* 地址 */
   .footerAddress {
     font-weight: 400;
@@ -95,5 +258,20 @@
     padding: 24px 0 40px;
     color: rgba(255, 255, 255, 0.4);
     margin-top: 45px;
+    
+    /* 移动端适配 */
+    @media (max-width: 768px) {
+      font-size: 12px;
+      line-height: 18px;
+      padding: 20px 16px 32px;
+      margin-top: 30px;
+    }
+    
+    @media (max-width: 480px) {
+      font-size: 11px;
+      line-height: 16px;
+      padding: 16px 12px 24px;
+      margin-top: 20px;
+    }
   }
 }

@@ -20,6 +20,65 @@ body {
   font-family: 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Arial', sans-serif;
   margin: 0;
   padding: 0;
+  /* 移动端字体优化 */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* 移动端字体大小优化 */
+@media (max-width: 768px) {
+  body {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+  
+  h1 {
+    font-size: 24px !important;
+    line-height: 1.3 !important;
+  }
+  
+  h2 {
+    font-size: 20px !important;
+    line-height: 1.4 !important;
+  }
+  
+  h3 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+  
+  p {
+    font-size: 14px !important;
+    line-height: 1.6 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  body {
+    font-size: 13px;
+    line-height: 1.4;
+  }
+  
+  h1 {
+    font-size: 20px !important;
+    line-height: 1.3 !important;
+  }
+  
+  h2 {
+    font-size: 18px !important;
+    line-height: 1.4 !important;
+  }
+  
+  h3 {
+    font-size: 16px !important;
+    line-height: 1.4 !important;
+  }
+  
+  p {
+    font-size: 13px !important;
+    line-height: 1.5 !important;
+  }
 }
 
 .ant-btn-primary {
@@ -29,10 +88,39 @@ body {
 a {
   color: inherit;
   text-decoration: none;
+  /* 移动端触摸优化 */
+  -webkit-tap-highlight-color: transparent;
+  transition: all 0.3s ease;
+}
+
+/* 移动端链接触摸反馈 */
+@media (max-width: 768px) {
+  a:active {
+    opacity: 0.7;
+    transform: scale(0.98);
+  }
 }
 
 * {
   box-sizing: border-box;
+}
+
+/* 移动端触摸优化 */
+@media (max-width: 768px) {
+  button, 
+  [role="button"],
+  input[type="button"],
+  input[type="submit"] {
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* 防止双击缩放 */
+  * {
+    touch-action: manipulation;
+  }
 }
 
 /* 产品下拉菜单样式 */
@@ -75,6 +163,41 @@ a {
   font-weight: 500 !important;
 }
 
+/* 移动端下拉菜单优化 */
+@media (max-width: 768px) {
+  .ant-dropdown.products-dropdown .ant-dropdown-menu {
+    min-width: 200px !important;
+    padding: 8px !important;
+  }
+  
+  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+    padding: 10px 12px !important;
+    margin: 2px 0 !important;
+  }
+  
+  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+    font-size: 13px !important;
+    line-height: 18px !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .ant-dropdown.products-dropdown .ant-dropdown-menu {
+    min-width: 180px !important;
+    padding: 6px !important;
+  }
+  
+  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+    padding: 8px 10px !important;
+    margin: 1px 0 !important;
+  }
+  
+  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+    font-size: 12px !important;
+    line-height: 16px !important;
+  }
+}
+
 /* 确保下拉菜单样式优先级最高 */
 .products-dropdown .ant-dropdown-menu {
   background: rgba(55, 60, 70, 1) !important;
@@ -113,4 +236,51 @@ a {
 .products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover a {
   color: #fff !important;
   font-weight: 500 !important;
+}
+
+/* 移动端通用容器优化 */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .section {
+    padding: 40px 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  .section {
+    padding: 30px 0;
+  }
+}
+
+
+/* 移动端滚动优化 */
+@media (max-width: 768px) {
+  html {
+    scroll-behavior: smooth;
+  }
+  
+  /* 自定义滚动条 */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: rgba(75, 141, 255, 0.5);
+    border-radius: 3px;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(75, 141, 255, 0.7);
+  }
 }

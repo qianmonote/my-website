@@ -140,8 +140,8 @@
         right: 34px;
       }
       .product-card-more {
-        width: 200px;
-        height: 48px;
+        /* width: 200px;
+        height: 48px; */
         display: inline-flex;
         align-items: center;
         justify-content: center;
