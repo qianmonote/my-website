@@ -60,7 +60,7 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
   return (
     <PartSection title={title} className={className} style={style}>
       {introText && (
-        <div className={styles.partSectionIntroText}>{introText}</div>
+        <div className={styles.partSectionIntroText} dangerouslySetInnerHTML={{ __html: introText }} />
       )}
       <Row gutter={defaultRowGutter}>
         {dataList.map((item, index) => {
@@ -97,7 +97,7 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
                       </div>
                     </h3>
                   )}
-                  {description && <p style={descriptionStyle}>{description}</p>}
+                  {description && <p style={descriptionStyle} dangerouslySetInnerHTML={{ __html: description }} />}
                 </div>
               </div>
             </Col>
