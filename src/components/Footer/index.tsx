@@ -3,8 +3,8 @@
 import React, { useState } from "react";
 import ContractBtn from "@/components/elements/CustomtBtn";
 import MobileOptimizedWrapper from "@/components/MobileOptimizedWrapper";
+import ContactModal from "@/components/elements/ContactModal";
 import Image from "next/image";
-import Link from "next/link";
 import styles from "./style.module.css";
 
 type TProps = Partial<{
@@ -13,6 +13,7 @@ type TProps = Partial<{
 
 const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
 
   // 处理触摸反馈
   const handleTouchStart = (elementId: string) => {
@@ -21,6 +22,15 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
 
   const handleTouchEnd = () => {
     setIsHovered(null);
+  };
+
+  // 处理联系我们弹窗
+  const handleOpenContactModal = () => {
+    setIsContactModalOpen(true);
+  };
+
+  const handleCloseContactModal = () => {
+    setIsContactModalOpen(false);
   };
 
   return (
@@ -228,9 +238,9 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   touchFeedbackScale={0.95}
                   touchFeedbackDuration={200}
                 >
-                  <Link href="/contact">
+                  <a onClick={handleOpenContactModal}>
                     <ContractBtn type="contactEn">Contact Us</ContractBtn>
-                  </Link>
+                  </a>
                 </MobileOptimizedWrapper>
               </div>
             </div>
@@ -242,6 +252,12 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
         Headquarters Address：5-33B JALAN PAHANG, 10400 GEORGETOWN, PULAU
         PINANG.
       </div>
+      
+      {/* 联系我们弹窗 */}
+      <ContactModal
+        open={isContactModalOpen}
+        onClose={handleCloseContactModal}
+      />
     </MobileOptimizedWrapper>
   );
 };

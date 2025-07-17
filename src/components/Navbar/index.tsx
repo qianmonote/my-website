@@ -93,7 +93,16 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
       className: "activeMenuItem",
     },
     {
-      label: <a href="#contact">{menuItemsLangMap.contact[lang]}</a>,
+      label: (
+        <a 
+          onClick={() => {
+            handleOpenContactModal();
+            setDrawerOpen(false);
+          }}
+        >
+          {menuItemsLangMap.contact[lang]}
+        </a>
+      ),
       key: "Contact Us",
       className: "activeMenuItem",
     },

@@ -67,3 +67,91 @@
 .agreement a:hover {
   text-decoration: underline;
 }
+
+/* 移动端底部侧滑样式 */
+.mobileDrawer {
+  :global(.ant-drawer-content-wrapper) {
+    border-radius: 16px 16px 0 0;
+  }
+  
+  :global(.ant-drawer-content) {
+    border-radius: 16px 16px 0 0;
+  }
+  
+  :global(.ant-drawer-header) {
+    border-radius: 16px 16px 0 0;
+    padding: 16px 20px;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  :global(.ant-drawer-title) {
+    font-size: 18px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  :global(.ant-drawer-body) {
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+/* 移动端表单内容适配 */
+.mobileDrawer .modalContent {
+  height: auto;
+  min-height: calc(85vh - 60px);
+  flex-direction: column;
+}
+
+.mobileDrawer .leftSection {
+  flex: none;
+  height: 120px;
+  background-size: cover;
+  background-position: center;
+}
+
+.mobileDrawer .rightSection {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.mobileDrawer .title {
+  font-size: 16px;
+  margin: 10px 0 20px;
+}
+
+.mobileDrawer .form {
+  :global(.ant-form-item-label) {
+    padding-bottom: 4px;
+  }
+  
+  :global(.ant-form-item-label > label) {
+    font-size: 14px;
+    color: #333;
+  }
+  
+  :global(.ant-input),
+  :global(.ant-input-affix-wrapper) {
+    height: 40px;
+    border-radius: 8px;
+  }
+  
+  :global(.ant-input-textarea) {
+    border-radius: 8px;
+  }
+}
+
+.mobileDrawer .submitButton {
+  width: 100%;
+  height: 44px;
+  font-size: 16px;
+  border-radius: 22px;
+  margin-top: 10px;
+}
+
+.mobileDrawer .agreement {
+  font-size: 11px;
+  margin-top: 12px;
+  line-height: 1.4;
+}
