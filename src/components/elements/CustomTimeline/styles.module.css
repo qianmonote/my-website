@@ -43,6 +43,8 @@
 .timelineLabel img {
   max-width: 100%;
   height: auto;
+  width: auto;
+  box-sizing: border-box;
 }
 
 /* 时间轴连接器（仅作为占位） */
@@ -100,16 +102,17 @@
 /* 响应式设计 - 移动端 */
 @media (max-width: 480px) {
   .timeline::before {
-    left: 90px; /* 80px + 10px */
+    left: 70px; /* 60px + 10px */
   }
   
   .timelineLabel {
-    width: 80px;
+    width: 60px;
     padding-right: 10px;
   }
   
   .timelineContent {
     margin-left: 10px;
+    min-width: 0; /* 防止内容撑开容器 */
   }
   
   .timelineConnector {

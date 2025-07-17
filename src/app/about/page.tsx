@@ -1,17 +1,40 @@
 "use client";
 
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CustomTimeline from "@/components/elements/CustomTimeline";
 import CustomCard from "@/components/elements/CustomCard";
+import DetailModal from "@/components/elements/DetailModal";
 import { Carousel } from "antd";
 import type { CarouselRef } from "antd/es/carousel";
 import styles from "./style.module.css";
 
 export default function About() {
   const carouselRef = useRef<CarouselRef>(null);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalData, setModalData] = useState<{
+    title: string;
+    description: string;
+    image?: {
+      src: string;
+      alt: string;
+      width?: number;
+      height?: number;
+    };
+    content?: React.ReactNode;
+  }>({
+    title: "",
+    description: "",
+  });
+
+  // 处理查看详情
+  const handleViewDetails = (data: typeof modalData) => {
+    setModalData(data);
+    setModalVisible(true);
+  };
+
   return (
     <>
       <Navbar />
@@ -85,7 +108,25 @@ export default function About() {
                       description="The waste-to-energy system will be deployed in resort areas and urban centers..."
                       moreButton={{
                         text: "View>>",
-                        onClick: () => console.log("查看详情"),
+                        onClick: () => handleViewDetails({
+                          title: 'Biomass Gasification Technology Research Cooperation Agreement',
+                          description: `The waste-to-energy system will be deployed in resort areas and urban centers, providing sustainable energy solutions for high-energy-consuming industries. This innovative technology converts biomass waste into clean energy, reducing carbon emissions and promoting environmental sustainability.
+
+Key Features:
+• Advanced gasification technology for efficient waste conversion
+• Integration with existing energy infrastructure
+• Scalable solution for various industrial applications
+• Real-time monitoring and control systems
+• Compliance with international environmental standards
+
+The partnership with the University of Raman represents a significant milestone in our commitment to sustainable energy development and technological innovation.`,
+                          image: {
+                            src: "/about/part-2-cont.png",
+                            alt: "生物质气化技术研究合作",
+                            width: 756,
+                            height: 442,
+                          },
+                        }),
                       }}
                     />
                   ),
@@ -107,11 +148,29 @@ export default function About() {
                         width: 756,
                         height: 442,
                       }}
-                      title="Promoting solar-powered electric vehicle charging stations in the Maldives"
+                      title="Promoting solar-powered electric vehicle charging stations in the Maldives"
                       description="Deepen the research and development of palm waste energy technology, build..."
                       moreButton={{
                         text: "View>>",
-                        onClick: () => console.log("查看详情"),
+                        onClick: () => handleViewDetails({
+                          title: 'Solar-Powered EV Charging Stations in the Maldives',
+                          description: `We are deepening the research and development of palm waste energy technology, building a comprehensive renewable energy ecosystem in the Maldives. This project focuses on establishing solar-powered electric vehicle charging infrastructure across the island nation.
+
+Project Highlights:
+• Solar energy integration with EV charging infrastructure
+• Palm waste biomass energy conversion systems
+• Smart grid technology for optimal energy distribution
+• Carbon-neutral transportation solutions
+• Sustainable tourism infrastructure development
+
+The Maldives project demonstrates our commitment to creating sustainable energy solutions for island nations and promoting the adoption of clean transportation technologies. This initiative will serve as a model for similar projects in other coastal and island regions.`,
+                          image: {
+                            src: "/about/part-3-cont.png",
+                            alt: "马尔代夫太阳能充电站项目",
+                            width: 756,
+                            height: 442,
+                          },
+                        }),
                       }}
                     />
                   ),
@@ -138,13 +197,16 @@ export default function About() {
                 onClick={() => carouselRef?.current?.next()}
               />
               <Carousel autoplay ref={carouselRef}>
-                <Image
-                  src="/about/mission-carousel-1.png"
-                  alt=""
-                  width={1000}
-                  height={400}
-                  priority
-                />
+                <div className={styles.carouselItem}>
+                  <Image
+                    src="/about/mission-carousel-1.png"
+                    alt=""
+                    width={1000}
+                    height={400}
+                    priority
+                    className={styles.carouselImage}
+                  />
+                </div>
               </Carousel>
             </div>
           </div>
@@ -153,9 +215,9 @@ export default function About() {
         {/* English Mission Section */}
         <section className={styles.englishMissionSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>
+            {/* <h2 className={styles.sectionTitle}>
               ONETOUCH &ldquo;MISSION AND VISION&rdquo;
-            </h2>
+            </h2> */}
           </div>
           <Image
             src="/about/mission-desc.png"
@@ -191,6 +253,17 @@ export default function About() {
           </div>
         </section>
       </main>
+      
+      {/* 详情弹窗 */}
+      <DetailModal
+        visible={modalVisible}
+        onClose={() => setModalVisible(false)}
+        title={modalData.title}
+        description={modalData.description}
+        image={modalData.image}
+        content={modalData.content}
+      />
+      
       <Footer />
     </>
   );

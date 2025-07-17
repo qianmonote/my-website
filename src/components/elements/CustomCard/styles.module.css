@@ -11,11 +11,13 @@
 
 /* 纯文字模式卡片样式 */
 .card.textOnly {
-  width: auto;
+  width: 100%;
+  max-width: 100%;
   min-height: 180px;
   padding: 0 40px;
   border-radius: 16px;
   background: rgba(42, 48, 59, 1);
+  box-sizing: border-box;
 }
 
 /* 图片容器 */
@@ -34,6 +36,8 @@
   transition: transform 0.3s ease;
   border-radius: 16px;
   margin-bottom: 38px;
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .card:hover .cardImage {
@@ -276,6 +280,12 @@
 
   .cardMore {
     font-size: 13px;
+  }
+
+  /* 纯文字模式移动端优化 */
+  .card.textOnly {
+    padding: 0 20px;
+    min-height: 120px;
   }
 
   /* 角标尺寸进一步调整 */

@@ -24,6 +24,8 @@
   height: 100%;
   object-fit: cover;
   filter: brightness(0.7);
+  max-width: 100%;
+  box-sizing: border-box;
 }
 
 .scrollIndicator {
@@ -125,6 +127,39 @@
   max-width: 1000px;
   margin: 0 auto;
   position: relative;
+}
+
+/* 轮播图容器样式 */
+.carouselItem {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 轮播图片样式 */
+.carouselImage {
+  /* width: 100% !important;
+  height: auto !important; */
+  max-width: 100%;
+  border-radius: 8px;
+}
+
+/* 覆盖 Ant Design Carousel 默认样式 */
+.missionContent :global(.ant-carousel) {
+  width: 100%;
+}
+
+.missionContent :global(.ant-carousel .slick-slide) {
+  text-align: center;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+}
+
+.missionContent :global(.ant-carousel .slick-track) {
+  display: flex !important;
+  align-items: center;
 }
 .turnLeft,
 .turnRight {
@@ -290,13 +325,52 @@
   }
 }
 
+/* 轮播图小屏幕优化 - 仅在小屏幕下应用 */
+@media (max-width: 1000px) {
+  /* 轮播图小屏幕优化 */
+  .missionContent {
+    max-width: 90%;
+  }
+
+  .carouselImage {
+    max-height: 300px;
+    transition: all 0.3s ease;
+    backface-visibility: hidden; /* 防止图片变形 */
+    transform: translateZ(0); /* 启用硬件加速 */
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .carouselItem {
+    min-height: 250px;
+  }
+
+  .turnLeft,
+  .turnRight {
+    display: none; /* 在小屏幕下隐藏左右切换按钮 */
+  }
+
+  /* 覆盖 Ant Design Carousel 默认样式 - 仅在小屏幕下 */
+  .missionContent :global(.ant-carousel .slick-slide) {
+    height: auto !important;
+  }
+
+  .missionContent :global(.ant-carousel .slick-list) {
+    overflow: visible;
+  }
+}
+
 @media (max-width: 480px) {
   .container {
     padding: 0 15px;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .sectionTitle {
     font-size: 1.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
   }
 
   .quote blockquote {
@@ -305,5 +379,29 @@
 
   .content h3 {
     font-size: 1.2rem;
+  }
+
+  /* 修复轮播图左右按钮在小屏幕下的位置 */
+  .turnLeft,
+  .turnRight {
+    display: none; /* 在小屏幕下隐藏左右切换按钮 */
+  }
+
+  .missionContent {
+    padding: 0 15px;
+    max-width: 95%;
+  }
+
+  /* 轮播图移动端优化 */
+  .carouselImage {
+    max-height: 200px;
+    border-radius: 4px;
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .carouselItem {
+    padding: 0 5px;
+    min-height: 200px;
   }
 }

@@ -1,0 +1,77 @@
+/* 桌面端模态框样式 */
+.desktopModal {
+  /* 覆盖Ant Design默认样式 */
+}
+
+.desktopContent {
+  padding: 20px 0;
+}
+
+.desktopImageContainer {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.desktopImage {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.desktopDescription {
+  font-size: 16px;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.desktopCustomContent {
+  margin-top: 20px;
+}
+
+/* 移动端底部侧滑样式 */
+.mobileDrawer {
+  /* 覆盖Ant Design默认样式 */
+}
+
+.mobileContent {
+  padding: 0;
+}
+
+.mobileImageContainer {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.mobileImage {
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+.mobileDescription {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #9ca3af;
+  margin-bottom: 20px;
+}
+
+.mobileCustomContent {
+  margin-top: 20px;
+}
+
+/* 响应式优化 */
+@media (max-width: 480px) {
+  .mobileDescription {
+    font-size: 13px;
+    line-height: 1.5;
+  }
+  
+  .mobileImageContainer {
+    margin-bottom: 15px;
+  }
+} 
