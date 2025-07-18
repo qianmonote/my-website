@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Avatar, Button } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
@@ -31,6 +31,21 @@ const Team: React.FC = () => {
   const { t } = useI18n();
   const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null);
   const [modalVisible, setModalVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 检测屏幕尺寸
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
+
+    checkScreenSize();
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
 
   const team = [
     {
@@ -169,9 +184,9 @@ const Team: React.FC = () => {
         <div className="team-swiper-container">
           <Swiper
             grabCursor={true}
-            centeredSlides={true}
-            slidesPerView={5}
-            spaceBetween={-20}
+            centeredSlides={!isMobile}
+            slidesPerView={isMobile ? 1 : 5}
+            spaceBetween={isMobile ? 0 : -20}
             loop={true}
             pagination={{
               clickable: true,
@@ -184,13 +199,14 @@ const Team: React.FC = () => {
             }}
             speed={800}
             modules={[Pagination, Autoplay]}
-            className="team-swiper"
+            className={`team-swiper ${isMobile ? 'mobile-swiper' : ''}`}
           >
             {team.map((member, idx) => (
               <SwiperSlide key={idx}>
                 {({ isActive, isPrev, isNext }) => (
                   <div 
                     className={`team-card ${
+                      isMobile ? "mobile-card" :
                       isActive ? "swiper-slide-active" : 
                       isPrev || isNext ? "swiper-slide-adjacent" : ""
                     }`}
@@ -202,7 +218,7 @@ const Team: React.FC = () => {
                       styles={{
                         body: {
                           padding: "24px 20px",
-                          background: isActive ? "#1677FF" : "#1B2B65",
+                          background: isMobile || isActive ? "#1677FF" : "#1B2B65",
                           borderRadius: "16px",
                         },
                       }}

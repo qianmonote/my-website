@@ -197,14 +197,34 @@
     gap: 16px;
     justify-content: center;
     align-items: center;
+    max-width: 100%;
+    
+    /* 所有屏幕尺寸下，社交媒体图标一行展示4个 */
+    .socialLink {
+      flex: 0 0 calc(25% - 12px);
+      max-width: 150px;
+      min-width: 80px;
+    }
     
     /* 移动端适配 */
     @media (max-width: 768px) {
       gap: 12px;
+      
+      .socialLink {
+        flex: 0 0 calc(25% - 9px);
+        max-width: 120px;
+        min-width: 70px;
+      }
     }
     
     @media (max-width: 480px) {
       gap: 8px;
+      
+      .socialLink {
+        flex: 0 0 calc(25% - 6px);
+        max-width: 100px;
+        min-width: 60px;
+      }
     }
     
     a {
@@ -244,21 +264,18 @@
   .footerContactInfo {
     /* 默认情况下与社交媒体按钮在同一行 */
     flex-shrink: 0;
+    margin-left: 16px;
     
-    /* 当容器宽度不够时，Contact Us按钮会独占一行 */
-    @media (max-width: 1024px) {
-      /* 在中等屏幕下，当社交媒体按钮折行时，Contact Us按钮独占一行 */
+    /* 当社交媒体按钮折行时，Contact Us按钮独占一行 */
+    @media (max-width: 800px) {
       width: 100%;
       display: flex;
       justify-content: center;
+      margin-left: 0;
       margin-top: 16px;
     }
     
     @media (max-width: 768px) {
-      /* 在移动端，当社交媒体按钮折行时，Contact Us按钮独占一行 */
-      width: 100%;
-      display: flex;
-      justify-content: center;
       margin-top: 16px;
     }
     

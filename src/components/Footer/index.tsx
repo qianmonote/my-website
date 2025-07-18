@@ -128,110 +128,118 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
           {/* 联系我们 */}
           <div className={styles.footerContactWrap}>
             <div className={styles.footerContactList}>
-              <MobileOptimizedWrapper
-                className="social-link"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <a 
-                  href="#"
-                  onTouchStart={() => handleTouchStart('facebook')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('facebook')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'facebook' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  aria-label="访问我们的Facebook页面"
+              <div className={styles.socialLink}>
+                <MobileOptimizedWrapper
+                  className="social-link"
+                  touchFeedbackScale={1.05}
+                  touchFeedbackDuration={150}
                 >
-                  <Image
-                    src="/home/ctw-facebook.png"
-                    alt="Facebook"
-                    width={150}
-                    height={107}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </a>
-              </MobileOptimizedWrapper>
-              <MobileOptimizedWrapper
-                className="social-link"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <a 
-                  href="#"
-                  onTouchStart={() => handleTouchStart('tiktok')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('tiktok')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'tiktok' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  aria-label="访问我们的TikTok页面"
+                  <a 
+                    href="#"
+                    onTouchStart={() => handleTouchStart('facebook')}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered('facebook')}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === 'facebook' ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    aria-label="访问我们的Facebook页面"
+                  >
+                    <Image
+                      src="/home/ctw-facebook.png"
+                      alt="Facebook"
+                      width={150}
+                      height={107}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </a>
+                </MobileOptimizedWrapper>
+              </div>
+              <div className={styles.socialLink}>
+                <MobileOptimizedWrapper
+                  className="social-link"
+                  touchFeedbackScale={1.05}
+                  touchFeedbackDuration={150}
                 >
-                  <Image
-                    src="/home/ctw-tiktok.png"
-                    alt="TikTok"
-                    width={150}
-                    height={107}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </a>
-              </MobileOptimizedWrapper>
-              <MobileOptimizedWrapper
-                className="social-link"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <a 
-                  href="#"
-                  onTouchStart={() => handleTouchStart('youtube')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('youtube')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'youtube' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  aria-label="访问我们的YouTube频道"
+                  <a 
+                    href="#"
+                    onTouchStart={() => handleTouchStart('tiktok')}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered('tiktok')}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === 'tiktok' ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    aria-label="访问我们的TikTok页面"
+                  >
+                    <Image
+                      src="/home/ctw-tiktok.png"
+                      alt="TikTok"
+                      width={150}
+                      height={107}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </a>
+                </MobileOptimizedWrapper>
+              </div>
+              <div className={styles.socialLink}>
+                <MobileOptimizedWrapper
+                  className="social-link"
+                  touchFeedbackScale={1.05}
+                  touchFeedbackDuration={150}
                 >
-                  <Image
-                    src="/home/ctw-youtube.png"
-                    alt="YouTube"
-                    width={150}
-                    height={107}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </a>
-              </MobileOptimizedWrapper>
-              <MobileOptimizedWrapper
-                className="social-link"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <a 
-                  href="#"
-                  onTouchStart={() => handleTouchStart('xiaohongshu')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('xiaohongshu')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'xiaohongshu' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                  aria-label="访问我们的小红书页面"
+                  <a 
+                    href="#"
+                    onTouchStart={() => handleTouchStart('youtube')}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered('youtube')}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === 'youtube' ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    aria-label="访问我们的YouTube频道"
+                  >
+                    <Image
+                      src="/home/ctw-youtube.png"
+                      alt="YouTube"
+                      width={150}
+                      height={107}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </a>
+                </MobileOptimizedWrapper>
+              </div>
+              <div className={styles.socialLink}>
+                <MobileOptimizedWrapper
+                  className="social-link"
+                  touchFeedbackScale={1.05}
+                  touchFeedbackDuration={150}
                 >
-                  <Image
-                    src="/home/ctw-xiaohongshu.png"
-                    alt="小红书"
-                    width={150}
-                    height={107}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </a>
-              </MobileOptimizedWrapper>
+                  <a 
+                    href="#"
+                    onTouchStart={() => handleTouchStart('xiaohongshu')}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered('xiaohongshu')}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === 'xiaohongshu' ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                    aria-label="访问我们的小红书页面"
+                  >
+                    <Image
+                      src="/home/ctw-xiaohongshu.png"
+                      alt="小红书"
+                      width={150}
+                      height={107}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </a>
+                </MobileOptimizedWrapper>
+              </div>
               <div className={styles.footerContactInfo}>
                 <MobileOptimizedWrapper
                   className="contact-btn-wrapper"

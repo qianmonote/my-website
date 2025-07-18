@@ -195,7 +195,73 @@
   transform: scale(1.2);
 }
 
-/* Responsive Styles */
+/* 移动端样式 - 屏幕宽度小于1000px */
+@media (max-width: 999px) {
+  .team-swiper {
+    padding: 20px 0 40px;
+    overflow: hidden;
+  }
+
+  /* 移动端轮播器样式 */
+  .mobile-swiper .swiper-slide {
+    opacity: 1 !important;
+    transform: scale(1) translateY(0) !important;
+    z-index: 3 !important;
+  }
+
+  /* 移动端卡片样式 */
+  .mobile-card {
+    width: 280px !important;
+    margin: 0 auto;
+  }
+
+  .mobile-card .team-member-card {
+    box-shadow: 0 8px 30px rgba(22, 119, 255, 0.2) !important;
+  }
+
+  .mobile-card .member-avatar {
+    width: 100px !important;
+    height: 100px !important;
+    border: 3px solid rgba(255, 255, 255, 0.2) !important;
+  }
+
+  .mobile-card .member-name {
+    font-size: 20px !important;
+    margin: 0 0 6px !important;
+  }
+
+  .mobile-card .member-title {
+    font-size: 14px !important;
+    margin-bottom: 6px !important;
+  }
+
+  .mobile-card .member-desc {
+    font-size: 12px !important;
+    line-height: 1.5 !important;
+  }
+
+  /* 移动端触摸反馈 */
+  .mobile-card:hover {
+    transform: none !important;
+  }
+
+  .mobile-card:active {
+    transform: scale(0.95) !important;
+  }
+
+  /* 移动端分页器样式 */
+  .mobile-swiper .swiper-pagination {
+    bottom: 10px !important;
+  }
+
+  .mobile-swiper .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
+    margin: 0 4px;
+  }
+}
+
+/* 原有移动端样式 - 屏幕宽度小于768px */
 @media (max-width: 768px) {
   .team-section-title {
     font-size: 20px;
@@ -242,5 +308,27 @@
   
   .team-card:active {
     transform: scale(0.95);
+  }
+
+  /* 小屏幕下的移动端卡片样式调整 */
+  .mobile-card {
+    width: 240px !important;
+  }
+
+  .mobile-card .member-avatar {
+    width: 80px !important;
+    height: 80px !important;
+  }
+
+  .mobile-card .member-name {
+    font-size: 16px !important;
+  }
+
+  .mobile-card .member-title {
+    font-size: 12px !important;
+  }
+
+  .mobile-card .member-desc {
+    font-size: 10px !important;
   }
 }
