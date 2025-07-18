@@ -11,6 +11,70 @@ type TProps = Partial<{
   inviteShow: boolean;
 }>;
 
+// 合作伙伴数据
+const partners = [
+  {
+    id: 'partner1',
+    name: '拉曼大学合作伙伴',
+    image: '/home/hz-lm.png',
+    alt: '拉曼大学合作伙伴',
+    width: 202,
+    height: 100
+  },
+  {
+    id: 'partner2',
+    name: '隆基乐业合作伙伴',
+    image: '/home/hz-lj.png',
+    alt: '隆基乐业合作伙伴',
+    width: 202,
+    height: 100
+  }
+];
+
+// 社交媒体联系方式数据
+const socialLinks = [
+  {
+    id: 'facebook',
+    name: 'Facebook',
+    url: 'https://www.facebook.com/profile.php?id=61578615476150',
+    image: '/home/ctw-facebook.png',
+    alt: 'Facebook',
+    width: 150,
+    height: 107,
+    ariaLabel: '访问我们的Facebook页面'
+  },
+  {
+    id: 'tiktok',
+    name: 'TikTok',
+    url: 'https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1',
+    image: '/home/ctw-tiktok.png',
+    alt: 'TikTok',
+    width: 150,
+    height: 107,
+    ariaLabel: '访问我们的TikTok页面'
+  },
+  {
+    id: 'youtube',
+    name: 'YouTube',
+    url: '#',
+    image: '/home/ctw-youtube.png',
+    alt: 'YouTube',
+    width: 150,
+    height: 107,
+    ariaLabel: '访问我们的YouTube频道'
+  },
+  {
+    id: 'xiaohongshu',
+    name: '小红书',
+    url: '#',
+    image: '/home/ctw-xiaohongshu.png',
+    alt: '小红书',
+    width: 150,
+    height: 107,
+    ariaLabel: '访问我们的小红书页面'
+  }
+];
+
 const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
   const [isHovered, setIsHovered] = useState<string | null>(null);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
@@ -74,174 +138,71 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
           <div className={styles.footerPartnerWrap}>
             <div className={styles.footerPartnerTitle}>战略合作伙伴</div>
             <div className={styles.footerPartnerList}>
-              <MobileOptimizedWrapper
-                className="partner-item"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <div
-                  onTouchStart={() => handleTouchStart('partner1')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('partner1')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'partner1' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
+              {partners.map((partner) => (
+                <MobileOptimizedWrapper
+                  key={partner.id}
+                  className="partner-item"
+                  touchFeedbackScale={1.05}
+                  touchFeedbackDuration={150}
                 >
-                  <Image
-                    src="/home/hz-lm.png"
-                    alt="拉曼大学合作伙伴"
-                    width={202}
-                    height={100}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </div>
-              </MobileOptimizedWrapper>
-              <MobileOptimizedWrapper
-                className="partner-item"
-                touchFeedbackScale={1.05}
-                touchFeedbackDuration={150}
-              >
-                <div
-                  onTouchStart={() => handleTouchStart('partner2')}
-                  onTouchEnd={handleTouchEnd}
-                  onMouseEnter={() => setIsHovered('partner2')}
-                  onMouseLeave={() => setIsHovered(null)}
-                  style={{
-                    transform: isHovered === 'partner2' ? 'scale(1.05)' : 'scale(1)',
-                    transition: 'transform 0.3s ease'
-                  }}
-                >
-                  <Image
-                    src="/home/hz-lj.png"
-                    alt="隆基乐业合作伙伴"
-                    width={202}
-                    height={100}
-                    style={{ width: '100%', height: 'auto' }}
-                  />
-                </div>
-              </MobileOptimizedWrapper>
+                  <div
+                    onTouchStart={() => handleTouchStart(partner.id)}
+                    onTouchEnd={handleTouchEnd}
+                    onMouseEnter={() => setIsHovered(partner.id)}
+                    onMouseLeave={() => setIsHovered(null)}
+                    style={{
+                      transform: isHovered === partner.id ? 'scale(1.05)' : 'scale(1)',
+                      transition: 'transform 0.3s ease'
+                    }}
+                  >
+                    <Image
+                      src={partner.image}
+                      alt={partner.alt}
+                      width={partner.width}
+                      height={partner.height}
+                      style={{ width: '100%', height: 'auto' }}
+                    />
+                  </div>
+                </MobileOptimizedWrapper>
+              ))}
             </div>
           </div>
           
           {/* 联系我们 */}
           <div className={styles.footerContactWrap}>
             <div className={styles.footerContactList}>
-              <div className={styles.socialLink}>
-                <MobileOptimizedWrapper
-                  className="social-link"
-                  touchFeedbackScale={1.05}
-                  touchFeedbackDuration={150}
-                >
-                  <a 
-                    href="https://www.facebook.com/profile.php?id=61578615476150"
-                    target="_blank"
-                    onTouchStart={() => handleTouchStart('facebook')}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsHovered('facebook')}
-                    onMouseLeave={() => setIsHovered(null)}
-                    style={{
-                      transform: isHovered === 'facebook' ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    aria-label="访问我们的Facebook页面"
+              {socialLinks.map((social) => (
+                <div key={social.id} className={styles.socialLink}>
+                  <MobileOptimizedWrapper
+                    className="social-link"
+                    touchFeedbackScale={1.05}
+                    touchFeedbackDuration={150}
                   >
-                    <Image
-                      src="/home/ctw-facebook.png"
-                      alt="Facebook"
-                      width={150}
-                      height={107}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </a>
-                </MobileOptimizedWrapper>
-              </div>
-              <div className={styles.socialLink}>
-                <MobileOptimizedWrapper
-                  className="social-link"
-                  touchFeedbackScale={1.05}
-                  touchFeedbackDuration={150}
-                >
-                  <a 
-                    href="https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1"
-                    target="_blank"
-                    onTouchStart={() => handleTouchStart('tiktok')}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsHovered('tiktok')}
-                    onMouseLeave={() => setIsHovered(null)}
-                    style={{
-                      transform: isHovered === 'tiktok' ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    aria-label="访问我们的TikTok页面"
-                  >
-                    <Image
-                      src="/home/ctw-tiktok.png"
-                      alt="TikTok"
-                      width={150}
-                      height={107}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </a>
-                </MobileOptimizedWrapper>
-              </div>
-              <div className={styles.socialLink}>
-                <MobileOptimizedWrapper
-                  className="social-link"
-                  touchFeedbackScale={1.05}
-                  touchFeedbackDuration={150}
-                >
-                  <a 
-                    href="#"
-                    onTouchStart={() => handleTouchStart('youtube')}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsHovered('youtube')}
-                    onMouseLeave={() => setIsHovered(null)}
-                    style={{
-                      transform: isHovered === 'youtube' ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    aria-label="访问我们的YouTube频道"
-                  >
-                    <Image
-                      src="/home/ctw-youtube.png"
-                      alt="YouTube"
-                      width={150}
-                      height={107}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </a>
-                </MobileOptimizedWrapper>
-              </div>
-              <div className={styles.socialLink}>
-                <MobileOptimizedWrapper
-                  className="social-link"
-                  touchFeedbackScale={1.05}
-                  touchFeedbackDuration={150}
-                >
-                  <a 
-                    href="#"
-                    onTouchStart={() => handleTouchStart('xiaohongshu')}
-                    onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsHovered('xiaohongshu')}
-                    onMouseLeave={() => setIsHovered(null)}
-                    style={{
-                      transform: isHovered === 'xiaohongshu' ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
-                    }}
-                    aria-label="访问我们的小红书页面"
-                  >
-                    <Image
-                      src="/home/ctw-xiaohongshu.png"
-                      alt="小红书"
-                      width={150}
-                      height={107}
-                      style={{ width: '100%', height: 'auto' }}
-                    />
-                  </a>
-                </MobileOptimizedWrapper>
-              </div>
+                    <a 
+                      href={social.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      onTouchStart={() => handleTouchStart(social.id)}
+                      onTouchEnd={handleTouchEnd}
+                      onMouseEnter={() => setIsHovered(social.id)}
+                      onMouseLeave={() => setIsHovered(null)}
+                      style={{
+                        transform: isHovered === social.id ? 'scale(1.05)' : 'scale(1)',
+                        transition: 'transform 0.3s ease'
+                      }}
+                      aria-label={social.ariaLabel}
+                    >
+                      <Image
+                        src={social.image}
+                        alt={social.alt}
+                        width={social.width}
+                        height={social.height}
+                        style={{ width: '100%', height: 'auto' }}
+                      />
+                    </a>
+                  </MobileOptimizedWrapper>
+                </div>
+              ))}
               <div className={styles.footerContactInfo}>
                 <MobileOptimizedWrapper
                   className="contact-btn-wrapper"
