@@ -90,3 +90,43 @@
     }
   }
 }
+
+/* About标题容器样式 */
+.about-title-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 654px;
+  margin: 0 auto;
+}
+
+.about-title-image {
+  width: 100% !important;
+  height: auto !important;
+  max-width: 654px !important;
+  object-fit: contain;
+}
+
+/* 响应式样式 */
+@media (max-width: 654px) {
+  .about-title-container {
+    padding: 0 20px;
+  }
+  
+  .about-title-image {
+    max-width: 100% !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-title-container {
+    padding: 0 16px;
+  }
+}
+
+@media (max-width: 360px) {
+  .about-title-container {
+    padding: 0 12px;
+  }
+}

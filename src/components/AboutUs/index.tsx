@@ -11,9 +11,20 @@ const AboutUs: React.FC = () => {
   return (
     <PartSection
       title={
-        <PartSectionImageBox>
-          <Image src="/home/ab-tit.png" alt="about" width={654} height={96} />
-        </PartSectionImageBox>
+        <div className="about-title-container">
+          <Image 
+            src="/home/ab-tit.png" 
+            alt="about" 
+            width={654} 
+            height={96}
+            className="about-title-image"
+            style={{
+              width: '100%',
+              height: 'auto',
+              maxWidth: '654px'
+            }}
+          />
+        </div>
       }
     >
       <PartSectionImageBox>
