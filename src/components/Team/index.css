@@ -13,7 +13,7 @@
 .team-section-title {
   font-size: 48px;
   font-weight: 600;
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 }
 
@@ -58,7 +58,8 @@
 }
 
 .team-card {
-  width: 200px;
+  width: 260px;
+  height: 314px;
   margin: 0 auto;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   will-change: transform;
@@ -87,22 +88,27 @@
 
 .card-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 12px;
 }
 
 .member-role {
-  font-size: 10px;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(75, 141, 255, 1);
   letter-spacing: 1px;
-  text-transform: uppercase;
+  font-family: PingFang SC;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  text-transform: lowercase;
 }
 
 .view-btn {
   background: transparent !important;
   border: 1px solid rgba(255, 255, 255, 0.2) !important;
-  color: #FFFFFF !important;
+  color: #ffffff !important;
   border-radius: 20px !important;
   padding: 0 10px !important;
   height: 20px !important;
@@ -119,12 +125,12 @@
 .member-avatar-section {
   display: flex;
   justify-content: center;
-  margin: 16px 0;
+  margin: 30px 0 20px;
 }
 
 .member-avatar {
-  width: 80px !important;
-  height: 80px !important;
+  width: 100px !important;
+  height: 100px !important;
   border: 2px solid rgba(255, 255, 255, 0.1);
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
@@ -140,24 +146,33 @@
 }
 
 .member-name {
+  color: #fff;
+  font-family: Oxanium;
+  font-weight: 700;
+  font-style: Bold;
   font-size: 16px;
-  font-weight: 600;
-  color: #FFFFFF;
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
   margin: 0 0 4px;
   transition: all 0.3s ease;
 }
 
 .swiper-slide-active .member-name {
-  font-size: 20px;
   margin: 0 0 6px;
 }
 
 .member-title {
+  font-weight: 400;
   font-size: 12px;
-  color: rgba(255, 255, 255, 0.8);
+  line-height: 150%;
+  letter-spacing: 0%;
+  text-align: center;
   margin-bottom: 4px;
-  text-transform: uppercase;
   transition: all 0.3s ease;
+  color: #fff;
 }
 
 .swiper-slide-active .member-title {
@@ -191,144 +206,6 @@
 }
 
 .team-swiper .swiper-pagination-bullet-active {
-  background: #1677FF;
+  background: #1677ff;
   transform: scale(1.2);
-}
-
-/* 移动端样式 - 屏幕宽度小于1000px */
-@media (max-width: 999px) {
-  .team-swiper {
-    padding: 20px 0 40px;
-    overflow: hidden;
-  }
-
-  /* 移动端轮播器样式 */
-  .mobile-swiper .swiper-slide {
-    opacity: 1 !important;
-    transform: scale(1) translateY(0) !important;
-    z-index: 3 !important;
-  }
-
-  /* 移动端卡片样式 */
-  .mobile-card {
-    width: 280px !important;
-    margin: 0 auto;
-  }
-
-  .mobile-card .team-member-card {
-    box-shadow: 0 8px 30px rgba(22, 119, 255, 0.2) !important;
-  }
-
-  .mobile-card .member-avatar {
-    width: 100px !important;
-    height: 100px !important;
-    border: 3px solid rgba(255, 255, 255, 0.2) !important;
-  }
-
-  .mobile-card .member-name {
-    font-size: 20px !important;
-    margin: 0 0 6px !important;
-  }
-
-  .mobile-card .member-title {
-    font-size: 14px !important;
-    margin-bottom: 6px !important;
-  }
-
-  .mobile-card .member-desc {
-    font-size: 12px !important;
-    line-height: 1.5 !important;
-  }
-
-  /* 移动端触摸反馈 */
-  .mobile-card:hover {
-    transform: none !important;
-  }
-
-  .mobile-card:active {
-    transform: scale(0.95) !important;
-  }
-
-  /* 移动端分页器样式 */
-  .mobile-swiper .swiper-pagination {
-    bottom: 10px !important;
-  }
-
-  .mobile-swiper .swiper-pagination-bullet {
-    width: 8px;
-    height: 8px;
-    margin: 0 4px;
-  }
-}
-
-/* 原有移动端样式 - 屏幕宽度小于768px */
-@media (max-width: 768px) {
-  .team-section-title {
-    font-size: 20px;
-  }
-  
-  .team-swiper {
-    padding: 20px 0 40px;
-  }
-  
-  .team-card {
-    width: 180px;
-  }
-  
-  .member-avatar {
-    width: 60px !important;
-    height: 60px !important;
-  }
-  
-  .swiper-slide-active .member-avatar {
-    width: 80px !important;
-    height: 80px !important;
-  }
-  
-  .member-name {
-    font-size: 14px;
-  }
-  
-  .swiper-slide-active .member-name {
-    font-size: 16px;
-  }
-  
-  .member-title {
-    font-size: 10px;
-  }
-  
-  .swiper-slide-active .member-title {
-    font-size: 12px;
-  }
-  
-  /* 移动端触摸反馈 */
-  .team-card:hover {
-    transform: none;
-  }
-  
-  .team-card:active {
-    transform: scale(0.95);
-  }
-
-  /* 小屏幕下的移动端卡片样式调整 */
-  .mobile-card {
-    width: 240px !important;
-  }
-
-  .mobile-card .member-avatar {
-    width: 80px !important;
-    height: 80px !important;
-  }
-
-  .mobile-card .member-name {
-    font-size: 16px !important;
-  }
-
-  .mobile-card .member-title {
-    font-size: 12px !important;
-  }
-
-  .mobile-card .member-desc {
-    font-size: 10px !important;
-  }
 }
