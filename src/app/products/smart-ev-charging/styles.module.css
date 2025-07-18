@@ -21,17 +21,75 @@
   font-weight: 900;
   color: #fff;
   text-align: center;
+  line-height: 1.2;
 }
 .part5SectionSubTitle {
   font-size: 24px;
   font-weight: 400;
   margin-top: 12px;
+  line-height: 1.3;
 }
 
-/* 移动端样式 - 屏幕宽度小于1000px */
+/* 平板设备样式 - 屏幕宽度小于1000px */
 @media (max-width: 999px) {
   .part3SectionTitleIcon,
   .part3SectionTitleBg {
     display: none;
+  }
+  
+  .part5SectionTitle {
+    font-size: 32px;
+    line-height: 1.3;
+  }
+  
+  .part5SectionSubTitle {
+    font-size: 20px;
+    margin-top: 10px;
+    line-height: 1.4;
+  }
+}
+
+/* 大屏手机样式 - 屏幕宽度小于768px */
+@media (max-width: 767px) {
+  .part5SectionTitle {
+    font-size: 28px;
+    line-height: 1.4;
+    padding: 0 20px;
+  }
+  
+  .part5SectionSubTitle {
+    font-size: 18px;
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+}
+
+/* 中等手机样式 - 屏幕宽度小于480px */
+@media (max-width: 479px) {
+  .part5SectionTitle {
+    font-size: 24px;
+    line-height: 1.4;
+    padding: 0 16px;
+  }
+  
+  .part5SectionSubTitle {
+    font-size: 16px;
+    margin-top: 6px;
+    line-height: 1.5;
+  }
+}
+
+/* 小屏手机样式 - 屏幕宽度小于360px */
+@media (max-width: 359px) {
+  .part5SectionTitle {
+    font-size: 20px;
+    line-height: 1.5;
+    padding: 0 12px;
+  }
+  
+  .part5SectionSubTitle {
+    font-size: 14px;
+    margin-top: 4px;
+    line-height: 1.6;
   }
 }

@@ -169,3 +169,231 @@
     }
   }
 }
+
+/* 平板设备样式 - 屏幕宽度小于1000px */
+@media (max-width: 999px) {
+  .c-product-section-wrap {
+    padding: 30px 0 60px;
+    
+    .product-container {
+      padding: 0 12px;
+      
+      .product-title {
+        margin-bottom: 30px;
+        
+        .product-title-main {
+          font-size: 40px;
+          line-height: 44px;
+          margin-bottom: 10px;
+        }
+        
+        .product-title-sub {
+          font-size: 18px;
+          line-height: 32px;
+        }
+      }
+      
+      .product-card {
+        height: 500px;
+        margin-bottom: 30px;
+        
+        .product-card-content {
+          padding: 24px;
+          
+          .product-card-content-inner {
+            .product-card-title {
+              font-size: 22px;
+              line-height: 28px;
+              margin-bottom: 14px;
+            }
+            
+            .product-card-description {
+              font-size: 15px;
+              line-height: 22px;
+              margin-bottom: 14px;
+            }
+          }
+        }
+        
+        .product-card-more {
+          margin-top: 14px;
+          
+          .product-card-more-text {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 大屏手机样式 - 屏幕宽度小于768px */
+@media (max-width: 767px) {
+  .c-product-section-wrap {
+    padding: 20px 0 40px;
+    
+    .product-container {
+      padding: 0 10px;
+      
+      .product-title {
+        margin-bottom: 24px;
+        
+        .product-title-main {
+          font-size: 32px;
+          line-height: 36px;
+          margin-bottom: 8px;
+        }
+        
+        .product-title-sub {
+          font-size: 16px;
+          line-height: 28px;
+        }
+      }
+      
+      .product-card {
+        height: 450px;
+        margin-bottom: 24px;
+        
+        .product-card-content {
+          padding: 20px;
+          
+          .product-card-content-inner {
+            .product-card-title {
+              font-size: 20px;
+              line-height: 26px;
+              margin-bottom: 12px;
+            }
+            
+            .product-card-description {
+              font-size: 14px;
+              line-height: 20px;
+              margin-bottom: 12px;
+            }
+          }
+        }
+        
+        .product-card-more {
+          margin-top: 12px;
+          
+          .product-card-more-text {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 中等手机样式 - 屏幕宽度小于480px */
+@media (max-width: 479px) {
+  .c-product-section-wrap {
+    padding: 16px 0 32px;
+    
+    .product-container {
+      padding: 0 8px;
+      
+      .product-title {
+        margin-bottom: 20px;
+        
+        .product-title-main {
+          font-size: 28px;
+          line-height: 32px;
+          margin-bottom: 6px;
+        }
+        
+        .product-title-sub {
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+      
+      .product-card {
+        height: 400px;
+        margin-bottom: 20px;
+        
+        .product-card-content {
+          padding: 16px;
+          
+          .product-card-content-inner {
+            .product-card-title {
+              font-size: 18px;
+              line-height: 24px;
+              margin-bottom: 10px;
+            }
+            
+            .product-card-description {
+              font-size: 13px;
+              line-height: 18px;
+              margin-bottom: 10px;
+            }
+          }
+        }
+        
+        .product-card-more {
+          margin-top: 10px;
+          
+          .product-card-more-text {
+            font-size: 14px;
+          }
+        }
+      }
+    }
+  }
+}
+
+/* 小屏手机样式 - 屏幕宽度小于360px */
+@media (max-width: 359px) {
+  .c-product-section-wrap {
+    padding: 12px 0 24px;
+    
+    .product-container {
+      padding: 0 6px;
+      
+      .product-title {
+        margin-bottom: 16px;
+        
+        .product-title-main {
+          font-size: 24px;
+          line-height: 28px;
+          margin-bottom: 4px;
+        }
+        
+        .product-title-sub {
+          font-size: 12px;
+          line-height: 20px;
+        }
+      }
+      
+      .product-card {
+        height: 350px;
+        margin-bottom: 16px;
+        
+        .product-card-content {
+          padding: 12px;
+          
+          .product-card-content-inner {
+            .product-card-title {
+              font-size: 16px;
+              line-height: 22px;
+              margin-bottom: 8px;
+            }
+            
+            .product-card-description {
+              font-size: 12px;
+              line-height: 16px;
+              margin-bottom: 8px;
+            }
+          }
+        }
+        
+        .product-card-more {
+          margin-top: 8px;
+          
+          .product-card-more-text {
+            font-size: 12px;
+          }
+        }
+      }
+    }
+  }
+}
