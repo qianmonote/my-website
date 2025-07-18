@@ -135,7 +135,8 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   touchFeedbackDuration={150}
                 >
                   <a 
-                    href="#"
+                    href="https://www.facebook.com/profile.php?id=61578615476150"
+                    target="_blank"
                     onTouchStart={() => handleTouchStart('facebook')}
                     onTouchEnd={handleTouchEnd}
                     onMouseEnter={() => setIsHovered('facebook')}
@@ -163,7 +164,8 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   touchFeedbackDuration={150}
                 >
                   <a 
-                    href="#"
+                    href="https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1"
+                    target="_blank"
                     onTouchStart={() => handleTouchStart('tiktok')}
                     onTouchEnd={handleTouchEnd}
                     onMouseEnter={() => setIsHovered('tiktok')}
