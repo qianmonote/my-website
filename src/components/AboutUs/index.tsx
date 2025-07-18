@@ -2,15 +2,18 @@
 
 import React from "react";
 import Image from "next/image";
-import PartSection, { PartSectionImageBox } from "@/components/elements/PartSection";
+import PartSection, {
+  PartSectionImageBox,
+} from "@/components/elements/PartSection";
 import "./index.css";
 
 const AboutUs: React.FC = () => {
-
   return (
     <PartSection
       title={
-        <Image src="/home/ab-tit.png" alt="about" width={654} height={96} />
+        <PartSectionImageBox>
+          <Image src="/home/ab-tit.png" alt="about" width={654} height={96} />
+        </PartSectionImageBox>
       }
     >
       <PartSectionImageBox>
