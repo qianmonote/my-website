@@ -5,7 +5,6 @@ import { Row, Col } from "antd";
 import Image from "next/image";
 import classnames from "classnames";
 import CustomtBtn from "@/components/elements/CustomtBtn";
-import PartSection, { PartSectionImageBox } from "@/components/elements/PartSection";
 import "./index.css";
 
 const ProductSection: React.FC = () => {
