@@ -9,7 +9,9 @@ import Footer from "@/components/Footer";
 import styles from "./styles.module.css";
 import HeroSection from "@/components/elements/HeroSection";
 import SolutionCardList from "@/components/elements/SolutionCardList";
-import PartSection from "@/components/elements/PartSection";
+import PartSection, {
+  PartSectionImageBox,
+} from "@/components/elements/PartSection";
 import PartSectionCardList from "@/components/elements/PartSectionCardList";
 import { useI18n } from "@/context/I18nContext";
 
@@ -171,20 +173,24 @@ const PowerStorageIntegrationPage = () => {
       {/* Part 2 */}
       <PartSection title="">
         {lang === "zh" ? (
-          <Image
-            src="/product/p2/part2/01-zh.png"
-            alt=""
-            width={1000}
-            height={640}
-            style={{ marginLeft: -24, marginRight: 24 }}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p2/part2/01-zh.png"
+              alt=""
+              width={1000}
+              height={640}
+              style={{ marginLeft: -24, marginRight: 24 }}
+            />
+          </PartSectionImageBox>
         ) : (
-          <Image
-            src="/product/p2/part2/01-en.png"
-            alt=""
-            width={1000}
-            height={640}
-          />
+          <PartSectionImageBox>
+            <Image
+              src="/product/p2/part2/01-en.png"
+              alt=""
+              width={1000}
+              height={640}
+            />
+          </PartSectionImageBox>
         )}
       </PartSection>
 

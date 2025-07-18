@@ -68,7 +68,14 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
           const description =
             lang === "zh" ? item.descriptionZh : item.descriptionEn;
           return (
-            <Col key={index} span={item.colSpan || defaultColSpan}>
+            <Col 
+              key={index} 
+              xs={24} 
+              sm={24} 
+              md={24} 
+              lg={item.colSpan || defaultColSpan} 
+              xl={item.colSpan || defaultColSpan}
+            >
               <div className={styles.commonCard}>
                 <div
                   className={styles.commonImage}

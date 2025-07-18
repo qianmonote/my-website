@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import SolutionCard from "../SolutionCard";
 import { useI18n } from "@/context/I18nContext";
 import styles from "./styles.module.css";
@@ -17,16 +17,38 @@ const SolutionCardList: React.FC<{ solutions: Solution[] }> = ({
   solutions = [],
 }) => {
   const { lang } = useI18n();
-  // 设置初始状态为第一个卡片的 id
   const [activeId, setActiveId] = useState<string>(solutions[0]?.id || "");
+  const [isMobile, setIsMobile] = useState(false);
+
+  // 检测屏幕宽度
+  useEffect(() => {
+    const checkScreenSize = () => {
+      setIsMobile(window.innerWidth < 1000);
+    };
+
+    // 初始检查
+    checkScreenSize();
+
+    // 监听窗口大小变化
+    window.addEventListener('resize', checkScreenSize);
+
+    return () => {
+      window.removeEventListener('resize', checkScreenSize);
+    };
+  }, []);
 
   const handleMouseEnter = (id: string) => {
-    setActiveId(id);
+    // 在移动端不处理鼠标悬停
+    if (!isMobile) {
+      setActiveId(id);
+    }
   };
 
   const handleMouseLeave = () => {
-    // 鼠标移开时恢复到第一个卡片
-    setActiveId(solutions[0]?.id || "");
+    // 在移动端不处理鼠标离开
+    if (!isMobile) {
+      setActiveId(solutions[0]?.id || "");
+    }
   };
 
   const handleClick = (id: string) => {
@@ -34,7 +56,7 @@ const SolutionCardList: React.FC<{ solutions: Solution[] }> = ({
   };
 
   return (
-    <div className={styles.container} onMouseLeave={handleMouseLeave}>
+    <div className={`${styles.container} ${isMobile ? styles.mobileContainer : ''}`} onMouseLeave={handleMouseLeave}>
       {solutions.map((solution) => (
         <SolutionCard
           key={solution.id}
@@ -46,7 +68,7 @@ const SolutionCardList: React.FC<{ solutions: Solution[] }> = ({
               ? solution.imageActiveZh || ""
               : solution.imageActiveEn || ""
           }
-          isActive={activeId === solution.id}
+          isActive={isMobile || activeId === solution.id}
           onMouseEnter={() => handleMouseEnter(solution.id || "")}
           onClick={() => handleClick(solution.id || "")}
         />

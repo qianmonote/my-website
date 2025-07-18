@@ -27,3 +27,11 @@
   font-weight: 400;
   margin-top: 12px;
 }
+
+/* 移动端样式 - 屏幕宽度小于1000px */
+@media (max-width: 999px) {
+  .part3SectionTitleIcon,
+  .part3SectionTitleBg {
+    display: none;
+  }
+}

@@ -10,3 +10,20 @@
 .card.active {
   flex: 3;
 }
+
+/* 移动端样式 - 屏幕宽度小于1000px */
+.mobileContainer {
+  flex-direction: column;
+  height: auto;
+  gap: 20px;
+  padding: 0 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.mobileContainer .card {
+  width: 100% !important;
+  height: 280px !important;
+  flex: none !important;
+  margin-bottom: 0;
+}

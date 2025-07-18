@@ -9,3 +9,21 @@
   max-width: 1000px;
   margin: 0 auto;
 }
+
+/* 移动端样式 - 屏幕宽度小于1000px */
+@media (max-width: 999px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 0 16px;
+  }
+}
+
+/* 小屏幕手机样式 - 屏幕宽度小于480px */
+@media (max-width: 479px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 0 20px;
+  }
+}
