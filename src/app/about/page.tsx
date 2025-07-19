@@ -9,9 +9,11 @@ import CustomCard from "@/components/elements/CustomCard";
 import DetailModal from "@/components/elements/DetailModal";
 import { Carousel } from "antd";
 import type { CarouselRef } from "antd/es/carousel";
+import { useI18n } from "@/context/I18nContext";
 import styles from "./style.module.css";
 
 export default function About() {
+  const { lang } = useI18n();
   const carouselRef = useRef<CarouselRef>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState<{
@@ -34,6 +36,23 @@ export default function About() {
     setModalData(data);
     setModalVisible(true);
   };
+
+  const carouselItems = [
+    {
+      imageZh: "/about/carousel/01-zh.png",
+      imageEn: "/about/carousel/01-en.png",
+      alt: "",
+      width: 1344,
+      height: 400,
+    },
+    {
+      imageZh: "/about/carousel/02-zh.png",
+      imageEn: "/about/carousel/02-en.png",
+      alt: "",
+      width: 1344,
+      height: 400,
+    },
+  ];
 
   return (
     <>
@@ -108,9 +127,11 @@ export default function About() {
                       description="The waste-to-energy system will be deployed in resort areas and urban centers..."
                       moreButton={{
                         text: "View>>",
-                        onClick: () => handleViewDetails({
-                          title: 'Biomass Gasification Technology Research Cooperation Agreement',
-                          description: `The waste-to-energy system will be deployed in resort areas and urban centers, providing sustainable energy solutions for high-energy-consuming industries. This innovative technology converts biomass waste into clean energy, reducing carbon emissions and promoting environmental sustainability.
+                        onClick: () =>
+                          handleViewDetails({
+                            title:
+                              "Biomass Gasification Technology Research Cooperation Agreement",
+                            description: `The waste-to-energy system will be deployed in resort areas and urban centers, providing sustainable energy solutions for high-energy-consuming industries. This innovative technology converts biomass waste into clean energy, reducing carbon emissions and promoting environmental sustainability.
 
 Key Features:
 • Advanced gasification technology for efficient waste conversion
@@ -120,13 +141,13 @@ Key Features:
 • Compliance with international environmental standards
 
 The partnership with the University of Raman represents a significant milestone in our commitment to sustainable energy development and technological innovation.`,
-                          image: {
-                            src: "/about/part-2-cont.png",
-                            alt: "生物质气化技术研究合作",
-                            width: 756,
-                            height: 442,
-                          },
-                        }),
+                            image: {
+                              src: "/about/part-2-cont.png",
+                              alt: "生物质气化技术研究合作",
+                              width: 756,
+                              height: 442,
+                            },
+                          }),
                       }}
                     />
                   ),
@@ -152,9 +173,11 @@ The partnership with the University of Raman represents a significant milestone 
                       description="Deepen the research and development of palm waste energy technology, build..."
                       moreButton={{
                         text: "View>>",
-                        onClick: () => handleViewDetails({
-                          title: 'Solar-Powered EV Charging Stations in the Maldives',
-                          description: `We are deepening the research and development of palm waste energy technology, building a comprehensive renewable energy ecosystem in the Maldives. This project focuses on establishing solar-powered electric vehicle charging infrastructure across the island nation.
+                        onClick: () =>
+                          handleViewDetails({
+                            title:
+                              "Solar-Powered EV Charging Stations in the Maldives",
+                            description: `We are deepening the research and development of palm waste energy technology, building a comprehensive renewable energy ecosystem in the Maldives. This project focuses on establishing solar-powered electric vehicle charging infrastructure across the island nation.
 
 Project Highlights:
 • Solar energy integration with EV charging infrastructure
@@ -164,13 +187,13 @@ Project Highlights:
 • Sustainable tourism infrastructure development
 
 The Maldives project demonstrates our commitment to creating sustainable energy solutions for island nations and promoting the adoption of clean transportation technologies. This initiative will serve as a model for similar projects in other coastal and island regions.`,
-                          image: {
-                            src: "/about/part-3-cont.png",
-                            alt: "马尔代夫太阳能充电站项目",
-                            width: 756,
-                            height: 442,
-                          },
-                        }),
+                            image: {
+                              src: "/about/part-3-cont.png",
+                              alt: "马尔代夫太阳能充电站项目",
+                              width: 756,
+                              height: 442,
+                            },
+                          }),
                       }}
                     />
                   ),
@@ -197,16 +220,18 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
                 onClick={() => carouselRef?.current?.next()}
               />
               <Carousel autoplay ref={carouselRef}>
-                <div className={styles.carouselItem}>
-                  <Image
-                    src="/about/mission-carousel-1.png"
-                    alt=""
-                    width={1000}
-                    height={400}
-                    priority
-                    className={styles.carouselImage}
-                  />
-                </div>
+                {carouselItems.map((item, index) => (
+                  <div className={styles.carouselItem} key={index}>
+                    <Image
+                      src={lang === "zh" ? item.imageZh : item.imageEn}
+                      alt={item.alt}
+                      width={item.width}
+                      height={item.height}
+                      priority
+                      className={styles.carouselImage}
+                    />
+                  </div>
+                ))}
               </Carousel>
             </div>
           </div>
@@ -253,7 +278,7 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
           </div>
         </section>
       </main>
-      
+
       {/* 详情弹窗 */}
       <DetailModal
         visible={modalVisible}
@@ -263,7 +288,7 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
         image={modalData.image}
         content={modalData.content}
       />
-      
+
       <Footer />
     </>
   );

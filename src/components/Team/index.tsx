@@ -107,9 +107,9 @@ const Team: React.FC = () => {
         <div className="team-swiper-container">
           <Swiper
             grabCursor={true}
-            centeredSlides={!isMobile}
-            slidesPerView={isMobile ? 1 : 5}
-            spaceBetween={isMobile ? 0 : -20}
+            centeredSlides={true}
+            slidesPerView={isMobile ? 1 : 4}
+            spaceBetween={isMobile ? 0 : -15}
             loop={true}
             pagination={{
               clickable: true,
@@ -143,10 +143,10 @@ const Team: React.FC = () => {
                       className="team-member-card"
                       styles={{
                         body: {
-                          padding: "24px 10px",
+                          padding: "20px 10px",
                           background:
                             isMobile || isActive ? "#1677FF" : "#1B2B65",
-                          borderRadius: "10px",
+                          borderRadius: 10,
                         },
                       }}
                     >
