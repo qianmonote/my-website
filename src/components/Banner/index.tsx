@@ -118,7 +118,7 @@ const Banner: React.FC = () => {
     autoplay: true,
     dots: { className: "custom-dots" },
     effect: "fade" as const,
-    autoplaySpeed: 4000,
+    autoplaySpeed: 3000,
     beforeChange: (from: number, to: number) => {
       setCurrentSlideIndex(to);
     },
