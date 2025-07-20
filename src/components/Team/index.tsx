@@ -133,8 +133,8 @@ const Team: React.FC = () => {
             }}
             grabCursor={true}
             centeredSlides={true}
-            slidesPerView={isMobile ? 1 : 4}
-            spaceBetween={isMobile ? 0 : -15}
+            slidesPerView={isMobile ? 1 : 5}
+            spaceBetween={isMobile ? 0 : 10}
             loop={true}
             pagination={{
               clickable: true,
