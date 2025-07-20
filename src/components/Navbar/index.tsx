@@ -94,7 +94,7 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
     },
     {
       label: (
-        <a 
+        <a
           onClick={() => {
             handleOpenContactModal();
             setDrawerOpen(false);
@@ -170,20 +170,18 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
             +60164802817
           </a>
         </div>
-        {noShowLangChange ? null : (
-          <Switch
-            checkedChildren="英文"
-            unCheckedChildren="中文"
-            defaultChecked={lang === "en"}
-            onChange={(checked) => {
-              if (checked) {
-                setLang("en");
-              } else {
-                setLang("zh");
-              }
-            }}
-          />
-        )}
+        <Switch
+          checkedChildren="英文"
+          unCheckedChildren="中文"
+          defaultChecked={lang === "en"}
+          onChange={(checked) => {
+            if (checked) {
+              setLang("en");
+            } else {
+              setLang("zh");
+            }
+          }}
+        />
       </div>
 
       {/* 移动端菜单 */}

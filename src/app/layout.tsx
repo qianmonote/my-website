@@ -7,6 +7,7 @@ import zhCN from "antd/locale/zh_CN";
 import { I18nProvider } from "@/context/I18nContext";
 import themeConfig from "@/config/theme";
 import PageLoadManager from "@/components/PageLoadManager";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -66,6 +67,7 @@ export default function RootLayout({
             <ConfigProvider theme={themeConfig} locale={zhCN}>
               <App>
                 {children}
+                <SpeedInsights />
               </App>
             </ConfigProvider>
           </AntdRegistry>
