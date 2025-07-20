@@ -171,9 +171,9 @@
 .member-avatar img {
   width: 100% !important;
   height: 100% !important;
-  object-fit: cover !important;
+  /* object-fit: cover !important;
   object-position: center top !important;
-  border-radius: 50% !important;
+  border-radius: 50% !important; */
 }
 
 .swiper-slide-active .member-avatar {

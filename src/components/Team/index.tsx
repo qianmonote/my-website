@@ -39,7 +39,7 @@ const Team: React.FC = () => {
       name: "GONG CHUNQIN",
       title: "Chief Technical Engineer <br/> PhD in Environmental Engineering",
       desc: "",
-      avatar: "/team/avatar/02.png",
+      avatar: "/team/avatar/02-r.png",
       role: "company side",
     },
     {
@@ -53,7 +53,7 @@ const Team: React.FC = () => {
       name: "Ts. Dr. Wong Ling Yong",
       title: "Principle Investigator <br/> Engineering and Green Technology",
       desc: "",
-      avatar: "/team/avatar/04.png",
+      avatar: "/team/avatar/04-r.png",
       role: "UTAR",
     },
     {

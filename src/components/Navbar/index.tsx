@@ -171,8 +171,8 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
           </a>
         </div>
         <Switch
-          checkedChildren="英文"
-          unCheckedChildren="中文"
+          checkedChildren="En"
+          unCheckedChildren="Zn"
           defaultChecked={lang === "en"}
           onChange={(checked) => {
             if (checked) {
@@ -198,8 +198,8 @@ const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
         >
           <Menu mode="vertical" items={menuItems} />
           <Switch
-            checkedChildren="英文"
-            unCheckedChildren="中文"
+            checkedChildren="En"
+            unCheckedChildren="Zn"
             defaultChecked={lang === "en"}
             onChange={(checked) => {
               if (checked) {
