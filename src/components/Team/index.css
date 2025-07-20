@@ -91,6 +91,7 @@
   will-change: transform;
   cursor: pointer;
   transform-origin: center center;
+  border-radius: 10px;
 }
 
 .team-card:hover {
@@ -102,16 +103,32 @@
 }
 
 .team-member-card {
-  background: #1B2B65 !important;
-  border: none !important;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
   height: 100%;
-  backdrop-filter: blur(10px);
+  &.ant-card {
+    border-radius: 10px;
+    border: none;
+    background: url("/team/card/bg.png"),
+      linear-gradient(180deg, #0055e9 0%, #4b8dff 100%);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    opacity: 0.4;
+
+    .ant-card-body {
+      padding: 20px 10px;
+      background: none;
+      border: none;
+      border-radius: none;
+    }
+  }
 }
 
-.swiper-slide-active .team-member-card {
-  box-shadow: 0 12px 40px rgba(22, 119, 255, 0.3) !important;
-  background: #1677FF !important;
+.swiper-slide-active {
+  .team-member-card {
+    &.ant-card {
+      opacity: 1;
+    }
+  }
 }
 
 .card-header {
@@ -171,9 +188,6 @@
 .member-avatar img {
   width: 100% !important;
   height: 100% !important;
-  /* object-fit: cover !important;
-  object-position: center top !important;
-  border-radius: 50% !important; */
 }
 
 .swiper-slide-active .member-avatar {
@@ -256,42 +270,42 @@
   .team-swiper {
     padding: 25px 0 70px;
   }
-  
+
   .member-avatar-section {
     margin: 20px 0 15px;
   }
-  
+
   .member-avatar {
     width: 80px !important;
     height: 80px !important;
   }
-  
+
   .swiper-slide-active .member-avatar {
     width: 80px !important;
     height: 80px !important;
   }
-  
+
   .team-card {
     width: 220px;
     height: 280px;
   }
-  
+
   .swiper-slide {
     opacity: 0.5;
     transform: scale(0.8) translateY(15px);
   }
-  
+
   .swiper-slide-active {
     opacity: 1;
     transform: scale(1) translateY(0);
   }
-  
+
   .swiper-slide .team-card {
     width: 220px;
     height: 280px;
     transform: scale(0.8);
   }
-  
+
   .swiper-slide-active .team-card {
     width: 220px;
     height: 280px;

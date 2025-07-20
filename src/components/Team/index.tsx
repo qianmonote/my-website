@@ -141,7 +141,7 @@ const Team: React.FC = () => {
               dynamicBullets: true,
             }}
             autoplay={{
-              delay: 3000,
+              delay: 3000000000000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}
@@ -167,14 +167,6 @@ const Team: React.FC = () => {
                   >
                     <Card
                       className="team-member-card"
-                      styles={{
-                        body: {
-                          padding: "20px 10px",
-                          background:
-                            isMobile || isActive ? "#1677FF" : "#1B2B65",
-                          borderRadius: 10,
-                        },
-                      }}
                     >
                       <div className="card-header">
                         <div className="member-role">{member.role}</div>
