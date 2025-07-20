@@ -16,18 +16,18 @@ const partners = [
   {
     id: 'partner1',
     name: '拉曼大学合作伙伴',
-    image: '/home/hz-lm.png',
-    alt: '拉曼大学合作伙伴',
-    width: 202,
-    height: 100
+    image: '/home/hz/lmdx.png',
+    alt: '',
+    width: 194,
+    height: 81
   },
   {
     id: 'partner2',
     name: '隆基乐业合作伙伴',
-    image: '/home/hz-lj.png',
-    alt: '隆基乐业合作伙伴',
-    width: 202,
-    height: 100
+    image: '/home/hz/ljly.png',
+    alt: '',
+    width: 194,
+    height: 81
   }
 ];
 
@@ -37,7 +37,7 @@ const socialLinks = [
     id: 'facebook',
     name: 'Facebook',
     url: 'https://www.facebook.com/profile.php?id=61578615476150',
-    image: '/home/ctw-facebook.png',
+    image: '/home/ctw/facebook.png',
     alt: 'Facebook',
     width: 150,
     height: 107,
@@ -47,7 +47,7 @@ const socialLinks = [
     id: 'tiktok',
     name: 'TikTok',
     url: 'https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1',
-    image: '/home/ctw-tiktok.png',
+    image: '/home/ctw/tiktok.png',
     alt: 'TikTok',
     width: 150,
     height: 107,
@@ -57,7 +57,7 @@ const socialLinks = [
     id: 'youtube',
     name: 'YouTube',
     url: '#',
-    image: '/home/ctw-youtube.png',
+    image: '/home/ctw/youtube.png',
     alt: 'YouTube',
     width: 150,
     height: 107,
@@ -67,7 +67,7 @@ const socialLinks = [
     id: 'xiaohongshu',
     name: '小红书',
     url: '#',
-    image: '/home/ctw-xiaohongshu.png',
+    image: '/home/ctw/xiaohongshu.png',
     alt: '小红书',
     width: 150,
     height: 107,
@@ -160,7 +160,7 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
-                      style={{ width: '100%', height: 'auto' }}
+                      style={{ width: '194px', height: 'auto' }}
                     />
                   </div>
                 </MobileOptimizedWrapper>
@@ -171,38 +171,43 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
           {/* 联系我们 */}
           <div className={styles.footerContactWrap}>
             <div className={styles.footerContactList}>
-              {socialLinks.map((social) => (
-                <div key={social.id} className={styles.socialLink}>
-                  <MobileOptimizedWrapper
-                    className="social-link"
-                    touchFeedbackScale={1.05}
-                    touchFeedbackDuration={150}
-                  >
-                    <a 
-                      href={social.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      onTouchStart={() => handleTouchStart(social.id)}
-                      onTouchEnd={handleTouchEnd}
-                      onMouseEnter={() => setIsHovered(social.id)}
-                      onMouseLeave={() => setIsHovered(null)}
-                      style={{
-                        transform: isHovered === social.id ? 'scale(1.05)' : 'scale(1)',
-                        transition: 'transform 0.3s ease'
-                      }}
-                      aria-label={social.ariaLabel}
+              {/* 社交媒体图标容器 */}
+              <div className={styles.socialLinksContainer}>
+                {socialLinks.map((social) => (
+                  <div key={social.id} className={styles.socialLink}>
+                    <MobileOptimizedWrapper
+                      className="social-link"
+                      touchFeedbackScale={1.05}
+                      touchFeedbackDuration={150}
                     >
-                      <Image
-                        src={social.image}
-                        alt={social.alt}
-                        width={social.width}
-                        height={social.height}
-                        style={{ width: '100%', height: 'auto' }}
-                      />
-                    </a>
-                  </MobileOptimizedWrapper>
-                </div>
-              ))}
+                      <a 
+                        href={social.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        onTouchStart={() => handleTouchStart(social.id)}
+                        onTouchEnd={handleTouchEnd}
+                        onMouseEnter={() => setIsHovered(social.id)}
+                        onMouseLeave={() => setIsHovered(null)}
+                        style={{
+                          transform: isHovered === social.id ? 'scale(1.05)' : 'scale(1)',
+                          transition: 'transform 0.3s ease'
+                        }}
+                        aria-label={social.ariaLabel}
+                      >
+                        <Image
+                          src={social.image}
+                          alt={social.alt}
+                          width={social.width}
+                          height={social.height}
+                          style={{ width: '100%', height: 'auto' }}
+                        />
+                      </a>
+                    </MobileOptimizedWrapper>
+                  </div>
+                ))}
+              </div>
+              
+              {/* Contact Us按钮容器 */}
               <div className={styles.footerContactInfo}>
                 <MobileOptimizedWrapper
                   className="contact-btn-wrapper"

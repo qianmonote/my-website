@@ -73,11 +73,12 @@
   .footerInviteTextZn {
     font-family: Inter;
     font-weight: 400;
-    font-style: Regular;
     font-size: 16px;
     line-height: 50px;
     letter-spacing: 0px;
     text-align: center;
+    margin-top: 12px;
+    color: #8d8d8d;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
@@ -116,7 +117,7 @@
     line-height: 100%;
     text-align: center;
     color: rgba(255, 255, 255, 0.64);
-    margin-bottom: 12px;
+    margin-bottom: 32px;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
@@ -134,22 +135,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 24px;
+    gap: 212px;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
-      gap: 16px;
+      gap: 20px;
       flex-direction: column;
     }
     
     @media (max-width: 480px) {
-      gap: 12px;
+      gap: 16px;
     }
     
     img {
-      width: 100%;
+      width: 194px;
       height: auto;
-      max-width: 202px;
+      max-width: 194px;
       transition: transform 0.3s ease;
       
       &:hover {
@@ -158,6 +159,7 @@
       
       /* 移动端触摸优化 */
       @media (max-width: 768px) {
+        width: 160px;
         max-width: 160px;
         cursor: pointer;
         
@@ -167,7 +169,8 @@
       }
       
       @media (max-width: 480px) {
-        max-width: 120px;
+        width: 140px;
+        max-width: 140px;
       }
     }
   }
@@ -193,22 +196,45 @@
   
   .footerContactList {
     display: flex;
-    flex-wrap: wrap;
-    gap: 16px;
-    justify-content: center;
+    flex-wrap: nowrap;
+    justify-content: space-between;
     align-items: center;
-    max-width: 100%;
+    width: 100%;
+    
+    /* 社交媒体图标容器 */
+    .socialLinksContainer {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+      
+      /* 桌面端布局 */
+      @media (min-width: 1001px) {
+        gap: 20px;
+      }
+      
+      /* 移动端适配 */
+      @media (max-width: 768px) {
+        gap: 12px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      @media (max-width: 480px) {
+        gap: 8px;
+      }
+    }
     
     /* 所有屏幕尺寸下，社交媒体图标一行展示4个 */
     .socialLink {
-      flex: 0 0 calc(25% - 12px);
+      flex: 0 0 auto;
       max-width: 150px;
       min-width: 80px;
     }
     
     /* 移动端适配 */
     @media (max-width: 768px) {
-      gap: 12px;
+      flex-direction: column;
+      gap: 16px;
       
       .socialLink {
         flex: 0 0 calc(25% - 9px);
@@ -218,7 +244,7 @@
     }
     
     @media (max-width: 480px) {
-      gap: 8px;
+      gap: 12px;
       
       .socialLink {
         flex: 0 0 calc(25% - 6px);
@@ -250,6 +276,12 @@
       height: auto;
       max-width: 150px;
       
+      /* 桌面端固定尺寸 */
+      @media (min-width: 1001px) {
+        width: 120px;
+        max-width: 120px;
+      }
+      
       /* 移动端适配 */
       @media (max-width: 768px) {
         max-width: 120px;
@@ -262,25 +294,18 @@
   }
   
   .footerContactInfo {
-    /* 默认情况下与社交媒体按钮在同一行 */
+    /* 桌面端：Contact Us按钮在右侧 */
     flex-shrink: 0;
-    margin-left: 16px;
     
-    /* 当社交媒体按钮折行时，Contact Us按钮独占一行 */
-    @media (max-width: 800px) {
+    /* 移动端：Contact Us按钮居中 */
+    @media (max-width: 768px) {
       width: 100%;
       display: flex;
       justify-content: center;
-      margin-left: 0;
-      margin-top: 16px;
-    }
-    
-    @media (max-width: 768px) {
-      margin-top: 16px;
     }
     
     @media (max-width: 480px) {
-      margin-top: 12px;
+      margin-top: 0;
     }
   }
   
