@@ -43,7 +43,7 @@ const menuItemsLangMap = {
   },
 };
 
-const Navbar: React.FC<NavbarProps> = ({ noShowLangChange = false }) => {
+const Navbar: React.FC<NavbarProps> = () => {
   const { lang, setLang } = useI18n();
   const [drawerOpen, setDrawerOpen] = useState(false);
   const pathname = usePathname();
