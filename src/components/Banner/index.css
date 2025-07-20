@@ -11,8 +11,8 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /* 添加高度变化过渡效果 */
-    transition: height 0.3s ease-in-out;
+    /* 移除默认的高度变化过渡效果，改为在组件中控制 */
+    /* transition: height 0.3s ease-in-out; */
   }
 
   .banner-content-wrapper {
@@ -34,6 +34,30 @@
     li::after {
       background-color: rgba(75, 141, 255, 1) !important;
     }
+  }
+
+  /* 确保Carousel没有渐入动画效果 */
+  .ant-carousel .slick-slide {
+    opacity: 1 !important;
+    transition: none !important;
+  }
+
+  .ant-carousel .slick-slide.slick-active {
+    opacity: 1 !important;
+  }
+
+  .ant-carousel .slick-slide.slick-current {
+    opacity: 1 !important;
+  }
+
+  /* 移除所有可能的渐入动画 */
+  .ant-carousel * {
+    transition: none !important;
+  }
+
+  /* 移除所有过渡效果，包括高度变化 */
+  .banner-slide {
+    transition: none !important;
   }
 }
 

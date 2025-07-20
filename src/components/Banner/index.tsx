@@ -9,6 +9,7 @@ const Banner: React.FC = () => {
   const [imageHeights, setImageHeights] = useState<{ [key: number]: number }>({});
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(0);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   // 轮播图片数据
   const bannerSlides = useMemo(() => [
@@ -106,6 +107,7 @@ const Banner: React.FC = () => {
       await Promise.all(loadPromises);
       
       setImageHeights(heights);
+      setIsInitialized(true);
     };
     
     if (screenWidth > 0) {
@@ -113,12 +115,13 @@ const Banner: React.FC = () => {
     }
   }, [screenWidth, bannerSlides]);
 
-  // 轮播配置 - 使用useMemo优化
+  // 轮播配置 - 使用useMemo优化，修改为3秒间隔
   const carouselProps = useMemo(() => ({
     autoplay: true,
     dots: { className: "custom-dots" },
-    effect: "fade" as const,
-    autoplaySpeed: 3000,
+    // 移除fade效果，避免图片渐入动画
+    // effect: "fade" as const,
+    autoplaySpeed: 3000, // 修改为3秒间隔
     beforeChange: (from: number, to: number) => {
       setCurrentSlideIndex(to);
     },
@@ -136,11 +139,17 @@ const Banner: React.FC = () => {
     }
     
     // 默认高度
-    return screenWidth <= 1000 ? 250 : 400;
+    return screenWidth <= 1000 ? 250 : 662;
   }, [isLargeScreen, imageHeights, currentSlideIndex, screenWidth]);
 
-  // 当前高度 - 使用useMemo优化
-  const currentHeight = useMemo(() => getCurrentImageHeight(), [getCurrentImageHeight]);
+  // 当前高度 - 使用useMemo优化，避免初始化时的动画
+  const currentHeight = useMemo(() => {
+    if (!isInitialized) {
+      // 初始化时使用固定高度，避免动画效果
+      return isLargeScreen ? 662 : (screenWidth <= 1000 ? 250 : 662);
+    }
+    return getCurrentImageHeight();
+  }, [isInitialized, isLargeScreen, screenWidth, getCurrentImageHeight]);
 
   return (
     <section className="c-banner-section">
@@ -154,6 +163,8 @@ const Banner: React.FC = () => {
                 backgroundSize: isLargeScreen ? "cover" : "contain",
                 width: "100%",
                 height: `${currentHeight}px`,
+                // 移除内联的过渡效果，使用CSS控制
+                // transition: isInitialized ? "height 0.3s ease-in-out" : "none",
               }}
             />
           </div>

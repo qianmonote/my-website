@@ -89,8 +89,8 @@ const BiomassGasificationPage = () => {
       <HeroSection
         title={
           lang === "zh"
-            ? "· 生物质气化发电系统 ·"
-            : "· Biomass Gasification Power Generation Systems ·".toLocaleUpperCase()
+            ? "生物质气化发电系统"
+            : "Biomass Gasification Power Generation Systems".toLocaleUpperCase()
         }
         backgroundImage="/product/p1/bn/01.png"
       />
