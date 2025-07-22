@@ -4,6 +4,7 @@ const theme = {
     colorPrimary: '#1677ff',
     colorBorder: 'rgba(0, 0, 0, 0.08)',
     borderRadius: 8,
+    fontFamily: "'PingFang SC', 'Arial', sans-serif",
   },
   components: {
     Carousel: {

@@ -1,27 +1,15 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { AntdRegistry } from "@ant-design/nextjs-registry";
-import { ConfigProvider, App } from "antd";
-import zhCN from "antd/locale/zh_CN";
+import { App } from "antd";
 import { I18nProvider } from "@/context/I18nContext";
-import themeConfig from "@/config/theme";
+import AntdLocaleProvider from "@/components/AntdLocaleProvider";
 import PageLoadManager from "@/components/PageLoadManager";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
 export const metadata: Metadata = {
-  title: "ONETOUCH AGRI ROBOTECH SDN. BHD.",
-  description: "科技让农田更高效",
+  title: "ONETOUCH AGRI ROBOTECH",
+  description: "",
   formatDetection: {
     telephone: true,
     date: false,
@@ -58,18 +46,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className="antialiased">
         <PageLoadManager />
         <I18nProvider>
           <AntdRegistry>
-            <ConfigProvider theme={themeConfig} locale={zhCN}>
+            <AntdLocaleProvider>
               <App>
                 {children}
                 <SpeedInsights />
               </App>
-            </ConfigProvider>
+            </AntdLocaleProvider>
           </AntdRegistry>
         </I18nProvider>
       </body>
