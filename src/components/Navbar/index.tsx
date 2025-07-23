@@ -185,11 +185,25 @@ const Navbar: React.FC<NavbarProps> = () => {
       </div>
 
       {/* 移动端菜单 */}
-      <div className={styles.mobileMenu} style={{ display: "none" }}>
-        <MenuOutlined
-          style={{ color: "#fff", fontSize: 24 }}
-          onClick={() => setDrawerOpen(true)}
-        />
+      <div className={styles.mobileMenu}>
+        <div className={styles.mobileMenuContent}>
+          <div className={styles.mobilePhoneButton}>
+            <Image
+              src="/header/call-default.png"
+              alt="call"
+              width={16}
+              height={15}
+              style={{ marginRight: 6 }}
+            />
+            <a href="tel:+60164802817" className={styles.mobileCallLink}>
+              +60164802817
+            </a>
+          </div>
+          <MenuOutlined
+            style={{ color: "#fff", fontSize: 24 }}
+            onClick={() => setDrawerOpen(true)}
+          />
+        </div>
         <Drawer
           placement="right"
           closable={false}

@@ -15,6 +15,15 @@
   font-weight: 600;
   color: #ffffff;
   text-align: center;
+  
+  /* 移动端字体大小优化 */
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+  
+  @media (max-width: 480px) {
+    font-size: 24px;
+  }
 }
 
 .team-swiper-container {
