@@ -178,6 +178,7 @@ const SmartEVChargingPage = () => {
             <Image
               src="/product/p4/part1/01-zh.png"
               alt=""
+              unoptimized={true}  
               width={1000}
               height={667}
             />
@@ -206,6 +207,7 @@ const SmartEVChargingPage = () => {
             <Image
               src="/product/p4/part2/01-zh.png"
               alt=""
+              unoptimized={true}  
               width={1000}
               height={400}
             />
@@ -215,6 +217,7 @@ const SmartEVChargingPage = () => {
             <Image
               src="/product/p4/part2/01-en.png"
               alt=""
+              unoptimized={true}  
               width={1000}
               height={400}
             />
