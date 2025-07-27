@@ -13,7 +13,7 @@
 
 .leftSection {
   flex: 0 0 311px;
-  background: url("/common/contact-modal-lf-bg.png") no-repeat center center;
+  background: url("/common/contactModal/lf-bg.png") no-repeat center center;
   background-size: 311px 537px;
 }
 

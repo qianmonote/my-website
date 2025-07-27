@@ -5,13 +5,12 @@ import { Card, Avatar } from "antd";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Pagination, Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
-import { useI18n } from "@/context/I18nContext";
+import Image from "next/image";
 import "swiper/css";
 import "swiper/css/pagination";
 import "./index.css";
 
 const Team: React.FC = () => {
-  const { t } = useI18n();
   const [isMobile, setIsMobile] = useState(false);
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -125,7 +124,19 @@ const Team: React.FC = () => {
   return (
     <section className="c-team-section-wrap">
       <div className="team-section-content">
-        <div className="team-section-title">{t("missionTitle")}</div>
+        <div className="team-section-title">
+          <Image 
+            src="/home/vision-tit.png" 
+            alt="" 
+            width={1000} 
+            height={48}
+            style={{
+              width: '100%',
+              height: 'auto',
+            }}
+            unoptimized
+          />  
+        </div>
         <div className="team-swiper-container">
           <Swiper
             onSwiper={(swiper) => {
@@ -141,7 +152,7 @@ const Team: React.FC = () => {
               dynamicBullets: true,
             }}
             autoplay={{
-              delay: 3000000000000,
+              delay: 3000,
               disableOnInteraction: false,
               pauseOnMouseEnter: true,
             }}

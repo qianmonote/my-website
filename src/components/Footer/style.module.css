@@ -122,12 +122,12 @@
     /* 移动端适配 */
     @media (max-width: 768px) {
       font-size: 16px;
-      margin-bottom: 16px;
+      margin-bottom: 32px;
     }
     
     @media (max-width: 480px) {
       font-size: 14px;
-      margin-bottom: 12px;
+      margin-bottom: 32px;
     }
   }
   
@@ -158,8 +158,6 @@
       
       /* 移动端触摸优化 */
       @media (max-width: 768px) {
-        width: 160px;
-        max-width: 160px;
         cursor: pointer;
         
         &:active {
@@ -170,6 +168,7 @@
       @media (max-width: 480px) {
         width: 140px;
         max-width: 140px;
+        height: auto !important;
       }
     }
   }

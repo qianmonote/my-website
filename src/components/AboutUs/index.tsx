@@ -13,15 +13,14 @@ const AboutUs: React.FC = () => {
       title={
         <div className="about-title-container">
           <Image 
-            src="/home/ab-tit.png" 
+            src="/home/ab-tit-all.png" 
             alt="about" 
-            width={654} 
+            width={1000} 
             height={96}
             className="about-title-image"
             style={{
               width: '100%',
               height: 'auto',
-              maxWidth: '654px'
             }}
           />
         </div>

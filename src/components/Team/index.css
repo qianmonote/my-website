@@ -278,8 +278,8 @@
   }
 
   .team-card {
-    width: 220px;
-    height: 280px;
+    width: 261px;
+    height: 314px;
   }
 
   .swiper-slide {
@@ -293,14 +293,14 @@
   }
 
   .swiper-slide .team-card {
-    width: 220px;
-    height: 280px;
+    width: 261px;
+    height: 314px;
     transform: scale(0.8);
   }
 
   .swiper-slide-active .team-card {
-    width: 220px;
-    height: 280px;
+    width: 261px;
+    height: 314px;
     transform: scale(1);
   }
 }
