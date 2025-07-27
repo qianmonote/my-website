@@ -260,7 +260,7 @@ const SmartEVChargingPage = () => {
         }
         dataList={coreAdvantageDataList}
         contentStyle={{
-          minHeight: lang === "zh" ? 140 : 180,
+          minHeight: lang === "zh" ? 140 : 245,
         }}
       />
       {/* Part5 */}
@@ -270,7 +270,7 @@ const SmartEVChargingPage = () => {
             "应用案例-拉曼大学3*60KW绿电快充项目"
           ) : (
             <div className={styles.part5SectionTitle}>
-              {"Application Case-Laman University".toLocaleUpperCase()} <br />
+              JOINT-RESEARCH PROJECT WITH UTAR KAMPAR CAMPUS  <br />
               <div className={styles.part5SectionSubTitle}>
                 3*60KW Green Power Fast Charging Project
               </div>

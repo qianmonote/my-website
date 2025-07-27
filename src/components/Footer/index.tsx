@@ -14,74 +14,74 @@ type TProps = Partial<{
 // 合作伙伴数据
 const partners = [
   {
-    id: 'partner1',
-    name: '拉曼大学合作伙伴',
-    image: '/home/hz/lmdx.png',
-    alt: '',
+    id: "partner1",
+    name: "拉曼大学合作伙伴",
+    image: "/home/hz/lmdx.png",
+    alt: "",
     width: 352,
-    height: 80
+    height: 80,
   },
   {
-    id: 'partner2',
-    name: '隆基乐业合作伙伴',
-    image: '/home/hz/ljly.png',
-    alt: '',
+    id: "partner2",
+    name: "隆基乐业合作伙伴",
+    image: "/home/hz/ljly.png",
+    alt: "",
     width: 363,
-    height: 80
-  }
+    height: 80,
+  },
 ];
 
 // 社交媒体联系方式数据
 const socialLinks = [
   {
-    id: 'facebook',
-    name: 'Facebook',
-    url: 'https://www.facebook.com/profile.php?id=61578615476150',
-    image: '/home/ctw/facebook.png',
-    alt: 'Facebook',
+    id: "facebook",
+    name: "Facebook",
+    url: "https://www.facebook.com/profile.php?id=61578615476150",
+    image: "/home/ctw/facebook.png",
+    alt: "Facebook",
     width: 150,
     height: 107,
-    ariaLabel: '访问我们的Facebook页面'
+    ariaLabel: "访问我们的Facebook页面",
   },
   {
-    id: 'tiktok',
-    name: 'TikTok',
-    url: 'https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1',
-    image: '/home/ctw/tiktok.png',
-    alt: 'TikTok',
+    id: "tiktok",
+    name: "TikTok",
+    url: "https://www.tiktok.com/@ailinlee80?_t=ZS-8y7aMsEk3Np&_r=1",
+    image: "/home/ctw/tiktok.png",
+    alt: "TikTok",
     width: 150,
     height: 107,
-    ariaLabel: '访问我们的TikTok页面'
+    ariaLabel: "访问我们的TikTok页面",
   },
   {
-    id: 'youtube',
-    name: 'YouTube',
-    url: 'https://www.youtube.com/@OnetouchMedia-p5k',
-    image: '/home/ctw/youtube.png',
-    alt: 'YouTube',
+    id: "youtube",
+    name: "YouTube",
+    url: "https://www.youtube.com/@OnetouchMedia-p5k",
+    image: "/home/ctw/youtube.png",
+    alt: "YouTube",
     width: 150,
     height: 107,
-    ariaLabel: '访问我们的YouTube频道'
+    ariaLabel: "访问我们的YouTube频道",
   },
   {
-    id: 'xiaohongshu',
-    name: '小红书',
-    url: '#',
-    image: '/home/ctw/xiaohongshu.png',
-    alt: '小红书',
+    id: "xiaohongshu",
+    name: "小红书",
+    url: "#",
+    image: "/home/ctw/xiaohongshu.png",
+    alt: "小红书",
     width: 150,
     height: 107,
-    ariaLabel: '访问我们的小红书页面'
+    ariaLabel: "访问我们的小红书页面",
   },
   {
-    id: 'x',
-    name: 'X',
-    url: 'https://x.com/1TouchM',
-    image: '/home/ctw/x.png',
-    alt: 'X',
+    id: "x",
+    name: "X",
+    url: "https://x.com/1TouchM",
+    image: "/home/ctw/x.png",
+    alt: "X",
     width: 150,
     height: 107,
-    ariaLabel: '访问我们的X页面'
+    ariaLabel: "访问我们的X页面",
   },
 ];
 
@@ -161,8 +161,9 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                     onMouseEnter={() => setIsHovered(partner.id)}
                     onMouseLeave={() => setIsHovered(null)}
                     style={{
-                      transform: isHovered === partner.id ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease'
+                      transform:
+                        isHovered === partner.id ? "scale(1.05)" : "scale(1)",
+                      transition: "transform 0.3s ease",
                     }}
                   >
                     <Image
@@ -170,7 +171,7 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
-                      style={{ width: 'auto', height: '80px' }}
+                      style={{ width: "auto", height: "80px" }}
                       unoptimized
                     />
                   </div>
@@ -178,7 +179,7 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
               ))}
             </div>
           </div>
-          
+
           {/* 联系我们 */}
           <div className={styles.footerContactWrap}>
             <div className={styles.footerContactList}>
@@ -191,7 +192,7 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                       touchFeedbackScale={1.05}
                       touchFeedbackDuration={150}
                     >
-                      <a 
+                      <a
                         href={social.url}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -200,8 +201,11 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                         onMouseEnter={() => setIsHovered(social.id)}
                         onMouseLeave={() => setIsHovered(null)}
                         style={{
-                          transform: isHovered === social.id ? 'scale(1.05)' : 'scale(1)',
-                          transition: 'transform 0.3s ease'
+                          transform:
+                            isHovered === social.id
+                              ? "scale(1.05)"
+                              : "scale(1)",
+                          transition: "transform 0.3s ease",
                         }}
                         aria-label={social.ariaLabel}
                       >
@@ -210,14 +214,14 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                           alt={social.alt}
                           width={social.width}
                           height={social.height}
-                          style={{ width: '100%', height: 'auto' }}
+                          style={{ width: "100%", height: "auto" }}
                         />
                       </a>
                     </MobileOptimizedWrapper>
                   </div>
                 ))}
               </div>
-              
+
               {/* Contact Us按钮容器 */}
               <div className={styles.footerContactInfo}>
                 <MobileOptimizedWrapper
@@ -225,16 +229,17 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                   touchFeedbackScale={0.95}
                   touchFeedbackDuration={200}
                 >
-                  <a 
+                  <a
                     onClick={handleOpenContactModal}
-                    onTouchStart={() => handleTouchStart('contact')}
+                    onTouchStart={() => handleTouchStart("contact")}
                     onTouchEnd={handleTouchEnd}
-                    onMouseEnter={() => setIsHovered('contact')}
+                    onMouseEnter={() => setIsHovered("contact")}
                     onMouseLeave={() => setIsHovered(null)}
                     style={{
-                      transform: isHovered === 'contact' ? 'scale(1.05)' : 'scale(1)',
-                      transition: 'transform 0.3s ease',
-                      cursor: 'pointer'
+                      transform:
+                        isHovered === "contact" ? "scale(1.05)" : "scale(1)",
+                      transition: "transform 0.3s ease",
+                      cursor: "pointer",
                     }}
                   >
                     <ContractBtn type="contactEn">Contact Us</ContractBtn>
@@ -247,10 +252,10 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
       ) : null}
       {/* 地址 */}
       <div className={styles.footerAddress}>
-        Headquarters Address：5-33B JALAN PAHANG, 10400 GEORGETOWN, PULAU
-        PINANG.
+        HEADQUARTER ADDRESS: Unit 9, 06, Menara Boustead Penang, 39 Jln <br />
+        Sultan Ahmad Shah,10050 George Town, Pulau Pinang.
       </div>
-      
+
       {/* 联系我们弹窗 */}
       <ContactModal
         open={isContactModalOpen}

@@ -164,7 +164,7 @@ const PowerStorageIntegrationPage = () => {
         title={
           lang === "zh"
             ? "光、储、柴、充一体化智慧能源解决方案"
-            : "Integrated Smart Energy Solution for Photovoltaic, <br /> Storage, Charging, and Charging"
+            : "Integrated Smart Energy Solution for Photovoltaic, <br/> Storageand Charging"
         }
       >
         <SolutionCardList solutions={solutionsList} />
@@ -222,7 +222,7 @@ const PowerStorageIntegrationPage = () => {
         title={
           lang === "zh"
             ? "光伏电站案例"
-            : "Photovoltaic power station case".toLocaleUpperCase()
+            : "Photovoltaic power station cases".toLocaleUpperCase()
         }
         dataList={caseList}
         defaultColSpan={8}
