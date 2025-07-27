@@ -156,7 +156,7 @@ const PowerStorageIntegrationPage = () => {
             ? "分布式光储充一体化系统"
             : "Distributed Solar Photovoltaic Power Systems".toLocaleUpperCase()
         }
-        backgroundImage="/product/p2/bn/01.jpg"
+        backgroundImage="/product/p2/bn/01.png"
       />
 
       {/* Part 1 */}
@@ -179,6 +179,7 @@ const PowerStorageIntegrationPage = () => {
               alt=""
               width={1000}
               height={640}
+               unoptimized
               style={{ marginLeft: -24, marginRight: 24 }}
             />
           </PartSectionImageBox>
@@ -188,7 +189,8 @@ const PowerStorageIntegrationPage = () => {
               src="/product/p2/part2/01-en.png"
               alt=""
               width={1000}
-              height={640}
+              height={815}
+              unoptimized
             />
           </PartSectionImageBox>
         )}

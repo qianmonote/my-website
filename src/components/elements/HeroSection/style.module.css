@@ -1,6 +1,6 @@
 .heroSection {
   width: 100%;
-  height: calc(100vh - 60px);
+  height: 640px;
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
