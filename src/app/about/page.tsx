@@ -17,8 +17,10 @@ export default function About() {
   const carouselRef = useRef<CarouselRef>(null);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalData, setModalData] = useState<{
-    title: string;
-    description: string;
+    titleZh: string;
+    titleEn: string;
+    descriptionZh: string;
+    descriptionEn: string;
     image?: {
       src: string;
       alt: string;
@@ -27,8 +29,10 @@ export default function About() {
     };
     content?: React.ReactNode;
   }>({
-    title: "",
-    description: "",
+    titleZh: "",
+    titleEn: "",
+    descriptionZh: "",
+    descriptionEn: "",
   });
 
   // 处理查看详情
@@ -134,8 +138,16 @@ export default function About() {
                         text: "View>>",
                         onClick: () =>
                           handleViewDetails({
-                            title: "",
-                            description: "",
+                            titleZh: "2024 年与拉曼大学签署《生物质气化技术研究合作协议》（MOA）",
+                            titleEn: "Signed a MOA with the University of Raman on Biomass Gasification Technology Research in 2024",
+                            descriptionZh: "深化棕榈废弃物全链条能源化技术研发构建标准化技术模块并纳入国家可再生能源认证体系，形成可复制的棕榈生物质能解决方案，推动其在智能电网协同、区域能源替代及碳交易机制中的规模化应用。",
+                            descriptionEn: "Deepen the research and development of palm waste energy technology, build standardized technical modules, form replicable palm biomass energy solutions, and promote its large-scale application in smart grid coordination, regional energy substitution and carbon trading mechanisms.",
+                            image: {
+                              src: "/about/part-2-cont.jpg",
+                              alt: "",
+                              width: 756,
+                              height: 442,
+                            },
                           }),
                       }}
                     />
@@ -166,8 +178,10 @@ export default function About() {
                         text: "View>>",
                         onClick: () =>
                           handleViewDetails({
-                            title: "",
-                            description: "",
+                            titleZh: "在马尔代夫推进太阳能驱动型电动汽车充电站",
+                            titleEn: "Promoting solar-powered electric vehicle charging stations in the Maldives",
+                            descriptionZh: "与废物能源化系统部署，涵盖度假区与城市中心，彰显马来西亚绿色技术输出能力",
+                            descriptionEn: "The waste-to-energy system will be deployed in resorts and urban centers, demonstrating Malaysia's green technology export capabilities",
                             image: {
                               src: "/about/part-3-cont.jpg",
                               alt: "",
@@ -281,8 +295,8 @@ export default function About() {
       <DetailModal
         visible={modalVisible}
         onClose={() => setModalVisible(false)}
-        title={modalData.title}
-        description={modalData.description}
+        title={lang === "zh" ? modalData.titleZh : modalData.titleEn}
+        description={lang === "zh" ? modalData.descriptionZh : modalData.descriptionEn}
         image={modalData.image}
         content={modalData.content}
       />

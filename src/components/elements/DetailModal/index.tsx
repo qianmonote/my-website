@@ -58,16 +58,16 @@ const DetailModal: React.FC<DetailModalProps> = ({
         styles={{
           body: {
             padding: '20px',
-            background: '#171717',
-            color: '#fff',
+            background: '#ffffff',
+            color: '#333',
           },
           header: {
-            background: '#171717',
-            borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-            color: '#fff',
+            background: '#ffffff',
+            borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+            color: '#333',
           },
           mask: {
-            background: 'rgba(0, 0, 0, 0.8)',
+            background: 'rgba(0, 0, 0, 0.5)',
           },
         }}
       >
@@ -107,16 +107,16 @@ const DetailModal: React.FC<DetailModalProps> = ({
       className={styles.desktopModal}
       styles={{
         content: {
-          background: '#171717',
-          color: '#fff',
+          background: '#ffffff',
+          color: '#333',
         },
         header: {
-          background: '#171717',
-          borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
-          color: '#fff',
+          background: '#ffffff',
+          borderBottom: '1px solid rgba(0, 0, 0, 0.1)',
+          color: '#333',
         },
         mask: {
-          background: 'rgba(0, 0, 0, 0.8)',
+          background: 'rgba(0, 0, 0, 0.5)',
         },
       }}
     >
@@ -145,4 +145,4 @@ const DetailModal: React.FC<DetailModalProps> = ({
   );
 };
 
-export default DetailModal; 
+export default DetailModal;

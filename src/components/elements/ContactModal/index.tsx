@@ -9,22 +9,85 @@ import {
   ContactFormData,
   ContactFormResponse,
 } from "@/common/types";
+import { useI18n } from "@/context/I18nContext";
 
 interface ContactModalProps {
   open: boolean;
   onClose: () => void;
 }
 
-const layout = {
-  labelCol: { style: { width: "100px", textAlign: "left" as const } },
-  wrapperCol: { span: 18 },
-};
-
 const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const [form] = Form.useForm<ContactFormData>();
   const [loading, setLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { message } = App.useApp();
+  const { lang } = useI18n();
+  const layout = {
+    labelCol: {
+      style: { width: lang === "zh" ? "100px" : "150px", textAlign: "left" as const },
+    },
+    wrapperCol: { span: lang === "zh" ? 18 : 20 },
+  };
+
+  // 国际化文本
+  const texts = {
+    zh: {
+      title: "联系我们",
+      company: "公司名称",
+      companyPlaceholder: "请输入公司名称",
+      companyRequired: "请输入公司名称",
+      name: "联系人姓名",
+      namePlaceholder: "请输入联系人姓名",
+      nameRequired: "请输入联系人姓名",
+      phone: "手机号",
+      phonePlaceholder: "请输入手机号",
+      phoneRequired: "请输入手机号",
+      phonePattern: "请输入正确的手机号",
+      email: "电子邮件",
+      emailPlaceholder: "请输入电子邮件",
+      emailRequired: "请输入电子邮件",
+      emailPattern: "请输入正确的邮箱格式",
+      content: "咨询业务",
+      contentPlaceholder: "请输入咨询业务",
+      contentRequired: "请输入咨询业务",
+      submit: "提交",
+      submitSuccess: "提交成功！",
+      submitError: "提交失败，请重试",
+      agreement: "提交预约即代表阅读并同意",
+      userAgreement: "《用户服务协议》",
+      privacyPolicy: "《个人信息保护政策》",
+      and: "及",
+    },
+    en: {
+      title: "Contact Us",
+      company: "corporate name",
+      companyPlaceholder: "Please enter the name of your company",
+      companyRequired: "Please enter the name of your company",
+      name: "Contact Name",
+      namePlaceholder: "Please enter the name of the contact person",
+      nameRequired: "Please enter the name of the contact person",
+      phone: "cell-phone number",
+      phonePlaceholder: "Please enter the contact phone number",
+      phoneRequired: "Please enter the contact phone number",
+      phonePattern: "Please enter a valid phone number",
+      email: "E-mail",
+      emailPlaceholder: "Please enter email",
+      emailRequired: "Please enter your email address",
+      emailPattern: "Please enter a valid email format",
+      content: "consultancy",
+      contentPlaceholder: "Please fill in the business direction you would like to inquire about",
+      contentRequired: "Please fill in the business direction you would like to inquire about",
+      submit: "Submit",
+      submitSuccess: "Submitted successfully!",
+      submitError: "Submission failed, please try again",
+      agreement: "By submitting, you agree to our",
+      userAgreement: "User Service Agreement",
+      privacyPolicy: "Privacy Policy",
+      and: "and",
+    },
+  };
+
+  const t = texts[lang];
 
   // 检测屏幕尺寸
   useEffect(() => {
@@ -33,10 +96,10 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
     };
 
     checkScreenSize();
-    window.addEventListener('resize', checkScreenSize);
+    window.addEventListener("resize", checkScreenSize);
 
     return () => {
-      window.removeEventListener('resize', checkScreenSize);
+      window.removeEventListener("resize", checkScreenSize);
     };
   }, []);
 
@@ -46,11 +109,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       .post<ApiResponse<ContactFormResponse>>("/api/contact/submit", values)
       .then((res) => {
         if (res.flag === 1) {
-          message.success("提交成功！");
+          message.success(t.submitSuccess);
           form.resetFields();
           onClose();
         } else {
-          message.error(res.error?.message || "提交失败，请重试");
+          message.error(res.error?.message || t.submitError);
         }
       })
       .finally(() => {
@@ -62,7 +125,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const renderFormContent = () => (
     <div className={styles.modalContent}>
       <div className={styles.leftSection} />
-      <div className={styles.rightSection}>
+      <div className={(lang === "en" ? styles["rightSection-en"] : styles.rightSection)}>
         <div className={styles.title}>ONETOUCH AGRI ROBOTECH SDN.BHD</div>
         <Form
           form={form}
@@ -72,46 +135,47 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
         >
           <Form.Item
             name="company"
-            label="公司名称"
-            rules={[{ required: true, message: "请输入公司名称" }]}
+            label={t.company}
           >
-            <Input placeholder="请输入公司名称" />
+            <Input placeholder={t.companyPlaceholder} style={{ width: "317px" }} />
           </Form.Item>
           <Form.Item
             name="name"
-            label="联系人姓名"
-            rules={[{ required: true, message: "请输入联系人姓名" }]}
+            label={t.name}
           >
-            <Input placeholder="请输入联系人姓名" />
+            <Input placeholder={t.namePlaceholder} style={{ width: "317px" }} />
           </Form.Item>
           <Form.Item
             name="phone"
-            label="手机号"
+            label={t.phone}
             rules={[
-              { required: true, message: "请输入手机号" },
-              { pattern: /^[0-9]\d{4,14}$/, message: "请输入正确的手机号" },
+              {
+                pattern:
+                  lang === "zh"
+                    ? /^[0-9]\d{4,14}$/
+                    : /^[+]?[0-9\s\-\(\)]{7,15}$/,
+                message: t.phonePattern,
+              },
             ]}
           >
-            <Input placeholder="请输入手机号" />
+            <Input placeholder={t.phonePlaceholder} style={{ width: "317px" }} />
           </Form.Item>
           <Form.Item
             name="email"
-            label="电子邮件"
+            label={t.email}
             rules={[
-              { required: true, message: "请输入电子邮件" },
-              { type: "email", message: "请输入正确的邮箱格式" },
+              { type: "email", message: t.emailPattern },
             ]}
           >
-            <Input placeholder="请输入电子邮件" />
+            <Input placeholder={t.emailPlaceholder} style={{ width: "317px" }} />
           </Form.Item>
           <Form.Item
             name="content"
-            label="咨询业务"
-            rules={[{ required: true, message: "请输入咨询业务" }]}
+            label={t.content}
           >
             <Input.TextArea
-              placeholder="请输入咨询业务"
-              autoSize={{ minRows: 2, maxRows: 3 }}
+              placeholder={t.contentPlaceholder}
+              autoSize={{ minRows: 3, maxRows: 3 }}
             />
           </Form.Item>
           <div className={styles.submitSection}>
@@ -121,18 +185,18 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
               className={styles.submitButton}
               onClick={() => form.submit()}
             >
-              提交
+              {t.submit}
             </Button>
-            <div className={styles.agreement}>
-              提交预约即代表阅读并同意
+            {/* <div className={styles.agreement}>
+              {t.agreement}
               <a href="/user-agreement" target="_blank">
-                《用户服务协议》
+                {t.userAgreement}
               </a>
-              及
+              {t.and}
               <a href="/privacy-policy" target="_blank">
-                《个人信息保护政策》
+                {t.privacyPolicy}
               </a>
-            </div>
+            </div> */}
           </div>
         </Form>
       </div>
@@ -143,7 +207,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   if (isMobile) {
     return (
       <Drawer
-        title="联系我们"
+        title={t.title}
         placement="bottom"
         onClose={onClose}
         open={open}
@@ -151,16 +215,16 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
         className={styles.mobileDrawer}
         styles={{
           body: {
-            padding: '0',
-            background: '#fff',
+            padding: "0",
+            background: "#fff",
           },
           header: {
-            background: '#fff',
-            borderBottom: '1px solid #f0f0f0',
-            color: '#333',
+            background: "#fff",
+            borderBottom: "1px solid #f0f0f0",
+            color: "#333",
           },
           mask: {
-            background: 'rgba(0, 0, 0, 0.6)',
+            background: "rgba(0, 0, 0, 0.6)",
           },
         }}
       >

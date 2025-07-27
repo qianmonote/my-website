@@ -123,6 +123,11 @@
   color: #9ca3af;
   margin-bottom: 4px;
   text-align: left;
+  max-width: 780px;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 纯文字模式标题样式 */

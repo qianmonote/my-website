@@ -1,6 +1,6 @@
 .contactModal {
   :global(.ant-modal-content) {
-    padding: 0;
+    padding: 0 !important;
     border-radius: 16px;
     overflow: hidden;
   }
@@ -19,13 +19,22 @@
 
 .rightSection {
   flex: 1;
-  padding: 35px 75px  0;
+  padding: 35px 75px 0;
   background: white;
   overflow-y: auto;
+}
+.rightSection-en {
+  padding: 35px 44.5px 0;
 }
 .title {
   text-align: center;
   margin: 20px 0 16px;
+  font-family: Arial;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0%;
 }
 
 .form {
@@ -41,11 +50,12 @@
 }
 
 .submitButton {
-  width: 200px;
+  margin-top: 16px;
+  width: 394px;
   height: 46px;
   font-size: 16px;
   border-radius: 24px;
-  background: #1677ff;
+  background: linear-gradient(90deg, #0055E9 0%, #4B8DFF 100%);
   border: none;
 }
 
@@ -73,23 +83,23 @@
   :global(.ant-drawer-content-wrapper) {
     border-radius: 16px 16px 0 0;
   }
-  
+
   :global(.ant-drawer-content) {
     border-radius: 16px 16px 0 0;
   }
-  
+
   :global(.ant-drawer-header) {
     border-radius: 16px 16px 0 0;
     padding: 16px 20px;
     border-bottom: 1px solid #f0f0f0;
   }
-  
+
   :global(.ant-drawer-title) {
     font-size: 18px;
     font-weight: 600;
     color: #333;
   }
-  
+
   :global(.ant-drawer-body) {
     padding: 0;
     overflow: hidden;
@@ -125,18 +135,18 @@
   :global(.ant-form-item-label) {
     padding-bottom: 4px;
   }
-  
+
   :global(.ant-form-item-label > label) {
     font-size: 14px;
     color: #333;
   }
-  
+
   :global(.ant-input),
   :global(.ant-input-affix-wrapper) {
     height: 40px;
     border-radius: 8px;
   }
-  
+
   :global(.ant-input-textarea) {
     border-radius: 8px;
   }
