@@ -158,7 +158,7 @@ export default function About() {
                         width: 756,
                         height: 442,
                       }}
-                      titleZh="在马尔代夫推进太阳能驱动型电动汽车充电站"
+                      titleZh="在马尔代夫推进太阳能驱动&apos;型电动汽车充电站"
                       titleEn="Promoting solar-powered electric vehicle charging stations in the Maldives"
                       descriptionEn="The waste-to-energy system will be deployed in resorts and urban centers, demonstrating Malaysia’s green technology export capabilities"
                       descriptionZh="与废物能源化系统部署，涵盖度假区与城市中心，彰显马来西亚绿色技术输出能力"
@@ -268,7 +268,7 @@ export default function About() {
                   transform agricultural and forestry waste into clean energy,
                   systematically reducing energy consumption, carbon emissions
                   and operating costs. As a strategic engine for the rise of
-                  Southeast Asia's green economy, we continue to expand new
+                  Southeast Asia&apos;s green economy, we continue to expand new
                   energy application scenarios and business boundaries.
                 </p>
               )}
