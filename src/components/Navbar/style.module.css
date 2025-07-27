@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 56px;
+  height: 80px;
   position: sticky;
   top: 0;
   z-index: 100;
@@ -12,19 +12,19 @@
   /* 移动端适配 */
   @media (max-width: 768px) {
     padding: 0 20px;
-    height: 56px;
+    height: 70px;
   }
   
   @media (max-width: 480px) {
     padding: 0 16px;
-    height: 52px;
+    height: 64px;
   }
 }
 
 .cNavbarLogo {
-  background: url("/header/logo-dark.png") no-repeat center center;
-  width: 100px;
-  height: 56px;
+  background: url("/header/logo-default.png") no-repeat center center;
+  width: 140px;
+  height: 64px;
   cursor: pointer;
   transition: all 0.3s ease;
   transform: scale(1);
@@ -33,12 +33,12 @@
   /* 移动端适配 */
   @media (max-width: 768px) {
     width: 80px;
-    height: 48px;
+    height: 60px;
   }
   
   @media (max-width: 480px) {
     width: 70px;
-    height: 42px;
+    height: 56px;
   }
 }
 
@@ -46,12 +46,14 @@
   background: url("/header/logo-active.png") no-repeat center center;
   transform: scale(1.05);
   background-size: contain;
+  height: 80px;
 }
 
 .cNavbarLogo.active {
   background: url("/header/logo-active.png") no-repeat center center;
   transform: scale(1.05);
   background-size: contain;
+  height: 80px;
 }
 
 .desktopMenu {
@@ -74,8 +76,8 @@
   font-family: PingFang SC;
   font-weight: 400;
   font-size: 14px;
-  height: 32px;
-  line-height: 32px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   text-decoration: none;
   display: flex;
@@ -115,8 +117,8 @@
 .navbarMenuItemContact {
   display: inline-block;
   width: 170px;
-  height: 32px;
-  line-height: 32px;
+  height: 40px;
+  line-height: 40px;
   text-align: center;
   background: url("/header/link-default.png") no-repeat center center;
   transition: all 0.3s ease;

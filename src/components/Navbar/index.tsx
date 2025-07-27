@@ -39,7 +39,7 @@ const menuItemsLangMap = {
   },
   productsAndServices: {
     zh: "产品与服务",
-    en: "Products and Services",
+    en: "NEXT–GEN BIOMASS GASIFICATION SYSTEM",
   },
 };
 

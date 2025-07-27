@@ -171,14 +171,14 @@
 
 .turnLeft {
   left: -80px;
-  top: 168px;
+  top: 116.8px;
   background: url("/about/mission-carousel-left.png");
   background-size: contain;
 }
 
 .turnRight {
   right: -80px;
-  top: 168px;
+  top: 116.8px;
   background: url("/about/mission-carousel-right.png");
   background-size: contain;
 }

@@ -170,6 +170,7 @@ const SmartEVChargingPage = () => {
             : "Distributed Solar Photovoltaic Power Systems".toLocaleUpperCase()
         }
         backgroundImage="/product/p4/bn/01.png"
+        backgroundSize="cover"
       />
       {/* Part1 */}
       <PartSection>

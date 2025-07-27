@@ -135,7 +135,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 212px;
+    gap: 40px;
     
     /* 移动端适配 */
     @media (max-width: 768px) {
@@ -148,9 +148,8 @@
     }
     
     img {
-      width: 194px;
-      height: auto;
-      max-width: 194px;
+      width: auto;
+      height: 80px;
       transition: transform 0.3s ease;
       
       &:hover {

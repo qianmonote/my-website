@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import classnames from "classnames";
 import { Space } from "antd";
+import { useI18n } from "@/context/I18nContext";
 import styles from "./styles.module.css";
 
 interface CornerBorders {
@@ -13,7 +14,7 @@ interface CornerBorders {
 
 interface CardProps {
   // 显示模式
-  mode?: 'imageText' | 'textOnly'; // 图文模式 | 纯文字模式，默认图文模式
+  mode?: "imageText" | "textOnly"; // 图文模式 | 纯文字模式，默认图文模式
 
   // 图片相关
   image?: {
@@ -33,10 +34,11 @@ interface CardProps {
   };
 
   // 文本内容
-  title?: string;
+  titleZh?: string;
+  titleEn?: string;
   subtitle?: string;
-  description?: string;
-
+  descriptionZh?: string;
+  descriptionEn?: string;
   // 自定义内容
   customContent?: React.ReactNode;
 
@@ -64,7 +66,7 @@ interface CardProps {
  * 通用卡片组件
  * 支持图片、标题、副标题、角标配置和自定义内容
  * 支持图文模式和纯文字模式
- * 
+ *
  * @param mode - 显示模式：'imageText'（图文模式，默认）| 'textOnly'（纯文字模式）
  * @param image - 图片配置（仅在图文模式下有效）
  * @param backgroundImage - 背景图片配置（两种模式都支持）
@@ -79,7 +81,7 @@ interface CardProps {
  * @param cornerBorders - 角标配置（仅在图文模式下显示）
  * @param onClick - 点击事件
  * @param moreButton - 更多按钮配置
- * 
+ *
  * @example
  * // 图文模式（默认）
  * <CustomCard
@@ -89,7 +91,7 @@ interface CardProps {
  *   borderRadius="12px"
  *   moreButton={{ text: "View>>", onClick: () => {} }}
  * />
- * 
+ *
  * @example
  * // 纯文字模式
  * <CustomCard
@@ -101,12 +103,14 @@ interface CardProps {
  * />
  */
 const CustomCard: React.FC<CardProps> = ({
-  mode = 'imageText', // 默认图文模式
+  mode = "imageText", // 默认图文模式
   image,
   backgroundImage,
-  title,
+  titleZh,
+  titleEn,
   subtitle,
-  description,
+  descriptionZh,
+  descriptionEn,
   customContent,
   className,
   style,
@@ -121,21 +125,27 @@ const CustomCard: React.FC<CardProps> = ({
   onClick,
   moreButton,
 }) => {
+  const { lang } = useI18n();
   // 组合卡片样式
   const cardStyle: React.CSSProperties = {
     ...style,
     ...(borderRadius && { borderRadius }),
   };
 
+  const title = lang === "zh" ? titleZh : titleEn;
+  const description = lang === "zh" ? descriptionZh : descriptionEn;
+
   return (
-    <div 
-      className={classnames(styles.card, className, { [styles.textOnly]: mode === 'textOnly' })} 
+    <div
+      className={classnames(styles.card, className, {
+        [styles.textOnly]: mode === "textOnly",
+      })}
       onClick={onClick}
       style={cardStyle}
       data-mode={mode}
     >
       {/* 图片区域 - 仅在图文模式下显示 */}
-      {mode === 'imageText' && image && (
+      {mode === "imageText" && image && (
         <div className={styles.imageContainer}>
           <Image
             alt={image.alt}
@@ -144,10 +154,11 @@ const CustomCard: React.FC<CardProps> = ({
             height={image.height}
             className={styles.cardImage}
             style={image.style}
+            unoptimized
           />
         </div>
       )}
-      
+
       {/* 内容区域 */}
       <div className={styles.cardContent} style={contentStyle}>
         {/* 背景图片 - 两种模式都支持 */}
@@ -159,9 +170,10 @@ const CustomCard: React.FC<CardProps> = ({
             height={backgroundImage.height || 574}
             className={styles.cardContentBgImage}
             style={backgroundImage.style}
+            unoptimized
           />
         )}
-        
+
         <div className={styles.cardContentInner}>
           {/* 标题 */}
           {title && (
@@ -172,10 +184,16 @@ const CustomCard: React.FC<CardProps> = ({
               }}
             />
           )}
-          
+
           {/* 副标题 */}
           {subtitle && <div className={styles.cardSubtitle}>{subtitle}</div>}
-          <Space style={{ width: "100%", justifyContent: "space-between", alignItems: "baseline" }}>
+          <Space
+            style={{
+              width: "100%",
+              justifyContent: "space-between",
+              alignItems: "baseline",
+            }}
+          >
             {/* 描述 */}
             {description && (
               <div className={styles.cardDescription}>{description}</div>
@@ -190,6 +208,7 @@ const CustomCard: React.FC<CardProps> = ({
                       alt=""
                       width={200}
                       height={48}
+                      unoptimized
                     />
                   )}
                   <span className={styles.cardMoreText}>{moreButton.text}</span>
@@ -204,19 +223,13 @@ const CustomCard: React.FC<CardProps> = ({
           )}
         </div>
       </div>
-      
-      {/* 四个角标 - 仅在图文模式下显示 */}
-      {mode === 'imageText' && (
-        <>
-          {cornerBorders.topLeft && <div className={styles.borderTopLeft}></div>}
-          {cornerBorders.topRight && <div className={styles.borderTopRight}></div>}
-          {cornerBorders.bottomRight && (
-            <div className={styles.borderBottomRight}></div>
-          )}
-          {cornerBorders.bottomLeft && (
-            <div className={styles.borderBottomLeft}></div>
-          )}
-        </>
+      {cornerBorders.topLeft && <div className={styles.borderTopLeft}></div>}
+      {cornerBorders.topRight && <div className={styles.borderTopRight}></div>}
+      {cornerBorders.bottomRight && (
+        <div className={styles.borderBottomRight}></div>
+      )}
+      {cornerBorders.bottomLeft && (
+        <div className={styles.borderBottomLeft}></div>
       )}
     </div>
   );

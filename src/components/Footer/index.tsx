@@ -18,16 +18,16 @@ const partners = [
     name: '拉曼大学合作伙伴',
     image: '/home/hz/lmdx.png',
     alt: '',
-    width: 194,
-    height: 81
+    width: 352,
+    height: 80
   },
   {
     id: 'partner2',
     name: '隆基乐业合作伙伴',
     image: '/home/hz/ljly.png',
     alt: '',
-    width: 194,
-    height: 81
+    width: 363,
+    height: 80
   }
 ];
 
@@ -56,7 +56,7 @@ const socialLinks = [
   {
     id: 'youtube',
     name: 'YouTube',
-    url: '#',
+    url: 'https://www.youtube.com/@OnetouchMedia-p5k',
     image: '/home/ctw/youtube.png',
     alt: 'YouTube',
     width: 150,
@@ -72,7 +72,17 @@ const socialLinks = [
     width: 150,
     height: 107,
     ariaLabel: '访问我们的小红书页面'
-  }
+  },
+  {
+    id: 'x',
+    name: 'X',
+    url: 'https://x.com/1TouchM',
+    image: '/home/ctw/x.png',
+    alt: 'X',
+    width: 150,
+    height: 107,
+    ariaLabel: '访问我们的X页面'
+  },
 ];
 
 const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
@@ -160,7 +170,8 @@ const Footer: React.FC<TProps> = ({ inviteShow = true }) => {
                       alt={partner.alt}
                       width={partner.width}
                       height={partner.height}
-                      style={{ width: '194px', height: 'auto' }}
+                      style={{ width: 'auto', height: '80px' }}
+                      unoptimized
                     />
                   </div>
                 </MobileOptimizedWrapper>

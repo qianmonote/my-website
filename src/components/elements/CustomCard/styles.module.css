@@ -15,9 +15,12 @@
   max-width: 100%;
   min-height: 180px;
   padding: 0 40px;
-  border-radius: 16px;
-  background: rgba(42, 48, 59, 1);
-  box-sizing: border-box;
+  background: linear-gradient(
+      90deg,
+      rgba(0, 85, 233, 0.4) 0%,
+      rgba(99, 75, 255, 0.4) 33%
+    ),
+   linear-gradient(180deg, #D9D9D9 8.4%, rgba(115, 115, 115, 0) 100%);
 }
 
 /* 图片容器 */

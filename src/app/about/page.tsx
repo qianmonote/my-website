@@ -42,15 +42,15 @@ export default function About() {
       imageZh: "/about/carousel/01-zh.png",
       imageEn: "/about/carousel/01-en.png",
       alt: "",
-      width: 1344,
-      height: 400,
+      width: 1000,
+      height: 297.6,
     },
     {
       imageZh: "/about/carousel/02-zh.png",
       imageEn: "/about/carousel/02-en.png",
       alt: "",
-      width: 1344,
-      height: 400,
+      width: 1000,
+      height: 297.6,
     },
   ];
 
@@ -58,15 +58,14 @@ export default function About() {
     <>
       <Navbar />
       <main className={styles.aboutPage}>
-        {/* Hero Section */}
         <section className={styles.heroSection}>
           <div className={styles.heroImage}>
             <Image
               src="/about/about-banner.png"
               alt=""
-              width={1280}
-              height={662}
-              style={{ objectFit: "cover" }}
+              width={1000}
+              height={297}
+              unoptimized
             />
           </div>
           <div className={styles.scrollIndicator}>
@@ -85,7 +84,9 @@ export default function About() {
         <section className={styles.cooperationSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
-              STRATEGIC COOPERATION AND MILESTONES
+              {lang === "zh"
+                ? "战略合作与里程碑"
+                : "Strategic Cooperation and Milestones"}
             </h2>
             <CustomTimeline
               items={[
@@ -93,7 +94,7 @@ export default function About() {
                   label: (
                     <Image
                       src="/about/part-1.png"
-                      alt="合作历程第一阶段"
+                      alt=""
                       width={120}
                       height={180}
                     />
@@ -101,8 +102,10 @@ export default function About() {
                   children: (
                     <CustomCard
                       mode="textOnly"
-                      title="Company Establishment"
-                      description="Founded on August 11, 2021, located in Penang, Malaysia"
+                      titleEn="Company Strategic Partnerships and Milestones"
+                      titleZh="战略合作与里程碑"
+                      descriptionEn="Founded on August 11, 2021, in Penang, Malaysia"
+                      descriptionZh="成立于 2021 年 8 月 11 日，位于马来西亚槟城"
                     />
                   ),
                 },
@@ -110,7 +113,7 @@ export default function About() {
                   label: (
                     <Image
                       src="/about/part-2.png"
-                      alt="合作历程第一阶段"
+                      alt=""
                       width={120}
                       height={180}
                     />
@@ -118,35 +121,21 @@ export default function About() {
                   children: (
                     <CustomCard
                       image={{
-                        src: "/about/part-2-cont.png",
-                        alt: "第二阶段详情",
+                        src: "/about/part-2-cont.jpg",
+                        alt: "",
                         width: 756,
                         height: 442,
                       }}
-                      title='Signed a "Biomass Gasification Technology Research Cooperation Agreement" with the University of Raman in 2024'
-                      description="The waste-to-energy system will be deployed in resort areas and urban centers..."
+                      titleZh="2024 年与拉曼大学签署《生物质气化技术研究合作协议》（MOA）"
+                      titleEn="Signed a MOA with the University of Raman on Biomass Gasification Technology Research in 2024"
+                      descriptionZh="深化棕榈废弃物全链条能源化技术研发构建标准化技术模块并纳入国家可再生能源认证体系，形成可复制的棕榈生物质能解决方案，推动其在智能电网协同、区域能源替代及碳交易机制中的规模化应用。"
+                      descriptionEn="Deepen the research and development of palm waste energy technology, build standardized technical modules, form replicable palm biomass energy solutions, and promote its large-scale application in smart grid coordination, regional energy substitution and carbon trading mechanisms."
                       moreButton={{
                         text: "View>>",
                         onClick: () =>
                           handleViewDetails({
-                            title:
-                              "Biomass Gasification Technology Research Cooperation Agreement",
-                            description: `The waste-to-energy system will be deployed in resort areas and urban centers, providing sustainable energy solutions for high-energy-consuming industries. This innovative technology converts biomass waste into clean energy, reducing carbon emissions and promoting environmental sustainability.
-
-Key Features:
-• Advanced gasification technology for efficient waste conversion
-• Integration with existing energy infrastructure
-• Scalable solution for various industrial applications
-• Real-time monitoring and control systems
-• Compliance with international environmental standards
-
-The partnership with the University of Raman represents a significant milestone in our commitment to sustainable energy development and technological innovation.`,
-                            image: {
-                              src: "/about/part-2-cont.png",
-                              alt: "生物质气化技术研究合作",
-                              width: 756,
-                              height: 442,
-                            },
+                            title: "",
+                            description: "",
                           }),
                       }}
                     />
@@ -164,32 +153,24 @@ The partnership with the University of Raman represents a significant milestone 
                   children: (
                     <CustomCard
                       image={{
-                        src: "/about/part-3-cont.png",
-                        alt: "第三阶段详情",
+                        src: "/about/part-3-cont.jpg",
+                        alt: "",
                         width: 756,
                         height: 442,
                       }}
-                      title="Promoting solar-powered electric vehicle charging stations in the Maldives"
-                      description="Deepen the research and development of palm waste energy technology, build..."
+                      titleZh="在马尔代夫推进太阳能驱动型电动汽车充电站"
+                      titleEn="Promoting solar-powered electric vehicle charging stations in the Maldives"
+                      descriptionEn="The waste-to-energy system will be deployed in resorts and urban centers, demonstrating Malaysia’s green technology export capabilities"
+                      descriptionZh="与废物能源化系统部署，涵盖度假区与城市中心，彰显马来西亚绿色技术输出能力"
                       moreButton={{
                         text: "View>>",
                         onClick: () =>
                           handleViewDetails({
-                            title:
-                              "Solar-Powered EV Charging Stations in the Maldives",
-                            description: `We are deepening the research and development of palm waste energy technology, building a comprehensive renewable energy ecosystem in the Maldives. This project focuses on establishing solar-powered electric vehicle charging infrastructure across the island nation.
-
-Project Highlights:
-• Solar energy integration with EV charging infrastructure
-• Palm waste biomass energy conversion systems
-• Smart grid technology for optimal energy distribution
-• Carbon-neutral transportation solutions
-• Sustainable tourism infrastructure development
-
-The Maldives project demonstrates our commitment to creating sustainable energy solutions for island nations and promoting the adoption of clean transportation technologies. This initiative will serve as a model for similar projects in other coastal and island regions.`,
+                            title: "",
+                            description: "",
                             image: {
-                              src: "/about/part-3-cont.png",
-                              alt: "马尔代夫太阳能充电站项目",
+                              src: "/about/part-3-cont.jpg",
+                              alt: "",
                               width: 756,
                               height: 442,
                             },
@@ -207,7 +188,9 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
         <section className={styles.missionSection}>
           <div className={styles.container}>
             <h2 className={styles.sectionTitle}>
-              ONETOUCH &ldquo;MISSION AND VISION&rdquo;
+              {lang === "zh"
+                ? "ONETOUCH使命愿景"
+                : "ONETOUCH Mission and Vision"}
             </h2>
 
             <div className={styles.missionContent}>
@@ -219,15 +202,15 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
                 className={styles.turnRight}
                 onClick={() => carouselRef?.current?.next()}
               />
-              <Carousel autoplay ref={carouselRef}>
+              <Carousel autoplay ref={carouselRef} dots={false}>
                 {carouselItems.map((item, index) => (
                   <div className={styles.carouselItem} key={index}>
                     <Image
                       src={lang === "zh" ? item.imageZh : item.imageEn}
-                      alt={item.alt}
+                      alt=""
                       width={item.width}
                       height={item.height}
-                      priority
+                      unoptimized
                       className={styles.carouselImage}
                     />
                   </div>
@@ -240,15 +223,17 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
         {/* English Mission Section */}
         <section className={styles.englishMissionSection}>
           <div className={styles.container}>
-            {/* <h2 className={styles.sectionTitle}>
-              ONETOUCH &ldquo;MISSION AND VISION&rdquo;
-            </h2> */}
           </div>
           <Image
-            src="/about/mission-desc.png"
+            src={
+              lang === "zh"
+                ? "/about/mission-desc-zh.png"
+                : "/about/mission-desc-en.png"
+            }
             alt=""
             width={1400}
-            height={513}
+            height={529}
+            unoptimized
             style={{ width: "100%", height: "auto" }}
           />
         </section>
@@ -256,7 +241,6 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
         {/* D&D Communication Section */}
         <section className={styles.communicationSection}>
           <div className={styles.container}>
-            <h2 className={styles.sectionTitle}>DAO COMMUNICATION</h2>
             <Image
               src="/about/divider.png"
               alt=""
@@ -265,15 +249,29 @@ The Maldives project demonstrates our commitment to creating sustainable energy 
               style={{ width: "100%", height: "auto" }}
             />
             <div className={styles.communicationContent}>
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
-              </p>
+              {lang === "zh" && (
+                <p>
+                  足马来西亚槟城——亚太绿色枢纽，ONETOUCH以技术融合创新驱动热带碳中和革命。整合光伏、储能、生物质转化与智能农机核心板块，构建&lsquo;能源生产-充电优化-资源再生&rsquo;全链闭环，赋能工农业低碳转型。依托区域政策红利与全球创新资源，转化农林废弃物为清洁能源，系统性降低能耗、碳排与运营成本。作为东南亚绿色经济崛起的战略引擎，我们持续拓展新能源应用场景与商业边界。
+                </p>
+              )}
+              {lang === "en" && (
+                <p>
+                  Based in Penang, Malaysia, the Asia-Pacific green hub,
+                  ONETOUCH drives the tropical carbon neutrality revolution with
+                  technology integration and innovation. Integrating the core
+                  sectors of photovoltaics, energy storage, biomass conversion
+                  and intelligent agricultural machinery, we build a full-chain
+                  closed loop of &quot;energy production-charging
+                  optimization-resource regeneration&quot; to enable the low-carbon
+                  transformation of industry and agriculture. Relying on
+                  regional policy dividends and global innovation resources, we
+                  transform agricultural and forestry waste into clean energy,
+                  systematically reducing energy consumption, carbon emissions
+                  and operating costs. As a strategic engine for the rise of
+                  Southeast Asia's green economy, we continue to expand new
+                  energy application scenarios and business boundaries.
+                </p>
+              )}
             </div>
           </div>
         </section>

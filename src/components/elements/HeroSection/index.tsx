@@ -5,6 +5,7 @@ import styles from "./style.module.css";
 interface HeroSectionProps {
   title: string;
   backgroundImage: string;
+  backgroundSize?: string;
   children?: React.ReactNode;
   className?: string;
 }
@@ -12,6 +13,7 @@ interface HeroSectionProps {
 const HeroSection: React.FC<HeroSectionProps> = ({
   title,
   backgroundImage,
+  backgroundSize = "cover",
   className = "",
 }) => {
   return (
@@ -19,6 +21,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({
       className={classNames(styles.heroSection, className)}
       style={{
         backgroundImage: `url(${backgroundImage})`,
+        backgroundSize,
       }}
     >
       <div className={styles.heroOverlay}>
