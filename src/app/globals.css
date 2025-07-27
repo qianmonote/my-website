@@ -1,16 +1,16 @@
 /* 防止FOUC的基础样式 */
-.ant-select-selector,
-.ant-dropdown-menu,
-.ant-drawer-content,
-.ant-menu {
+.qm-select-selector,
+.qm-dropdown-menu,
+.qm-drawer-content,
+.qm-menu {
   transition: none !important;
 }
 
 /* 页面加载完成后恢复过渡效果 */
-.page-loaded .ant-select-selector,
-.page-loaded .ant-dropdown-menu,
-.page-loaded .ant-drawer-content,
-.page-loaded .ant-menu {
+.page-loaded .qm-select-selector,
+.page-loaded .qm-dropdown-menu,
+.page-loaded .qm-drawer-content,
+.page-loaded .qm-menu {
   transition: all 0.2s ease !important;
 }
 
@@ -84,7 +84,7 @@ body {
   }
 }
 
-.ant-btn-primary {
+.qm-btn-primary {
   background: #1677ff;
 }
 
@@ -125,7 +125,7 @@ a {
 }
 
 /* 产品下拉菜单样式 */
-.ant-dropdown.products-dropdown .ant-dropdown-menu {
+.qm-dropdown.products-dropdown .qm-dropdown-menu {
   background: rgba(55, 60, 70, 1) !important;
   border-radius: 12px !important;
   padding: 12px !important;
@@ -134,7 +134,7 @@ a {
   min-width: 240px !important;
 }
 
-.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+.qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item {
   padding: 12px 16px !important;
   border-radius: 8px !important;
   margin: 4px 0 !important;
@@ -143,7 +143,7 @@ a {
   cursor: pointer !important;
 }
 
-.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+.qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a {
   color: #fff !important;
   text-decoration: none !important;
   font-family: PingFang SC !important;
@@ -153,54 +153,54 @@ a {
   transition: all 0.3s ease !important;
 }
 
-.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+.qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item:hover {
   background: rgba(75, 141, 255, 1) !important;
   transform: translateX(4px) !important;
   box-shadow: 0 2px 8px rgba(75, 141, 255, 0.3) !important;
 }
 
-.ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover a {
+.qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item:hover a {
   color: #fff !important;
   font-weight: 500 !important;
 }
 
 /* 移动端下拉菜单优化 */
 @media (max-width: 768px) {
-  .ant-dropdown.products-dropdown .ant-dropdown-menu {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu {
     min-width: 200px !important;
     padding: 8px !important;
   }
   
-  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item {
     padding: 10px 12px !important;
     margin: 2px 0 !important;
   }
   
-  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a {
     font-size: 13px !important;
     line-height: 18px !important;
   }
 }
 
 @media (max-width: 480px) {
-  .ant-dropdown.products-dropdown .ant-dropdown-menu {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu {
     min-width: 180px !important;
     padding: 6px !important;
   }
   
-  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item {
     padding: 8px 10px !important;
     margin: 1px 0 !important;
   }
   
-  .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+  .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a {
     font-size: 12px !important;
     line-height: 16px !important;
   }
 }
 
 /* 确保下拉菜单样式优先级最高 */
-.products-dropdown .ant-dropdown-menu {
+.products-dropdown .qm-dropdown-menu {
   background: rgba(55, 60, 70, 1) !important;
   border-radius: 12px !important;
   padding: 12px !important;
@@ -209,7 +209,7 @@ a {
   min-width: 240px !important;
 }
 
-.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item {
+.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item {
   padding: 12px 16px !important;
   border-radius: 8px !important;
   margin: 4px 0 !important;
@@ -218,7 +218,7 @@ a {
   cursor: pointer !important;
 }
 
-.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a {
+.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a {
   color: #fff !important;
   text-decoration: none !important;
   font-family: PingFang SC !important;
@@ -228,13 +228,13 @@ a {
   transition: all 0.3s ease !important;
 }
 
-.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover {
+.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item:hover {
   background: rgba(75, 141, 255, 1) !important;
   transform: translateX(4px) !important;
   box-shadow: 0 2px 8px rgba(75, 141, 255, 0.3) !important;
 }
 
-.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item:hover a {
+.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item:hover a {
   color: #fff !important;
   font-weight: 500 !important;
 }

@@ -45,22 +45,22 @@
   border-radius: 8px;
 }
 
-.table :global(.ant-table-thead > tr > th) {
+.table :global(.qm-table-thead > tr > th) {
   background-color: #fafafa;
   font-weight: 600;
   color: #262626;
 }
 
-.table :global(.ant-table-tbody > tr:hover > td) {
+.table :global(.qm-table-tbody > tr:hover > td) {
   background-color: #f5f5f5;
 }
 
-.table :global(.ant-table-tbody > tr > td) {
+.table :global(.qm-table-tbody > tr > td) {
   border-bottom: 1px solid #f0f0f0;
   padding: 12px 16px;
 }
 
-.table :global(.ant-pagination) {
+.table :global(.qm-pagination) {
   margin-top: 24px;
   text-align: right;
 }
@@ -92,7 +92,7 @@
   margin-top: 8px;
 }
 
-.contentTextarea :global(.ant-input) {
+.contentTextarea :global(.qm-input) {
   border: 1px solid #d9d9d9;
   background-color: #fafafa;
   resize: none;
@@ -163,7 +163,7 @@
 }
 
 /* 按钮样式优化 */
-.searchRow :global(.ant-btn-primary) {
+.searchRow :global(.qm-btn-primary) {
   background: linear-gradient(135deg, #1677ff, #4096ff);
   border: none;
   border-radius: 6px;
@@ -171,23 +171,23 @@
   transition: all 0.3s ease;
 }
 
-.searchRow :global(.ant-btn-primary:hover) {
+.searchRow :global(.qm-btn-primary:hover) {
   background: linear-gradient(135deg, #0958d9, #1677ff);
   box-shadow: 0 4px 8px rgba(22, 119, 255, 0.3);
   transform: translateY(-1px);
 }
 
 /* 表格样式优化 */
-.table :global(.ant-table-container) {
+.table :global(.qm-table-container) {
   border-radius: 8px;
   overflow: hidden;
 }
 
-.table :global(.ant-table-thead > tr > th:first-child) {
+.table :global(.qm-table-thead > tr > th:first-child) {
   border-top-left-radius: 8px;
 }
 
-.table :global(.ant-table-thead > tr > th:last-child) {
+.table :global(.qm-table-thead > tr > th:last-child) {
   border-top-right-radius: 8px;
 }
 
@@ -196,20 +196,20 @@
   /* 基础样式 */
 }
 
-.modalWrapper :global(.ant-modal-header) {
+.modalWrapper :global(.qm-modal-header) {
   background: linear-gradient(135deg, #1677ff, #4096ff);
   border-radius: 8px 8px 0 0;
 }
 
-.modalWrapper :global(.ant-modal-title) {
+.modalWrapper :global(.qm-modal-title) {
   color: white;
   font-weight: 600;
 }
 
-.modalWrapper :global(.ant-modal-close) {
+.modalWrapper :global(.qm-modal-close) {
   color: white;
 }
 
-.modalWrapper :global(.ant-modal-close:hover) {
+.modalWrapper :global(.qm-modal-close:hover) {
   color: rgba(255, 255, 255, 0.8);
 } 

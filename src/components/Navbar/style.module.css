@@ -226,7 +226,7 @@
 }
 
 /* 产品下拉菜单的全局样式 */
-.cNavbarWrap :global(.ant-dropdown.products-dropdown .ant-dropdown-menu) {
+.cNavbarWrap :global(.qm-dropdown.products-dropdown .qm-dropdown-menu) {
   background: rgba(55, 60, 70, 1) !important;
   border-radius: 12px !important;
   padding: 12px !important;
@@ -237,7 +237,7 @@
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item
+    .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item
   ) {
   padding: 12px 16px !important;
   border-radius: 8px !important;
@@ -249,7 +249,7 @@
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a
+    .qm-dropdown.products-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a
   ) {
   color: #fff !important;
   text-decoration: none !important;
@@ -262,9 +262,9 @@
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown
-      .ant-dropdown-menu
-      .ant-dropdown-menu-item:hover
+    .qm-dropdown.products-dropdown
+      .qm-dropdown-menu
+      .qm-dropdown-menu-item:hover
   ) {
   background: rgba(75, 141, 255, 1) !important;
   transform: translateX(4px) !important;
@@ -273,9 +273,9 @@
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown
-      .ant-dropdown-menu
-      .ant-dropdown-menu-item:hover
+    .qm-dropdown.products-dropdown
+      .qm-dropdown-menu
+      .qm-dropdown-menu-item:hover
       a
   ) {
   color: #fff !important;
@@ -284,18 +284,18 @@
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown
-      .ant-dropdown-menu
-      .ant-dropdown-menu-item.active-menu-item
+    .qm-dropdown.products-dropdown
+      .qm-dropdown-menu
+      .qm-dropdown-menu-item.active-menu-item
   ) {
   background: rgba(75, 141, 255, 1) !important;
 }
 
 .cNavbarWrap
   :global(
-    .ant-dropdown.products-dropdown
-      .ant-dropdown-menu
-      .ant-dropdown-menu-item.active-menu-item
+    .qm-dropdown.products-dropdown
+      .qm-dropdown-menu
+      .qm-dropdown-menu-item.active-menu-item
       a
   ) {
   color: #fff !important;
@@ -303,21 +303,21 @@
 }
 
 /* 其他 Ant Design 组件的全局样式覆盖 */
-.cNavbarWrap :global(.ant-dropdown .ant-dropdown-menu) {
+.cNavbarWrap :global(.qm-dropdown .qm-dropdown-menu) {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-.cNavbarWrap :global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item) {
+.cNavbarWrap :global(.qm-dropdown .qm-dropdown-menu .qm-dropdown-menu-item) {
   padding: 8px 16px !important;
 }
 
 .cNavbarWrap
-  :global(.ant-dropdown .ant-dropdown-menu .ant-dropdown-menu-item a) {
+  :global(.qm-dropdown .qm-dropdown-menu .qm-dropdown-menu-item a) {
   text-decoration: none;
 }
 
 /* 侧滑菜单增强样式 */
-.cNavbarWrap :global(.ant-drawer .ant-drawer-body) {
+.cNavbarWrap :global(.qm-drawer .qm-drawer-body) {
   padding: 24px !important;
   background: rgba(20, 22, 25, 1) !important;
   
@@ -327,12 +327,12 @@
   }
 }
 
-.cNavbarWrap :global(.ant-drawer .ant-menu) {
+.cNavbarWrap :global(.qm-drawer .qm-menu) {
   background: transparent !important;
   border: none !important;
 }
 
-.cNavbarWrap :global(.ant-drawer .ant-menu .ant-menu-item) {
+.cNavbarWrap :global(.qm-drawer .qm-menu .qm-menu-item) {
   margin: 8px 0 !important;
   border-radius: 8px !important;
   padding: 12px 16px !important;
@@ -346,12 +346,12 @@
   }
 }
 
-.cNavbarWrap :global(.ant-drawer .ant-menu .ant-menu-item:hover) {
+.cNavbarWrap :global(.qm-drawer .qm-menu .qm-menu-item:hover) {
   background: rgba(75, 141, 255, 0.8) !important;
   transform: translateX(4px) !important;
 }
 
-.cNavbarWrap :global(.ant-drawer .ant-menu .ant-menu-item a) {
+.cNavbarWrap :global(.qm-drawer .qm-menu .qm-menu-item a) {
   text-decoration: none;
   color: #fff !important;
   font-family: PingFang SC !important;
@@ -364,26 +364,26 @@
 }
 
 /* 桌面端Select组件增强样式 */
-.desktopMenu :global(.ant-select .ant-select-selector) {
+.desktopMenu :global(.qm-select .qm-select-selector) {
   border-radius: 20px !important;
 }
 
-.desktopMenu :global(.ant-select .ant-select-selection-item) {
+.desktopMenu :global(.qm-select .qm-select-selection-item) {
   font-family: PingFang SC;
   font-weight: 400;
   font-size: 14px;
 }
 
-.desktopMenu :global(.ant-select.ant-select-focused .ant-select-selector) {
+.desktopMenu :global(.qm-select.qm-select-focused .qm-select-selector) {
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1) !important;
 }
 
 /* Select下拉选项增强样式 */
-.cNavbarWrap :global(.ant-select-dropdown) {
+.cNavbarWrap :global(.qm-select-dropdown) {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
 }
 
-.cNavbarWrap :global(.ant-select-dropdown .ant-select-item) {
+.cNavbarWrap :global(.qm-select-dropdown .qm-select-item) {
   padding: 8px 16px !important;
 }
 

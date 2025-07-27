@@ -146,18 +146,18 @@
 }
 
 /* 覆盖 Ant Design Carousel 默认样式 */
-.missionContent :global(.ant-carousel) {
+.missionContent :global(.qm-carousel) {
   width: 100%;
 }
 
-.missionContent :global(.ant-carousel .slick-slide) {
+.missionContent :global(.qm-carousel .slick-slide) {
   text-align: center;
   display: flex !important;
   justify-content: center;
   align-items: center;
 }
 
-.missionContent :global(.ant-carousel .slick-track) {
+.missionContent :global(.qm-carousel .slick-track) {
   display: flex !important;
   align-items: center;
 }
@@ -351,11 +351,11 @@
   }
 
   /* 覆盖 Ant Design Carousel 默认样式 - 仅在小屏幕下 */
-  .missionContent :global(.ant-carousel .slick-slide) {
+  .missionContent :global(.qm-carousel .slick-slide) {
     height: auto !important;
   }
 
-  .missionContent :global(.ant-carousel .slick-list) {
+  .missionContent :global(.qm-carousel .slick-list) {
     overflow: visible;
   }
 }

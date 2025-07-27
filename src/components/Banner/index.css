@@ -37,21 +37,21 @@
   }
 
   /* 确保Carousel没有渐入动画效果 */
-  .ant-carousel .slick-slide {
+  .qm-carousel .slick-slide {
     opacity: 1 !important;
     transition: none !important;
   }
 
-  .ant-carousel .slick-slide.slick-active {
+  .qm-carousel .slick-slide.slick-active {
     opacity: 1 !important;
   }
 
-  .ant-carousel .slick-slide.slick-current {
+  .qm-carousel .slick-slide.slick-current {
     opacity: 1 !important;
   }
 
   /* 移除所有可能的渐入动画 */
-  .ant-carousel * {
+  .qm-carousel * {
     transition: none !important;
   }
 
@@ -117,23 +117,23 @@
     }
     
     /* 移动端轮播优化 */
-    .ant-carousel {
+    .qm-carousel {
       touch-action: pan-y pinch-zoom;
       margin-top: 0;
       padding-top: 0;
     }
     
-    .ant-carousel .slick-slider {
+    .qm-carousel .slick-slider {
       margin-top: 0;
       padding-top: 0;
     }
     
-    .ant-carousel .slick-list {
+    .qm-carousel .slick-list {
       margin-top: 0;
       padding-top: 0;
     }
     
-    .ant-carousel .slick-track {
+    .qm-carousel .slick-track {
       margin-top: 0;
       padding-top: 0;
     }

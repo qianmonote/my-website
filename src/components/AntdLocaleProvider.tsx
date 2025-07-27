@@ -18,7 +18,11 @@ const AntdLocaleProvider: React.FC<AntdLocaleProviderProps> = ({ children }) => 
   const locale = lang === 'zh' ? zhCN : enUS;
   
   return (
-    <ConfigProvider theme={themeConfig} locale={locale}>
+    <ConfigProvider 
+      theme={themeConfig} 
+      locale={locale}
+      prefixCls="qm"
+    >
       {children}
     </ConfigProvider>
   );

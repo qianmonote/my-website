@@ -1,5 +1,5 @@
 .contactModal {
-  :global(.ant-modal-content) {
+  :global(.qm-modal-content) {
     padding: 0 !important;
     border-radius: 16px;
     overflow: hidden;
@@ -41,7 +41,7 @@
   max-width: 100%;
 }
 
-.form :global(.ant-form-item) {
+.form :global(.qm-form-item) {
   margin-bottom: 16px;
 }
 
@@ -80,27 +80,27 @@
 
 /* 移动端底部侧滑样式 */
 .mobileDrawer {
-  :global(.ant-drawer-content-wrapper) {
+  :global(.qm-drawer-content-wrapper) {
     border-radius: 16px 16px 0 0;
   }
 
-  :global(.ant-drawer-content) {
+  :global(.qm-drawer-content) {
     border-radius: 16px 16px 0 0;
   }
 
-  :global(.ant-drawer-header) {
+  :global(.qm-drawer-header) {
     border-radius: 16px 16px 0 0;
     padding: 16px 20px;
     border-bottom: 1px solid #f0f0f0;
   }
 
-  :global(.ant-drawer-title) {
+  :global(.qm-drawer-title) {
     font-size: 18px;
     font-weight: 600;
     color: #333;
   }
 
-  :global(.ant-drawer-body) {
+  :global(.qm-drawer-body) {
     padding: 0;
     overflow: hidden;
   }
@@ -132,22 +132,22 @@
 }
 
 .mobileDrawer .form {
-  :global(.ant-form-item-label) {
+  :global(.qm-form-item-label) {
     padding-bottom: 4px;
   }
 
-  :global(.ant-form-item-label > label) {
+  :global(.qm-form-item-label > label) {
     font-size: 14px;
     color: #333;
   }
 
-  :global(.ant-input),
-  :global(.ant-input-affix-wrapper) {
+  :global(.qm-input),
+  :global(.qm-input-affix-wrapper) {
     height: 40px;
     border-radius: 8px;
   }
 
-  :global(.ant-input-textarea) {
+  :global(.qm-input-textarea) {
     border-radius: 8px;
   }
 }
