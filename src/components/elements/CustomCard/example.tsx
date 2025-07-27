@@ -27,9 +27,11 @@ const UniversalCardExample: React.FC = () => {
             width: 780,
             height: 180
           }}
-          title="基础卡片"
+          titleZh="基础卡片"
+          titleEn="Basic Card"
           subtitle="简单展示"
-          description="这是一个基础的卡片示例，包含图片、标题和描述"
+          descriptionZh="这是一个基础的卡片示例，包含图片、标题和描述"
+          descriptionEn="This is a basic card example with image, title and description"
         />
         
         {/* 示例2: 只显示部分角标 */}
@@ -40,9 +42,11 @@ const UniversalCardExample: React.FC = () => {
             width: 780,
             height: 600
           }}
-          title="部分角标"
+          titleZh="部分角标"
+          titleEn="Partial Corners"
           subtitle="自定义配置"
-          description="只显示左上和右下的角标"
+          descriptionZh="只显示左上和右下的角标"
+          descriptionEn="Only show top-left and bottom-right corners"
           cornerBorders={{
             topLeft: true,
             topRight: false,
@@ -59,7 +63,8 @@ const UniversalCardExample: React.FC = () => {
             width: 780,
             height: 600
           }}
-          title="自定义内容"
+          titleZh="自定义内容"
+          titleEn="Custom Content"
           customContent={
             <div style={{ 
               background: 'rgba(0,0,0,0.5)', 
@@ -100,9 +105,11 @@ const UniversalCardExample: React.FC = () => {
             width: 780,
             height: 180
           }}
-          title="带更多按钮"
+          titleZh="带更多按钮"
+          titleEn="With More Button"
           subtitle="交互功能"
-          description="点击更多按钮查看详细信息"
+          descriptionZh="点击更多按钮查看详细信息"
+          descriptionEn="Click more button to view details"
           moreButton={{
             text: "查看详情",
             icon: "/product/btn-more.png",
@@ -119,9 +126,11 @@ const UniversalCardExample: React.FC = () => {
             width: 780,
             height: 600
           }}
-          title="无角标卡片"
+          titleZh="无角标卡片"
+          titleEn="No Corner Card"
           subtitle="简洁风格"
-          description="不显示任何角标的简洁风格"
+          descriptionZh="不显示任何角标的简洁风格"
+          descriptionEn="Clean style without any corner borders"
           cornerBorders={{
             topLeft: false,
             topRight: false,
@@ -146,9 +155,11 @@ const UniversalCardExample: React.FC = () => {
             height: 180,
             style: { opacity: 0.3 }
           }}
-          title="完整功能展示\n支持多行标题"
+          titleZh="完整功能展示\n支持多行标题"
+          titleEn="Full Feature Demo\nMulti-line Title Support"
           subtitle="所有功能"
-          description="这是一个展示所有功能的完整示例卡片"
+          descriptionZh="这是一个展示所有功能的完整示例卡片"
+          descriptionEn="This is a complete example card showcasing all features"
           contentStyle={{ 
             background: 'linear-gradient(45deg, rgba(79,172,254,0.1), rgba(0,242,254,0.1))',
             borderRadius: '10px',
@@ -166,4 +177,4 @@ const UniversalCardExample: React.FC = () => {
   );
 };
 
-export default UniversalCardExample; 
+export default UniversalCardExample;
