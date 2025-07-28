@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getDatabase } from "@/lib/database";
-import { cors } from "@/lib/cors";
 
 interface ContactFormData {
   name: string;
@@ -10,12 +9,21 @@ interface ContactFormData {
   content: string;
 }
 
+// 处理OPTIONS预检请求
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "POST, OPTIONS",
+      "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    },
+  });
+}
+
 // 提交联系表单数据
 export async function POST(request: NextRequest) {
   try {
-    // 处理CORS
-    await cors(request);
-
     // 解析请求体
     let body: ContactFormData;
     try {
@@ -27,22 +35,34 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "无效的请求数据格式",
         },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Methods": "POST, OPTIONS",
+            "Access-Control-Allow-Headers": "Content-Type",
+          }
+        }
       );
     }
 
     // 验证必填字段
     const { name, phone, email, company, content } = body;
 
-    if (!name || !phone || !email || !content) {
-      return NextResponse.json(
-        {
-          flag: 0,
-          msg: "姓名、手机号、邮箱和咨询内容为必填项",
-        },
-        { status: 400 }
-      );
-    }
+    // if (!name || !phone || !email || !content) {
+    //   return NextResponse.json(
+    //     {
+    //       flag: 0,
+    //       msg: "姓名、手机号、邮箱和咨询内容为必填项",
+    //     },
+    //     { 
+    //       status: 400,
+    //       headers: {
+    //         "Access-Control-Allow-Origin": "*",
+    //       }
+    //     }
+    //   );
+    // }
 
     // 验证邮箱格式
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -52,7 +72,12 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "邮箱格式不正确",
         },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
+        }
       );
     }
 
@@ -64,7 +89,12 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "手机号格式不正确",
         },
-        { status: 400 }
+        { 
+          status: 400,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
+        }
       );
     }
 
@@ -79,7 +109,12 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "数据库连接失败，请稍后重试",
         },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
+        }
       );
     }
 
@@ -97,6 +132,10 @@ export async function POST(request: NextRequest) {
           id: result.lastID,
         },
         msg: "提交成功，我们会尽快与您联系"
+      }, {
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
       });
     } catch (error) {
       console.error("数据插入失败:", error);
@@ -105,7 +144,12 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "保存数据失败，请稍后重试",
         },
-        { status: 500 }
+        { 
+          status: 500,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          }
+        }
       );
     }
   } catch (error) {
@@ -115,7 +159,12 @@ export async function POST(request: NextRequest) {
         flag: 0,
         msg: "服务器错误，请稍后重试",
       },
-      { status: 500 }
+      { 
+        status: 500,
+        headers: {
+          "Access-Control-Allow-Origin": "*",
+        }
+      }
     );
   }
 }

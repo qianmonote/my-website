@@ -5,10 +5,21 @@ import { Carousel } from "antd";
 import "./index.css";
 
 const Banner: React.FC = () => {
-  const [isLargeScreen, setIsLargeScreen] = useState(false);
+  // 使用更智能的初始值设置
+  const [isLargeScreen, setIsLargeScreen] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth > 1000;
+    }
+    return false; // 服务端渲染默认为小屏
+  });
   const [imageHeights, setImageHeights] = useState<{ [key: number]: number }>({});
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(0);
+  const [screenWidth, setScreenWidth] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return window.innerWidth;
+    }
+    return 1440; // 服务端渲染默认宽度
+  });
   const [isInitialized, setIsInitialized] = useState(false);
 
   // 轮播图片数据
@@ -80,11 +91,9 @@ const Banner: React.FC = () => {
             const aspectRatio = img.height / img.width;
             let calculatedHeight;
             
-            if (screenWidth > 1440) {
-              // 大屏幕使用固定高度
+            if (screenWidth > 1000) {
               calculatedHeight = 662;
             } else {
-              // 其他屏幕根据图片比例计算高度
               calculatedHeight = screenWidth * aspectRatio;
             }
             
@@ -93,7 +102,6 @@ const Banner: React.FC = () => {
           };
           
           img.onerror = () => {
-            // 图片加载失败时使用默认高度
             heights[index] = screenWidth <= 1000 ? 250 : 400;
             resolve();
           };
@@ -102,7 +110,6 @@ const Banner: React.FC = () => {
         });
       };
 
-      // 并行加载所有图片
       const loadPromises = bannerSlides.map((slide, index) => loadImage(index, slide));
       await Promise.all(loadPromises);
       
@@ -118,14 +125,15 @@ const Banner: React.FC = () => {
   // 轮播配置 - 使用useMemo优化，修改为3秒间隔
   const carouselProps = useMemo(() => ({
     autoplay: true,
-    dots: { className: "custom-dots" },
+    // 根据屏幕宽度决定是否显示dots
+    dots: screenWidth >= 1000 ? { className: "custom-dots" } : false,
     // 移除fade效果，避免图片渐入动画
     // effect: "fade" as const,
     autoplaySpeed: 3000, // 修改为3秒间隔
     beforeChange: (from: number, to: number) => {
       setCurrentSlideIndex(to);
     },
-  }), []);
+  }), [screenWidth]);
 
   // 获取当前图片的高度 - 使用useMemo优化
   const getCurrentImageHeight = useCallback(() => {
@@ -142,11 +150,18 @@ const Banner: React.FC = () => {
     return screenWidth <= 1000 ? 250 : 662;
   }, [isLargeScreen, imageHeights, currentSlideIndex, screenWidth]);
 
-  // 当前高度 - 使用useMemo优化，避免初始化时的动画
+  // 当前高度 - 改进计算逻辑，确保稳定的初始高度
   const currentHeight = useMemo(() => {
+    debugger
     if (!isInitialized) {
-      // 初始化时使用固定高度，避免动画效果
-      return isLargeScreen ? 662 : (screenWidth <= 1000 ? 250 : 662);
+      // 初始化时使用更准确的预估高度
+      if (isLargeScreen) {
+        return 662;
+      } else {
+        // 根据常见的图片比例预估高度
+        const estimatedAspectRatio = 0.4; // 假设图片高宽比为0.4
+        return Math.min(screenWidth * estimatedAspectRatio, 400);
+      }
     }
     return getCurrentImageHeight();
   }, [isInitialized, isLargeScreen, screenWidth, getCurrentImageHeight]);
@@ -163,8 +178,8 @@ const Banner: React.FC = () => {
                 backgroundSize: isLargeScreen ? "cover" : "contain",
                 width: "100%",
                 height: `${currentHeight}px`,
-                // 移除内联的过渡效果，使用CSS控制
-                // transition: isInitialized ? "height 0.3s ease-in-out" : "none",
+                // 添加过渡效果，使高度变化更平滑
+                transition: isInitialized ? "height 0.3s ease-in-out" : "none",
               }}
             />
           </div>

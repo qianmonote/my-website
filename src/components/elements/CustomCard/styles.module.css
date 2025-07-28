@@ -103,6 +103,12 @@
   color: #fff;
   margin-bottom: 10px;
   text-align: left;
+  /* 文本超过两行时显示省略号 */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* 副标题样式 */
@@ -123,8 +129,9 @@
   color: #9ca3af;
   margin-bottom: 4px;
   text-align: left;
-  max-width: 780px;
   width: 100%;
+  max-width: 630px;
+  /* 文本超过1行时显示省略号 */
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -214,6 +221,13 @@
   border-right: 1px solid #d9d9d9;
 }
 
+/* 响应式设计 - 中等屏幕 */
+@media (max-width: 900px) {
+  .cardDescription {
+    max-width: calc(100vw - 350px);
+  }
+}
+
 /* 响应式设计 - 平板端 */
 @media (max-width: 768px) {
   .cardContent {
@@ -223,6 +237,7 @@
   .cardTitle {
     font-size: 20px;
     margin-bottom: 10px;
+
   }
 
   .cardSubtitle {
@@ -233,6 +248,7 @@
   .cardDescription {
     font-size: 13px;
     margin-bottom: 16px;
+    max-width: calc(100vw - 350px);
   }
 
   /* 角标尺寸调整 */
@@ -284,6 +300,7 @@
   .cardDescription {
     font-size: 12px;
     margin-bottom: 14px;
+    max-width: calc(100vw - 350px);
   }
 
   .cardMore {
