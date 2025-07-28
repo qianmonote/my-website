@@ -2,6 +2,7 @@
 export interface ApiResponse<T = unknown> {
   flag: 0 | 1;
   data?: T;
+  msg?: string; // 后端返回的消息
   error?: {
     message?: string;
     code?: number;
@@ -21,4 +22,4 @@ export interface ContactFormData {
 // 联系表单响应数据类型
 export interface ContactFormResponse {
   id: number;
-} 
+}

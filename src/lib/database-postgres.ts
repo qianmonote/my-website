@@ -50,9 +50,10 @@ export class PostgresDatabase {
   // 插入联系表单数据
   static async insertContact(data: Omit<ContactFormData, 'id' | 'created_at' | 'updated_at'>) {
     try {
+      const now = new Date().toISOString();
       const result = await sql`
-        INSERT INTO contacts (name, phone, email, company, content)
-        VALUES (${data.name}, ${data.phone}, ${data.email}, ${data.company || ''}, ${data.content})
+        INSERT INTO contacts (name, phone, email, company, content, created_at, updated_at)
+        VALUES (${data.name}, ${data.phone}, ${data.email}, ${data.company || ''}, ${data.content}, ${now}, ${now})
         RETURNING id
       `;
       return result.rows[0];

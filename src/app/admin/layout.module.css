@@ -1,0 +1,109 @@
+/* Admin Layout Styles */
+
+.adminLayout {
+  min-height: 100vh;
+}
+
+.sider {
+  background: #001529 !important;
+}
+
+.logo {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  font-weight: bold;
+  border-bottom: 1px solid #303030;
+}
+
+.header {
+  padding: 0 16px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.triggerButton {
+  font-size: 16px;
+  width: 64px;
+  height: 64px;
+}
+
+.userButton {
+  height: 64px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+}
+
+.userAvatar {
+  margin-right: 8px;
+}
+
+.content {
+  margin: 16px;
+  padding: 16px;
+  background: #fff;
+  border-radius: 6px;
+  overflow: auto;
+}
+
+.loadingContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .content {
+    margin: 8px;
+    padding: 8px;
+  }
+  
+  .header {
+    padding: 0 8px;
+  }
+  
+  .userButton {
+    padding: 0 8px;
+  }
+}
+
+/* 菜单样式优化 */
+.sider :global(.ant-menu) {
+  border-right: 0;
+}
+
+.sider :global(.ant-menu-item) {
+  margin: 4px 8px;
+  border-radius: 4px;
+}
+
+.sider :global(.ant-menu-item-selected) {
+  background-color: #1890ff !important;
+}
+
+.sider :global(.ant-menu-item:hover) {
+  background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 头部样式优化 */
+.header :global(.ant-btn) {
+  border: none;
+  box-shadow: none;
+}
+
+.header :global(.ant-btn:hover) {
+  background-color: #f5f5f5;
+}
+
+.header :global(.ant-btn:focus) {
+  background-color: #f5f5f5;
+}

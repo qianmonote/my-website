@@ -143,9 +143,10 @@ export class DatabaseAdapter {
       return await PostgresDatabase.insertContact(data);
     } else {
       const db = await getDatabase();
+      const now = new Date().toISOString();
       const result = await db.run(
-        'INSERT INTO contacts (name, phone, email, company, content) VALUES (?, ?, ?, ?, ?)',
-        [data.name, data.phone, data.email, data.company || '', data.content]
+        'INSERT INTO contacts (name, phone, email, company, content, created_at, updated_at) VALUES (?, ?, ?, ?, ?, ?, ?)',
+        [data.name, data.phone, data.email, data.company || '', data.content, now, now]
       );
       return { id: result.lastID };
     }

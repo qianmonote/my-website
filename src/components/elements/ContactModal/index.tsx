@@ -24,7 +24,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   const { lang } = useI18n();
   const layout = {
     labelCol: {
-      style: { width: lang === "zh" ? "100px" : "150px", textAlign: "left" as const },
+      style: { width: lang === "zh" ? "100px" : "150px" },
     },
     wrapperCol: { span: lang === "zh" ? 18 : 20 },
   };
@@ -113,8 +113,14 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
           form.resetFields();
           onClose();
         } else {
-          message.error(res.error?.message || t.submitError);
+          // 显示后端返回的具体错误信息
+          message.error(res.msg || t.submitError);
         }
+      })
+      .catch((error) => {
+        // 处理网络错误或其他异常
+        console.error('提交失败:', error);
+        message.error(t.submitError);
       })
       .finally(() => {
         setLoading(false);
@@ -124,7 +130,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
   // 渲染表单内容
   const renderFormContent = () => (
     <div className={styles.modalContent}>
-      <div className={styles.leftSection} />
+      {/* 移动端不显示左侧图片 */}
+      {!isMobile && <div className={styles.leftSection} />}
       <div className={(lang === "en" ? styles["rightSection-en"] : styles.rightSection)}>
         <div className={styles.title}>ONETOUCH AGRI ROBOTECH SDN.BHD</div>
         <Form

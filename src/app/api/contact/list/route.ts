@@ -2,20 +2,21 @@ import { NextRequest, NextResponse } from 'next/server';
 import { DatabaseAdapter, ContactQueryParams, initializeDatabase } from '@/lib/database';
 
 // 查询联系表单数据（分页、搜索）
-export async function GET(request: NextRequest) {
+export async function POST(request: NextRequest) {
   try {
-    const { searchParams } = new URL(request.url);
+    // 解析请求体
+    const body = await request.json();
     
     // 获取查询参数
     const params: ContactQueryParams = {
-      page: parseInt(searchParams.get('page') || '1'),
-      pageSize: parseInt(searchParams.get('pageSize') || '10'),
-      name: searchParams.get('name') || '',
-      phone: searchParams.get('phone') || '',
-      email: searchParams.get('email') || '',
-      company: searchParams.get('company') || '',
-      startDate: searchParams.get('startDate') || '',
-      endDate: searchParams.get('endDate') || ''
+      page: parseInt(body.page || '1'),
+      pageSize: parseInt(body.pageSize || '10'),
+      name: body.name || '',
+      phone: body.phone || '',
+      email: body.email || '',
+      company: body.company || '',
+      startDate: body.startDate || '',
+      endDate: body.endDate || ''
     };
 
     // 初始化数据库

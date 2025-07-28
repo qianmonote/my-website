@@ -1,0 +1,63 @@
+{
+  "admin": {
+    "title": "后台管理系统",
+    "titleCollapsed": "Admin",
+    "logout": "退出登录",
+    "home": "首页",
+    "login": {
+      "title": "管理员登录",
+      "username": "用户名",
+      "password": "密码",
+      "usernamePlaceholder": "请输入用户名",
+      "passwordPlaceholder": "请输入密码",
+      "usernameRequired": "请输入用户名",
+      "passwordRequired": "请输入密码",
+      "loginBtn": "登录",
+      "loginSuccess": "登录成功",
+      "loginFailed": "登录失败",
+      "loginFailedRetry": "登录失败，请稍后重试",
+      "sessionWarning": "检测到该账号在其他地方登录，已强制退出其他会话"
+    },
+    "contact": {
+      "title": "线索列表",
+      "breadcrumb": "线索列表",
+      "search": {
+        "name": "姓名",
+        "phone": "手机号",
+        "email": "邮箱",
+        "company": "公司名称",
+        "startDate": "开始日期",
+        "endDate": "结束日期",
+        "searchBtn": "搜索",
+        "resetBtn": "重置",
+        "refreshBtn": "刷新"
+      },
+      "table": {
+        "id": "ID",
+        "name": "姓名",
+        "phone": "手机号",
+        "email": "邮箱",
+        "company": "公司名称",
+        "content": "咨询内容",
+        "createdAt": "提交时间",
+        "action": "操作",
+        "view": "查看",
+        "total": "显示 {start}-{end} 条，共 {total} 条数据"
+      },
+      "detail": {
+        "title": "线索详情",
+        "name": "姓名：",
+        "phone": "手机号：",
+        "email": "邮箱：",
+        "company": "公司名称：",
+        "createdAt": "提交时间：",
+        "content": "线索内容：",
+        "close": "关闭"
+      },
+      "messages": {
+        "fetchError": "获取数据失败",
+        "networkError": "网络错误，请稍后重试"
+      }
+    }
+  }
+}

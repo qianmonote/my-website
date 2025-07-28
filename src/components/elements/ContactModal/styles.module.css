@@ -46,7 +46,7 @@
 }
 
 .submitSection {
-  text-align: center;
+  text-align: right;
 }
 
 .submitButton {
@@ -118,6 +118,11 @@
   height: 120px;
   background-size: cover;
   background-position: center;
+}
+
+/* 移动端提交按钮居中 */
+.mobileDrawer .submitSection {
+  text-align: center;
 }
 
 .mobileDrawer .rightSection {

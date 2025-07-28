@@ -5,22 +5,13 @@ import { Carousel } from "antd";
 import "./index.css";
 
 const Banner: React.FC = () => {
-  // 使用更智能的初始值设置
-  const [isLargeScreen, setIsLargeScreen] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth > 1000;
-    }
-    return false; // 服务端渲染默认为小屏
-  });
+  // 修复水合错误：统一服务端和客户端的初始状态
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
   const [imageHeights, setImageHeights] = useState<{ [key: number]: number }>({});
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [screenWidth, setScreenWidth] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return window.innerWidth;
-    }
-    return 1440; // 服务端渲染默认宽度
-  });
+  const [screenWidth, setScreenWidth] = useState(1440);
   const [isInitialized, setIsInitialized] = useState(false);
+  const [isMounted, setIsMounted] = useState(false);
 
   // 轮播图片数据
   const bannerSlides = useMemo(() => [
@@ -66,8 +57,9 @@ const Banner: React.FC = () => {
     setIsLargeScreen(width > 1440);
   }, []);
 
-  // 监听屏幕尺寸变化
+  // 客户端挂载后初始化
   useEffect(() => {
+    setIsMounted(true);
     checkScreenSize();
     
     const debouncedCheckScreenSize = debounce(checkScreenSize, 100);
@@ -124,16 +116,16 @@ const Banner: React.FC = () => {
 
   // 轮播配置 - 使用useMemo优化，修改为3秒间隔
   const carouselProps = useMemo(() => ({
-    autoplay: true,
+    autoplay: isMounted,
     // 根据屏幕宽度决定是否显示dots
-    dots: screenWidth >= 1000 ? { className: "custom-dots" } : false,
+    dots: isMounted && screenWidth >= 1000 ? { className: "custom-dots" } : false,
     // 移除fade效果，避免图片渐入动画
     // effect: "fade" as const,
     autoplaySpeed: 3000, // 修改为3秒间隔
     beforeChange: (from: number, to: number) => {
       setCurrentSlideIndex(to);
     },
-  }), [screenWidth]);
+  }), [screenWidth, isMounted]);
 
   // 获取当前图片的高度 - 使用useMemo优化
   const getCurrentImageHeight = useCallback(() => {
@@ -150,11 +142,15 @@ const Banner: React.FC = () => {
     return screenWidth <= 1000 ? 250 : 662;
   }, [isLargeScreen, imageHeights, currentSlideIndex, screenWidth]);
 
-  // 当前高度 - 改进计算逻辑，确保稳定的初始高度
+  // 当前高度 - 修复水合错误，确保服务端和客户端一致
   const currentHeight = useMemo(() => {
-    debugger
+    if (!isMounted) {
+      // 服务端渲染时使用固定高度
+      return 400;
+    }
+    
     if (!isInitialized) {
-      // 初始化时使用更准确的预估高度
+      // 客户端初始化时使用预估高度
       if (isLargeScreen) {
         return 662;
       } else {
@@ -164,7 +160,7 @@ const Banner: React.FC = () => {
       }
     }
     return getCurrentImageHeight();
-  }, [isInitialized, isLargeScreen, screenWidth, getCurrentImageHeight]);
+  }, [isMounted, isInitialized, isLargeScreen, screenWidth, getCurrentImageHeight]);
 
   return (
     <section className="c-banner-section">
@@ -175,11 +171,11 @@ const Banner: React.FC = () => {
               className="banner-slide"
               style={{
                 background: `url(${slide.image}) no-repeat center center`,
-                backgroundSize: isLargeScreen ? "cover" : "contain",
+                backgroundSize: isMounted && isLargeScreen ? "cover" : "contain",
                 width: "100%",
                 height: `${currentHeight}px`,
                 // 添加过渡效果，使高度变化更平滑
-                transition: isInitialized ? "height 0.3s ease-in-out" : "none",
+                transition: isMounted && isInitialized ? "height 0.3s ease-in-out" : "none",
               }}
             />
           </div>

@@ -35,13 +35,13 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "无效的请求数据格式",
         },
-        { 
+        {
           status: 400,
           headers: {
             "Access-Control-Allow-Origin": "*",
             "Access-Control-Allow-Methods": "POST, OPTIONS",
             "Access-Control-Allow-Headers": "Content-Type",
-          }
+          },
         }
       );
     }
@@ -49,14 +49,15 @@ export async function POST(request: NextRequest) {
     // 验证必填字段
     const { name, phone, email, company, content } = body;
 
-    // if (!name || !phone || !email || !content) {
+    // // 验证手机号：先判空再校验格式
+    // if (!phone || phone.trim() === '') {
     //   return NextResponse.json(
     //     {
     //       flag: 0,
-    //       msg: "姓名、手机号、邮箱和咨询内容为必填项",
+    //       msg: "请输入手机号",
     //     },
-    //     { 
-    //       status: 400,
+    //     {
+    //       status: 200,
     //       headers: {
     //         "Access-Control-Allow-Origin": "*",
     //       }
@@ -64,36 +65,52 @@ export async function POST(request: NextRequest) {
     //   );
     // }
 
-    // 验证邮箱格式
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      return NextResponse.json(
-        {
-          flag: 0,
-          msg: "邮箱格式不正确",
-        },
-        { 
-          status: 400,
-          headers: {
-            "Access-Control-Allow-Origin": "*",
-          }
-        }
-      );
-    }
-
     // 验证手机号格式（中国手机号）
-    const phoneRegex = /^1[3-9]\d{9}$/;
-    if (!phoneRegex.test(phone)) {
+    const phoneRegex = /^[0-9]\d{20}$/;
+    if (phone && !phoneRegex.test(phone)) {
       return NextResponse.json(
         {
           flag: 0,
           msg: "手机号格式不正确",
         },
-        { 
-          status: 400,
+        {
+          status: 200,
           headers: {
             "Access-Control-Allow-Origin": "*",
-          }
+          },
+        }
+      );
+    }
+
+    // // 验证邮箱：先判空再校验格式
+    // if (!email || email.trim() === "") {
+    //   return NextResponse.json(
+    //     {
+    //       flag: 0,
+    //       msg: "请输入邮箱",
+    //     },
+    //     {
+    //       status: 200,
+    //       headers: {
+    //         "Access-Control-Allow-Origin": "*",
+    //       },
+    //     }
+    //   );
+    // }
+
+    // 验证邮箱格式
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (email && !emailRegex.test(email)) {
+      return NextResponse.json(
+        {
+          flag: 0,
+          msg: "邮箱格式不正确",
+        },
+        {
+          status: 200,
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
         }
       );
     }
@@ -108,11 +125,11 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "数据库连接失败，请稍后重试",
         },
-        { 
+        {
           status: 500,
           headers: {
             "Access-Control-Allow-Origin": "*",
-          }
+          },
         }
       );
     }
@@ -120,24 +137,27 @@ export async function POST(request: NextRequest) {
     // 插入数据
     try {
       const result = await DatabaseAdapter.insertContact({
-        name,
-        phone,
-        email,
+        name: name || "",
+        phone: phone || "",
+        email: email || "",
         company: company || "",
-        content
+        content: content || "",
       });
 
-      return NextResponse.json({
-        flag: 1,
-        data: {
-          id: result.id,
+      return NextResponse.json(
+        {
+          flag: 1,
+          data: {
+            id: result.id,
+          },
+          msg: "提交成功，我们会尽快与您联系",
         },
-        msg: "提交成功，我们会尽快与您联系"
-      }, {
-        headers: {
-          "Access-Control-Allow-Origin": "*",
+        {
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
         }
-      });
+      );
     } catch (error) {
       console.error("数据插入失败:", error);
       return NextResponse.json(
@@ -145,11 +165,11 @@ export async function POST(request: NextRequest) {
           flag: 0,
           msg: "保存数据失败，请稍后重试",
         },
-        { 
+        {
           status: 500,
           headers: {
             "Access-Control-Allow-Origin": "*",
-          }
+          },
         }
       );
     }
@@ -160,11 +180,11 @@ export async function POST(request: NextRequest) {
         flag: 0,
         msg: "服务器错误，请稍后重试",
       },
-      { 
+      {
         status: 500,
         headers: {
           "Access-Control-Allow-Origin": "*",
-        }
+        },
       }
     );
   }

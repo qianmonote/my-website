@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState, useEffect, useCallback } from "react";
-import { useRouter } from "next/navigation";
 import {
   Table,
   Card,
@@ -9,14 +8,21 @@ import {
   Button,
   Space,
   DatePicker,
-  Tag,
   Tooltip,
   Modal,
   App,
+  Breadcrumb,
 } from "antd";
-import { SearchOutlined, EyeOutlined, ReloadOutlined } from "@ant-design/icons";
+import dayjs from "dayjs";
+import {
+  SearchOutlined,
+  EyeOutlined,
+  ReloadOutlined,
+  HomeOutlined,
+} from "@ant-design/icons";
 import type { ColumnsType, TablePaginationConfig } from "antd/es/table";
 import type { RangePickerProps } from "antd/es/date-picker";
+import { useAdminI18n } from "@/hooks/useAdminI18n";
 import styles from "./styles.module.css";
 
 const { RangePicker } = DatePicker;
@@ -49,8 +55,8 @@ interface ContactListResponse {
 }
 
 export default function AdminContactPage() {
-  const router = useRouter();
   const { message: antMessage } = App.useApp();
+  const { t } = useAdminI18n();
   const [data, setData] = useState<ContactFormData[]>([]);
   const [loading, setLoading] = useState(false);
   const [pagination, setPagination] = useState({
@@ -58,53 +64,46 @@ export default function AdminContactPage() {
     pageSize: 10,
     total: 0,
   });
+  // 获取默认日期范围（最近一个月）
+  const getDefaultDateRange = () => {
+    const endDate = dayjs();
+    const startDate = dayjs().subtract(1, 'month');
+    return {
+      startDate: startDate.format('YYYY-MM-DD'),
+      endDate: endDate.format('YYYY-MM-DD'),
+    };
+  };
+
   const [searchForm, setSearchForm] = useState({
     name: "",
     phone: "",
     email: "",
     company: "",
-    startDate: "",
-    endDate: "",
+    ...getDefaultDateRange(),
   });
   const [detailModal, setDetailModal] = useState({
     visible: false,
     data: null as ContactFormData | null,
   });
 
-  // 检查登录状态
-  useEffect(() => {
-    const checkAuth = async () => {
-      try {
-        const response = await fetch("/api/auth/check", {
-          method: "GET",
-          credentials: "include",
-        });
-
-        if (!response.ok) {
-          router.replace("/admin/login");
-        }
-      } catch (error) {
-        console.error("验证登录状态失败:", error);
-        router.replace("/admin/login");
-      }
-    };
-
-    checkAuth();
-  }, [router]);
-
   // 获取数据
   const fetchData = useCallback(
     async (params?: { current?: number; pageSize?: number }) => {
       setLoading(true);
       try {
-        const queryParams = new URLSearchParams({
+        const requestBody = {
           page: (params?.current || pagination.current).toString(),
           pageSize: (params?.pageSize || pagination.pageSize).toString(),
           ...searchForm,
-        });
+        };
 
-        const response = await fetch(`/api/contact/list?${queryParams}`, {
+        const response = await fetch(`/api/contact/list`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
           credentials: "include",
+          body: JSON.stringify(requestBody),
         });
         const result: ContactListResponse = await response.json();
 
@@ -116,12 +115,12 @@ export default function AdminContactPage() {
             total: result.data.pagination.total,
           });
         } else {
-          antMessage.error(result.msg || "获取数据失败");
+          antMessage.error(result.msg || t('admin.contact.messages.fetchError'));
         }
         setLoading(false);
       } catch (error) {
         console.error("获取数据错误:", error);
-        antMessage.error("网络错误，请稍后重试");
+        antMessage.error(t('admin.contact.messages.networkError'));
         setLoading(false);
       }
     },
@@ -142,8 +141,7 @@ export default function AdminContactPage() {
       phone: "",
       email: "",
       company: "",
-      startDate: "",
-      endDate: "",
+      ...getDefaultDateRange(),
     });
     setPagination({ ...pagination, current: 1 });
     fetchData({ current: 1 });
@@ -172,34 +170,34 @@ export default function AdminContactPage() {
   // 表格列定义
   const columns: ColumnsType<ContactFormData> = [
     {
-      title: "ID",
+      title: t('admin.contact.table.id'),
       dataIndex: "id",
       key: "id",
       width: 80,
       fixed: "left",
     },
     {
-      title: "姓名",
+      title: t('admin.contact.table.name'),
       dataIndex: "name",
       key: "name",
       width: 120,
       ellipsis: true,
     },
     {
-      title: "手机号",
+      title: t('admin.contact.table.phone'),
       dataIndex: "phone",
       key: "phone",
       width: 140,
     },
     {
-      title: "邮箱",
+      title: t('admin.contact.table.email'),
       dataIndex: "email",
       key: "email",
       width: 200,
       ellipsis: true,
     },
     {
-      title: "公司名称",
+      title: t('admin.contact.table.company'),
       dataIndex: "company",
       key: "company",
       width: 180,
@@ -207,7 +205,7 @@ export default function AdminContactPage() {
       render: (text) => text || "-",
     },
     {
-      title: "咨询内容",
+      title: t('admin.contact.table.content'),
       dataIndex: "content",
       key: "content",
       width: 250,
@@ -219,17 +217,16 @@ export default function AdminContactPage() {
       ),
     },
     {
-      title: "提交时间",
+      title: t('admin.contact.table.createdAt'),
       dataIndex: "created_at",
       key: "created_at",
       width: 180,
       render: (text) => {
-        const date = new Date(text);
-        return date.toLocaleString("zh-CN");
+        return dayjs(text).format('YYYY-MM-DD HH:mm:ss');
       },
     },
     {
-      title: "操作",
+      title: t('admin.contact.table.action'),
       key: "action",
       width: 120,
       fixed: "right",
@@ -240,7 +237,7 @@ export default function AdminContactPage() {
             icon={<EyeOutlined />}
             onClick={() => handleViewDetail(record)}
           >
-            查看
+            {t('admin.contact.table.view')}
           </Button>
         </Space>
       ),
@@ -262,13 +259,32 @@ export default function AdminContactPage() {
 
   return (
     <div className={styles.container}>
-      <Card title="联系我们 - 数据管理" className={styles.card}>
+      {/* 面包屑导航 */}
+      <Breadcrumb
+        className={styles.breadcrumb}
+        items={[
+          {
+            href: "/admin",
+            title: (
+              <>
+                <HomeOutlined />
+                <span>{t('admin.home')}</span>
+              </>
+            ),
+          },
+          {
+            title: t('admin.contact.breadcrumb'),
+          },
+        ]}
+      />
+
+      <div className={styles.card}>
         {/* 搜索区域 */}
         <Card size="small" className={styles.searchCard}>
           <div className={styles.searchForm}>
             <div className={styles.searchRow}>
               <Input
-                placeholder="姓名"
+                placeholder={t('admin.contact.search.name')}
                 value={searchForm.name}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, name: e.target.value })
@@ -276,7 +292,7 @@ export default function AdminContactPage() {
                 className={styles.searchInput}
               />
               <Input
-                placeholder="手机号"
+                placeholder={t('admin.contact.search.phone')}
                 value={searchForm.phone}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, phone: e.target.value })
@@ -284,7 +300,7 @@ export default function AdminContactPage() {
                 className={styles.searchInput}
               />
               <Input
-                placeholder="邮箱"
+                placeholder={t('admin.contact.search.email')}
                 value={searchForm.email}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, email: e.target.value })
@@ -294,7 +310,7 @@ export default function AdminContactPage() {
             </div>
             <div className={styles.searchRow}>
               <Input
-                placeholder="公司名称"
+                placeholder={t('admin.contact.search.company')}
                 value={searchForm.company}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, company: e.target.value })
@@ -303,53 +319,59 @@ export default function AdminContactPage() {
               />
               <RangePicker
                 onChange={handleDateRangeChange}
-                placeholder={["开始日期", "结束日期"]}
+                placeholder={[t('admin.contact.search.startDate'), t('admin.contact.search.endDate')]}
                 className={styles.searchInput}
+                value={[
+                  searchForm.startDate ? dayjs(searchForm.startDate) : null,
+                  searchForm.endDate ? dayjs(searchForm.endDate) : null,
+                ]}
               />
+              <div className={styles.searchInput}></div>
+            </div>
+            <div className={styles.searchButtonRow}>
               <Space>
                 <Button
                   type="primary"
                   icon={<SearchOutlined />}
                   onClick={handleSearch}
                 >
-                  搜索
+                  {t('admin.contact.search.searchBtn')}
                 </Button>
-                <Button onClick={handleReset}>重置</Button>
+                <Button onClick={handleReset}>{t('admin.contact.search.resetBtn')}</Button>
                 <Button icon={<ReloadOutlined />} onClick={() => fetchData()}>
-                  刷新
+                  {t('admin.contact.search.refreshBtn')}
                 </Button>
               </Space>
             </div>
           </div>
         </Card>
-
-        {/* 数据统计 */}
-        <div className={styles.statistics}>
-          <Tag color="blue">总数据：{pagination.total} 条</Tag>
-        </div>
-
         {/* 数据表格 */}
         <Table
           columns={columns}
           dataSource={data}
           rowKey="id"
+          size="small"
           loading={loading}
           pagination={{
             ...pagination,
             showSizeChanger: true,
             showQuickJumper: true,
             showTotal: (total, range) =>
-              `显示 ${range[0]}-${range[1]} 条，共 ${total} 条数据`,
+              t('admin.contact.table.total', {
+                start: range[0],
+                end: range[1],
+                total: total,
+              }),
           }}
           onChange={handleTableChange}
           scroll={{ x: 1200 }}
           className={styles.table}
         />
-      </Card>
+      </div>
 
       {/* 详情模态框 */}
       <Modal
-        title="联系信息详情"
+        title={t('admin.contact.detail.title')}
         open={detailModal.visible}
         onCancel={() => setDetailModal({ visible: false, data: null })}
         footer={[
@@ -357,7 +379,7 @@ export default function AdminContactPage() {
             key="close"
             onClick={() => setDetailModal({ visible: false, data: null })}
           >
-            关闭
+            {t('admin.contact.detail.close')}
           </Button>,
         ]}
         width={600}
@@ -366,29 +388,29 @@ export default function AdminContactPage() {
         {detailModal.data && (
           <div className={styles.detailContent}>
             <div className={styles.detailItem}>
-              <label>姓名：</label>
+              <label>{t('admin.contact.detail.name')}</label>
               <span>{detailModal.data.name}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>手机号：</label>
+              <label>{t('admin.contact.detail.phone')}</label>
               <span>{detailModal.data.phone}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>邮箱：</label>
+              <label>{t('admin.contact.detail.email')}</label>
               <span>{detailModal.data.email}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>公司名称：</label>
+              <label>{t('admin.contact.detail.company')}</label>
               <span>{detailModal.data.company || "-"}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>提交时间：</label>
+              <label>{t('admin.contact.detail.createdAt')}</label>
               <span>
-                {new Date(detailModal.data.created_at).toLocaleString("zh-CN")}
+                {dayjs(detailModal.data.created_at).format('YYYY-MM-DD HH:mm:ss')}
               </span>
             </div>
             <div className={styles.detailItem}>
-              <label>咨询内容：</label>
+              <label>{t('admin.contact.detail.content')}</label>
               <TextArea
                 value={detailModal.data.content}
                 readOnly

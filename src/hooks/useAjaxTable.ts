@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect, useReducer } from 'react'
-import { message } from 'antd'
+import type { MessageInstance } from 'antd/es/message/interface'
 import axios from '../common/axios'
 
 interface TableResponse<T> {
@@ -124,6 +124,7 @@ export interface AjaxTableCallBack<T, P extends SearchData> {
 
 function useAjaxTable<T, P extends SearchData>(
   url: string,
+  messageApi: MessageInstance,
   {
     pageSizeOptions = DEFAULT_STATE.pagination.pageSizeOptions,
     showSizeChanger = DEFAULT_STATE.pagination.showSizeChanger,
@@ -201,11 +202,11 @@ function useAjaxTable<T, P extends SearchData>(
             current: pagination.current
           });
         } else {
-          message.error(response.error?.message || '获取数据失败');
+          messageApi.error(response.error?.message || '获取数据失败');
         }
       })
       .catch((error) => {
-        message.error(error?.message || '请求失败');
+        messageApi.error(error?.message || '请求失败');
         console.error(error);
       })
       .finally(() => {

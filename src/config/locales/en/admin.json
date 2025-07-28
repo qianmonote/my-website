@@ -1,0 +1,63 @@
+{
+  "admin": {
+    "title": "Admin System",
+    "titleCollapsed": "Admin",
+    "logout": "Logout",
+    "home": "Home",
+    "login": {
+      "title": "Admin Login",
+      "username": "Username",
+      "password": "Password",
+      "usernamePlaceholder": "Please enter username",
+      "passwordPlaceholder": "Please enter password",
+      "usernameRequired": "Please enter username",
+      "passwordRequired": "Please enter password",
+      "loginBtn": "Login",
+      "loginSuccess": "Login successful",
+      "loginFailed": "Login failed",
+      "loginFailedRetry": "Login failed, please try again later",
+      "sessionWarning": "Detected login from another location, other sessions have been logged out"
+    },
+    "contact": {
+      "title": "Contact List",
+      "breadcrumb": "Contact List",
+      "search": {
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "company": "Company",
+        "startDate": "Start Date",
+        "endDate": "End Date",
+        "searchBtn": "Search",
+        "resetBtn": "Reset",
+        "refreshBtn": "Refresh"
+      },
+      "table": {
+        "id": "ID",
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "company": "Company",
+        "content": "Content",
+        "createdAt": "Created At",
+        "action": "Action",
+        "view": "View",
+        "total": "Showing {start}-{end} of {total} items"
+      },
+      "detail": {
+        "title": "Contact Details",
+        "name": "Name:",
+        "phone": "Phone:",
+        "email": "Email:",
+        "company": "Company:",
+        "createdAt": "Created At:",
+        "content": "Content:",
+        "close": "Close"
+      },
+      "messages": {
+        "fetchError": "Failed to fetch data",
+        "networkError": "Network error, please try again later"
+      }
+    }
+  }
+}
