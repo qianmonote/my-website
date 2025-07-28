@@ -31,6 +31,48 @@ const isVercelPostgres = () => {
 };
 ```
 
+## 📝 数据库命名最佳实践
+
+### 命名规则
+根据 PostgreSQL 和 Vercel 的最佳实践，建议遵循以下命名规则：
+
+#### 1. 基本规则
+- **使用小写字母**：PostgreSQL 会将未引用的标识符转换为小写 <mcreference link="https://www.postgresql.org/docs/7.0/syntax525.htm" index="5">5</mcreference>
+- **使用下划线分隔**：采用 snake_case 命名风格 <mcreference link="https://blog.api-fiddle.com/posts/naming-conventions-in-postgresql" index="2">2</mcreference>
+- **避免特殊字符**：不使用空格、连字符或其他特殊符号
+- **长度限制**：PostgreSQL 默认最大名称长度为 31 个字符 <mcreference link="https://www.postgresql.org/docs/7.0/syntax525.htm" index="5">5</mcreference>
+
+#### 2. 推荐命名格式
+```
+{项目名称}_{环境标识}
+```
+
+#### 3. 环境标识建议
+- `prod` 或 `production` - 生产环境
+- `staging` 或 `stage` - 预发布环境
+- `dev` 或 `development` - 开发环境
+- `test` - 测试环境
+
+#### 4. 命名示例
+| 项目类型 | 推荐名称 | 说明 |
+|---------|---------|------|
+| 个人网站 | `my_website_prod` | 简洁明了 |
+| 联系系统 | `contact_system_prod` | 描述性强 |
+| 企业官网 | `company_site_prod` | 业务相关 |
+| API 服务 | `api_service_prod` | 功能导向 |
+
+#### 5. 避免的命名方式
+❌ **不推荐**：
+- `MyWebsite-Prod` (包含大写字母和连字符)
+- `my website prod` (包含空格)
+- `db_prod_2024_final_v2` (过于复杂)
+- `prod` (缺乏描述性)
+
+✅ **推荐**：
+- `my_website_prod`
+- `contact_form_prod`
+- `user_management_prod`
+
 ## 🔧 配置步骤
 
 ### 1. 安装依赖
@@ -51,6 +93,13 @@ const isVercelPostgres = () => {
 4. 点击 "Create Database"
 5. 选择 "Postgres"
 6. 填写数据库名称并创建
+
+**数据库命名建议：**
+- 使用小写字母和下划线（snake_case）
+- 包含项目名称和环境标识
+- 推荐格式：`{项目名}_{环境}`
+- 示例：`my_website_prod`、`contact_system_production`、`website_db_prod`
+- 避免使用特殊字符、空格和大写字母
 
 #### 步骤 2：配置环境变量
 Vercel 会自动为你的项目添加以下环境变量：
