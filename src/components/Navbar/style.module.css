@@ -24,7 +24,7 @@
 .cNavbarLogo {
   background: url("/header/logo-default.png") no-repeat center center;
   width: 140px;
-  height: 64px;
+  height: 90px;
   cursor: pointer;
   transition: all 0.3s ease;
   transform: scale(1);
@@ -46,7 +46,7 @@
   background: url("/header/logo-active.png") no-repeat center center;
   transform: scale(1.05);
   background-size: contain;
-  height: 80px;
+  height: 90px;
 }
 
 .cNavbarLogo.active {

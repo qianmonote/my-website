@@ -118,30 +118,30 @@ const PowerStorageIntegrationPage = () => {
   const solutionsList = [
     {
       id: "1",
-      imageZh: "/product/p2/part1/01.png",
+      imageZh: "/product/p2/part1/01-zh.png",
       imageEn: "/product/p2/part1/01-en.png",
-      imageActiveZh: "/product/p2/part1/01-active.png",
+      imageActiveZh: "/product/p2/part1/01-active-zh.png",
       imageActiveEn: "/product/p2/part1/01-active-en.png",
     },
     {
       id: "2",
-      imageZh: "/product/p2/part1/02.png",
+      imageZh: "/product/p2/part1/02-zh.png",
       imageEn: "/product/p2/part1/02-en.png",
-      imageActiveZh: "/product/p2/part1/02-active.png",
+      imageActiveZh: "/product/p2/part1/02-active-zh.png",
       imageActiveEn: "/product/p2/part1/02-active-en.png",
     },
     {
       id: "3",
-      imageZh: "/product/p2/part1/03.png",
+      imageZh: "/product/p2/part1/03-zh.png",
       imageEn: "/product/p2/part1/03-en.png",
-      imageActiveZh: "/product/p2/part1/03-active.png",
+      imageActiveZh: "/product/p2/part1/03-active-zh.png",
       imageActiveEn: "/product/p2/part1/03-active-en.png",
     },
     {
       id: "4",
-      imageZh: "/product/p2/part1/04.png",
+      imageZh: "/product/p2/part1/04-zh.png",
       imageEn: "/product/p2/part1/04-en.png",
-      imageActiveZh: "/product/p2/part1/04-active.png",
+      imageActiveZh: "/product/p2/part1/04-active-zh.png",
       imageActiveEn: "/product/p2/part1/04-active-en.png",
     },
   ];
@@ -215,7 +215,7 @@ const PowerStorageIntegrationPage = () => {
         }}
         titleUnderlinePlacement="top"
         contentStyle={{
-          minHeight: lang === "zh" ? 80 : 100,
+          minHeight: lang === "zh" ? 80 : 140,
         }}
       />
 

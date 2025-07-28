@@ -121,7 +121,7 @@ const BiomassGasificationPage = () => {
               src="/product/p1/part1/01-zh.png"
               alt=""
               width={1000}
-              height={807}
+              height={760.24}
               unoptimized
             />
           </PartSectionImageBox>
@@ -131,7 +131,7 @@ const BiomassGasificationPage = () => {
               src="/product/p1/part1/01-en.png"
               alt=""
               width={1000}
-              height={809.13}
+              height={760.24}
               unoptimized
             />
           </PartSectionImageBox>
@@ -146,7 +146,7 @@ const BiomassGasificationPage = () => {
               src="/product/p1/part2/01-zh.png"
               alt=""
               width={1000}
-              height={628}
+              height={609.11}
               unoptimized
             />
           </PartSectionImageBox>
@@ -176,9 +176,12 @@ const BiomassGasificationPage = () => {
         defaultImageSize={{
           imageWidth: 318,
           imageHeight: 280,
+          style: {
+            marginTop: 16,
+          },
         }}
         contentStyle={{
-          minHeight: lang === "zh" ? 120 : 210,
+          minHeight: lang === "zh" ? 150 : 210,
         }}
       />
 
@@ -191,6 +194,7 @@ const BiomassGasificationPage = () => {
               alt="生物质燃气环保优点"
               width={1000}
               height={750}
+              unoptimized
             />
           </PartSectionImageBox>
         ) : (
@@ -200,6 +204,7 @@ const BiomassGasificationPage = () => {
               alt="生物质燃气环保优点"
               width={1000}
               height={750}
+              unoptimized
             />
           </PartSectionImageBox>
         )}

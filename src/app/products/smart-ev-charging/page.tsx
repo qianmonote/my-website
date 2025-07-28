@@ -169,7 +169,7 @@ const SmartEVChargingPage = () => {
             ? "智慧EV充电生态体系"
             : "Distributed Solar Photovoltaic Power Systems".toLocaleUpperCase()
         }
-        backgroundImage="/product/p4/bn/01.png"
+        backgroundImage="/product/p4/bn/01.jpg"
         backgroundSize="cover"
       />
       {/* Part1 */}
@@ -179,9 +179,9 @@ const SmartEVChargingPage = () => {
             <Image
               src="/product/p4/part1/01-zh.png"
               alt=""
-              unoptimized={true}  
+              unoptimized={true}
               width={1000}
-              height={667}
+              height={666.33}
             />
           </PartSectionImageBox>
         ) : (
@@ -190,7 +190,8 @@ const SmartEVChargingPage = () => {
               src="/product/p4/part1/01-en.png"
               alt=""
               width={1000}
-              height={779}
+              height={666.33}
+              unoptimized
             />
           </PartSectionImageBox>
         )}
@@ -200,15 +201,15 @@ const SmartEVChargingPage = () => {
         title={
           lang === "zh"
             ? "移动充电机器人六大黄金场景"
-            : "Six golden scenarios for mobile charging robots".toLocaleUpperCase()
+            : "Six Golden Scenarios For Mobile Charging <br/> Robots"
         }
       >
         {lang === "zh" ? (
           <PartSectionImageBox>
             <Image
-              src="/product/p4/part2/01-zh.png"
+              src="/product/p4/part2/02-zh.png"
               alt=""
-              unoptimized={true}  
+              unoptimized={true}
               width={1000}
               height={400}
             />
@@ -216,9 +217,9 @@ const SmartEVChargingPage = () => {
         ) : (
           <PartSectionImageBox>
             <Image
-              src="/product/p4/part2/01-en.png"
+              src="/product/p4/part2/02-en.png"
               alt=""
-              unoptimized={true}  
+              unoptimized={true}
               width={1000}
               height={400}
             />
@@ -228,25 +229,35 @@ const SmartEVChargingPage = () => {
       {/* Part3 */}
       <PartSection
         title={
-          <div className={styles.part3SectionTitle}>
-            {lang === "zh"
-              ? "EV充电专用APP——DC-CAT"
-              : "EV Charging Special APP——DC-CAT".toLocaleUpperCase()}
-            <Image
-              src="/product/p4/part3/tit-icon.png"
-              alt=""
-              width={80}
-              height={80}
-              className={styles.part3SectionTitleIcon}
-            />
-            <Image
-              src="/product/p4/part3/tit-bg.png"
-              alt=""
-              width={305}
-              height={305}
-              className={styles.part3SectionTitleBg}
-            />
-          </div>
+          lang === "zh" ? (
+            <PartSectionImageBox>
+              <Image
+                src="/product/p4/part3/tit-zh.png"
+                alt=""
+                width={1000}
+                height={98}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                unoptimized
+              />
+            </PartSectionImageBox>
+          ) : (
+            <PartSectionImageBox>
+              <Image
+                src="/product/p4/part3/tit-en.png"
+                alt=""
+                width={1000}
+                height={98}
+                style={{
+                  width: "100%",
+                  height: "auto",
+                }}
+                unoptimized
+              />
+            </PartSectionImageBox>
+          )
         }
       >
         <StepCardList steps={steps} />
@@ -256,7 +267,7 @@ const SmartEVChargingPage = () => {
         title={
           lang === "zh"
             ? "移动充电机器人核心优势"
-            : "Core advantages of mobile charging robots".toLocaleUpperCase()
+            : "Core Advantages Of Mobile Charging <br/> Robots"
         }
         dataList={coreAdvantageDataList}
         contentStyle={{
@@ -270,7 +281,7 @@ const SmartEVChargingPage = () => {
             "应用案例-拉曼大学3*60KW绿电快充项目"
           ) : (
             <div className={styles.part5SectionTitle}>
-              JOINT-RESEARCH PROJECT WITH UTAR KAMPAR CAMPUS  <br />
+              JOINT-RESEARCH PROJECT WITH UTAR KAMPAR <br /> CAMPUS <br />
               <div className={styles.part5SectionSubTitle}>
                 3*60KW Green Power Fast Charging Project
               </div>
