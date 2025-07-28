@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDatabase, ContactQueryParams } from '@/lib/database';
+import { DatabaseAdapter, ContactQueryParams, initializeDatabase } from '@/lib/database';
 
 // 查询联系表单数据（分页、搜索）
 export async function GET(request: NextRequest) {
@@ -18,81 +18,15 @@ export async function GET(request: NextRequest) {
       endDate: searchParams.get('endDate') || ''
     };
 
-    const db = await getDatabase();
+    // 初始化数据库
+    await initializeDatabase();
     
-    // 构建WHERE条件
-    const conditions: string[] = [];
-    const values: (string | number)[] = [];
-    
-    if (params.name) {
-      conditions.push('name LIKE ?');
-      values.push(`%${params.name}%`);
-    }
-    
-    if (params.phone) {
-      conditions.push('phone LIKE ?');
-      values.push(`%${params.phone}%`);
-    }
-    
-    if (params.email) {
-      conditions.push('email LIKE ?');
-      values.push(`%${params.email}%`);
-    }
-    
-    if (params.company) {
-      conditions.push('company LIKE ?');
-      values.push(`%${params.company}%`);
-    }
-    
-    if (params.startDate) {
-      conditions.push('DATE(created_at) >= ?');
-      values.push(params.startDate);
-    }
-    
-    if (params.endDate) {
-      conditions.push('DATE(created_at) <= ?');
-      values.push(params.endDate);
-    }
-    
-    const whereClause = conditions.length > 0 ? `WHERE ${conditions.join(' AND ')}` : '';
-    
-    // 查询总数
-    const countQuery = `SELECT COUNT(*) as total FROM contacts ${whereClause}`;
-    const countResult = await db.get(countQuery, values);
-    const total = countResult?.total || 0;
-    
-    // 分页查询数据
-    const offset = (params.page! - 1) * params.pageSize!;
-    const dataQuery = `
-      SELECT 
-        id, name, phone, email, company, content, 
-        datetime(created_at, 'localtime') as created_at,
-        datetime(updated_at, 'localtime') as updated_at
-      FROM contacts 
-      ${whereClause}
-      ORDER BY created_at DESC
-      LIMIT ? OFFSET ?
-    `;
-    
-    const dataValues = [...values, params.pageSize, offset];
-    const contacts = await db.all(dataQuery, dataValues);
-    
-    // 计算分页信息
-    const totalPages = Math.ceil(total / params.pageSize!);
+    // 使用统一的数据库适配器查询数据
+    const result = await DatabaseAdapter.queryContacts(params);
     
     return NextResponse.json({
       flag: 1,
-      data: {
-        list: contacts,
-        pagination: {
-          current: params.page,
-          pageSize: params.pageSize,
-          total,
-          totalPages,
-          hasNext: params.page! < totalPages,
-          hasPrev: params.page! > 1
-        }
-      }
+      data: result
     });
 
   } catch (error) {
@@ -105,4 +39,4 @@ export async function GET(request: NextRequest) {
       { status: 500 }
     );
   }
-} 
+}

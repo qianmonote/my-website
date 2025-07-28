@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getDatabase } from "@/lib/database";
+import { DatabaseAdapter, initializeDatabase } from "@/lib/database";
 
 interface ContactFormData {
   name: string;
@@ -98,12 +98,11 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 获取数据库连接
-    let db;
+    // 初始化数据库
     try {
-      db = await getDatabase();
+      await initializeDatabase();
     } catch (error) {
-      console.error("数据库连接失败:", error);
+      console.error("数据库初始化失败:", error);
       return NextResponse.json(
         {
           flag: 0,
@@ -120,16 +119,18 @@ export async function POST(request: NextRequest) {
 
     // 插入数据
     try {
-      const result = await db.run(
-        `INSERT INTO contacts (name, phone, email, company, content) 
-         VALUES (?, ?, ?, ?, ?)`,
-        [name, phone, email, company || "", content]
-      );
+      const result = await DatabaseAdapter.insertContact({
+        name,
+        phone,
+        email,
+        company: company || "",
+        content
+      });
 
       return NextResponse.json({
         flag: 1,
         data: {
-          id: result.lastID,
+          id: result.id,
         },
         msg: "提交成功，我们会尽快与您联系"
       }, {
