@@ -1,10 +1,23 @@
 # Vercel Postgres 数据库配置指南
 
+## 🎯 您的数据库配置
+
+✅ **数据库名称**：`neon_contact_form_prod`  
+✅ **数据库类型**：Neon Postgres（通过 Vercel Marketplace）  
+✅ **状态**：已创建，等待配置使用  
+
+### 🚀 快速开始
+1. **环境变量**：Vercel 已自动注入数据库连接信息
+2. **代码兼容**：项目代码已完全兼容，无需修改
+3. **部署即用**：重新部署项目即可自动连接到您的数据库
+
+---
+
 ## 🚀 概述
 
-本项目现已支持 **Vercel Postgres** 数据库，可以根据环境自动切换：
+本项目现已支持 **Vercel Postgres (Neon)** 数据库，可以根据环境自动切换：
 - **本地开发**：使用 SQLite 数据库
-- **线上部署**：使用 Vercel Postgres 数据库
+- **线上部署**：使用 Vercel Postgres (Neon) 数据库
 
 ## 📋 功能特性
 

@@ -8,7 +8,7 @@ let db: Database | null = null;
 
 // 检查是否使用 Vercel Postgres
 const isVercelPostgres = () => {
-  return process.env.POSTGRES_URL || process.env.VERCEL_ENV === 'production';
+  return process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.VERCEL_ENV === 'production';
 };
 
 // 确保数据目录存在（仅SQLite需要）
@@ -46,10 +46,25 @@ export async function getDatabase(): Promise<Database> {
 
 // 统一的数据库初始化
 export async function initializeDatabase() {
-  if (isVercelPostgres()) {
-    await PostgresDatabase.initializeTables();
-  } else {
-    await getDatabase();
+  try {
+    const usePostgres = isVercelPostgres();
+    console.log('数据库环境检测:', {
+      POSTGRES_URL: !!process.env.POSTGRES_URL,
+      DATABASE_URL: !!process.env.DATABASE_URL,
+      VERCEL_ENV: process.env.VERCEL_ENV,
+      usePostgres
+    });
+    
+    if (usePostgres) {
+      console.log('使用 Vercel Postgres 数据库');
+      await PostgresDatabase.initializeTables();
+    } else {
+      console.log('使用本地 SQLite 数据库');
+      await getDatabase();
+    }
+  } catch (error) {
+    console.error('数据库初始化失败:', error);
+    throw error;
   }
 }
 
