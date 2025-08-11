@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import styles from './styles.module.css';
 import Image from 'next/image';
 
@@ -20,30 +20,15 @@ const StepCard: React.FC<StepCardProps> = ({
   // step,
 }) => {
   const [isHovered, setIsHovered] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  // 检测屏幕宽度
-  useEffect(() => {
-    const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 1000);
-    };
-
-    // 初始检查
-    checkScreenSize();
-
-    // 监听窗口大小变化
-    window.addEventListener('resize', checkScreenSize);
-
-    return () => {
-      window.removeEventListener('resize', checkScreenSize);
-    };
-  }, []);
 
   return (
     <div 
       className={`${styles.card} ${isHovered ? styles.hovered : ''}`}
-      onMouseEnter={() => !isMobile && setIsHovered(true)}
-      onMouseLeave={() => !isMobile && setIsHovered(false)}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      onTouchStart={() => setIsHovered(true)}
+      onTouchEnd={() => setIsHovered(false)}
+      onTouchCancel={() => setIsHovered(false)}
     >
       <div className={styles.imageContainer}>
           <Image
@@ -66,4 +51,4 @@ const StepCard: React.FC<StepCardProps> = ({
   );
 };
 
-export default StepCard; 
+export default StepCard;

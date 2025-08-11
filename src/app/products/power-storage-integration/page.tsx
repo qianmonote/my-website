@@ -171,7 +171,7 @@ const PowerStorageIntegrationPage = () => {
       </PartSection>
 
       {/* Part 2 */}
-      <PartSection title="">
+      <PartSection title="" style={{ paddingBottom: 0 }}>
         {lang === "zh" ? (
           <PartSectionImageBox>
             <Image
@@ -179,8 +179,7 @@ const PowerStorageIntegrationPage = () => {
               alt=""
               width={1000}
               height={640}
-               unoptimized
-              style={{ marginLeft: -24, marginRight: 24 }}
+              unoptimized
             />
           </PartSectionImageBox>
         ) : (

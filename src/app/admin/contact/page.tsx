@@ -67,10 +67,10 @@ export default function AdminContactPage() {
   // 获取默认日期范围（最近一个月）
   const getDefaultDateRange = () => {
     const endDate = dayjs();
-    const startDate = dayjs().subtract(1, 'month');
+    const startDate = dayjs().subtract(1, "month");
     return {
-      startDate: startDate.format('YYYY-MM-DD'),
-      endDate: endDate.format('YYYY-MM-DD'),
+      startDate: startDate.format("YYYY-MM-DD"),
+      endDate: endDate.format("YYYY-MM-DD"),
     };
   };
 
@@ -115,12 +115,14 @@ export default function AdminContactPage() {
             total: result.data.pagination.total,
           });
         } else {
-          antMessage.error(result.msg || t('admin.contact.messages.fetchError'));
+          antMessage.error(
+            result.msg || t("admin.contact.messages.fetchError")
+          );
         }
         setLoading(false);
       } catch (error) {
         console.error("获取数据错误:", error);
-        antMessage.error(t('admin.contact.messages.networkError'));
+        antMessage.error(t("admin.contact.messages.networkError"));
         setLoading(false);
       }
     },
@@ -170,34 +172,34 @@ export default function AdminContactPage() {
   // 表格列定义
   const columns: ColumnsType<ContactFormData> = [
     {
-      title: t('admin.contact.table.id'),
+      title: t("admin.contact.table.id"),
       dataIndex: "id",
       key: "id",
       width: 80,
       fixed: "left",
     },
     {
-      title: t('admin.contact.table.name'),
+      title: t("admin.contact.table.name"),
       dataIndex: "name",
       key: "name",
       width: 120,
       ellipsis: true,
     },
     {
-      title: t('admin.contact.table.phone'),
+      title: t("admin.contact.table.phone"),
       dataIndex: "phone",
       key: "phone",
       width: 140,
     },
     {
-      title: t('admin.contact.table.email'),
+      title: t("admin.contact.table.email"),
       dataIndex: "email",
       key: "email",
       width: 200,
       ellipsis: true,
     },
     {
-      title: t('admin.contact.table.company'),
+      title: t("admin.contact.table.company"),
       dataIndex: "company",
       key: "company",
       width: 180,
@@ -205,7 +207,7 @@ export default function AdminContactPage() {
       render: (text) => text || "-",
     },
     {
-      title: t('admin.contact.table.content'),
+      title: t("admin.contact.table.content"),
       dataIndex: "content",
       key: "content",
       width: 250,
@@ -217,16 +219,16 @@ export default function AdminContactPage() {
       ),
     },
     {
-      title: t('admin.contact.table.createdAt'),
+      title: t("admin.contact.table.createdAt"),
       dataIndex: "created_at",
       key: "created_at",
       width: 180,
       render: (text) => {
-        return dayjs(text).format('YYYY-MM-DD HH:mm:ss');
+        return dayjs(text).format("YYYY-MM-DD HH:mm:ss");
       },
     },
     {
-      title: t('admin.contact.table.action'),
+      title: t("admin.contact.table.action"),
       key: "action",
       width: 120,
       fixed: "right",
@@ -237,7 +239,7 @@ export default function AdminContactPage() {
             icon={<EyeOutlined />}
             onClick={() => handleViewDetail(record)}
           >
-            {t('admin.contact.table.view')}
+            {t("admin.contact.table.view")}
           </Button>
         </Space>
       ),
@@ -268,12 +270,12 @@ export default function AdminContactPage() {
             title: (
               <>
                 <HomeOutlined />
-                <span>{t('admin.home')}</span>
+                <span>{t("admin.home")}</span>
               </>
             ),
           },
           {
-            title: t('admin.contact.breadcrumb'),
+            title: t("admin.contact.breadcrumb"),
           },
         ]}
       />
@@ -284,7 +286,7 @@ export default function AdminContactPage() {
           <div className={styles.searchForm}>
             <div className={styles.searchRow}>
               <Input
-                placeholder={t('admin.contact.search.name')}
+                placeholder={t("admin.contact.search.name")}
                 value={searchForm.name}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, name: e.target.value })
@@ -292,7 +294,7 @@ export default function AdminContactPage() {
                 className={styles.searchInput}
               />
               <Input
-                placeholder={t('admin.contact.search.phone')}
+                placeholder={t("admin.contact.search.phone")}
                 value={searchForm.phone}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, phone: e.target.value })
@@ -300,7 +302,7 @@ export default function AdminContactPage() {
                 className={styles.searchInput}
               />
               <Input
-                placeholder={t('admin.contact.search.email')}
+                placeholder={t("admin.contact.search.email")}
                 value={searchForm.email}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, email: e.target.value })
@@ -310,7 +312,7 @@ export default function AdminContactPage() {
             </div>
             <div className={styles.searchRow}>
               <Input
-                placeholder={t('admin.contact.search.company')}
+                placeholder={t("admin.contact.search.company")}
                 value={searchForm.company}
                 onChange={(e) =>
                   setSearchForm({ ...searchForm, company: e.target.value })
@@ -319,7 +321,10 @@ export default function AdminContactPage() {
               />
               <RangePicker
                 onChange={handleDateRangeChange}
-                placeholder={[t('admin.contact.search.startDate'), t('admin.contact.search.endDate')]}
+                placeholder={[
+                  t("admin.contact.search.startDate"),
+                  t("admin.contact.search.endDate"),
+                ]}
                 className={styles.searchInput}
                 value={[
                   searchForm.startDate ? dayjs(searchForm.startDate) : null,
@@ -335,43 +340,47 @@ export default function AdminContactPage() {
                   icon={<SearchOutlined />}
                   onClick={handleSearch}
                 >
-                  {t('admin.contact.search.searchBtn')}
+                  {t("admin.contact.search.searchBtn")}
                 </Button>
-                <Button onClick={handleReset}>{t('admin.contact.search.resetBtn')}</Button>
+                <Button onClick={handleReset}>
+                  {t("admin.contact.search.resetBtn")}
+                </Button>
                 <Button icon={<ReloadOutlined />} onClick={() => fetchData()}>
-                  {t('admin.contact.search.refreshBtn')}
+                  {t("admin.contact.search.refreshBtn")}
                 </Button>
               </Space>
             </div>
           </div>
         </Card>
         {/* 数据表格 */}
-        <Table
-          columns={columns}
-          dataSource={data}
-          rowKey="id"
-          size="small"
-          loading={loading}
-          pagination={{
-            ...pagination,
-            showSizeChanger: true,
-            showQuickJumper: true,
-            showTotal: (total, range) =>
-              t('admin.contact.table.total', {
-                start: range[0],
-                end: range[1],
-                total: total,
-              }),
-          }}
-          onChange={handleTableChange}
-          scroll={{ x: 1200 }}
-          className={styles.table}
-        />
+        <Card size="small" style={{ marginTop: 16, overflowY: 'auto' }}>
+          <Table
+            columns={columns}
+            dataSource={data}
+            rowKey="id"
+            size="small"
+            loading={loading}
+            pagination={{
+              ...pagination,
+              showSizeChanger: true,
+              showQuickJumper: true,
+              showTotal: (total, range) =>
+                t("admin.contact.table.total", {
+                  start: range[0],
+                  end: range[1],
+                  total: total,
+                }),
+            }}
+            onChange={handleTableChange}
+            scroll={{ x: 1200, y: 300 }}
+            className={styles.table}
+          />
+        </Card>
       </div>
 
       {/* 详情模态框 */}
       <Modal
-        title={t('admin.contact.detail.title')}
+        title={t("admin.contact.detail.title")}
         open={detailModal.visible}
         onCancel={() => setDetailModal({ visible: false, data: null })}
         footer={[
@@ -379,7 +388,7 @@ export default function AdminContactPage() {
             key="close"
             onClick={() => setDetailModal({ visible: false, data: null })}
           >
-            {t('admin.contact.detail.close')}
+            {t("admin.contact.detail.close")}
           </Button>,
         ]}
         width={600}
@@ -388,29 +397,31 @@ export default function AdminContactPage() {
         {detailModal.data && (
           <div className={styles.detailContent}>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.name')}</label>
+              <label>{t("admin.contact.detail.name")}</label>
               <span>{detailModal.data.name}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.phone')}</label>
+              <label>{t("admin.contact.detail.phone")}</label>
               <span>{detailModal.data.phone}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.email')}</label>
+              <label>{t("admin.contact.detail.email")}</label>
               <span>{detailModal.data.email}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.company')}</label>
+              <label>{t("admin.contact.detail.company")}</label>
               <span>{detailModal.data.company || "-"}</span>
             </div>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.createdAt')}</label>
+              <label>{t("admin.contact.detail.createdAt")}</label>
               <span>
-                {dayjs(detailModal.data.created_at).format('YYYY-MM-DD HH:mm:ss')}
+                {dayjs(detailModal.data.created_at).format(
+                  "YYYY-MM-DD HH:mm:ss"
+                )}
               </span>
             </div>
             <div className={styles.detailItem}>
-              <label>{t('admin.contact.detail.content')}</label>
+              <label>{t("admin.contact.detail.content")}</label>
               <TextArea
                 value={detailModal.data.content}
                 readOnly

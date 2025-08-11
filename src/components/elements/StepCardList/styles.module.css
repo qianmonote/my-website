@@ -10,20 +10,32 @@
   margin: 0 auto;
 }
 
-/* 移动端样式 - 屏幕宽度小于1000px */
+/* 平板端样式 - 屏幕宽度小于1000px */
 @media (max-width: 999px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 20px;
+    max-width: 600px;
+  }
+}
+
+/* 移动端样式 - 屏幕宽度小于768px */
+@media (max-width: 768px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     padding: 0 16px;
+    max-width: 500px;
   }
 }
 
 /* 小屏幕手机样式 - 屏幕宽度小于480px */
 @media (max-width: 479px) {
   .grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-    padding: 0 20px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 0 12px;
+    max-width: 400px;
   }
 }

@@ -10,25 +10,42 @@ interface AdminI18nProviderProps {
 }
 
 export function AdminI18nProvider({ children }: AdminI18nProviderProps) {
+  // 服务端和客户端都使用相同的默认值，避免hydration不匹配
   const [lang, setLang] = useState<Lang>('zh');
-  const [mounted, setMounted] = useState(false);
+  const [isHydrated, setIsHydrated] = useState(false);
 
-  // 组件挂载后获取初始语言设置
+  // 客户端挂载后立即设置正确的语言
   useEffect(() => {
-    setLang(getInitialLang());
-    setMounted(true);
+    const initialLang = getInitialLang();
+    setLang(initialLang);
+    setIsHydrated(true);
   }, []);
 
-  // 防止hydration不匹配，在挂载前使用默认语言
+  // 包装setLang函数，在设置语言的同时保存到localStorage
+  const handleSetLang = (newLang: Lang) => {
+    setLang(newLang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('admin-lang', newLang);
+    }
+  };
+
   const contextValue = {
-    lang: mounted ? lang : 'zh' as Lang,
-    setLang,
+    lang,
+    setLang: handleSetLang,
     t: (key: string) => key, // 这个会被useAdminI18n重写
+  };
+
+  // 在hydration完成前，使用透明度来隐藏内容，避免闪烁
+  const wrapperStyle = {
+    opacity: isHydrated ? 1 : 0,
+    transition: 'opacity 0.1s ease-in-out'
   };
 
   return (
     <AdminI18nContext.Provider value={contextValue}>
-      {children}
+      <div style={wrapperStyle}>
+        {children}
+      </div>
     </AdminI18nContext.Provider>
   );
 }

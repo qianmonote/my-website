@@ -27,6 +27,31 @@
   box-sizing: border-box;
 }
 
+/* 移动端优化 - 等比缩放图片 */
+@media (max-width: 768px) {
+  .heroSection {
+    height: auto;
+    min-height: auto;
+  }
+  
+  .heroImage img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .heroSection {
+    height: auto;
+    min-height: auto;
+  }
+  
+  .heroImage img {
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
 .scrollIndicator {
   position: absolute;
   bottom: 30px;
@@ -36,6 +61,29 @@
   flex-direction: column;
   align-items: center;
   animation: bounce 2s infinite;
+}
+
+/* 移动端滚动指示器优化 */
+@media (max-width: 768px) {
+  .scrollIndicator {
+    bottom: 20px;
+  }
+  
+  .arrow {
+    transform: scale(0.5);
+    transform-origin: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .scrollIndicator {
+    bottom: 15px;
+  }
+  
+  .arrow {
+    transform: scale(0.5);
+    transform-origin: center;
+  }
 }
 
 .arrow {
@@ -329,6 +377,8 @@
   /* 轮播图小屏幕优化 */
   .missionContent {
     max-width: 90%;
+    overflow: hidden;
+    padding: 0 10px;
   }
 
   .carouselImage {
@@ -355,7 +405,7 @@
   }
 
   .missionContent :global(.qm-carousel .slick-list) {
-    overflow: visible;
+    overflow: hidden;
   }
 }
 

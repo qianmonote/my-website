@@ -1,5 +1,9 @@
 .container {
   /* 移除padding和background，因为现在由layout处理 */
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* 面包屑导航样式 */
@@ -29,10 +33,13 @@
 }
 
 .card {
-  margin-bottom: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   margin-top: 16px;
+  overflow: hidden;
 }
 
 .searchCard {
@@ -75,6 +82,15 @@
 .table {
   background-color: white;
   border-radius: 8px;
+  flex: 1;
+  overflow: auto;
+}
+
+.table :global(.ant-table-thead > tr > th) {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fafafa !important;
 }
 
 .table :global(.qm-table-thead > tr > th) {

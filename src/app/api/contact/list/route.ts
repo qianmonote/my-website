@@ -5,7 +5,19 @@ import { DatabaseAdapter, ContactQueryParams, initializeDatabase } from '@/lib/d
 export async function POST(request: NextRequest) {
   try {
     // 解析请求体
-    const body = await request.json();
+    let body;
+    try {
+      body = await request.json();
+    } catch (jsonError) {
+      console.error('JSON 解析错误:', jsonError);
+      return NextResponse.json(
+        {
+          flag: 0,
+          msg: '请求格式错误',
+        },
+        { status: 400 }
+      );
+    }
     
     // 获取查询参数
     const params: ContactQueryParams = {

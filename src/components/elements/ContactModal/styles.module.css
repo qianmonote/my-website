@@ -28,13 +28,12 @@
 }
 .title {
   text-align: center;
-  margin: 20px 0 16px;
+  margin: 20px 0 35px;
   font-family: Arial;
   font-weight: 700;
-  font-style: Bold;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: 0%;
+  color: #333;
 }
 
 .form {
@@ -50,32 +49,19 @@
 }
 
 .submitButton {
-  margin-top: 16px;
-  width: 394px;
-  height: 46px;
-  font-size: 16px;
-  border-radius: 24px;
-  background: linear-gradient(90deg, #0055E9 0%, #4B8DFF 100%);
-  border: none;
+  margin-top: 16px !important;
+  height: 46px !important;
+  font-size: 16px !important;
+  border-radius: 24px !important;
+  background: linear-gradient(90deg, #0055E9 0%, #4B8DFF 100%) !important;
+  border: none !important;
+  transition: all 0.3s ease !important;
 }
 
 .submitButton:hover {
-  background: #4096ff;
-}
-
-.agreement {
-  margin-top: 16px;
-  font-size: 12px;
-  color: #666;
-}
-
-.agreement a {
-  color: #1677ff;
-  text-decoration: none;
-}
-
-.agreement a:hover {
-  text-decoration: underline;
+  background: linear-gradient(90deg, #4096ff 0%, #66a3ff 100%) !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 12px rgba(64, 150, 255, 0.3) !important;
 }
 
 /* 移动端底部侧滑样式 */
@@ -169,4 +155,11 @@
   font-size: 11px;
   margin-top: 12px;
   line-height: 1.4;
+}
+.mobileDrawer .rightSection-en {
+  padding: 20px;
+}
+
+.mobileDrawer input.qm-input  {
+  width: 100% !important;
 }

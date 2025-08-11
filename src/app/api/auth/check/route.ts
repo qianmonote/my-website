@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getDatabase } from '@/lib/database';
 import { cleanExpiredSessions } from '@/lib/init-sessions-table';
+import { sql } from '@vercel/postgres';
 
 const INACTIVITY_TIMEOUT = 30 * 60 * 1000; // 30分钟无操作自动退出
 
@@ -21,17 +22,37 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    // 获取数据库连接
-    const db = await getDatabase();
+    // 判断是否使用 Vercel Postgres
+    const isVercelPostgres = !!(process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.VERCEL_ENV);
     
-    // 清理过期会话
-    await cleanExpiredSessions();
-
-    // 验证session token
-    const session = await db.get(
-      'SELECT * FROM user_sessions WHERE session_token = ? AND expires_at > datetime("now")',
-      [sessionToken.value]
-    );
+    let session;
+    
+    if (isVercelPostgres) {
+      // Postgres 环境
+      // 清理过期会话
+      await sql`DELETE FROM user_sessions WHERE expires_at <= NOW()`;
+      
+      // 验证session token
+      const sessionResult = await sql`
+        SELECT * FROM user_sessions 
+        WHERE session_token = ${sessionToken.value} AND expires_at > NOW()
+        LIMIT 1
+      `;
+      
+      session = sessionResult.rows.length > 0 ? sessionResult.rows[0] : null;
+    } else {
+      // SQLite 环境
+      const db = await getDatabase();
+      
+      // 清理过期会话
+      await cleanExpiredSessions();
+      
+      // 验证session token
+      session = await db.get(
+        'SELECT * FROM user_sessions WHERE session_token = ? AND expires_at > datetime("now")',
+        [sessionToken.value]
+      );
+    }
 
     if (!session) {
       // Session不存在或已过期
@@ -58,7 +79,12 @@ export async function GET(request: NextRequest) {
       
       if (now - lastActivityTime > INACTIVITY_TIMEOUT) {
         // 超时，删除session并清除cookies
-        await db.run('DELETE FROM user_sessions WHERE session_token = ?', [sessionToken.value]);
+        if (isVercelPostgres) {
+          await sql`DELETE FROM user_sessions WHERE session_token = ${sessionToken.value}`;
+        } else {
+          const db = await getDatabase();
+          await db.run('DELETE FROM user_sessions WHERE session_token = ?', [sessionToken.value]);
+        }
         
         const response = NextResponse.json(
           {
@@ -77,10 +103,19 @@ export async function GET(request: NextRequest) {
     }
 
     // 更新最后活动时间
-    await db.run(
-      'UPDATE user_sessions SET last_activity = datetime("now") WHERE session_token = ?',
-      [sessionToken.value]
-    );
+    if (isVercelPostgres) {
+      await sql`
+        UPDATE user_sessions 
+        SET last_activity = NOW() 
+        WHERE session_token = ${sessionToken.value}
+      `;
+    } else {
+      const db = await getDatabase();
+      await db.run(
+        'UPDATE user_sessions SET last_activity = datetime("now") WHERE session_token = ?',
+        [sessionToken.value]
+      );
+    }
 
     // 创建成功响应并更新活动时间cookie
     const response = NextResponse.json({

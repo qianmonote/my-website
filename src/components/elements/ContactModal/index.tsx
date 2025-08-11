@@ -43,6 +43,8 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       phonePlaceholder: "请输入手机号",
       phoneRequired: "请输入手机号",
       phonePattern: "请输入正确的手机号",
+      companyMaxLength: "公司名称不能超过50个字符",
+      contentMaxLength: "咨询业务不能超过200个字符",
       email: "电子邮件",
       emailPlaceholder: "请输入电子邮件",
       emailRequired: "请输入电子邮件",
@@ -70,13 +72,17 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       phonePlaceholder: "Please enter the contact phone number",
       phoneRequired: "Please enter the contact phone number",
       phonePattern: "Please enter a valid phone number",
+      companyMaxLength: "Company name cannot exceed 50 characters",
+      contentMaxLength: "Consultation content cannot exceed 200 characters",
       email: "E-mail",
       emailPlaceholder: "Please enter email",
       emailRequired: "Please enter your email address",
       emailPattern: "Please enter a valid email format",
       content: "consultancy",
-      contentPlaceholder: "Please fill in the business direction you would like to inquire about",
-      contentRequired: "Please fill in the business direction you would like to inquire about",
+      contentPlaceholder:
+        "Please fill in the business direction you would like to inquire about",
+      contentRequired:
+        "Please fill in the business direction you would like to inquire about",
       submit: "Submit",
       submitSuccess: "Submitted successfully!",
       submitError: "Submission failed, please try again",
@@ -119,7 +125,7 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
       })
       .catch((error) => {
         // 处理网络错误或其他异常
-        console.error('提交失败:', error);
+        console.error("提交失败:", error);
         message.error(t.submitError);
       })
       .finally(() => {
@@ -132,7 +138,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
     <div className={styles.modalContent}>
       {/* 移动端不显示左侧图片 */}
       {!isMobile && <div className={styles.leftSection} />}
-      <div className={(lang === "en" ? styles["rightSection-en"] : styles.rightSection)}>
+      <div
+        className={
+          lang === "en" ? styles["rightSection-en"] : styles.rightSection
+        }
+      >
         <div className={styles.title}>ONETOUCH AGRI ROBOTECH SDN.BHD</div>
         <Form
           form={form}
@@ -143,19 +153,24 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
           <Form.Item
             name="company"
             label={t.company}
+            rules={[{ type: "string", max: 50, message: t.companyMaxLength }]}
           >
-            <Input placeholder={t.companyPlaceholder} style={{ width: "317px" }} />
+            <Input
+              placeholder={t.companyPlaceholder}
+              style={{ width: isMobile ? "100%" : "305px" }}
+            />
           </Form.Item>
-          <Form.Item
-            name="name"
-            label={t.name}
-          >
-            <Input placeholder={t.namePlaceholder} style={{ width: "317px" }} />
+          <Form.Item name="name" label={t.name}>
+            <Input
+              placeholder={t.namePlaceholder}
+              style={{ width: isMobile ? "100%" : "305px" }}
+            />
           </Form.Item>
           <Form.Item
             name="phone"
             label={t.phone}
             rules={[
+              { required: true, message: t.phoneRequired },
               {
                 pattern:
                   lang === "zh"
@@ -165,20 +180,25 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
               },
             ]}
           >
-            <Input placeholder={t.phonePlaceholder} style={{ width: "317px" }} />
+            <Input
+              placeholder={t.phonePlaceholder}
+              style={{ width: isMobile ? "100%" : "305px" }}
+            />
           </Form.Item>
           <Form.Item
             name="email"
             label={t.email}
-            rules={[
-              { type: "email", message: t.emailPattern },
-            ]}
+            rules={[{ type: "email", message: t.emailPattern }]}
           >
-            <Input placeholder={t.emailPlaceholder} style={{ width: "317px" }} />
+            <Input
+              placeholder={t.emailPlaceholder}
+              style={{ width: isMobile ? "100%" : "305px" }}
+            />
           </Form.Item>
           <Form.Item
             name="content"
             label={t.content}
+            rules={[{ max: 200, message: t.contentMaxLength }]}
           >
             <Input.TextArea
               placeholder={t.contentPlaceholder}
@@ -190,20 +210,11 @@ const ContactModal: React.FC<ContactModalProps> = ({ open, onClose }) => {
               type="primary"
               loading={loading}
               className={styles.submitButton}
+              style={{ width: isMobile ? "100%" : "305px" }}
               onClick={() => form.submit()}
             >
               {t.submit}
             </Button>
-            {/* <div className={styles.agreement}>
-              {t.agreement}
-              <a href="/user-agreement" target="_blank">
-                {t.userAgreement}
-              </a>
-              {t.and}
-              <a href="/privacy-policy" target="_blank">
-                {t.privacyPolicy}
-              </a>
-            </div> */}
           </div>
         </Form>
       </div>

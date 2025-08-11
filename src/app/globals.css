@@ -1,3 +1,9 @@
+/* CSS重置 - 消除默认margin和padding */
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
 /* 防止FOUC的基础样式 */
 .qm-select-selector,
 .qm-dropdown-menu,

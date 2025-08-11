@@ -56,6 +56,9 @@ const SmartEVChargingPage = () => {
       imageWidth: 280,
       imageHeight: 280,
       colSpan: 12,
+      contentStyle: {
+        minHeight: lang === "zh" ? 140 : 200,
+      },
       titleZh: "应急护航，全域覆盖",
       titleEn: "Emergency escort, full coverage",
       descriptionZh:
@@ -68,6 +71,9 @@ const SmartEVChargingPage = () => {
       imageWidth: 280,
       imageHeight: 280,
       colSpan: 12,
+      contentStyle: {
+        minHeight: lang === "zh" ? 140 : 200,
+      },
       titleZh: "全链无人化，体验升级",
       titleEn: "Unmanned whole chain, upgraded experience",
       descriptionZh:
@@ -173,7 +179,7 @@ const SmartEVChargingPage = () => {
         backgroundSize="cover"
       />
       {/* Part1 */}
-      <PartSection>
+      <PartSection style={{ paddingBottom: 0 }}>
         {lang === "zh" ? (
           <PartSectionImageBox>
             <Image
@@ -230,7 +236,7 @@ const SmartEVChargingPage = () => {
       <PartSection
         title={
           lang === "zh" ? (
-            <PartSectionImageBox>
+            <PartSectionImageBox maxWidth={1000}>
               <Image
                 src="/product/p4/part3/tit-zh.png"
                 alt=""
@@ -244,7 +250,7 @@ const SmartEVChargingPage = () => {
               />
             </PartSectionImageBox>
           ) : (
-            <PartSectionImageBox>
+            <PartSectionImageBox maxWidth={1000}>
               <Image
                 src="/product/p4/part3/tit-en.png"
                 alt=""
@@ -270,6 +276,14 @@ const SmartEVChargingPage = () => {
             : "Core Advantages Of Mobile Charging <br/> Robots"
         }
         dataList={coreAdvantageDataList}
+        defaultImageSize={{
+          imageWidth: 280,
+          imageHeight: 280,
+          style: {
+            marginTop: 16,
+          },
+          unoptimized: true,
+        }}
         contentStyle={{
           minHeight: lang === "zh" ? 140 : 245,
         }}
@@ -294,7 +308,7 @@ const SmartEVChargingPage = () => {
             <Col span={item.colSpan} key={index}>
               <Image
                 src={item.image}
-                alt="移动充电机器人六大黄金场景"
+                alt=""
                 width={item.imageWidth}
                 height={item.imageHeight}
               />

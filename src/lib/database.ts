@@ -11,6 +11,9 @@ const isVercelPostgres = () => {
   return process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.VERCEL_ENV === 'production';
 };
 
+
+
+
 // 确保数据目录存在（仅SQLite需要）
 function ensureDataDirectory() {
   const dataDir = path.join(process.cwd(), 'data');

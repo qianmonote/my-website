@@ -228,6 +228,10 @@ const BiomassGasificationPage = () => {
         defaultImageSize={{
           imageWidth: 318,
           imageHeight: 280,
+           style: {
+            marginTop: 16,
+          },
+          unoptimized: true
         }}
         contentStyle={{
           minHeight: lang === "zh" ? 120 : 150,

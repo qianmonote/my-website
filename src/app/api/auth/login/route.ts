@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { getDatabase } from '@/lib/database';
+import { getDatabase, initializeDatabase } from '@/lib/database';
+import { PostgresDatabase } from '@/lib/database-postgres';
 import { initDatabase } from '@/lib/init-database';
 import { cleanExpiredSessions } from '@/lib/init-sessions-table';
 import crypto from 'crypto';
+import { sql } from '@vercel/postgres';
 
 interface LoginRequestBody {
   username: string;
@@ -12,8 +14,21 @@ interface LoginRequestBody {
 export async function POST(request: NextRequest) {
   try {
     // 解析请求体
-    const body: LoginRequestBody = await request.json();
-    const { username, password } = body;
+    let body: LoginRequestBody;
+    try {
+      body = await request.json();
+    } catch (jsonError) {
+      console.error('JSON 解析错误:', jsonError);
+      return NextResponse.json(
+        {
+          flag: 0,
+          msg: '请求格式错误',
+        },
+        { status: 400 }
+      );
+    }
+    
+    const { username, password } = body || {};
 
     // 验证必填字段
     if (!username || !password) {
@@ -26,20 +41,33 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 获取数据库连接
-    const db = await getDatabase();
-
-    // 初始化数据库（包括用户表和会话表）
-    await initDatabase();
+    // 检查是否使用 Vercel Postgres
+    const isVercelPostgres = process.env.POSTGRES_URL || process.env.DATABASE_URL || process.env.VERCEL_ENV === 'production';
     
-    // 清理过期会话
-    await cleanExpiredSessions();
-
-    // 查询用户
-    const user = await db.get(
-      'SELECT * FROM users WHERE username = ? AND password = ?',
-      [username, password]
-    );
+    let user = null;
+    
+    if (isVercelPostgres) {
+      // 使用 Vercel Postgres
+      console.log('使用 Vercel Postgres 进行用户认证');
+      await initializeDatabase();
+      
+      // 清理过期会话（Postgres版本）
+      await sql`DELETE FROM user_sessions WHERE expires_at < NOW()`;
+      
+      // 查询用户
+      user = await PostgresDatabase.authenticateUser(username, password);
+    } else {
+      // 使用本地 SQLite
+      console.log('使用本地 SQLite 进行用户认证');
+      const db = await getDatabase();
+      await initDatabase();
+      await cleanExpiredSessions();
+      
+      user = await db.get(
+        'SELECT * FROM users WHERE username = ? AND password = ?',
+        [username, password]
+      );
+    }
 
     if (!user) {
       return NextResponse.json(
@@ -49,19 +77,6 @@ export async function POST(request: NextRequest) {
         },
         { status: 401 }
       );
-    }
-
-    // 检查是否已有活跃会话（单点登录限制）
-    const existingSession = await db.get(
-      'SELECT * FROM user_sessions WHERE user_id = ? AND expires_at > datetime("now")',
-      [user.id]
-    );
-
-    let hasExistingSession = false;
-    if (existingSession) {
-      hasExistingSession = true;
-      // 删除旧会话，强制其他地方退出
-      await db.run('DELETE FROM user_sessions WHERE user_id = ?', [user.id]);
     }
 
     // 生成新的session token
@@ -74,13 +89,51 @@ export async function POST(request: NextRequest) {
                      'unknown';
     const userAgent = request.headers.get('user-agent') || 'unknown';
 
-    // 保存新会话到数据库
-    await db.run(
-      `INSERT INTO user_sessions 
-       (user_id, username, session_token, expires_at, ip_address, user_agent) 
-       VALUES (?, ?, ?, ?, ?, ?)`,
-      [user.id, user.username, sessionToken, expiresAt.toISOString(), ipAddress, userAgent]
-    );
+    let hasExistingSession = false;
+    
+    if (isVercelPostgres) {
+      // Postgres 会话管理
+      const existingSessionResult = await sql`
+        SELECT * FROM user_sessions 
+        WHERE user_id = ${user.id} AND expires_at > NOW()
+        LIMIT 1
+      `;
+      
+      if (existingSessionResult.rows.length > 0) {
+        hasExistingSession = true;
+        // 删除旧会话，强制其他地方退出
+        await sql`DELETE FROM user_sessions WHERE user_id = ${user.id}`;
+      }
+      
+      // 保存新会话到数据库
+      await sql`
+        INSERT INTO user_sessions 
+        (user_id, username, session_token, created_at, last_activity, expires_at, ip_address, user_agent) 
+        VALUES (${user.id}, ${user.username}, ${sessionToken}, NOW(), NOW(), ${expiresAt.toISOString()}, ${ipAddress}, ${userAgent})
+      `;
+    } else {
+      // SQLite 会话管理
+      const db = await getDatabase();
+      
+      const existingSession = await db.get(
+        'SELECT * FROM user_sessions WHERE user_id = ? AND expires_at > datetime("now")',
+        [user.id]
+      );
+      
+      if (existingSession) {
+        hasExistingSession = true;
+        // 删除旧会话，强制其他地方退出
+        await db.run('DELETE FROM user_sessions WHERE user_id = ?', [user.id]);
+      }
+      
+      // 保存新会话到数据库
+      await db.run(
+        `INSERT INTO user_sessions 
+         (user_id, username, session_token, expires_at, ip_address, user_agent) 
+         VALUES (?, ?, ?, ?, ?, ?)`,
+        [user.id, user.username, sessionToken, expiresAt.toISOString(), ipAddress, userAgent]
+      );
+    }
 
     // 创建响应对象
     const response = NextResponse.json({

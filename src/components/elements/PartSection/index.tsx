@@ -24,14 +24,16 @@ const PartSection: React.FC<PartSectionProps> = ({
       className={classNames(styles.partSection, className)}
       style={style}
     >
-      {title && typeof title === "string" ? (
-        <h2
-          className={styles.sectionTitle}
-          dangerouslySetInnerHTML={{ __html: title }}
-        />
-      ) : (
-        <h2 className={styles.sectionTitle}>{title}</h2>
-      )}
+      {title ? (
+        typeof title === "string" ? (
+          <h2
+            className={styles.sectionTitle}
+            dangerouslySetInnerHTML={{ __html: title }}
+          />
+        ) : (
+          <h2 className={styles.sectionTitle}>{title}</h2>
+        )
+      ) : null}
       <div className={styles.container}>{children}</div>
     </section>
   );
@@ -39,10 +41,19 @@ const PartSection: React.FC<PartSectionProps> = ({
 
 export const PartSectionImageBox = ({
   children,
+  maxWidth,
 }: {
   children: React.ReactNode;
+  maxWidth?: number;
 }) => {
-  return <div className={styles.partSectionImage}>{children}</div>;
+  return (
+    <div
+      className={styles.partSectionImage}
+      style={maxWidth ? { maxWidth, margin: "0 auto" } : {}}
+    >
+      {children}
+    </div>
+  );
 };
 
 export default PartSection;

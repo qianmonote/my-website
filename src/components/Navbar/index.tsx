@@ -173,7 +173,7 @@ const Navbar: React.FC<NavbarProps> = () => {
         <Switch
           checkedChildren="En"
           unCheckedChildren="Zn"
-          defaultChecked={lang === "en"}
+          checked={lang === "en"}
           onChange={(checked) => {
             if (checked) {
               setLang("en");
@@ -214,7 +214,7 @@ const Navbar: React.FC<NavbarProps> = () => {
           <Switch
             checkedChildren="En"
             unCheckedChildren="Zn"
-            defaultChecked={lang === "en"}
+            checked={lang === "en"}
             onChange={(checked) => {
               if (checked) {
                 setLang("en");

@@ -26,11 +26,14 @@ type PartSectionCardListProps = Partial<{
     descriptionZh: string;
     descriptionEn: string;
     colSpan: number;
+    unoptimized: boolean;
+    contentStyle?: React.CSSProperties;
   }>[];
   defaultImageSize?: {
     imageWidth?: number;
     imageHeight?: number;
     style?: React.CSSProperties;
+    unoptimized?: boolean;
   };
   defaultColSpan?: number;
   defaultRowGutter?: number;
@@ -51,6 +54,7 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
     imageWidth: 0,
     imageHeight: 0,
     style: {},
+    unoptimized: false,
   },
   titleUnderlinePlacement = "bottom",
   descriptionStyle = {},
@@ -87,10 +91,11 @@ const PartSectionCardList: React.FC<PartSectionCardListProps> = ({
                       alt={itemTitle || ""}
                       width={item.imageWidth || defaultImageSize.imageWidth}
                       height={item.imageHeight || defaultImageSize.imageHeight}
+                      unoptimized={item.unoptimized || defaultImageSize?.unoptimized}
                     />
                   )}
                 </div>
-                <div className={styles.commonContent} style={contentStyle}>
+                <div className={styles.commonContent} style={item.contentStyle || contentStyle}>
                   {itemTitle && (
                     <h3>
                       <div className={styles.commonContentTitle}>

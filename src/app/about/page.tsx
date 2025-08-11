@@ -47,14 +47,14 @@ export default function About() {
       imageEn: "/about/carousel/01-en.png",
       alt: "",
       width: 1000,
-      height: 297.6,
+      height: 400,
     },
     {
       imageZh: "/about/carousel/02-zh.png",
       imageEn: "/about/carousel/02-en.png",
       alt: "",
       width: 1000,
-      height: 297.6,
+      height: 400,
     },
   ];
 
@@ -131,7 +131,7 @@ export default function About() {
                         height: 442,
                       }}
                       titleZh="2024 年与拉曼大学签署《生物质气化技术研究合作协议》（MOA）"
-                      titleEn="Signed a MOA with the University of Raman on Biomass Gasification Technology Research in 2024"
+                      titleEn="And the words change to Signed a MoA with UTAR University Kampar Campus"
                       descriptionZh="深化棕榈废弃物全链条能源化技术研发构建标准化技术模块并纳入国家可再生能源认证体系，形成可复制的棕榈生物质能解决方案，推动其在智能电网协同、区域能源替代及碳交易机制中的规模化应用。"
                       descriptionEn="Deepen the research and development of palm waste energy technology, build standardized technical modules, form replicable palm biomass energy solutions, and promote its large-scale application in smart grid coordination, regional energy substitution and carbon trading mechanisms."
                       moreButton={{
@@ -139,7 +139,7 @@ export default function About() {
                         onClick: () =>
                           handleViewDetails({
                             titleZh: "2024 年与拉曼大学签署《生物质气化技术研究合作协议》（MOA）",
-                            titleEn: "Signed a MOA with the University of Raman on Biomass Gasification Technology Research in 2024",
+                            titleEn: "And the words change to Signed a MoA with UTAR University Kampar Campus",
                             descriptionZh: "深化棕榈废弃物全链条能源化技术研发构建标准化技术模块并纳入国家可再生能源认证体系，形成可复制的棕榈生物质能解决方案，推动其在智能电网协同、区域能源替代及碳交易机制中的规模化应用。",
                             descriptionEn: "Deepen the research and development of palm waste energy technology, build standardized technical modules, form replicable palm biomass energy solutions, and promote its large-scale application in smart grid coordination, regional energy substitution and carbon trading mechanisms.",
                             image: {
@@ -265,7 +265,7 @@ export default function About() {
             <div className={styles.communicationContent}>
               {lang === "zh" && (
                 <p>
-                  足马来西亚槟城——亚太绿色枢纽，ONETOUCH以技术融合创新驱动热带碳中和革命。整合光伏、储能、生物质转化与智能农机核心板块，构建&lsquo;能源生产-充电优化-资源再生&rsquo;全链闭环，赋能工农业低碳转型。依托区域政策红利与全球创新资源，转化农林废弃物为清洁能源，系统性降低能耗、碳排与运营成本。作为东南亚绿色经济崛起的战略引擎，我们持续拓展新能源应用场景与商业边界。
+                  马来西亚槟城——亚太绿色枢纽，ONETOUCH以技术融合创新驱动热带碳中和革命。整合光伏、储能、生物质转化与智能农机核心板块，构建&lsquo;能源生产-充电优化-资源再生&rsquo;全链闭环，赋能工农业低碳转型。依托区域政策红利与全球创新资源，转化农林废弃物为清洁能源，系统性降低能耗、碳排与运营成本。作为东南亚绿色经济崛起的战略引擎，我们持续拓展新能源应用场景与商业边界。
                 </p>
               )}
               {lang === "en" && (

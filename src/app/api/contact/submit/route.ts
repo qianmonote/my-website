@@ -49,24 +49,8 @@ export async function POST(request: NextRequest) {
     // 验证必填字段
     const { name, phone, email, company, content } = body;
 
-    // // 验证手机号：先判空再校验格式
-    // if (!phone || phone.trim() === '') {
-    //   return NextResponse.json(
-    //     {
-    //       flag: 0,
-    //       msg: "请输入手机号",
-    //     },
-    //     {
-    //       status: 200,
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //       }
-    //     }
-    //   );
-    // }
-
-    // 验证手机号格式（中国手机号）
-    const phoneRegex = /^[0-9]\d{20}$/;
+    // 验证手机号格式（国际手机号，支持多国格式）
+    const phoneRegex = /^[\+]?[\d\s\-\(\)]{6,20}$/;
     if (phone && !phoneRegex.test(phone)) {
       return NextResponse.json(
         {
@@ -81,22 +65,6 @@ export async function POST(request: NextRequest) {
         }
       );
     }
-
-    // // 验证邮箱：先判空再校验格式
-    // if (!email || email.trim() === "") {
-    //   return NextResponse.json(
-    //     {
-    //       flag: 0,
-    //       msg: "请输入邮箱",
-    //     },
-    //     {
-    //       status: 200,
-    //       headers: {
-    //         "Access-Control-Allow-Origin": "*",
-    //       },
-    //     }
-    //   );
-    // }
 
     // 验证邮箱格式
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -115,11 +83,24 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // 初始化数据库
+    // 初始化数据库（对于 Vercel Neon 很重要）
     try {
+      console.log('开始初始化数据库...');
       await initializeDatabase();
+      console.log('数据库初始化成功');
     } catch (error) {
-      console.error("数据库初始化失败:", error);
+      const errorMessage = error instanceof Error ? error.message : String(error);
+      console.error("数据库初始化失败:", {
+        error: errorMessage,
+        stack: error instanceof Error ? error.stack : undefined,
+        env: {
+          POSTGRES_URL: !!process.env.POSTGRES_URL,
+          DATABASE_URL: !!process.env.DATABASE_URL,
+          VERCEL_ENV: process.env.VERCEL_ENV,
+          NODE_ENV: process.env.NODE_ENV
+        },
+        timestamp: new Date().toISOString()
+      });
       return NextResponse.json(
         {
           flag: 0,
@@ -133,9 +114,10 @@ export async function POST(request: NextRequest) {
         }
       );
     }
-
-    // 插入数据
+    
+    // 进行数据插入操作
     try {
+      console.log('开始插入联系数据...');
       const result = await DatabaseAdapter.insertContact({
         name: name || "",
         phone: phone || "",
@@ -144,6 +126,11 @@ export async function POST(request: NextRequest) {
         content: content || "",
       });
 
+      if (!result || !result.id) {
+        throw new Error('插入数据返回结果无效');
+      }
+
+      console.log('联系数据插入成功:', { id: result.id });
       return NextResponse.json(
         {
           flag: 1,

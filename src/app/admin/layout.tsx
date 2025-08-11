@@ -28,12 +28,14 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
   const router = useRouter();
   const pathname = usePathname();
   const { message } = App.useApp();
-  const { logout } = useAutoLogout({ messageApi: message });
   const { lang, setLang, t } = useAdminI18n();
   const [collapsed, setCollapsed] = useState(false);
   const [userInfo, setUserInfo] = useState<{ username: string } | null>(null);
   const [loading, setLoading] = useState(true);
   const [mounted, setMounted] = useState(false);
+  
+  // 只在非登录页面时使用 useAutoLogout
+  const { logout } = useAutoLogout(pathname === '/admin/login' ? {} : { messageApi: message });
 
   // 确保组件已挂载
   useEffect(() => {
@@ -216,7 +218,8 @@ function AdminLayoutContent({ children }: AdminLayoutProps) {
           padding: '16px',
           background: '#fff',
           borderRadius: '6px',
-          overflow: 'auto',
+          height: 'calc(100vh - 64px - 32px)',
+          overflowY: 'auto',
         }}>
           {children}
         </Content>

@@ -23,20 +23,6 @@
 
 详细配置请参考：[Vercel Postgres 配置指南](./doc/VERCEL_POSTGRES_README.md)
 
-## 🚀 快速开始
-
-### 1. 安装依赖
-
-```bash
-npm install
-```
-
-### 2. 启动开发服务器
-
-```bash
-npm run dev
-```
-
 ### 3. 访问应用
 
 打开 [http://localhost:3000](http://localhost:3000) 查看网站。
